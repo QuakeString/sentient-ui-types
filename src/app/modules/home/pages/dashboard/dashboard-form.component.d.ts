@@ -1,0 +1,33 @@
+import { ChangeDetectorRef } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { EntityComponent } from '../../components/entity/entity.component';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { Dashboard } from '@shared/models/dashboard.models';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { EntityType } from '@shared/models/entity-type.models';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import * as i0 from "@angular/core";
+export declare class DashboardFormComponent extends EntityComponent<Dashboard> {
+    protected store: Store<AppState>;
+    protected translate: TranslateService;
+    protected entityValue: Dashboard;
+    protected entitiesTableConfigValue: EntityTableConfig<Dashboard>;
+    fb: UntypedFormBuilder;
+    protected cd: ChangeDetectorRef;
+    private entityGroupService;
+    dashboardScope: 'tenant' | 'customer' | 'customer_user' | 'edge';
+    entityType: typeof EntityType;
+    currentGroups: EntityGroup[];
+    constructor(store: Store<AppState>, translate: TranslateService, entityValue: Dashboard, entitiesTableConfigValue: EntityTableConfig<Dashboard>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, entityGroupService: EntityGroupService);
+    ngOnInit(): void;
+    hideDelete(): boolean;
+    buildForm(entity: Dashboard): UntypedFormGroup;
+    updateForm(entity: Dashboard): void;
+    prepareFormValue(formValue: any): any;
+    onDashboardIdCopied($event: any): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardFormComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardFormComponent, "tb-dashboard-form", never, {}, {}, never, never, false, never>;
+}

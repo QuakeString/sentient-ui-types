@@ -1,0 +1,74 @@
+import { AfterViewInit, ChangeDetectorRef, ComponentRef, EventEmitter, Injector, OnDestroy, QueryList } from '@angular/core';
+import { PageComponent } from '@shared/components/page.component';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { BaseData, HasId } from '@shared/models/base-data';
+import { EntityType, EntityTypeResource, EntityTypeTranslation } from '@shared/models/entity-type.models';
+import { UntypedFormGroup } from '@angular/forms';
+import { EntityComponent } from './entity.component';
+import { TbAnchorComponent } from '@shared/components/tb-anchor.component';
+import { EntityAction } from '@home/models/entity/entity-component.models';
+import { Observable, Subscription } from 'rxjs';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { EntityTabsComponent } from '@home/components/entity/entity-tabs.component';
+import * as i0 from "@angular/core";
+export declare class EntityDetailsPanelComponent extends PageComponent implements AfterViewInit, OnDestroy {
+    protected store: Store<AppState>;
+    protected injector: Injector;
+    protected cd: ChangeDetectorRef;
+    closeEntityDetails: EventEmitter<void>;
+    entityUpdated: EventEmitter<BaseData<HasId>>;
+    entityAction: EventEmitter<EntityAction<BaseData<HasId>>>;
+    entityComponentRef: ComponentRef<EntityComponent<BaseData<HasId>>>;
+    entityComponent: EntityComponent<BaseData<HasId>>;
+    entityTabsComponentRef: ComponentRef<EntityTabsComponent<BaseData<HasId>>>;
+    entityTabsComponent: EntityTabsComponent<BaseData<HasId>>;
+    detailsForm: UntypedFormGroup;
+    entitiesTableConfigValue: EntityTableConfig<BaseData<HasId>>;
+    isEditValue: boolean;
+    selectedTab: number;
+    private pendingSavedTab;
+    entityTypes: typeof EntityType;
+    entityDetailsFormAnchor: TbAnchorComponent;
+    entityTabsAnchor: TbAnchorComponent;
+    matTabGroup: MatTabGroup;
+    inclusiveTabs: QueryList<MatTab>;
+    translations: EntityTypeTranslation;
+    resources: EntityTypeResource<BaseData<HasId>>;
+    entity: BaseData<HasId>;
+    editingEntity: BaseData<HasId>;
+    protected currentEntityId: HasId;
+    protected subscriptions: Subscription[];
+    protected viewInited: boolean;
+    protected pendingTabs: MatTab[];
+    constructor(store: Store<AppState>, injector: Injector, cd: ChangeDetectorRef);
+    set entityId(entityId: HasId);
+    set entitiesTableConfig(entitiesTableConfig: EntityTableConfig<BaseData<HasId>>);
+    get entitiesTableConfig(): EntityTableConfig<BaseData<HasId>>;
+    set isEdit(val: boolean);
+    get isEdit(): boolean;
+    protected init(): void;
+    private clearSubscriptions;
+    ngOnDestroy(): void;
+    buildEntityComponent(): void;
+    buildEntityTabsComponent(): void;
+    hideDetailsTabs(): boolean;
+    reloadEntity(): Observable<BaseData<HasId>>;
+    onCloseEntityDetails(): void;
+    onToggleEditMode(isEdit: boolean): void;
+    private getSelectedTabRef;
+    helpLinkId(): string;
+    saveEntity(emitEntityUpdated?: boolean): Observable<BaseData<HasId>>;
+    ngAfterViewInit(): void;
+    /**
+     * Honor a one-shot `openEntityDetailsTabLabel` request from the table config
+     * (e.g. an integration's "See debug events" landing on the Events tab), once
+     * the tabs are built. Matches by (translated) tab label so it survives tab
+     * reordering, and clears the request so it fires only for this open.
+     */
+    private applyRequestedDetailsTab;
+    private setupTabWheelScroll;
+    static ɵfac: i0.ɵɵFactoryDeclaration<EntityDetailsPanelComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<EntityDetailsPanelComponent, "tb-entity-details-panel", never, { "entityId": { "alias": "entityId"; "required": false; }; "entitiesTableConfig": { "alias": "entitiesTableConfig"; "required": false; }; }, { "closeEntityDetails": "closeEntityDetails"; "entityUpdated": "entityUpdated"; "entityAction": "entityAction"; }, never, never, false, never>;
+}

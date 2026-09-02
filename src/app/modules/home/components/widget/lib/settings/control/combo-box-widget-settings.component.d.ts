@@ -1,0 +1,31 @@
+import { TargetDevice, WidgetSettings, WidgetSettingsComponent, widgetType } from '@shared/models/widget.models';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { ValueType } from '@shared/models/constants';
+import { ComboBoxOptionsSource, ComboBoxValueType } from '@home/components/widget/lib/rpc/combo-box-widget.models';
+import * as i0 from "@angular/core";
+export declare class ComboBoxWidgetSettingsComponent extends WidgetSettingsComponent {
+    protected store: Store<AppState>;
+    private fb;
+    get targetDevice(): TargetDevice;
+    get widgetType(): widgetType;
+    get optionsFormArray(): UntypedFormArray;
+    valueType: typeof ValueType;
+    comboBoxValueType: typeof ComboBoxValueType;
+    comboBoxValueTypes: ComboBoxValueType[];
+    comboBoxOptionsSource: typeof ComboBoxOptionsSource;
+    comboBoxWidgetSettingsForm: UntypedFormGroup;
+    constructor(store: Store<AppState>, fb: UntypedFormBuilder);
+    protected settingsForm(): UntypedFormGroup;
+    protected defaultSettings(): WidgetSettings;
+    protected onSettingsSet(settings: WidgetSettings): void;
+    protected validatorTriggers(): string[];
+    protected updateValidators(_emitEvent: boolean): void;
+    addOption(): void;
+    removeOption(index: number): void;
+    private prepareOptionsFormArray;
+    private optionControl;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ComboBoxWidgetSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ComboBoxWidgetSettingsComponent, "tb-combo-box-widget-settings", never, {}, {}, never, never, false, never>;
+}

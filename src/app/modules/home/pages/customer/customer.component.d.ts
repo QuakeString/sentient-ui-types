@@ -1,0 +1,37 @@
+import { ChangeDetectorRef } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Customer } from '@shared/models/customer.model';
+import { TranslateService } from '@ngx-translate/core';
+import { ContactBasedComponent } from '../../components/entity/contact-based.component';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { AuthState } from '@core/auth/auth.models';
+import { CountryData } from '@shared/models/country.models';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { CustomerService } from '@core/http/customer.service';
+import * as i0 from "@angular/core";
+export declare class CustomerComponent extends ContactBasedComponent<Customer> {
+    protected store: Store<AppState>;
+    protected translate: TranslateService;
+    protected entityValue: Customer;
+    protected entitiesTableConfigValue: EntityTableConfig<Customer>;
+    protected fb: UntypedFormBuilder;
+    protected cd: ChangeDetectorRef;
+    protected countryData: CountryData;
+    private entityGroupService;
+    private customerService;
+    isPublic: boolean;
+    currentGroups: EntityGroup[];
+    ownerDisplayName: string;
+    authState: AuthState;
+    constructor(store: Store<AppState>, translate: TranslateService, entityValue: Customer, entitiesTableConfigValue: EntityTableConfig<Customer>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, countryData: CountryData, entityGroupService: EntityGroupService, customerService: CustomerService);
+    hideDelete(): boolean;
+    buildEntityForm(entity: Customer): UntypedFormGroup;
+    updateEntityForm(entity: Customer): void;
+    onCustomerIdCopied(event: any): void;
+    edgesSupportEnabled(): boolean;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CustomerComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CustomerComponent, "tb-customer", never, {}, {}, never, never, false, never>;
+}

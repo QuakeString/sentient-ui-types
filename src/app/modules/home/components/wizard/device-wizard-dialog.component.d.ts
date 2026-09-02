@@ -1,0 +1,56 @@
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DialogComponent } from '@shared/components/dialog.component';
+import { Router } from '@angular/router';
+import { Device, DeviceProfileInfo, DeviceTransportType } from '@shared/models/device.models';
+import { MatStepper, StepperOrientation } from '@angular/material/stepper';
+import { EntityType } from '@shared/models/entity-type.models';
+import { Observable } from 'rxjs';
+import { DeviceService } from '@core/http/device.service';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import * as i0 from "@angular/core";
+export interface DeviceWizardDialogData {
+    prefilledGroup?: EntityGroup;
+    defaultOwnerId?: string;
+}
+export declare class DeviceWizardDialogComponent extends DialogComponent<DeviceWizardDialogComponent, Device> {
+    protected store: Store<AppState>;
+    protected router: Router;
+    dialogRef: MatDialogRef<DeviceWizardDialogComponent, Device>;
+    private data;
+    private deviceService;
+    private entityGroupService;
+    private breakpointObserver;
+    private fb;
+    addDeviceWizardStepper: MatStepper;
+    stepperOrientation: Observable<StepperOrientation>;
+    stepperLabelPosition: Observable<'bottom' | 'end'>;
+    selectedIndex: number;
+    credentialsOptionalStep: boolean;
+    showNext: boolean;
+    entityType: typeof EntityType;
+    deviceWizardFormGroup: FormGroup;
+    credentialsFormGroup: FormGroup;
+    prefilledGroup: EntityGroup;
+    defaultOwnerId: string;
+    private currentDeviceProfileTransportType;
+    constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<DeviceWizardDialogComponent, Device>, data: DeviceWizardDialogData, deviceService: DeviceService, entityGroupService: EntityGroupService, breakpointObserver: BreakpointObserver, fb: FormBuilder);
+    cancel(): void;
+    previousStep(): void;
+    nextStep(): void;
+    getFormLabel(index: number): string;
+    get maxStepperIndex(): number;
+    add(): void;
+    get deviceTransportType(): DeviceTransportType;
+    deviceProfileChanged(deviceProfile: DeviceProfileInfo): void;
+    private createDevice;
+    allValid(): boolean;
+    changeStep($event: StepperSelectionEvent): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DeviceWizardDialogComponent, [null, null, null, { optional: true; }, null, null, null, null]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DeviceWizardDialogComponent, "tb-device-wizard", never, {}, {}, never, never, false, never>;
+}

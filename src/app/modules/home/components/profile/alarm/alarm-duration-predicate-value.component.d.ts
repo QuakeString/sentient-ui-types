@@ -1,0 +1,31 @@
+import { DestroyRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { DynamicValueSourceType, FilterPredicateValue } from '@shared/models/query/query.models';
+import { AlarmConditionType } from '@shared/models/device.models';
+import * as i0 from "@angular/core";
+export declare class AlarmDurationPredicateValueComponent implements ControlValueAccessor, OnInit {
+    private fb;
+    private destroyRef;
+    private readonly inheritModeForSources;
+    set alarmConditionType(alarmConditionType: AlarmConditionType);
+    defaultValuePlaceholder: string;
+    defaultValueRequiredError: string;
+    defaultValueRangeError: string;
+    defaultValuePatternError: string;
+    dynamicValueSourceTypes: DynamicValueSourceType[];
+    dynamicValueSourceTypeTranslations: Map<DynamicValueSourceType, string>;
+    alarmDurationPredicateValueFormGroup: UntypedFormGroup;
+    dynamicMode: boolean;
+    inheritMode: boolean;
+    private propagateChange;
+    constructor(fb: UntypedFormBuilder, destroyRef: DestroyRef);
+    ngOnInit(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(predicateValue: FilterPredicateValue<string | number | boolean>): void;
+    private updateModel;
+    private updateShowInheritMode;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AlarmDurationPredicateValueComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AlarmDurationPredicateValueComponent, "tb-alarm-duration-predicate-value", never, { "alarmConditionType": { "alias": "alarmConditionType"; "required": false; }; }, {}, never, never, false, never>;
+}

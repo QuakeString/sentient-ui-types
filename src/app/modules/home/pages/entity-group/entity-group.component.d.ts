@@ -1,0 +1,36 @@
+import { ChangeDetectorRef } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import { EntityComponent } from '../../components/entity/entity.component';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { TranslateService } from '@ngx-translate/core';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { OtaUpdateType } from '@shared/models/ota-package.models';
+import * as i0 from "@angular/core";
+export declare class EntityGroupComponent extends EntityComponent<EntityGroup> {
+    protected store: Store<AppState>;
+    protected translate: TranslateService;
+    protected entityValue: EntityGroup;
+    protected entitiesTableConfigValue: EntityTableConfig<EntityGroup>;
+    protected fb: UntypedFormBuilder;
+    protected cd: ChangeDetectorRef;
+    private entityGroupService;
+    private dialog;
+    private router;
+    otaUpdateType: typeof OtaUpdateType;
+    constructor(store: Store<AppState>, translate: TranslateService, entityValue: EntityGroup, entitiesTableConfigValue: EntityTableConfig<EntityGroup>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, entityGroupService: EntityGroupService, dialog: MatDialog, router: Router);
+    hideDelete(): boolean;
+    isAllGroup(): boolean;
+    openEntityGroup($event: Event): void;
+    buildForm(entity: EntityGroup): UntypedFormGroup;
+    updateForm(entity: EntityGroup): void;
+    prepareFormValue(formValue: any): any;
+    openShareDialog($event: Event): void;
+    togglePublic($event: Event): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<EntityGroupComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<EntityGroupComponent, "tb-entity-group", never, {}, {}, never, never, false, never>;
+}

@@ -1,0 +1,50 @@
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DialogComponent } from '@shared/components/dialog.component';
+import { Router } from '@angular/router';
+import { Dashboard } from '@shared/models/dashboard.models';
+import { MatStepper, StepperOrientation } from '@angular/material/stepper';
+import { Observable } from 'rxjs';
+import { DashboardService } from '@core/http/dashboard.service';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import * as i0 from "@angular/core";
+export interface DashboardWizardDialogData {
+    prefilledGroup?: EntityGroup;
+    defaultOwnerId?: string;
+}
+export declare class DashboardWizardDialogComponent extends DialogComponent<DashboardWizardDialogComponent, Dashboard> {
+    protected store: Store<AppState>;
+    protected router: Router;
+    dialogRef: MatDialogRef<DashboardWizardDialogComponent, Dashboard>;
+    private data;
+    private dashboardService;
+    private entityGroupService;
+    private breakpointObserver;
+    private fb;
+    addDashboardWizardStepper: MatStepper;
+    stepperOrientation: Observable<StepperOrientation>;
+    stepperLabelPosition: Observable<'bottom' | 'end'>;
+    selectedIndex: number;
+    showNext: boolean;
+    dashboardDetailsFormGroup: FormGroup;
+    ownerAndGroupsFormGroup: FormGroup;
+    prefilledGroup: EntityGroup;
+    defaultOwnerId: string;
+    constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<DashboardWizardDialogComponent, Dashboard>, data: DashboardWizardDialogData, dashboardService: DashboardService, entityGroupService: EntityGroupService, breakpointObserver: BreakpointObserver, fb: FormBuilder);
+    cancel(): void;
+    previousStep(): void;
+    nextStep(): void;
+    getFormLabel(index: number): string;
+    get maxStepperIndex(): number;
+    add(): void;
+    private createDashboard;
+    allValid(): boolean;
+    changeStep($event: StepperSelectionEvent): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardWizardDialogComponent, [null, null, null, { optional: true; }, null, null, null, null]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardWizardDialogComponent, "tb-dashboard-wizard", never, {}, {}, never, never, false, never>;
+}

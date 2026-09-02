@@ -1,0 +1,47 @@
+import { ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { RafService } from '@core/services/raf.service';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { ThemeService } from '@core/services/theme.service';
+import * as i0 from "@angular/core";
+export declare class ProtobufContentComponent implements OnInit, ControlValueAccessor, OnDestroy {
+    elementRef: ElementRef;
+    protected store: Store<AppState>;
+    private raf;
+    private themeService;
+    protobufEditorElmRef: ElementRef;
+    private protobufEditor;
+    private themeSubscription;
+    private editorsResizeCaf;
+    private editorResize$;
+    private ignoreChange;
+    toastTargetId: string;
+    label: string;
+    disabled: boolean;
+    fillHeight: boolean;
+    editorStyle: {
+        [klass: string]: any;
+    };
+    tbPlaceholder: string;
+    private readonlyValue;
+    get readonly(): boolean;
+    set readonly(value: boolean);
+    fullscreen: boolean;
+    contentBody: string;
+    errorShowed: boolean;
+    private propagateChange;
+    constructor(elementRef: ElementRef, store: Store<AppState>, raf: RafService, themeService: ThemeService);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: string): void;
+    updateView(): void;
+    beautifyProtobuf(): void;
+    onFullscreen(): void;
+    private onAceEditorResize;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ProtobufContentComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ProtobufContentComponent, "tb-protobuf-content", never, { "label": { "alias": "label"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "fillHeight": { "alias": "fillHeight"; "required": false; }; "editorStyle": { "alias": "editorStyle"; "required": false; }; "tbPlaceholder": { "alias": "tbPlaceholder"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; }, {}, never, never, false, never>;
+}

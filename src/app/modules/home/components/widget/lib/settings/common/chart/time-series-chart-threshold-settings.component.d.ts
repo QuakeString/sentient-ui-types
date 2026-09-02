@@ -1,0 +1,30 @@
+import { OnInit, Renderer2, ViewContainerRef } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import { TbPopoverService } from '@shared/components/popover.service';
+import { WidgetConfig } from '@shared/models/widget.models';
+import { TimeSeriesChartThreshold, TimeSeriesChartYAxisId } from '@home/components/widget/lib/chart/time-series-chart.models';
+import * as i0 from "@angular/core";
+export declare class TimeSeriesChartThresholdSettingsComponent implements OnInit, ControlValueAccessor {
+    private popoverService;
+    private renderer;
+    private viewContainerRef;
+    disabled: boolean;
+    widgetConfig: WidgetConfig;
+    yAxisIds: TimeSeriesChartYAxisId[];
+    hideYAxis: boolean;
+    boxButton: boolean;
+    icon: string;
+    title: string;
+    private modelValue;
+    private propagateChange;
+    constructor(popoverService: TbPopoverService, renderer: Renderer2, viewContainerRef: ViewContainerRef);
+    ngOnInit(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: Partial<TimeSeriesChartThreshold>): void;
+    openThresholdSettingsPopup($event: Event, matButton: MatButton): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<TimeSeriesChartThresholdSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TimeSeriesChartThresholdSettingsComponent, "tb-time-series-chart-threshold-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; "widgetConfig": { "alias": "widgetConfig"; "required": false; }; "yAxisIds": { "alias": "yAxisIds"; "required": false; }; "hideYAxis": { "alias": "hideYAxis"; "required": false; }; "boxButton": { "alias": "boxButton"; "required": false; }; "icon": { "alias": "icon"; "required": false; }; "title": { "alias": "title"; "required": false; }; }, {}, never, never, false, never>;
+}

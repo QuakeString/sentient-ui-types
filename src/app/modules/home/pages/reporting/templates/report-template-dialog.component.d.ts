@@ -1,0 +1,51 @@
+import { ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { AppState } from '@core/core.state';
+import { ReportService } from '@core/http/report.service';
+import { CustomerService } from '@core/http/customer.service';
+import { Customer } from '@shared/models/customer.model';
+import { Observable } from 'rxjs';
+import { ReportTemplate, ReportFormat, ReportTemplateType } from '@home/pages/reporting/models/report.models';
+import * as i0 from "@angular/core";
+export interface ReportTemplateDialogData {
+    template: ReportTemplate;
+    isEdit: boolean;
+}
+export declare class ReportTemplateDialogComponent implements OnInit, OnDestroy {
+    private dialogRef;
+    data: ReportTemplateDialogData;
+    private fb;
+    private reportService;
+    private customerService;
+    private translate;
+    private store;
+    templateForm: FormGroup;
+    isEdit: boolean;
+    isSubmitting: boolean;
+    templateTypes: ReportTemplateType[];
+    formats: (ReportFormat.PDF | ReportFormat.CSV | ReportFormat.XLSX | ReportFormat.ODS | ReportFormat.SCRIPT)[];
+    ownerInput: ElementRef<HTMLInputElement>;
+    currentUserEmail: string;
+    ownerSearchControl: FormControl<string | Customer>;
+    filteredOwners: Observable<Customer[]>;
+    private selectedOwner;
+    private destroy$;
+    constructor(dialogRef: MatDialogRef<ReportTemplateDialogComponent>, data: ReportTemplateDialogData, fb: FormBuilder, reportService: ReportService, customerService: CustomerService, translate: TranslateService, store: Store<AppState>);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    private buildForm;
+    private initOwnerAutocomplete;
+    private fetchCustomers;
+    displayOwnerFn: (value: Customer | string) => string;
+    clearOwnerSelection(event: Event): void;
+    getTemplateTypeLabel(type: ReportTemplateType): string;
+    getTypeLabel(): string;
+    getFormatLabel(format: ReportFormat): string;
+    save(): void;
+    cancel(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ReportTemplateDialogComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ReportTemplateDialogComponent, "tb-report-template-dialog", never, {}, {}, never, never, false, never>;
+}

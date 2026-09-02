@@ -1,0 +1,34 @@
+import { DestroyRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validator } from '@angular/forms';
+import { DeviceProvisionConfiguration, DeviceProvisionType } from '@shared/models/device.models';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { TranslateService } from '@ngx-translate/core';
+import * as i0 from "@angular/core";
+export declare class DeviceProfileProvisionConfigurationComponent implements ControlValueAccessor, OnInit, Validator {
+    protected store: Store<AppState>;
+    private fb;
+    private translate;
+    private destroyRef;
+    provisionConfigurationFormGroup: UntypedFormGroup;
+    deviceProvisionType: typeof DeviceProvisionType;
+    deviceProvisionTypes: string[];
+    deviceProvisionTypeTranslateMap: Map<DeviceProvisionType, string>;
+    private requiredValue;
+    get required(): boolean;
+    set required(value: boolean);
+    disabled: boolean;
+    private propagateChange;
+    constructor(store: Store<AppState>, fb: UntypedFormBuilder, translate: TranslateService, destroyRef: DestroyRef);
+    ngOnInit(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    writeValue(value: DeviceProvisionConfiguration | null): void;
+    setDisabledState(isDisabled: boolean): void;
+    validate(c: UntypedFormControl): ValidationErrors | null;
+    private updateModel;
+    onProvisionCopied(isKey: boolean): void;
+    private resetFormControls;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DeviceProfileProvisionConfigurationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DeviceProfileProvisionConfigurationComponent, "tb-device-profile-provision-configuration", never, { "required": { "alias": "required"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
+}

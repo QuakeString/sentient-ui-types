@@ -1,0 +1,55 @@
+import { DestroyRef, ElementRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { PageComponent } from '@shared/components/page.component';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { IAliasController } from '@core/api/widget-api.models';
+import { Observable } from 'rxjs';
+import { EntityService } from '@core/http/entity.service';
+import * as i0 from "@angular/core";
+export declare type ValueSource = 'predefinedValue' | 'entityAttribute';
+export interface ValueSourceProperty {
+    valueSource: ValueSource;
+    entityAlias?: string;
+    attribute?: string;
+    value?: number;
+}
+export declare class ValueSourceComponent extends PageComponent implements OnInit, ControlValueAccessor {
+    protected store: Store<AppState>;
+    private entityService;
+    private fb;
+    private destroyRef;
+    entityAliasInput: ElementRef;
+    keyInput: ElementRef;
+    disabled: boolean;
+    aliasController: IAliasController;
+    entityAliasPlaceholder: string;
+    entityAttributePlaceholder: string;
+    private modelValue;
+    private propagateChange;
+    valueSourceFormGroup: UntypedFormGroup;
+    filteredEntityAliases: Observable<Array<string>>;
+    aliasSearchText: string;
+    filteredKeys: Observable<Array<string>>;
+    keySearchText: string;
+    private latestKeySearchResult;
+    private keysFetchObservable$;
+    private entityAliasList;
+    constructor(store: Store<AppState>, entityService: EntityService, fb: UntypedFormBuilder, destroyRef: DestroyRef);
+    ngOnInit(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: ValueSourceProperty): void;
+    clearEntityAlias(): void;
+    clearKey(): void;
+    private fetchEntityAliases;
+    private fetchKeys;
+    private getKeys;
+    private fetchEntityKeys;
+    private createKeyFilter;
+    private updateModel;
+    private updateValidators;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ValueSourceComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ValueSourceComponent, "tb-value-source", never, { "disabled": { "alias": "disabled"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "entityAliasPlaceholder": { "alias": "entityAliasPlaceholder"; "required": false; }; "entityAttributePlaceholder": { "alias": "entityAttributePlaceholder"; "required": false; }; }, {}, never, never, false, never>;
+}

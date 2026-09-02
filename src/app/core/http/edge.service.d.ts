@@ -1,0 +1,36 @@
+import { RequestConfig } from './http-utils';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { PageLink, TimePageLink } from '@shared/models/page/page-link';
+import { PageData } from '@shared/models/page/page-data';
+import { EntitySubtype } from '@app/shared/models/entity-type.models';
+import { Edge, EdgeEvent, EdgeInfo, EdgeInstructions, EdgeSearchQuery } from '@shared/models/edge.models';
+import { EntityId } from '@shared/models/id/entity-id';
+import { BulkImportRequest, BulkImportResult } from '@shared/import-export/import-export.models';
+import * as i0 from "@angular/core";
+export declare class EdgeService {
+    private http;
+    constructor(http: HttpClient);
+    getEdges(edgeIds: Array<string>, config?: RequestConfig): Observable<Array<Edge>>;
+    getEdge(edgeId: string, config?: RequestConfig): Observable<Edge>;
+    getEdgeInfo(edgeId: string, config?: RequestConfig): Observable<EdgeInfo>;
+    saveEdge(edge: Edge, config?: RequestConfig): Observable<Edge>;
+    deleteEdge(edgeId: string, config?: RequestConfig): Observable<Object>;
+    getEdgeTypes(config?: RequestConfig): Observable<Array<EntitySubtype>>;
+    getCustomerEdgeInfos(customerId: string, pageLink: PageLink, type?: string, config?: RequestConfig): Observable<PageData<EdgeInfo>>;
+    changeEdgeOwner(edgeId: string, customerId: string, config?: RequestConfig): Observable<Edge>;
+    removeEdgeOwner(edgeId: string, config?: RequestConfig): Observable<Edge>;
+    getEdgesByTenant(tenantId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<EdgeInfo>>;
+    getTenantEdgeInfos(pageLink: PageLink, type?: string, config?: RequestConfig): Observable<PageData<EdgeInfo>>;
+    findByQuery(query: EdgeSearchQuery, config?: RequestConfig): Observable<Array<Edge>>;
+    getEdgeEvents(entityId: EntityId, pageLink: TimePageLink, config?: RequestConfig): Observable<PageData<EdgeEvent>>;
+    syncEdge(edgeId: string, config?: RequestConfig): Observable<Object>;
+    findMissingToRelatedRuleChains(edgeId: string, config?: RequestConfig): Observable<string>;
+    findByName(edgeName: string, config?: RequestConfig): Observable<Edge>;
+    bulkImportEdges(entitiesData: BulkImportRequest, config?: RequestConfig): Observable<BulkImportResult>;
+    getEdgeInstallInstructions(edgeId: string, method?: string, config?: RequestConfig): Observable<EdgeInstructions>;
+    getEdgeUpgradeInstructions(edgeVersion: string, method?: string, config?: RequestConfig): Observable<EdgeInstructions>;
+    isEdgeUpgradeAvailable(edgeId: string, config?: RequestConfig): Observable<boolean>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<EdgeService, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<EdgeService>;
+}

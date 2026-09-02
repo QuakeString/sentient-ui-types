@@ -1,0 +1,46 @@
+import { BaseData, HasId } from '@shared/models/base-data';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { PageComponent } from '@shared/components/page.component';
+import { ChangeDetectorRef, EventEmitter, OnInit, TemplateRef } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { EntityAction } from '@home/models/entity/entity-component.models';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { PageLink } from '@shared/models/page/page-link';
+import * as i0 from "@angular/core";
+export declare abstract class EntityComponent<T extends BaseData<HasId>, P extends PageLink = PageLink, L extends BaseData<HasId> = T, C extends EntityTableConfig<T, P, L> = EntityTableConfig<T, P, L>> extends PageComponent implements OnInit {
+    protected store: Store<AppState>;
+    protected fb: UntypedFormBuilder;
+    protected entityValue: T;
+    protected entitiesTableConfigValue: C;
+    protected cd: ChangeDetectorRef;
+    entityForm: UntypedFormGroup;
+    isEditValue: boolean;
+    isDetailsPage: boolean;
+    /**
+     * Optional template to render on the LEFT side of the add-entity
+     * dialog footer (next to Cancel/Add). Used by entity edit panels
+     * that want to expose a child-list action like "Add element" in
+     * the dialog chrome. Subclasses populate this via @ViewChild.
+     */
+    dialogFooterLeftTemplate?: TemplateRef<unknown>;
+    set entitiesTableConfig(entitiesTableConfig: C);
+    get entitiesTableConfig(): C;
+    set isEdit(isEdit: boolean);
+    get isEdit(): boolean;
+    get isAdd(): boolean;
+    set entity(entity: T);
+    get entity(): T;
+    entityAction: EventEmitter<EntityAction<T>>;
+    protected constructor(store: Store<AppState>, fb: UntypedFormBuilder, entityValue: T, entitiesTableConfigValue: C, cd: ChangeDetectorRef);
+    ngOnInit(): void;
+    onEntityAction($event: Event, action: string): void;
+    updateFormState(): void;
+    entityFormValue(): any;
+    prepareFormValue(formValue: any): any;
+    protected setEntitiesTableConfig(entitiesTableConfig: C): void;
+    abstract buildForm(entity: T): UntypedFormGroup;
+    abstract updateForm(entity: T): any;
+    static ɵfac: i0.ɵɵFactoryDeclaration<EntityComponent<any, any, any, any>, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<EntityComponent<any, any, any, any>, never, never, { "entitiesTableConfig": { "alias": "entitiesTableConfig"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "entity": { "alias": "entity"; "required": false; }; }, { "entityAction": "entityAction"; }, never, never, false, never>;
+}

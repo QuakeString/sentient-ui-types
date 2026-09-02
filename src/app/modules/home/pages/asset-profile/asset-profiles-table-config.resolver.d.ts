@@ -1,0 +1,31 @@
+import { Router } from '@angular/router';
+import { EntityTableConfig, HeaderActionDescriptor } from '@home/models/entity/entities-table-config.models';
+import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import { EntityAction } from '@home/models/entity/entity-component.models';
+import { DialogService } from '@core/services/dialog.service';
+import { ImportExportService } from '@shared/import-export/import-export.service';
+import { AssetProfile } from '@shared/models/asset.models';
+import { AssetProfileService } from '@core/http/asset-profile.service';
+import { CustomTranslatePipe } from '@shared/pipe/custom-translate.pipe';
+import * as i0 from "@angular/core";
+export declare class AssetProfilesTableConfigResolver {
+    private assetProfileService;
+    private importExport;
+    private translate;
+    private datePipe;
+    private dialogService;
+    private router;
+    private customTranslate;
+    private readonly config;
+    constructor(assetProfileService: AssetProfileService, importExport: ImportExportService, translate: TranslateService, datePipe: DatePipe, dialogService: DialogService, router: Router, customTranslate: CustomTranslatePipe);
+    resolve(): EntityTableConfig<AssetProfile>;
+    configureAddActions(): Array<HeaderActionDescriptor>;
+    setDefaultAssetProfile($event: Event, assetProfile: AssetProfile): void;
+    private openAssetProfile;
+    importAssetProfile($event: Event): void;
+    exportAssetProfile($event: Event, assetProfile: AssetProfile): void;
+    onAssetProfileAction(action: EntityAction<AssetProfile>): boolean;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AssetProfilesTableConfigResolver, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AssetProfilesTableConfigResolver>;
+}

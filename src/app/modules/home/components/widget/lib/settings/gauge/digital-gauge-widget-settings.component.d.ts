@@ -1,0 +1,37 @@
+import { Datasource, WidgetSettings, WidgetSettingsComponent } from '@shared/models/widget.models';
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { DigitalGaugeType } from '@home/components/widget/lib/digital-gauge.models';
+import * as i0 from "@angular/core";
+export declare class DigitalGaugeWidgetSettingsComponent extends WidgetSettingsComponent {
+    protected store: Store<AppState>;
+    protected fb: UntypedFormBuilder;
+    digitalGaugeType: typeof DigitalGaugeType;
+    digitalGaugeLayouts: DigitalGaugeType[];
+    digitalGaugeLayoutTranslationMap: Map<DigitalGaugeType, string>;
+    digitalGaugeLayoutImageMap: Map<DigitalGaugeType, string>;
+    digitalGaugeWidgetSettingsForm: UntypedFormGroup;
+    valuePreviewFn: any;
+    previewFn: any;
+    get datasource(): Datasource;
+    constructor(store: Store<AppState>, fb: UntypedFormBuilder);
+    protected settingsForm(): UntypedFormGroup;
+    protected defaultSettings(): WidgetSettings;
+    protected onSettingsSet(settings: WidgetSettings): void;
+    private maxValueValidation;
+    protected prepareOutputSettings(settings: any): any;
+    protected validatorTriggers(): string[];
+    protected updateValidators(emitEvent: boolean, trigger: string): void;
+    protected doUpdateSettings(settingsForm: UntypedFormGroup, settings: WidgetSettings): void;
+    private prepareTicksValueFormArray;
+    tickValuesFormArray(): UntypedFormArray;
+    trackByTickValue(index: number, tickValueControl: AbstractControl): any;
+    removeTickValue(index: number): void;
+    addTickValue(): void;
+    tickValueDrop(event: CdkDragDrop<string[]>): void;
+    private _valuePreviewFn;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DigitalGaugeWidgetSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DigitalGaugeWidgetSettingsComponent, "tb-digital-gauge-widget-settings", never, {}, {}, never, never, false, never>;
+}

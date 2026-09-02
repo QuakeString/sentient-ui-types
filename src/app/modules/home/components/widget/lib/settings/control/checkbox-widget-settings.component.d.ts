@@ -1,0 +1,31 @@
+import { TargetDevice, WidgetSettings, WidgetSettingsComponent, widgetType } from '@shared/models/widget.models';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { ValueType } from '@shared/models/constants';
+import { CheckboxOrientation, CheckboxSelectionMode } from '@home/components/widget/lib/rpc/checkbox-widget.models';
+import * as i0 from "@angular/core";
+export declare class CheckboxWidgetSettingsComponent extends WidgetSettingsComponent {
+    protected store: Store<AppState>;
+    private fb;
+    get targetDevice(): TargetDevice;
+    get widgetType(): widgetType;
+    get optionsFormArray(): UntypedFormArray;
+    get multiple(): boolean;
+    valueType: typeof ValueType;
+    checkboxSelectionMode: typeof CheckboxSelectionMode;
+    checkboxOrientation: typeof CheckboxOrientation;
+    checkboxWidgetSettingsForm: UntypedFormGroup;
+    constructor(store: Store<AppState>, fb: UntypedFormBuilder);
+    protected settingsForm(): UntypedFormGroup;
+    protected defaultSettings(): WidgetSettings;
+    protected onSettingsSet(settings: WidgetSettings): void;
+    protected validatorTriggers(): string[];
+    protected updateValidators(_emitEvent: boolean): void;
+    addOption(): void;
+    removeOption(index: number): void;
+    private prepareOptionsFormArray;
+    private optionControl;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CheckboxWidgetSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CheckboxWidgetSettingsComponent, "tb-checkbox-widget-settings", never, {}, {}, never, never, false, never>;
+}

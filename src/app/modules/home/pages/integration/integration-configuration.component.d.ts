@@ -1,0 +1,35 @@
+import { OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { IntegrationType } from '@shared/models/integration.models';
+import * as i0 from "@angular/core";
+export type DedicatedConfig = 'http' | 'mqtt' | 'things-stack' | 'lorawan' | 'thingpark';
+export type ConfigFamily = 'mqtt' | 'kafka' | 'sqs' | 'kinesis' | 'rabbitmq' | 'pulsar' | 'pubsub' | 'servicebus' | 'socket' | 'coap' | 'http';
+export declare function configFamily(type: IntegrationType): ConfigFamily;
+export declare class IntegrationConfigurationComponent implements ControlValueAccessor, OnChanges, OnDestroy {
+    private fb;
+    integrationType: IntegrationType;
+    routingKey: string;
+    secret: string;
+    disabled: boolean;
+    family: ConfigFamily;
+    dedicatedType: DedicatedConfig | null;
+    configForm: UntypedFormGroup;
+    dedicatedControl: UntypedFormControl;
+    contentTypes: string[];
+    integrationTypeEnum: typeof IntegrationType;
+    private pendingValue;
+    private destroy$;
+    private rebuild$;
+    private propagateChange;
+    constructor(fb: UntypedFormBuilder);
+    ngOnChanges(changes: SimpleChanges): void;
+    ngOnDestroy(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(_fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: any): void;
+    private rebuild;
+    private toConfig;
+    static ɵfac: i0.ɵɵFactoryDeclaration<IntegrationConfigurationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<IntegrationConfigurationComponent, "tb-integration-configuration", never, { "integrationType": { "alias": "integrationType"; "required": false; }; "routingKey": { "alias": "routingKey"; "required": false; }; "secret": { "alias": "secret"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
+}

@@ -1,0 +1,33 @@
+import { OnInit, OnDestroy } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ConfigField } from './pipeline-builder.models';
+import * as i0 from "@angular/core";
+export declare class PipelineNodeVisualConfigComponent implements ControlValueAccessor, OnInit, OnDestroy {
+    private fb;
+    configFields: ConfigField[];
+    inputSchema: string[];
+    form: UntypedFormGroup;
+    showAdvanced: boolean;
+    private onChange;
+    private onTouched;
+    private destroy$;
+    private initialValue;
+    constructor(fb: UntypedFormBuilder);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    private buildForm;
+    writeValue(value: any): void;
+    registerOnChange(fn: (value: any) => void): void;
+    registerOnTouched(fn: () => void): void;
+    setDisabledState(isDisabled: boolean): void;
+    getArrayValue(key: string): any[];
+    addArrayItem(key: string, field: ConfigField): void;
+    removeArrayItem(key: string, index: number): void;
+    updateArrayItem(key: string, index: number, value: any, field: ConfigField): void;
+    trackByIndex(index: number): number;
+    isFieldVisible(field: ConfigField): boolean;
+    isInputKeyField(field: ConfigField): boolean;
+    getFilteredSchema(field: ConfigField): string[];
+    static ɵfac: i0.ɵɵFactoryDeclaration<PipelineNodeVisualConfigComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<PipelineNodeVisualConfigComponent, "tb-pipeline-node-visual-config", never, { "configFields": { "alias": "configFields"; "required": false; }; "inputSchema": { "alias": "inputSchema"; "required": false; }; }, {}, never, never, false, never>;
+}

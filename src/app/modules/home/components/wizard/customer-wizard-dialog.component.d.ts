@@ -1,0 +1,51 @@
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DialogComponent } from '@shared/components/dialog.component';
+import { Router } from '@angular/router';
+import { Customer } from '@shared/models/customer.model';
+import { MatStepper, StepperOrientation } from '@angular/material/stepper';
+import { Observable } from 'rxjs';
+import { CustomerService } from '@core/http/customer.service';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import * as i0 from "@angular/core";
+export interface CustomerWizardDialogData {
+    prefilledGroup?: EntityGroup;
+    parentCustomerId?: string;
+    defaultOwnerId?: string;
+}
+export declare class CustomerWizardDialogComponent extends DialogComponent<CustomerWizardDialogComponent, Customer> {
+    protected store: Store<AppState>;
+    protected router: Router;
+    dialogRef: MatDialogRef<CustomerWizardDialogComponent, Customer>;
+    private data;
+    private customerService;
+    private entityGroupService;
+    private breakpointObserver;
+    private fb;
+    addCustomerWizardStepper: MatStepper;
+    stepperOrientation: Observable<StepperOrientation>;
+    stepperLabelPosition: Observable<'bottom' | 'end'>;
+    selectedIndex: number;
+    showNext: boolean;
+    customerDetailsFormGroup: FormGroup;
+    ownerAndGroupsFormGroup: FormGroup;
+    prefilledGroup: EntityGroup;
+    defaultOwnerId: string;
+    constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<CustomerWizardDialogComponent, Customer>, data: CustomerWizardDialogData, customerService: CustomerService, entityGroupService: EntityGroupService, breakpointObserver: BreakpointObserver, fb: FormBuilder);
+    cancel(): void;
+    previousStep(): void;
+    nextStep(): void;
+    getFormLabel(index: number): string;
+    get maxStepperIndex(): number;
+    add(): void;
+    private createCustomer;
+    allValid(): boolean;
+    changeStep($event: StepperSelectionEvent): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CustomerWizardDialogComponent, [null, null, null, { optional: true; }, null, null, null, null]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CustomerWizardDialogComponent, "tb-customer-wizard", never, {}, {}, never, never, false, never>;
+}

@@ -1,0 +1,56 @@
+import { ElementRef } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { DialogComponent } from '@shared/components/dialog.component';
+import { Router } from '@angular/router';
+import { EntityGroupService } from '@core/http/entity-group.service';
+import { EntityGroup } from '@shared/models/entity-group.model';
+import { RoleService } from '@core/http/role.service';
+import { Role } from '@shared/models/role.model';
+import { EntityService } from '@core/http/entity.service';
+import { BaseData } from '@shared/models/base-data';
+import { EntityId } from '@shared/models/id/entity-id';
+import { Observable } from 'rxjs';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import * as i0 from "@angular/core";
+export interface ShareEntityGroupDialogData {
+    entityGroup: EntityGroup;
+}
+export declare class ShareEntityGroupDialogComponent extends DialogComponent<ShareEntityGroupDialogComponent, boolean> {
+    protected store: Store<AppState>;
+    protected router: Router;
+    dialogRef: MatDialogRef<ShareEntityGroupDialogComponent, boolean>;
+    data: ShareEntityGroupDialogData;
+    private fb;
+    private entityGroupService;
+    private roleService;
+    private entityService;
+    roleInput: ElementRef<HTMLInputElement>;
+    shareFormGroup: FormGroup;
+    customerSearchControl: FormControl<string>;
+    filteredCustomers$: Observable<Array<BaseData<EntityId>>>;
+    selectedCustomer: BaseData<EntityId> | null;
+    groupRoles: Role[];
+    selectedRoles: Role[];
+    roleSearchControl: FormControl<string>;
+    filteredRoles: Role[];
+    separatorKeyCodes: number[];
+    customerUserGroups: EntityGroup[];
+    constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<ShareEntityGroupDialogComponent, boolean>, data: ShareEntityGroupDialogData, fb: FormBuilder, entityGroupService: EntityGroupService, roleService: RoleService, entityService: EntityService);
+    onCustomerFocus(): void;
+    displayCustomerFn: (value: any) => string;
+    onCustomerSelected(event: MatAutocompleteSelectedEvent): void;
+    clearCustomer(): void;
+    onRoleFocus(): void;
+    onRoleSelected(event: MatAutocompleteSelectedEvent): void;
+    removeRole(role: Role): void;
+    private clearRoleInput;
+    cancel(): void;
+    share(): void;
+    private getSelectedRoleIds;
+    private loadCustomerUserGroups;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ShareEntityGroupDialogComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ShareEntityGroupDialogComponent, "tb-share-entity-group-dialog", never, {}, {}, never, never, false, never>;
+}

@@ -1,0 +1,68 @@
+import { AfterViewInit, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DialogComponent } from '@app/shared/components/dialog.component';
+import { EntityType } from '@shared/models/entity-type.models';
+import { TranslateService } from '@ngx-translate/core';
+import { MatStepper } from '@angular/material/stepper';
+import { BulkImportResult, CSVDelimiter } from '@shared/import-export/import-export.models';
+import { ImportExportService } from '@shared/import-export/import-export.service';
+import { TableColumnsAssignmentComponent } from '@shared/import-export/table-columns-assignment.component';
+import { Ace } from 'ace-builds';
+import { ThemeService } from '@core/services/theme.service';
+import * as i0 from "@angular/core";
+export interface ImportDialogCsvData {
+    entityType: EntityType;
+    importTitle: string;
+    importFileLabel: string;
+}
+export declare class ImportDialogCsvComponent extends DialogComponent<ImportDialogCsvComponent, boolean> implements AfterViewInit, OnDestroy {
+    protected store: Store<AppState>;
+    protected router: Router;
+    data: ImportDialogCsvData;
+    dialogRef: MatDialogRef<ImportDialogCsvComponent, boolean>;
+    translate: TranslateService;
+    private importExport;
+    private fb;
+    private renderer;
+    private themeService;
+    importStepper: MatStepper;
+    columnsAssignmentComponent: TableColumnsAssignmentComponent;
+    failureDetailsEditorElmRef: ElementRef;
+    entityType: EntityType;
+    importTitle: string;
+    importFileLabel: string;
+    delimiters: {
+        key: CSVDelimiter;
+        value: string;
+    }[];
+    selectedIndex: number;
+    selectFileFormGroup: UntypedFormGroup;
+    importParametersFormGroup: UntypedFormGroup;
+    columnTypesFormGroup: UntypedFormGroup;
+    isImportData: boolean;
+    statistical: BulkImportResult;
+    aceEditor: Ace.Editor;
+    private themeSubscription;
+    private allowAssignColumn;
+    private initEditorComponent;
+    private parseData;
+    constructor(store: Store<AppState>, router: Router, data: ImportDialogCsvData, dialogRef: MatDialogRef<ImportDialogCsvComponent, boolean>, translate: TranslateService, importExport: ImportExportService, fb: UntypedFormBuilder, renderer: Renderer2, themeService: ThemeService);
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    cancel(): void;
+    previousStep(): void;
+    nextStep(step: number): void;
+    private parseCSV;
+    private createColumnsData;
+    private addEntities;
+    private processingColumnsParams;
+    initEditor(): void;
+    private createEditor;
+    private updateEditorSize;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ImportDialogCsvComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ImportDialogCsvComponent, "tb-import-csv-dialog", never, {}, {}, never, never, false, never>;
+}

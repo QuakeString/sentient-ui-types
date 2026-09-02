@@ -1,0 +1,34 @@
+import { ChangeDetectorRef, EventEmitter, OnChanges } from '@angular/core';
+import { HistorySelectSettings } from '@app/modules/home/components/widget/lib/maps-legacy/map-models';
+import * as i0 from "@angular/core";
+export declare class HistorySelectorComponent implements OnChanges {
+    private cd;
+    settings: HistorySelectSettings;
+    minTime: number;
+    maxTime: number;
+    step: number;
+    anchors: any[];
+    useAnchors: boolean;
+    timeUpdated: EventEmitter<number>;
+    minTimeIndex: number;
+    maxTimeIndex: number;
+    speed: number;
+    index: number;
+    playing: boolean;
+    interval: any;
+    speeds: number[];
+    currentTime: any;
+    constructor(cd: ChangeDetectorRef);
+    ngOnChanges(): void;
+    play(): void;
+    reInit(): void;
+    pause(): void;
+    moveNext(): void;
+    movePrev(): void;
+    findIndex(value: number, array: number[]): number;
+    moveStart(): void;
+    moveEnd(): void;
+    changeIndex(index: number): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<HistorySelectorComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<HistorySelectorComponent, "tb-history-selector", never, { "settings": { "alias": "settings"; "required": false; }; "minTime": { "alias": "minTime"; "required": false; }; "maxTime": { "alias": "maxTime"; "required": false; }; "step": { "alias": "step"; "required": false; }; "anchors": { "alias": "anchors"; "required": false; }; "useAnchors": { "alias": "useAnchors"; "required": false; }; }, { "timeUpdated": "timeUpdated"; }, never, never, false, never>;
+}

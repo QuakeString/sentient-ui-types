@@ -1,0 +1,33 @@
+import { PageComponent } from '@shared/components/page.component';
+import { EventEmitter, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { UntypedFormControl } from '@angular/forms';
+import { TbPopoverComponent } from '@shared/components/popover.component';
+import { ThemeAwareColor, ThemeColor } from '@shared/models/theme-color.models';
+import { ThemeService } from '@core/services/theme.service';
+import * as i0 from "@angular/core";
+export declare class ColorPickerPanelComponent extends PageComponent implements OnInit {
+    protected store: Store<AppState>;
+    private themeService;
+    color: ThemeAwareColor;
+    colorClearButton: boolean;
+    colorCancelButton: boolean;
+    themeAware: boolean;
+    popover: TbPopoverComponent<ColorPickerPanelComponent>;
+    colorSelected: EventEmitter<string>;
+    themeColorSelected: EventEmitter<ThemeColor>;
+    colorCancelDialog: EventEmitter<any>;
+    colorPickerControl: UntypedFormControl;
+    editMode: 'light' | 'dark';
+    themeColor: ThemeColor;
+    private destroyRef;
+    constructor(store: Store<AppState>, themeService: ThemeService);
+    ngOnInit(): void;
+    setEditMode(mode: 'light' | 'dark'): void;
+    selectColor(): void;
+    clearColor(): void;
+    cancelColor(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ColorPickerPanelComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ColorPickerPanelComponent, "tb-color-picker-panel", never, { "color": { "alias": "color"; "required": false; }; "colorClearButton": { "alias": "colorClearButton"; "required": false; }; "colorCancelButton": { "alias": "colorCancelButton"; "required": false; }; "themeAware": { "alias": "themeAware"; "required": false; }; "popover": { "alias": "popover"; "required": false; }; }, { "colorSelected": "colorSelected"; "themeColorSelected": "themeColorSelected"; "colorCancelDialog": "colorCancelDialog"; }, never, never, false, never>;
+}

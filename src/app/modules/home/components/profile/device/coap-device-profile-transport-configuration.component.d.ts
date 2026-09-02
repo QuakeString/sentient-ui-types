@@ -1,0 +1,34 @@
+import { OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validator } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@app/core/core.state';
+import { CoapDeviceProfileTransportConfiguration, CoapTransportDeviceType, TransportPayloadType } from '@shared/models/device.models';
+import * as i0 from "@angular/core";
+export declare class CoapDeviceProfileTransportConfigurationComponent implements ControlValueAccessor, OnInit, OnDestroy, Validator {
+    private store;
+    private fb;
+    coapTransportDeviceTypes: CoapTransportDeviceType[];
+    coapTransportDeviceTypeTranslations: Map<CoapTransportDeviceType, string>;
+    transportPayloadTypes: TransportPayloadType[];
+    transportPayloadTypeTranslations: Map<TransportPayloadType, string>;
+    coapTransportConfigurationFormGroup: UntypedFormGroup;
+    private destroy$;
+    private transportPayloadTypeConfiguration;
+    disabled: boolean;
+    private propagateChange;
+    constructor(store: Store<AppState>, fb: UntypedFormBuilder);
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    get coapDeviceTypeDefault(): boolean;
+    get protoPayloadType(): boolean;
+    get clientSettingsFormGroup(): UntypedFormGroup;
+    private updateCoapDeviceTypeBasedControls;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: CoapDeviceProfileTransportConfiguration | null): void;
+    validate(c: UntypedFormControl): ValidationErrors | null;
+    private updateModel;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CoapDeviceProfileTransportConfigurationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CoapDeviceProfileTransportConfigurationComponent, "tb-coap-device-profile-transport-configuration", never, { "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
+}

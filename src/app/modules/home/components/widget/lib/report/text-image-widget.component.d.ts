@@ -1,0 +1,36 @@
+import { ChangeDetectorRef, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { TextImageWidgetSettings } from './text-image-widget.models';
+import { WidgetContext } from '@home/models/widget-component.models';
+import { Observable } from 'rxjs';
+import { ComponentStyle } from '@shared/models/widget-settings.models';
+import { ImagePipe } from '@shared/pipe/image.pipe';
+import { DomSanitizer } from '@angular/platform-browser';
+import * as i0 from "@angular/core";
+export declare class TextImageWidgetComponent implements OnInit, OnDestroy {
+    private imagePipe;
+    private sanitizer;
+    private cd;
+    settings: TextImageWidgetSettings;
+    private themeChangeSubscription;
+    ctx: WidgetContext;
+    widgetTitlePanel: TemplateRef<any>;
+    backgroundStyle$: Observable<ComponentStyle>;
+    padding: string;
+    text: string;
+    textStyle: ComponentStyle;
+    imageUrl: string;
+    imagePosition: 'left' | 'right';
+    imageWidth: number;
+    imageAlt: string;
+    imageFit: string;
+    gap: number;
+    verticalAlign: string;
+    constructor(imagePipe: ImagePipe, sanitizer: DomSanitizer, cd: ChangeDetectorRef);
+    ngOnInit(): void;
+    private applyThemeColors;
+    get textWidth(): number;
+    ngOnDestroy(): void;
+    onInit(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<TextImageWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TextImageWidgetComponent, "tb-text-image-widget", never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, false, never>;
+}

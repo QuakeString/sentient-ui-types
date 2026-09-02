@@ -1,0 +1,32 @@
+import { ChangeDetectorRef } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { EntityComponent } from '@home/components/entity/entity.component';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { Report, ReportFormat, ReportStatus } from '@home/pages/reporting/models/report.models';
+import * as i0 from "@angular/core";
+export declare class ReportComponent extends EntityComponent<Report> {
+    protected store: Store<AppState>;
+    protected translate: TranslateService;
+    protected entityValue: Report;
+    protected entitiesTableConfigValue: EntityTableConfig<Report>;
+    fb: UntypedFormBuilder;
+    protected cd: ChangeDetectorRef;
+    constructor(store: Store<AppState>, translate: TranslateService, entityValue: Report, entitiesTableConfigValue: EntityTableConfig<Report>, fb: UntypedFormBuilder, cd: ChangeDetectorRef);
+    buildForm(entity: Report): UntypedFormGroup;
+    updateForm(entity: Report): void;
+    getFormatLabel(format: ReportFormat | undefined): string;
+    getStatusLabel(status: ReportStatus | undefined): string;
+    getStatusClass(status: ReportStatus | undefined): string;
+    canDownload(): boolean;
+    formatFileSize(bytes: number): string;
+    formatDate(timestamp: number): string;
+    getReportTemplateName(): string;
+    getUserName(): string;
+    onReportIdCopied($event: any): void;
+    isPublic(): boolean;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ReportComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ReportComponent, "tb-report", never, {}, {}, never, never, false, never>;
+}

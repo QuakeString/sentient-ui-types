@@ -1,0 +1,65 @@
+import { ChangeDetectorRef, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, UntypedFormControl, Validator } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { ContentType } from '@shared/models/constants';
+import { RafService } from '@core/services/raf.service';
+import { ThemeService } from '@core/services/theme.service';
+import * as i0 from "@angular/core";
+export declare class JsonContentComponent implements OnInit, ControlValueAccessor, Validator, OnChanges, OnDestroy {
+    elementRef: ElementRef;
+    protected store: Store<AppState>;
+    private raf;
+    private cd;
+    private themeService;
+    jsonEditorElmRef: ElementRef;
+    private jsonEditor;
+    private editorsResizeCaf;
+    private editorResize$;
+    private themeSubscription;
+    private ignoreChange;
+    toastTargetId: string;
+    label: string;
+    contentType: ContentType;
+    disabled: boolean;
+    fillHeight: boolean;
+    editorStyle: {
+        [klass: string]: any;
+    };
+    tbPlaceholder: string;
+    hideToolbar: boolean;
+    readonly: boolean;
+    validateContent: boolean;
+    validateOnChange: boolean;
+    required: boolean;
+    fullscreen: boolean;
+    contentBody: string;
+    contentValid: boolean;
+    errorShowed: boolean;
+    private propagateChange;
+    constructor(elementRef: ElementRef, store: Store<AppState>, raf: RafService, cd: ChangeDetectorRef, themeService: ThemeService);
+    ngOnInit(): void;
+    private createPlaceholder;
+    private updateEditorPlaceholder;
+    ngOnDestroy(): void;
+    private onAceEditorResize;
+    ngOnChanges(changes: SimpleChanges): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    validate(c: UntypedFormControl): {
+        contentBody: {
+            valid: boolean;
+        };
+    };
+    validateOnSubmit(): void;
+    private doValidate;
+    cleanupJsonErrors(): void;
+    writeValue(value: string): void;
+    updateView(): void;
+    beautifyJSON(): void;
+    minifyJSON(): void;
+    onFullscreen(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<JsonContentComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<JsonContentComponent, "tb-json-content", never, { "label": { "alias": "label"; "required": false; }; "contentType": { "alias": "contentType"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "fillHeight": { "alias": "fillHeight"; "required": false; }; "editorStyle": { "alias": "editorStyle"; "required": false; }; "tbPlaceholder": { "alias": "tbPlaceholder"; "required": false; }; "hideToolbar": { "alias": "hideToolbar"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; "validateContent": { "alias": "validateContent"; "required": false; }; "validateOnChange": { "alias": "validateOnChange"; "required": false; }; "required": { "alias": "required"; "required": false; }; }, {}, never, never, false, never>;
+}

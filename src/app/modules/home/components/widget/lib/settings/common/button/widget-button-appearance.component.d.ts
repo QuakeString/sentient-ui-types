@@ -1,0 +1,31 @@
+import { DestroyRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { WidgetButtonAppearance } from '@shared/components/button/widget-button.models';
+import * as i0 from "@angular/core";
+export declare class WidgetButtonAppearanceComponent implements OnInit, ControlValueAccessor {
+    private fb;
+    private destroyRef;
+    disabled: boolean;
+    borderRadius: string;
+    autoScale: boolean;
+    withAutoScale: boolean;
+    withBorderRadius: boolean;
+    widgetButtonTypes: import("@shared/components/button/widget-button.models").WidgetButtonType[];
+    widgetButtonTypeTranslationMap: Map<import("@shared/components/button/widget-button.models").WidgetButtonType, string>;
+    widgetButtonTypeImageMap: Map<import("@shared/components/button/widget-button.models").WidgetButtonType, string>;
+    widgetButtonStates: import("@shared/components/button/widget-button.models").WidgetButtonState[];
+    widgetButtonStateTranslationMap: Map<import("@shared/components/button/widget-button.models").WidgetButtonState, string>;
+    modelValue: WidgetButtonAppearance;
+    appearanceFormGroup: UntypedFormGroup;
+    private propagateChange;
+    constructor(fb: UntypedFormBuilder, destroyRef: DestroyRef);
+    ngOnInit(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: WidgetButtonAppearance): void;
+    private updateModel;
+    private updateValidators;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetButtonAppearanceComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<WidgetButtonAppearanceComponent, "tb-widget-button-appearance", never, { "disabled": { "alias": "disabled"; "required": false; }; "borderRadius": { "alias": "borderRadius"; "required": false; }; "autoScale": { "alias": "autoScale"; "required": false; }; "withAutoScale": { "alias": "withAutoScale"; "required": false; }; "withBorderRadius": { "alias": "withBorderRadius"; "required": false; }; }, {}, never, never, false, never>;
+}

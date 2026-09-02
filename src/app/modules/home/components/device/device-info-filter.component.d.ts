@@ -1,0 +1,35 @@
+import { ChangeDetectorRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { TranslateService } from '@ngx-translate/core';
+import { DeviceInfoFilter } from '@shared/models/device.models';
+import { EntityInfoData } from '@shared/models/entity.models';
+import { DeviceProfileService } from '@core/http/device-profile.service';
+import * as i0 from "@angular/core";
+export declare class DeviceInfoFilterComponent implements OnInit, ControlValueAccessor {
+    private fb;
+    private translate;
+    private deviceProfileService;
+    private cd;
+    filterMenuTrigger: MatMenuTrigger;
+    disabled: boolean;
+    buttonDisplayValue: any;
+    deviceInfoFilterForm: UntypedFormGroup;
+    private deviceProfileInfo;
+    private deviceInfoFilter;
+    private propagateChange;
+    constructor(fb: UntypedFormBuilder, translate: TranslateService, deviceProfileService: DeviceProfileService, cd: ChangeDetectorRef);
+    ngOnInit(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(deviceInfoFilter?: DeviceInfoFilter): void;
+    hasActiveFilters(): boolean;
+    deviceProfileChanged(deviceProfileInfo: EntityInfoData): void;
+    resetFilters(): void;
+    closeFilterMenu(): void;
+    applyFilters(): void;
+    private updateButtonDisplayValue;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DeviceInfoFilterComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DeviceInfoFilterComponent, "tb-device-info-filter", never, { "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
+}

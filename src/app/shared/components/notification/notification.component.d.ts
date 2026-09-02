@@ -1,0 +1,33 @@
+import { EventEmitter, OnInit } from '@angular/core';
+import { Notification, NotificationType } from '@shared/models/notification.models';
+import { UtilsService } from '@core/services/utils.service';
+import { Router } from '@angular/router';
+import * as i0 from "@angular/core";
+export declare class NotificationComponent implements OnInit {
+    private utils;
+    private router;
+    notification: Notification;
+    onClose: () => void;
+    markAsRead: EventEmitter<string>;
+    preview: boolean;
+    showIcon: boolean;
+    showButton: boolean;
+    buttonLabel: string;
+    hideMarkAsReadButton: boolean;
+    notificationType: typeof NotificationType;
+    notificationTypeIcons: Map<NotificationType, string>;
+    alarmSeverityTranslations: Map<import("@shared/models/alarm.models").AlarmSeverity, string>;
+    currentDate: number;
+    title: string;
+    message: string;
+    constructor(utils: UtilsService, router: Router);
+    ngOnInit(): void;
+    markRead($event: Event): void;
+    navigate($event: Event): void;
+    alarmColorSeverity(alpha: number): string;
+    notificationColor(): string;
+    notificationBackgroundColor(): string;
+    notificationIconColor(): object;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NotificationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NotificationComponent, "tb-notification", never, { "notification": { "alias": "notification"; "required": false; }; "onClose": { "alias": "onClose"; "required": false; }; "preview": { "alias": "preview"; "required": false; }; }, { "markAsRead": "markAsRead"; }, never, never, false, never>;
+}

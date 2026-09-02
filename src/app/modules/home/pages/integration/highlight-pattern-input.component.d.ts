@@ -1,0 +1,31 @@
+import { ElementRef } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import * as i0 from "@angular/core";
+export declare class HighlightPatternInputComponent implements ControlValueAccessor {
+    label: string;
+    placeholder: string;
+    required: boolean;
+    suggestions: string[];
+    inputEl: ElementRef<HTMLInputElement>;
+    trigger: MatAutocompleteTrigger;
+    value: string;
+    disabled: boolean;
+    focused: boolean;
+    filtered: string[];
+    private activeToken;
+    private propagateChange;
+    private onTouched;
+    get displayHtml(): string;
+    private escape;
+    onInput(v: string): void;
+    private refreshSuggestions;
+    onSelect(variable: string): void;
+    onBlur(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(v: string): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<HighlightPatternInputComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<HighlightPatternInputComponent, "tb-highlight-pattern-input", never, { "label": { "alias": "label"; "required": false; }; "placeholder": { "alias": "placeholder"; "required": false; }; "required": { "alias": "required"; "required": false; }; "suggestions": { "alias": "suggestions"; "required": false; }; }, {}, never, never, false, never>;
+}

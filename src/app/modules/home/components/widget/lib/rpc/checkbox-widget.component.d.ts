@@ -1,0 +1,58 @@
+import { ChangeDetectorRef, ElementRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { BasicActionWidgetComponent } from '@home/components/widget/lib/action/action-widget.models';
+import { CheckboxWidgetSettings } from '@home/components/widget/lib/rpc/checkbox-widget.models';
+import { ComponentStyle } from '@shared/models/widget-settings.models';
+import { Observable } from 'rxjs';
+import { ThemeAwareColor } from '@shared/models/theme-color.models';
+import { ImagePipe } from '@shared/pipe/image.pipe';
+import { DomSanitizer } from '@angular/platform-browser';
+import { UtilsService } from '@core/services/utils.service';
+import * as i0 from "@angular/core";
+interface CheckboxItem {
+    label: string;
+    bit: number;
+    checked: boolean;
+}
+export declare class CheckboxWidgetComponent extends BasicActionWidgetComponent implements OnInit, OnDestroy {
+    protected imagePipe: ImagePipe;
+    protected sanitizer: DomSanitizer;
+    private renderer;
+    private utils;
+    protected cd: ChangeDetectorRef;
+    private elementRef;
+    settings: CheckboxWidgetSettings;
+    backgroundStyle$: Observable<ComponentStyle>;
+    overlayStyle: ComponentStyle;
+    padding: string;
+    showLabel: boolean;
+    label$: Observable<string>;
+    labelStyle: ComponentStyle;
+    optionStyle: ComponentStyle;
+    horizontal: boolean;
+    multiple: boolean;
+    singleLabel: string;
+    singleChecked: boolean;
+    items: CheckboxItem[];
+    disabled: boolean;
+    private value;
+    private valueSetter;
+    private checkboxCssClass;
+    private themeChangeSubscription;
+    constructor(imagePipe: ImagePipe, sanitizer: DomSanitizer, renderer: Renderer2, utils: UtilsService, cd: ChangeDetectorRef, elementRef: ElementRef);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    onSingleChange(checked: boolean): void;
+    onItemChange(item: CheckboxItem, checked: boolean): void;
+    resolveColor(value: ThemeAwareColor): string;
+    private cannotEdit;
+    private writeValue;
+    private encodeBitmask;
+    private onValue;
+    private onDisabled;
+    private toInteger;
+    private toBoolean;
+    private applyCheckboxColors;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CheckboxWidgetComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CheckboxWidgetComponent, "tb-checkbox-widget", never, {}, {}, never, never, false, never>;
+}
+export {};

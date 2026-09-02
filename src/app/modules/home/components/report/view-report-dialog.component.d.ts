@@ -1,0 +1,61 @@
+import { OnInit, OnDestroy } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { DomSanitizer, SafeResourceUrl, SafeHtml } from '@angular/platform-browser';
+import { ReportService } from '@core/http/report.service';
+import { Report } from '@home/pages/reporting/models/report.models';
+import * as i0 from "@angular/core";
+export interface ViewReportDialogData {
+    report?: Report;
+    blob?: Blob;
+    jobId?: string;
+    fileName?: string;
+    format?: string;
+}
+export declare class ViewReportDialogComponent implements OnInit, OnDestroy {
+    dialogRef: MatDialogRef<ViewReportDialogComponent>;
+    data: ViewReportDialogData;
+    private reportService;
+    private sanitizer;
+    report: Report | null;
+    pdfUrl: SafeResourceUrl | null;
+    spreadsheetHtml: SafeHtml | null;
+    sheetNames: string[];
+    activeSheetIndex: number;
+    loading: boolean;
+    error: string | null;
+    isFullscreen: boolean;
+    isAutoFullscreen: boolean;
+    isSpreadsheet: boolean;
+    private blobUrl;
+    private workbook;
+    private originalSize;
+    private pollingSubscription;
+    zipFormats: string[];
+    activeEntry: string | null;
+    isTestReport: boolean;
+    testFileName: string;
+    testFormat: string;
+    testJobId: string | null;
+    isGenerating: boolean;
+    progress: number;
+    progressMessage: string;
+    constructor(dialogRef: MatDialogRef<ViewReportDialogComponent>, data: ViewReportDialogData, reportService: ReportService, sanitizer: DomSanitizer);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    private loadReport;
+    /** Load one document out of a multi-format (zip) report. */
+    selectEntry(format: string): void;
+    private pollTestReportStatus;
+    private downloadTestReportResult;
+    private handleBlob;
+    private checkIfSpreadsheet;
+    private loadSpreadsheet;
+    private renderActiveSheet;
+    selectSheet(index: number): void;
+    getFormatLabel(): string;
+    getDisplayName(): string;
+    close(): void;
+    toggleFullscreen(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ViewReportDialogComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ViewReportDialogComponent, "tb-view-report-dialog", never, {}, {}, never, never, false, never>;
+}

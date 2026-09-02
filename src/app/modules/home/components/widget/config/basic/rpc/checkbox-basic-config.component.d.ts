@@ -1,0 +1,36 @@
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { BasicWidgetConfigComponent } from '@home/components/widget/config/widget-config.component.models';
+import { WidgetConfigComponentData } from '@home/models/widget-component.models';
+import { TargetDevice } from '@shared/models/widget.models';
+import { WidgetConfigComponent } from '@home/components/widget/widget-config.component';
+import { ValueType } from '@shared/models/constants';
+import { CheckboxOrientation, CheckboxSelectionMode } from '@home/components/widget/lib/rpc/checkbox-widget.models';
+import * as i0 from "@angular/core";
+export declare class CheckboxBasicConfigComponent extends BasicWidgetConfigComponent {
+    protected store: Store<AppState>;
+    protected widgetConfigComponent: WidgetConfigComponent;
+    private fb;
+    get targetDevice(): TargetDevice;
+    get optionsFormArray(): UntypedFormArray;
+    get multiple(): boolean;
+    valueType: typeof ValueType;
+    checkboxSelectionMode: typeof CheckboxSelectionMode;
+    checkboxOrientation: typeof CheckboxOrientation;
+    checkboxWidgetConfigForm: UntypedFormGroup;
+    constructor(store: Store<AppState>, widgetConfigComponent: WidgetConfigComponent, fb: UntypedFormBuilder);
+    protected configForm(): UntypedFormGroup;
+    protected onConfigSet(configData: WidgetConfigComponentData): void;
+    protected prepareOutputConfig(config: any): WidgetConfigComponentData;
+    protected validatorTriggers(): string[];
+    protected updateValidators(_emitEvent: boolean, _trigger?: string): void;
+    addOption(): void;
+    removeOption(index: number): void;
+    private prepareOptionsFormArray;
+    private optionControl;
+    private getCardButtons;
+    private setCardButtons;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CheckboxBasicConfigComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CheckboxBasicConfigComponent, "tb-checkbox-basic-config", never, {}, {}, never, never, false, never>;
+}

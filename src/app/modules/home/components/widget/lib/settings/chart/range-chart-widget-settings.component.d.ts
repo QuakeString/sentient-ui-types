@@ -1,0 +1,37 @@
+import { Injector } from '@angular/core';
+import { Datasource, WidgetSettings, WidgetSettingsComponent } from '@shared/models/widget.models';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import * as i0 from "@angular/core";
+export declare class RangeChartWidgetSettingsComponent extends WidgetSettingsComponent {
+    protected store: Store<AppState>;
+    private $injector;
+    private fb;
+    get datasource(): Datasource;
+    lineSeriesStepTypes: import("@home/components/widget/lib/chart/time-series-chart.models").LineSeriesStepType[];
+    lineSeriesStepTypeTranslations: Map<import("@home/components/widget/lib/chart/time-series-chart.models").LineSeriesStepType, string>;
+    chartLineTypes: import("@home/components/widget/lib/chart/chart.models").ChartLineType[];
+    chartLineTypeTranslations: Map<import("@home/components/widget/lib/chart/chart.models").ChartLineType, string>;
+    chartLabelPositions: import("@home/components/widget/lib/chart/chart.models").ChartLabelPosition[];
+    chartLabelPositionTranslations: Map<import("@home/components/widget/lib/chart/chart.models").ChartLabelPosition, string>;
+    chartShapes: import("@home/components/widget/lib/chart/chart.models").ChartShape[];
+    chartShapeTranslations: Map<import("@home/components/widget/lib/chart/chart.models").ChartShape, string>;
+    legendPositions: import("@shared/models/widget.models").LegendPosition[];
+    legendPositionTranslationMap: Map<import("@shared/models/widget.models").LegendPosition, string>;
+    rangeChartWidgetSettingsForm: UntypedFormGroup;
+    pointLabelPreviewFn: any;
+    tooltipValuePreviewFn: any;
+    tooltipDatePreviewFn: any;
+    constructor(store: Store<AppState>, $injector: Injector, fb: UntypedFormBuilder);
+    protected settingsForm(): UntypedFormGroup;
+    protected defaultSettings(): WidgetSettings;
+    protected onSettingsSet(settings: WidgetSettings): void;
+    protected validatorTriggers(): string[];
+    protected updateValidators(): void;
+    private _pointLabelPreviewFn;
+    private _tooltipValuePreviewFn;
+    private _tooltipDatePreviewFn;
+    static ɵfac: i0.ɵɵFactoryDeclaration<RangeChartWidgetSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<RangeChartWidgetSettingsComponent, "tb-range-chart-widget-settings", never, {}, {}, never, never, false, never>;
+}

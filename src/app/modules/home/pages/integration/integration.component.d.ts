@@ -1,0 +1,35 @@
+import { ChangeDetectorRef, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { TranslateService } from '@ngx-translate/core';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { EntityComponent } from '@home/components/entity/entity.component';
+import { Integration, IntegrationType } from '@shared/models/integration.models';
+import { Converter } from '@shared/models/converter.models';
+import { ConverterService } from '@core/http/converter.service';
+import { EntityType } from '@shared/models/entity-type.models';
+import * as i0 from "@angular/core";
+export declare class IntegrationComponent extends EntityComponent<Integration> implements OnInit {
+    protected store: Store<AppState>;
+    protected translate: TranslateService;
+    private converterService;
+    protected entityValue: Integration;
+    protected entitiesTableConfigValue: EntityTableConfig<Integration>;
+    fb: UntypedFormBuilder;
+    protected cd: ChangeDetectorRef;
+    integrationTypes: IntegrationType[];
+    integrationTypeInfoMap: Map<IntegrationType, import("@shared/models/integration.models").IntegrationTypeInfo>;
+    entityTypes: typeof EntityType;
+    uplinkConverters: Converter[];
+    downlinkConverters: Converter[];
+    constructor(store: Store<AppState>, translate: TranslateService, converterService: ConverterService, entityValue: Integration, entitiesTableConfigValue: EntityTableConfig<Integration>, fb: UntypedFormBuilder, cd: ChangeDetectorRef);
+    ngOnInit(): void;
+    private loadConverters;
+    hideDelete(): boolean;
+    generateRoutingKey(): void;
+    buildForm(entity: Integration): UntypedFormGroup;
+    updateForm(entity: Integration): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<IntegrationComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<IntegrationComponent, "tb-integration", never, {}, {}, never, never, false, never>;
+}

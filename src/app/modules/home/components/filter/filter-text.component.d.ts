@@ -1,0 +1,32 @@
+import { OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { KeyFilter } from '@shared/models/query/query.models';
+import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import * as i0 from "@angular/core";
+export declare class FilterTextComponent implements ControlValueAccessor, OnInit {
+    private dialog;
+    private fb;
+    private translate;
+    private datePipe;
+    private requiredValue;
+    get required(): boolean;
+    set required(value: boolean);
+    disabled: boolean;
+    noFilterText: any;
+    addFilterPrompt: any;
+    nowrap: boolean;
+    requiredClass: boolean;
+    filterText: string;
+    private propagateChange;
+    constructor(dialog: MatDialog, fb: UntypedFormBuilder, translate: TranslateService, datePipe: DatePipe);
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    ngOnInit(): void;
+    setDisabledState(isDisabled: boolean): void;
+    writeValue(value: Array<KeyFilter>): void;
+    private updateFilterText;
+    static ɵfac: i0.ɵɵFactoryDeclaration<FilterTextComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<FilterTextComponent, "tb-filter-text", never, { "required": { "alias": "required"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "noFilterText": { "alias": "noFilterText"; "required": false; }; "addFilterPrompt": { "alias": "addFilterPrompt"; "required": false; }; "nowrap": { "alias": "nowrap"; "required": false; }; }, {}, never, never, false, never>;
+}

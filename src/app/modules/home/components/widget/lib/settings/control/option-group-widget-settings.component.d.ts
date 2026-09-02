@@ -1,0 +1,32 @@
+import { TargetDevice, WidgetSettings, WidgetSettingsComponent, widgetType } from '@shared/models/widget.models';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { ValueType } from '@shared/models/constants';
+import { OptionGroupOptionsSource, OptionGroupOrientation, OptionGroupValueType } from '@home/components/widget/lib/rpc/option-group-widget.models';
+import * as i0 from "@angular/core";
+export declare class OptionGroupWidgetSettingsComponent extends WidgetSettingsComponent {
+    protected store: Store<AppState>;
+    private fb;
+    get targetDevice(): TargetDevice;
+    get widgetType(): widgetType;
+    get optionsFormArray(): UntypedFormArray;
+    valueType: typeof ValueType;
+    optionGroupValueType: typeof OptionGroupValueType;
+    optionGroupValueTypes: OptionGroupValueType[];
+    optionGroupOptionsSource: typeof OptionGroupOptionsSource;
+    optionGroupOrientation: typeof OptionGroupOrientation;
+    optionGroupWidgetSettingsForm: UntypedFormGroup;
+    constructor(store: Store<AppState>, fb: UntypedFormBuilder);
+    protected settingsForm(): UntypedFormGroup;
+    protected defaultSettings(): WidgetSettings;
+    protected onSettingsSet(settings: WidgetSettings): void;
+    protected validatorTriggers(): string[];
+    protected updateValidators(_emitEvent: boolean): void;
+    addOption(): void;
+    removeOption(index: number): void;
+    private prepareOptionsFormArray;
+    private optionControl;
+    static ɵfac: i0.ɵɵFactoryDeclaration<OptionGroupWidgetSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<OptionGroupWidgetSettingsComponent, "tb-option-group-widget-settings", never, {}, {}, never, never, false, never>;
+}

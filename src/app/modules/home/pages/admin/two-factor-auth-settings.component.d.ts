@@ -1,0 +1,38 @@
+import { OnDestroy, OnInit, QueryList } from '@angular/core';
+import { PageComponent } from '@shared/components/page.component';
+import { HasConfirmForm } from '@core/guards/confirm-on-exit.guard';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { TwoFactorAuthenticationService } from '@core/http/two-factor-authentication.service';
+import { TwoFactorAuthProviderType } from '@shared/models/two-factor-auth.models';
+import { MatExpansionPanel } from '@angular/material/expansion';
+import * as i0 from "@angular/core";
+export declare class TwoFactorAuthSettingsComponent extends PageComponent implements OnInit, HasConfirmForm, OnDestroy {
+    protected store: Store<AppState>;
+    private twoFaService;
+    private fb;
+    private readonly destroy$;
+    private readonly posIntValidation;
+    twoFaFormGroup: UntypedFormGroup;
+    twoFactorAuthProviderType: typeof TwoFactorAuthProviderType;
+    twoFactorAuthProvidersData: Map<TwoFactorAuthProviderType, import("@shared/models/two-factor-auth.models").TwoFactorAuthProviderData>;
+    showMainLoadingBar: boolean;
+    expansionPanel: QueryList<MatExpansionPanel>;
+    constructor(store: Store<AppState>, twoFaService: TwoFactorAuthenticationService, fb: UntypedFormBuilder);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    confirmForm(): UntypedFormGroup;
+    save(): void;
+    toggleExtensionPanel($event: Event, index: number, currentState: boolean): void;
+    trackByElement(i: number, item: any): any;
+    get providersForm(): UntypedFormArray;
+    private build2faSettingsForm;
+    private setAuthConfigFormValue;
+    private buildProvidersSettingsForm;
+    private getByIndexPanel;
+    private splitRateLimit;
+    private joinRateLimit;
+    static ɵfac: i0.ɵɵFactoryDeclaration<TwoFactorAuthSettingsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TwoFactorAuthSettingsComponent, "tb-2fa-settings", never, {}, {}, never, never, false, never>;
+}

@@ -1,0 +1,281 @@
+import { ValueType } from '@shared/models/constants';
+import { Element, MatrixTransformParam, Svg } from '@svgdotjs/svg.js';
+import '@svgdotjs/svg.panzoom.js';
+import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
+import { Observer } from 'rxjs';
+import { WidgetContext } from '@home/models/widget-component.models';
+import { Font, ValueFormatSettings } from '@shared/models/widget-settings.models';
+import { WidgetAction } from '@shared/models/widget.models';
+import { MatIconRegistry } from '@angular/material/icon';
+import { RafService } from '@core/services/raf.service';
+import { FormProperty } from '@shared/models/dynamic-form.models';
+import { TbUnit } from '@shared/models/unit.models';
+export interface ScadaSymbolApi {
+    generateElementId: () => string;
+    formatValue(value: any, dec?: number, units?: string, showZeroDecimals?: boolean): string | undefined;
+    formatValue(value: any, settings: ValueFormatSettings): string;
+    text: (element: Element | Element[], text: string) => void;
+    font: (element: Element | Element[], font: Font, color: string) => void;
+    icon: (element: Element | Element[], icon: string, size?: number, color?: string, center?: boolean) => void;
+    cssAnimate: (element: Element, duration: number) => ScadaSymbolAnimation;
+    cssAnimation: (element: Element) => ScadaSymbolAnimation | undefined;
+    resetCssAnimation: (element: Element) => void;
+    finishCssAnimation: (element: Element) => void;
+    connectorAnimation: (element: Element) => ConnectorScadaSymbolAnimation | undefined;
+    connectorAnimate: (element: Element, path: string, reversedPath: string) => ConnectorScadaSymbolAnimation;
+    resetConnectorAnimation: (element: Element) => void;
+    finishConnectorAnimation: (element: Element) => void;
+    disable: (element: Element | Element[]) => void;
+    enable: (element: Element | Element[]) => void;
+    callAction: (event: Event, behaviorId: string, value?: any, observer?: Partial<Observer<void>>) => void;
+    setValue: (valueId: string, value: any) => void;
+    unitSymbol: (unit: TbUnit) => string;
+    convertUnitValue: (value: any, unit: TbUnit) => number;
+    resolveColor: (value: any) => any;
+    symbolScale: () => number;
+    symbolStretch: () => {
+        x: number;
+        y: number;
+    };
+    measureText: (text: string, font: Partial<Font>) => number;
+}
+export interface ScadaSymbolContext {
+    api: ScadaSymbolApi;
+    tags: {
+        [id: string]: Element[];
+    };
+    values: {
+        [id: string]: any;
+    };
+    properties: {
+        [id: string]: any;
+    };
+    svg: Svg;
+}
+export type ScadaSymbolStateRenderFunction = (ctx: ScadaSymbolContext, svg: Svg) => void;
+export type ScadaSymbolTagStateRenderFunction = (ctx: ScadaSymbolContext, element: Element) => void;
+export type ScadaSymbolActionTrigger = 'click' | 'press' | 'release';
+export type ScadaSymbolActionFunction = (ctx: ScadaSymbolContext, element: Element, event: Event) => void;
+export interface ScadaSymbolAction {
+    actionFunction?: string;
+    action?: ScadaSymbolActionFunction;
+}
+export interface ScadaSymbolTag {
+    tag: string;
+    stateRenderFunction?: string;
+    stateRender?: ScadaSymbolTagStateRenderFunction;
+    actions?: {
+        [trigger: string]: ScadaSymbolAction;
+    };
+}
+export declare enum ScadaSymbolBehaviorType {
+    value = "value",
+    action = "action",
+    widgetAction = "widgetAction"
+}
+export declare const scadaSymbolBehaviorTypes: ScadaSymbolBehaviorType[];
+export declare const scadaSymbolBehaviorTypeTranslations: Map<ScadaSymbolBehaviorType, string>;
+export interface ScadaSymbolBehaviorBase {
+    id: string;
+    name: string;
+    hint?: string;
+    group?: string;
+    type: ScadaSymbolBehaviorType;
+}
+export interface ScadaSymbolBehaviorValue extends ScadaSymbolBehaviorBase {
+    valueType: ValueType;
+    defaultGetValueSettings?: GetValueSettings<any>;
+    trueLabel?: string;
+    falseLabel?: string;
+    stateLabel?: string;
+}
+export interface ScadaSymbolBehaviorAction extends ScadaSymbolBehaviorBase {
+    valueType: ValueType;
+    defaultSetValueSettings?: SetValueSettings;
+    defaultWidgetActionSettings?: WidgetAction;
+}
+export type ScadaSymbolBehavior = ScadaSymbolBehaviorValue & ScadaSymbolBehaviorAction;
+export interface ScadaSymbolMetadata {
+    title: string;
+    description?: string;
+    searchTags?: string[];
+    widgetSizeX: number;
+    widgetSizeY: number;
+    scaleToFit?: 'contain' | 'fill';
+    stateRenderFunction?: string;
+    stateRender?: ScadaSymbolStateRenderFunction;
+    tags: ScadaSymbolTag[];
+    behavior: ScadaSymbolBehavior[];
+    properties: FormProperty[];
+}
+export declare const emptyMetadata: (width?: number, height?: number) => ScadaSymbolMetadata;
+export declare const applyStNamespaceToSvgContent: (svgContent: string) => string;
+export declare const parseScadaSymbolMetadataFromContent: (svgContent: string) => ScadaSymbolMetadata;
+export declare const parseScadaSymbolsTagsFromContent: (svgContent: string) => string[];
+export declare const updateScadaSymbolMetadataInContent: (svgContent: string, metadata: ScadaSymbolMetadata) => string;
+export interface ScadaSymbolContentData {
+    svgRootNode: string;
+    innerSvg: string;
+}
+export declare const removeScadaSymbolMetadata: (svgContent: string) => string;
+export declare const scadaSymbolContentData: (svgContent: string) => ScadaSymbolContentData;
+export declare const defaultGetValueSettings: (valueType: ValueType) => GetValueSettings<any>;
+export declare const defaultSetValueSettings: (valueType: ValueType) => SetValueSettings;
+export declare const defaultWidgetActionSettings: WidgetAction;
+export declare const updateBehaviorDefaultSettings: (behavior: ScadaSymbolBehavior) => ScadaSymbolBehavior;
+export declare const defaultScadaSymbolObjectSettings: (metadata: ScadaSymbolMetadata) => ScadaSymbolObjectSettings;
+export type ScadaSymbolObjectSettings = {
+    behavior: {
+        [id: string]: any;
+    };
+    properties: {
+        [id: string]: any;
+    };
+};
+export interface ScadaSymbolObjectCallbacks {
+    onScadaSymbolObjectLoadingState: (loading: boolean) => void;
+    onScadaSymbolObjectError: (error: string) => void;
+    onScadaSymbolObjectMessage: (message: string) => void;
+}
+export declare const clearScadaSymbolCompiledCache: () => void;
+export declare class ScadaSymbolObject {
+    private rootElement;
+    private ctx;
+    private iconRegistry;
+    private raf;
+    private readonly svgContent;
+    private inputSettings;
+    private callbacks;
+    private simulated;
+    private readonly metadata;
+    private settings;
+    private context;
+    private cssAnimations;
+    private connectorAnimations;
+    private svgShape;
+    private box;
+    private valueGetters;
+    private valueActions;
+    private valueSetters;
+    private stateValueSubjects;
+    private valueProcessor;
+    private readonly shapeResize$;
+    private readonly destroy$;
+    private themeListener;
+    private lastIsDark;
+    private scale;
+    private scaleX;
+    private scaleY;
+    private fillStretchX;
+    private fillStretchY;
+    private rotation;
+    private flipH;
+    private flipV;
+    private performInit;
+    private destroyed;
+    constructor(rootElement: HTMLElement, ctx: WidgetContext, iconRegistry: MatIconRegistry, raf: RafService, svgContent: string, inputSettings: ScadaSymbolObjectSettings, callbacks: ScadaSymbolObjectCallbacks, simulated: boolean, symbolTransform?: {
+        rotation?: number;
+        flipHorizontal?: boolean;
+        flipVertical?: boolean;
+    });
+    destroy(): void;
+    private prepareSvgShape;
+    private hasBox;
+    private isVisible;
+    private docHidden;
+    private docVisibilityListener;
+    private visibility$;
+    private renderSuppressed;
+    private renderDirty;
+    private rebaking;
+    /** Owner-driven suppression: call before hiding/detaching the symbol. */
+    pause(): void;
+    /** Owner-driven resume: rebakes if anything was missed while paused. */
+    resume(): void;
+    /** Rebuild the svg DOM from the template and re-render current values onto
+     *  it. Subscriptions and current values survive; all incremental render
+     *  state (remember(), baked transforms, running animations) does not. */
+    rebake(): void;
+    private init;
+    private bindShape;
+    private initBehaviors;
+    private onLoadingState;
+    private onError;
+    private onMessage;
+    /** Bind a tag action to its DOM event(s). 'click' binds as-is;
+     *  'press'/'release' bind to pointer events (mouse + touch alike), with
+     *  the pointer captured on press so a momentary push-button tag still
+     *  gets its release action when the pointer is let go outside the
+     *  element (drag-off) or the interaction is cancelled. */
+    private bindTagAction;
+    private callAction;
+    private resize;
+    private applyCornerScale;
+    private applySymbolTransform;
+    setSymbolTransform(rotation: number, flipHorizontal: boolean, flipVertical: boolean): void;
+    private onValue;
+    private setValue;
+    private unitSymbol;
+    private convertUnitValue;
+    private resolveColor;
+    private formatValue;
+    private pendingValueRender;
+    private initialSettled;
+    private onStateValueChanged;
+    private readonly pageVisibilityListener;
+    private markInitialSettled;
+    private renderState;
+    private renderStateNow;
+    private normalizeValue;
+    private setElementText;
+    private setElementFont;
+    private setElementIcon;
+    private createIconElement;
+    private cssAnimate;
+    private cssAnimation;
+    private resetCssAnimation;
+    private finishCssAnimation;
+    private connectorAnimate;
+    private connectorAnimation;
+    private resetConnectorAnimation;
+    private finishConnectorAnimation;
+    private disableElement;
+    private enableElement;
+    private elements;
+    private getProperty;
+    private getSettingsValue;
+    private getPropertyValue;
+    private convertPropertyValue;
+}
+interface ScadaSymbolAnimation {
+    running(): boolean;
+    play(): void;
+    pause(): void;
+    stop(): void;
+    finish(): void;
+    speed(speed: number): ScadaSymbolAnimation;
+    ease(easing: string): ScadaSymbolAnimation;
+    loop(times?: number, swing?: boolean): ScadaSymbolAnimation;
+    transform(transform: MatrixTransformParam, relative?: boolean): ScadaSymbolAnimation;
+    rotate(r: number, cx?: number, cy?: number): ScadaSymbolAnimation;
+    x(x: number): ScadaSymbolAnimation;
+    y(y: number): ScadaSymbolAnimation;
+    size(width: number, height: number): ScadaSymbolAnimation;
+    width(width: number): ScadaSymbolAnimation;
+    height(height: number): ScadaSymbolAnimation;
+    move(x: number, y: number): ScadaSymbolAnimation;
+    dmove(dx: number, dy: number): ScadaSymbolAnimation;
+    relative(x: number, y: number): ScadaSymbolAnimation;
+    scale(x: number, y?: number, cx?: number, cy?: number): ScadaSymbolAnimation;
+    attr(attr: string | object, value?: any): ScadaSymbolAnimation;
+}
+type StrokeLineCap = 'butt' | 'round ' | 'square';
+interface ConnectorScadaSymbolAnimation {
+    play(): void;
+    stop(): void;
+    finish(): void;
+    flowAppearance(width: number, color: string, lineCap: StrokeLineCap, dashWidth: number, dashGap: number): ConnectorScadaSymbolAnimation;
+    duration(speed: number): ConnectorScadaSymbolAnimation;
+    direction(direction: boolean): ConnectorScadaSymbolAnimation;
+}
+export {};

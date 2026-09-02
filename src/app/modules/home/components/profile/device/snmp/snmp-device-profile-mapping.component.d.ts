@@ -1,0 +1,30 @@
+import { OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, Validator } from '@angular/forms';
+import { SnmpMapping } from '@shared/models/device.models';
+import { DataType } from '@shared/models/constants';
+import * as i0 from "@angular/core";
+export declare class SnmpDeviceProfileMappingComponent implements OnInit, OnDestroy, ControlValueAccessor, Validator {
+    private fb;
+    mappingsConfigForm: UntypedFormGroup;
+    dataTypes: DataType[];
+    dataTypesTranslationMap: Map<DataType, string>;
+    disabled: boolean;
+    private readonly oidPattern;
+    private destroy$;
+    private propagateChange;
+    constructor(fb: UntypedFormBuilder);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    validate(): ValidationErrors | null;
+    writeValue(mappings: SnmpMapping[]): void;
+    get mappingsConfigFormArray(): UntypedFormArray;
+    addMappingConfig(): void;
+    removeMappingConfig(index: number): void;
+    private createdFormGroup;
+    private updateModel;
+    static ɵfac: i0.ɵɵFactoryDeclaration<SnmpDeviceProfileMappingComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SnmpDeviceProfileMappingComponent, "tb-snmp-device-profile-mapping", never, { "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
+}

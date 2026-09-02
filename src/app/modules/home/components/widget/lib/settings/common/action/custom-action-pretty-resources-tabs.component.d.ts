@@ -1,0 +1,42 @@
+import { ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { PageComponent } from '@shared/components/page.component';
+import { CustomActionDescriptor } from '@shared/models/widget.models';
+import { Ace } from 'ace-builds';
+import { CancelAnimationFrame, RafService } from '@core/services/raf.service';
+import * as i0 from "@angular/core";
+export declare class CustomActionPrettyResourcesTabsComponent extends PageComponent implements OnInit, OnChanges, OnDestroy {
+    private raf;
+    action: CustomActionDescriptor;
+    hasCustomFunction: boolean;
+    helpId: string;
+    actionUpdated: EventEmitter<CustomActionDescriptor>;
+    htmlInputElmRef: ElementRef;
+    cssInputElmRef: ElementRef;
+    htmlFullscreen: boolean;
+    cssFullscreen: boolean;
+    aceEditors: Ace.Editor[];
+    editorsResizeCafs: {
+        [editorId: string]: CancelAnimationFrame;
+    };
+    aceResize$: ResizeObserver;
+    htmlEditor: Ace.Editor;
+    cssEditor: Ace.Editor;
+    setValuesPending: boolean;
+    customPrettyActionEditorCompleter: import("../../../../../../../../shared/models/ace/completion.models").TbEditorCompleter;
+    constructor(raf: RafService);
+    ngOnInit(): void;
+    ngOnDestroy(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    notifyActionUpdated(): void;
+    private validate;
+    addResource(): void;
+    removeResource(index: number): void;
+    beautifyCss(): void;
+    beautifyHtml(): void;
+    private initAceEditors;
+    private createAceEditor;
+    private setAceEditorValues;
+    private onAceEditorResize;
+    static ɵfac: i0.ɵɵFactoryDeclaration<CustomActionPrettyResourcesTabsComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<CustomActionPrettyResourcesTabsComponent, "tb-custom-action-pretty-resources-tabs", never, { "action": { "alias": "action"; "required": false; }; "hasCustomFunction": { "alias": "hasCustomFunction"; "required": false; }; "helpId": { "alias": "helpId"; "required": false; }; }, { "actionUpdated": "actionUpdated"; }, never, never, false, never>;
+}

@@ -1,0 +1,33 @@
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
+import { CellActionDescriptor, EntityTableColumn, EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { AnalyticsService } from '@core/http/analytics.service';
+import { AnalyticsPipeline } from '@shared/models/analytics.models';
+import { MatDialog } from '@angular/material/dialog';
+import * as i0 from "@angular/core";
+export declare class AnalyticsPipelinesTableConfigResolver {
+    private router;
+    private analyticsService;
+    private translate;
+    private datePipe;
+    private dialog;
+    private readonly config;
+    constructor(router: Router, analyticsService: AnalyticsService, translate: TranslateService, datePipe: DatePipe, dialog: MatDialog);
+    resolve(route: ActivatedRouteSnapshot): Observable<EntityTableConfig<AnalyticsPipeline>>;
+    configureColumns(): Array<EntityTableColumn<AnalyticsPipeline>>;
+    configureEntityFunctions(): void;
+    configureCellActions(): Array<CellActionDescriptor<AnalyticsPipeline>>;
+    configureAddActions(): Array<any>;
+    private onEntityAction;
+    private toggleEnabled;
+    private enabledState;
+    private enabledStyle;
+    createPipeline(): void;
+    exportPipeline($event: Event, pipeline: AnalyticsPipeline): void;
+    importPipeline(): void;
+    openBuilder($event: Event, pipeline: AnalyticsPipeline): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AnalyticsPipelinesTableConfigResolver, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<AnalyticsPipelinesTableConfigResolver>;
+}

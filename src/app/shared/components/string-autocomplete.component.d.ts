@@ -1,0 +1,50 @@
+import { OnInit, ElementRef } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { MatFormFieldAppearance, SubscriptSizing } from '@angular/material/form-field';
+import * as i0 from "@angular/core";
+export declare class StringAutocompleteComponent implements ControlValueAccessor, OnInit {
+    private fb;
+    translate: TranslateService;
+    nameInput: ElementRef;
+    disabled: boolean;
+    required: boolean;
+    fetchOptionsFn: (searchText?: string) => Observable<Array<string>>;
+    placeholderText: string;
+    subscriptSizing: SubscriptSizing;
+    additionalClass: string | string[] | Record<string, boolean | undefined | null>;
+    appearance: MatFormFieldAppearance;
+    label: string;
+    panelWidth: string;
+    tooltipClass: string;
+    errorText: string;
+    showInlineError: boolean;
+    /** Static text for the empty panel when nothing matches. Omit to keep the
+     *  panel silent. Ignored when `allowCreate` is set. */
+    notFoundText: string;
+    /** Offer the platform's create-a-key affordance when nothing matches:
+     *  "'x' not found. Create a new one!" with a clickable type icon —
+     *  the same idiom as the widget data-key autocomplete. The typed text
+     *  becomes the value; nothing is created server-side. */
+    allowCreate: boolean;
+    /** Tooltip on the create icon (e.g. "Time series"). */
+    createTypeLabel: string;
+    selectionFormControl: FormControl;
+    modelValue: string | null;
+    filteredOptions$: Observable<Array<string>>;
+    searchText: string;
+    private dirty;
+    private propagateChange;
+    constructor(fb: FormBuilder, translate: TranslateService);
+    ngOnInit(): void;
+    writeValue(option?: string): void;
+    onFocus(): void;
+    updateView(value: string): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    setDisabledState(isDisabled: boolean): void;
+    clear(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<StringAutocompleteComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<StringAutocompleteComponent, "tb-string-autocomplete", never, { "disabled": { "alias": "disabled"; "required": false; }; "required": { "alias": "required"; "required": false; }; "fetchOptionsFn": { "alias": "fetchOptionsFn"; "required": false; }; "placeholderText": { "alias": "placeholderText"; "required": false; }; "subscriptSizing": { "alias": "subscriptSizing"; "required": false; }; "additionalClass": { "alias": "additionalClass"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "label": { "alias": "label"; "required": false; }; "panelWidth": { "alias": "panelWidth"; "required": false; }; "tooltipClass": { "alias": "tooltipClass"; "required": false; }; "errorText": { "alias": "errorText"; "required": false; }; "showInlineError": { "alias": "showInlineError"; "required": false; }; "notFoundText": { "alias": "notFoundText"; "required": false; }; "allowCreate": { "alias": "allowCreate"; "required": false; }; "createTypeLabel": { "alias": "createTypeLabel"; "required": false; }; }, {}, never, never, false, never>;
+}

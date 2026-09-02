@@ -1,0 +1,34 @@
+import { RendererFactory2 } from '@angular/core';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
+import { TranslateService } from '@ngx-translate/core';
+import { DatePipe } from '@angular/common';
+import { EntityAction } from '@home/models/entity/entity-component.models';
+import { Converter } from '@shared/models/converter.models';
+import { ConverterService } from '@core/http/converter.service';
+import { ImportExportService } from '@shared/import-export/import-export.service';
+import { EntityDebugSettingsService } from '@home/components/entity/debug/entity-debug-settings.service';
+import * as i0 from "@angular/core";
+export declare class ConvertersTableConfigResolver {
+    private translate;
+    private datePipe;
+    private converterService;
+    private importExportService;
+    private entityDebugSettingsService;
+    private dialog;
+    private router;
+    private readonly config;
+    private readonly renderer;
+    constructor(translate: TranslateService, datePipe: DatePipe, converterService: ConverterService, importExportService: ImportExportService, entityDebugSettingsService: EntityDebugSettingsService, dialog: MatDialog, router: Router, rendererFactory: RendererFactory2);
+    resolve(): EntityTableConfig<Converter>;
+    private openConverter;
+    private exportConverter;
+    private onOpenDebugConfig;
+    private onDebugConfigChanged;
+    private createConverter;
+    private importConverter;
+    onConverterAction(action: EntityAction<Converter>): boolean;
+    static ɵfac: i0.ɵɵFactoryDeclaration<ConvertersTableConfigResolver, never>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<ConvertersTableConfigResolver>;
+}

@@ -1,0 +1,56 @@
+import { OnInit } from '@angular/core';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { AppState } from '@core/core.state';
+import { FormGroupDirective, NgForm, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DialogComponent } from '@app/shared/components/dialog.component';
+import { Widget, WidgetConfigMode } from '@shared/models/widget.models';
+import { Dashboard } from '@app/shared/models/dashboard.models';
+import { IAliasController, IStateController } from '@core/api/widget-api.models';
+import { WidgetConfigComponentData, WidgetInfo } from '@home/models/widget-component.models';
+import { TranslateService } from '@ngx-translate/core';
+import { WidgetConfigComponent } from '@home/components/widget/widget-config.component';
+import * as i0 from "@angular/core";
+export interface AddWidgetDialogData {
+    dashboard: Dashboard;
+    aliasController: IAliasController;
+    stateController: IStateController;
+    widget: Widget;
+    widgetInfo: WidgetInfo;
+    showLayoutConfig: boolean;
+    isDefaultBreakpoint: boolean;
+}
+export declare class AddWidgetDialogComponent extends DialogComponent<AddWidgetDialogComponent, Widget> implements OnInit, ErrorStateMatcher {
+    protected store: Store<AppState>;
+    protected router: Router;
+    translate: TranslateService;
+    data: AddWidgetDialogData;
+    private errorStateMatcher;
+    dialogRef: MatDialogRef<AddWidgetDialogComponent, Widget>;
+    private fb;
+    widgetConfigComponent: WidgetConfigComponent;
+    widgetFormGroup: UntypedFormGroup;
+    dashboard: Dashboard;
+    aliasController: IAliasController;
+    stateController: IStateController;
+    widget: Widget;
+    showLayoutConfig: boolean;
+    isDefaultBreakpoint: boolean;
+    widgetConfig: WidgetConfigComponentData;
+    previewMode: boolean;
+    hideHeader: boolean;
+    private readonly initialWidgetConfigMode;
+    get widgetConfigMode(): WidgetConfigMode;
+    set widgetConfigMode(widgetConfigMode: WidgetConfigMode);
+    submitted: boolean;
+    constructor(store: Store<AppState>, router: Router, translate: TranslateService, data: AddWidgetDialogData, errorStateMatcher: ErrorStateMatcher, dialogRef: MatDialogRef<AddWidgetDialogComponent, Widget>, fb: UntypedFormBuilder);
+    ngOnInit(): void;
+    isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean;
+    helpLinkIdForWidgetType(): string;
+    cancel(): void;
+    add(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<AddWidgetDialogComponent, [null, null, null, null, { skipSelf: true; }, null, null]>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AddWidgetDialogComponent, "tb-add-widget-dialog", never, {}, {}, never, never, false, never>;
+}
