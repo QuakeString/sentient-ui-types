@@ -12,6 +12,6 @@ release it targets:
 
 ## Regenerate (from the SENTIENT repo)
 
-    cd ui-ngx && npm run build:types     # -> ui-ngx/target/types
+    scripts/publish-ui-types.sh <release-tag>     # e.g. 4.3.0.22
 
-then commit `target/types` into this repository and tag it with the SENTIENT version.
+which regenerates, commits into this repository and tags it with that release tag.
