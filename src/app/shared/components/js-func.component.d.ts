@@ -87,6 +87,10 @@ export declare class JsFuncComponent implements OnInit, OnChanges, OnDestroy, Co
             valid: boolean;
         };
     };
+    /** Tidy: format by script language. js-beautify is a JavaScript formatter
+     *  and mangles Rhai's `..` / `..=` / `|x|` tokens into code that no longer
+     *  parses, so Rhai goes through the Rhai-safe wrapper. TBEL is JS-shaped
+     *  enough to use js-beautify as is. */
     beautifyJs(): void;
     private updateFunctionArgsString;
     private updateFunctionLabel;

@@ -9,6 +9,17 @@ export declare class AnalyticsService {
     private http;
     constructor(http: HttpClient);
     /** Transform types the running backend build can execute (palette gating). */
+    /** Rows an EVENT definition materialised for one entity over a range —
+     *  the batch store behind report batch tables and the Batch table widget.
+     *  `dataset`: batches | rollup | detail | summary. */
+    getAnalyticsEvents(calculatedFieldId: string, entityId: string, dataset: string, startTs: number, endTs: number, config?: RequestConfig): Observable<{
+        definitionId: string;
+        entityId: string;
+        dataset: string;
+        schema: any;
+        rows: any[];
+        periods: any[];
+    }>;
     getAnalyticsCapabilities(config?: RequestConfig): Observable<{
         enabled: boolean;
         transforms: string[];
