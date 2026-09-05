@@ -32,6 +32,7 @@ export declare class ConsolidatedSymbolsComponent implements OnChanges, OnDestro
     private themeSubscription;
     private fontsReady;
     private readonly fontLoadingDoneHandler;
+    private readonly pageVisibilityHandler;
     constructor(injector: Injector, imageService: ImageService, iconRegistry: MatIconRegistry, raf: RafService, imagePipe: ImagePipe, sanitizer: DomSanitizer, ngZone: NgZone);
     private rebuildScheduled;
     ngOnChanges(changes: SimpleChanges): void;
