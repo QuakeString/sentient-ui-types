@@ -8,6 +8,14 @@ import { Router } from '@angular/router';
 import * as i0 from "@angular/core";
 /** The response ETag a dashboard was fetched with (getDashboardWithEtag), if any. */
 export declare const getDashboardEtag: (dashboard: Dashboard) => string;
+/** Pin an ETag on a dashboard object as a NON-ENUMERABLE property: never
+ *  serialised back on save, never copied by deepClone/spread. */
+export declare const withDashboardEtag: <T extends Dashboard>(dashboard: T, etag: string) => T;
+/** A shallow copy that keeps the ETag. The route resolver must hand the
+ *  router a DIFFERENT object than the one already in the route's data:
+ *  Angular emits route.data only when the resolved values changed identity,
+ *  and a reattached page whose init never ran stays render-suppressed. */
+export declare const cloneDashboardWithEtag: (dashboard: Dashboard) => Dashboard;
 export declare class DashboardService {
     private http;
     private router;
