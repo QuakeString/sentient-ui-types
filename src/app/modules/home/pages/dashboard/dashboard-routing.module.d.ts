@@ -4,6 +4,7 @@ import { BreadCrumbLabelFunction } from '@shared/components/breadcrumb';
 import { Observable } from 'rxjs';
 import { Dashboard } from '@app/shared/models/dashboard.models';
 import { DashboardService } from '@core/http/dashboard.service';
+import { DashboardReuseService } from '@core/services/dashboard-reuse.service';
 import { DashboardUtilsService } from '@core/services/dashboard-utils.service';
 import { UserSettingsService } from '@core/http/user-settings.service';
 import { Store } from '@ngrx/store';
@@ -15,8 +16,10 @@ export declare class DashboardResolver {
     private dashboardService;
     private userSettingService;
     private dashboardUtils;
-    constructor(store: Store<AppState>, dashboardService: DashboardService, userSettingService: UserSettingsService, dashboardUtils: DashboardUtilsService);
+    private dashboardReuse;
+    constructor(store: Store<AppState>, dashboardService: DashboardService, userSettingService: UserSettingsService, dashboardUtils: DashboardUtilsService, dashboardReuse: DashboardReuseService);
     resolve(route: ActivatedRouteSnapshot): Observable<Dashboard>;
+    private reportVisit;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardResolver, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<DashboardResolver>;
 }

@@ -169,6 +169,8 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private prefetchWidgetTypes;
     private routeReattaching;
     private pristineConfiguration;
+    private pristineEtag;
+    private routeDetached;
     tbOnRouteReattached(): void;
     private init;
     private updateDashboardCss;

@@ -30,6 +30,7 @@ export declare class ProfileComponent extends PageComponent implements OnInit, H
     constructor(store: Store<AppState>, route: ActivatedRoute, userService: UserService, authService: AuthService, translate: TranslateService, unitService: UnitService, fb: UntypedFormBuilder);
     ngOnInit(): void;
     private buildProfileForm;
+    readonly dashboardKeepAliveDepthOptions: number[];
     save(): void;
     private userLoaded;
     confirmForm(): UntypedFormGroup;
