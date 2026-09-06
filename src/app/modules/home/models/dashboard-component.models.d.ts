@@ -111,6 +111,7 @@ export declare class DashboardWidgets implements Iterable<DashboardWidget> {
     private revision;
     private static readonly MAX_HIDDEN_GENERATIONS;
     private static readonly NO_WIDGETS;
+    private shownStateKey;
     private hiddenGenerations;
     private hiddenWidgetsCache;
     get stateHiddenWidgets(): Array<DashboardWidget>;

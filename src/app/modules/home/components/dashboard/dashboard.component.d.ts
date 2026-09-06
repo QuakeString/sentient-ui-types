@@ -193,6 +193,7 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     private symbolPartition;
     private static readonly EMPTY_WIDGETS;
     stateSwapCacheKey(): string;
+    private stateSwapKeyCache;
     private hiddenPartitionCache;
     private hiddenPartition;
     get stateHiddenMembers(): Array<DashboardWidget>;
