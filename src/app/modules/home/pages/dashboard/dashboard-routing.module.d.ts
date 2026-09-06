@@ -19,6 +19,7 @@ export declare class DashboardResolver {
     private dashboardReuse;
     constructor(store: Store<AppState>, dashboardService: DashboardService, userSettingService: UserSettingsService, dashboardUtils: DashboardUtilsService, dashboardReuse: DashboardReuseService);
     resolve(route: ActivatedRouteSnapshot): Observable<Dashboard>;
+    private bundleDisabled;
     private reportVisit;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardResolver, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<DashboardResolver>;

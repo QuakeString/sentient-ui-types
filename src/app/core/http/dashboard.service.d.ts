@@ -1,3 +1,4 @@
+import { PrimedResponseEntry, PrimedResponseService } from '@core/http/primed-response.service';
 import { RequestConfig } from './http-utils';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -7,9 +8,13 @@ import { Dashboard, DashboardInfo, HomeDashboard, HomeDashboardInfo } from '@sha
 import { Router } from '@angular/router';
 import * as i0 from "@angular/core";
 /** The response ETag a dashboard was fetched with (getDashboardWithEtag), if any. */
+export interface DashboardBundle {
+    dashboard: Dashboard;
+    dashboardEtag: string;
+    serverTime: number;
+    primed: PrimedResponseEntry[];
+}
 export declare const getDashboardEtag: (dashboard: Dashboard) => string;
-/** Pin an ETag on a dashboard object as a NON-ENUMERABLE property: never
- *  serialised back on save, never copied by deepClone/spread. */
 export declare const withDashboardEtag: <T extends Dashboard>(dashboard: T, etag: string) => T;
 /** A shallow copy that keeps the ETag. The route resolver must hand the
  *  router a DIFFERENT object than the one already in the route's data:
@@ -18,11 +23,12 @@ export declare const withDashboardEtag: <T extends Dashboard>(dashboard: T, etag
 export declare const cloneDashboardWithEtag: (dashboard: Dashboard) => Dashboard;
 export declare class DashboardService {
     private http;
+    private primedResponses;
     private router;
     private window;
     stDiffObservable: Observable<number>;
     currentUrl: string;
-    constructor(http: HttpClient, router: Router, window: Window);
+    constructor(http: HttpClient, primedResponses: PrimedResponseService, router: Router, window: Window);
     getTenantDashboards(pageLink: PageLink, includeCustomers?: boolean, config?: RequestConfig): Observable<PageData<DashboardInfo>>;
     getTenantDashboardsByTenantId(tenantId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<DashboardInfo>>;
     getCustomerDashboards(customerId: string, pageLink: PageLink, config?: RequestConfig, includeSubCustomers?: boolean): Observable<PageData<DashboardInfo>>;
@@ -36,6 +42,14 @@ export declare class DashboardService {
      *  which validation fills with per-resolve values. Non-enumerable so it is
      *  never serialised back on save nor copied by deepClone. */
     getDashboardWithEtag(dashboardId: string, config?: RequestConfig): Observable<Dashboard>;
+    /** The dashboard plus the responses the page is about to request while
+     *  mounting (widget types, SCADA symbol images, alias entity lookups,
+     *  server time), fetched in ONE round trip and primed into the HTTP
+     *  interceptor (PrimedResponseService). Through a high-latency link this
+     *  collapses the dependent-request chain of a cold dashboard open; anything
+     *  the bundle did not cover still goes to the network as before. The
+     *  dashboard's ETag rides along exactly as in getDashboardWithEtag. */
+    getDashboardBundle(dashboardId: string, config?: RequestConfig): Observable<Dashboard>;
     exportDashboard(dashboardId: string, includeResources?: boolean, config?: RequestConfig): Observable<Dashboard>;
     getDashboardInfo(dashboardId: string, config?: RequestConfig): Observable<DashboardInfo>;
     saveDashboard(dashboard: Dashboard, config?: RequestConfig): Observable<Dashboard>;
