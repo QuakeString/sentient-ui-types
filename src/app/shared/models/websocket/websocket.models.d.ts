@@ -10,7 +10,7 @@ export declare abstract class CmdWrapper {
     abstract setAuth(token: string): any;
     abstract hasCommands(): boolean;
     abstract clear(): void;
-    abstract preparePublishCommands(maxCommands: number): CmdWrapper;
+    abstract preparePublishCommands(maxCommands: number, maxBytes?: number): CmdWrapper;
     [key: string]: WebsocketCmd | any;
 }
 export declare abstract class WsSubscriber {

@@ -32,7 +32,10 @@ export declare abstract class WebsocketService<T extends WsSubscriber> implement
     abstract unsubscribe(subscriber: T): any;
     abstract processOnMessage(message: WebsocketDataMsg): any;
     protected nextCmdId(): number;
+    private flushScheduled;
     protected publishCommands(): void;
+    private flushCommands;
+    private static immediateFlush;
     private checkToClose;
     private reset;
     private closeSocket;
@@ -40,6 +43,7 @@ export declare abstract class WebsocketService<T extends WsSubscriber> implement
     private openSocket;
     private onOpen;
     private onMessage;
+    private static packingDisabled;
     private onError;
     private onClose;
     private showWsError;

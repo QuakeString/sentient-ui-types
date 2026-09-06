@@ -272,7 +272,7 @@ export declare class TelemetryPluginCmdsWrapper implements CmdWrapper {
     setAuth(token: string): void;
     hasCommands(): boolean;
     clear(): void;
-    preparePublishCommands(maxCommands: number): TelemetryPluginCmdsWrapper;
+    preparePublishCommands(maxCommands: number, maxBytes?: number): TelemetryPluginCmdsWrapper;
 }
 export type SubscriptionDataEntry = [number, any, number?];
 export interface SubscriptionData {

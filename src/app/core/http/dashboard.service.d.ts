@@ -7,14 +7,18 @@ import { PageData } from '@shared/models/page/page-data';
 import { Dashboard, DashboardInfo, HomeDashboard, HomeDashboardInfo } from '@shared/models/dashboard.models';
 import { Router } from '@angular/router';
 import * as i0 from "@angular/core";
-/** The response ETag a dashboard was fetched with (getDashboardWithEtag), if any. */
+/** What GET /api/dashboard/{id}/bundle returns: the dashboard, its ETag and
+ *  the responses to prime (see PrimedResponseService). */
 export interface DashboardBundle {
     dashboard: Dashboard;
     dashboardEtag: string;
     serverTime: number;
     primed: PrimedResponseEntry[];
 }
+/** The response ETag a dashboard was fetched with (getDashboardWithEtag), if any. */
 export declare const getDashboardEtag: (dashboard: Dashboard) => string;
+/** Pin an ETag on a dashboard object as a NON-ENUMERABLE property: never
+ *  serialised back on save, never copied by deepClone/spread. */
 export declare const withDashboardEtag: <T extends Dashboard>(dashboard: T, etag: string) => T;
 /** A shallow copy that keeps the ETag. The route resolver must hand the
  *  router a DIFFERENT object than the one already in the route's data:
