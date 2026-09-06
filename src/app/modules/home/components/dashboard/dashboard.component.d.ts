@@ -196,6 +196,7 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     private hiddenPartitionCache;
     private hiddenPartition;
     get stateHiddenMembers(): Array<DashboardWidget>;
+    private gridsterWidgetsCache;
     get gridsterWidgets(): Array<DashboardWidget>;
     get consolidatedSymbolMembers(): Array<DashboardWidget>;
     get renderedDashboardWidgets(): Array<DashboardWidget>;
