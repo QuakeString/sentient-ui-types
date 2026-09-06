@@ -1,6 +1,6 @@
 {
     "name": "sentient-ui-types",
-    "version": "4.3.0+38",
+    "version": "4.3.0+39",
     "description": "TypeScript definitions for the SENTIENT UI, generated from ui-ngx. The compile-time contract for UI extensions; the version MUST equal the SENTIENT release the extension is loaded into.",
     "homepage": "https://github.com/QuakeString/sentient-ui-types",
     "license": "Apache License 2.0",
