@@ -52,7 +52,7 @@ export declare class WidgetService {
     addWidgetFqnToWidgetBundle(widgetsBundleId: string, fqn: string, config?: RequestConfig): Observable<void>;
     getWidgetTemplate(widgetTypeParam: widgetType, config?: RequestConfig): Observable<WidgetInfo>;
     getWidgetInfoFromCache(fullFqn: string): WidgetInfo | undefined;
-    putWidgetInfoToCache(widgetInfo: WidgetInfo): void;
+    putWidgetInfoToCache(widgetInfo: WidgetInfo, cacheKey?: string): void;
     registerBasicWidgetConfigComponents(module: any): void;
     getBasicWidgetSettingsComponentBySelector(selector: string): Type<IBasicWidgetConfigComponent>;
     putBasicWidgetSettingsComponentToMap(selector: string, compType: Type<IBasicWidgetConfigComponent>): void;

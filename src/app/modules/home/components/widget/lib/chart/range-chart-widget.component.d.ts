@@ -23,6 +23,7 @@ export declare class RangeChartWidgetComponent implements OnInit, OnDestroy, Aft
     overlayStyle: ComponentStyle;
     padding: string;
     legendLabelStyle: ComponentStyle;
+    private themeChangeSubscription;
     disabledLegendLabelStyle: ComponentStyle;
     visibleRangeItems: RangeItem[];
     private decimals;
@@ -31,6 +32,7 @@ export declare class RangeChartWidgetComponent implements OnInit, OnDestroy, Aft
     private timeSeriesChart;
     constructor(widgetComponent: WidgetComponent, imagePipe: ImagePipe, sanitizer: DomSanitizer, renderer: Renderer2, cd: ChangeDetectorRef);
     ngOnInit(): void;
+    private updateLegendColors;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     onInit(): void;

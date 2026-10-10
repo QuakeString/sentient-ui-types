@@ -1,3 +1,4 @@
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { AfterViewInit, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -27,7 +28,7 @@ export declare class HomeComponent extends PageComponent implements AfterViewIni
     searchableComponent: ISearchableComponent;
     sidenavMode: 'over' | 'push' | 'side';
     sidenavOpened: boolean;
-    logo: string;
+    logo: SafeUrl;
     sidenav: MatSidenav;
     searchInputField: ElementRef;
     fullscreenEnabled: boolean;
@@ -36,7 +37,7 @@ export declare class HomeComponent extends PageComponent implements AfterViewIni
     textSearch: import("@angular/forms").FormControl<string>;
     hideLoadingBar: boolean;
     private destroy$;
-    constructor(store: Store<AppState>, window: Window, activeComponentService: ActiveComponentService, fb: FormBuilder, router: Router, breakpointObserver: BreakpointObserver, dialog: MatDialog, licenseService: LicenseService);
+    constructor(store: Store<AppState>, window: Window, activeComponentService: ActiveComponentService, fb: FormBuilder, router: Router, breakpointObserver: BreakpointObserver, dialog: MatDialog, licenseService: LicenseService, sanitizer: DomSanitizer);
     /**
      * One-shot license-prompt dialog (Phase 5C+5E). Fires after sys_admin
      * login when no license is active. Tenant-scoped users never see it

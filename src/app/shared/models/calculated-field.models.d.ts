@@ -386,6 +386,12 @@ export type CalculatedFieldSingleArgumentValue<ValueType = unknown> = Calculated
 export type CalculatedFieldArgumentEventValue<ValueType = unknown> = CalculatedFieldAttributeArgumentValue<ValueType> | CalculatedFieldLatestTelemetryArgumentValue<ValueType> | CalculatedFieldRollingTelemetryArgumentValue<ValueType>;
 export type CalculatedFieldEventArguments<ValueType = unknown> = Record<string, CalculatedFieldArgumentEventValue<ValueType>>;
 export declare const calculatedFieldsEntityTypeList: EntityType[];
+/**
+ * Owner entity types selectable when a calculated field is created without an
+ * entity context (the tenant-wide page). Mirrors the set TB 4.3 exposes for the
+ * AlarmRule + CalculatedField pickers.
+ */
+export declare const calculatedFieldOwnerEntityTypes: EntityType[];
 export declare const defaultCalculatedFieldOutput: CalculatedFieldOutputTimeSeries;
 export declare const defaultSimpleCalculatedFieldOutput: CalculatedFieldSimpleOutput;
 export declare const CalculatedFieldCtxLatestTelemetryArgumentAutocomplete: {

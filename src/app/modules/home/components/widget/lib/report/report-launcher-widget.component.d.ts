@@ -8,6 +8,7 @@ import { DatePipe } from '@angular/common';
 import { WidgetContext } from '@home/models/widget-component.models';
 import { ReportService } from '@core/http/report.service';
 import { PermissionService } from '@core/services/permission.service';
+import { DialogService } from '@core/services/dialog.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
@@ -34,6 +35,7 @@ export declare class ReportLauncherWidgetComponent implements OnInit, AfterViewI
     private store;
     private datePipe;
     private dialog;
+    private dialogService;
     private cd;
     ctx: WidgetContext;
     sort: MatSort;
@@ -57,13 +59,19 @@ export declare class ReportLauncherWidgetComponent implements OnInit, AfterViewI
     readonly ReportStatus: typeof ReportStatus;
     private destroy$;
     private pollSubs;
-    constructor(reportService: ReportService, permission: PermissionService, translate: TranslateService, store: Store<AppState>, datePipe: DatePipe, dialog: MatDialog, cd: ChangeDetectorRef);
+    constructor(reportService: ReportService, permission: PermissionService, translate: TranslateService, store: Store<AppState>, datePipe: DatePipe, dialog: MatDialog, dialogService: DialogService, cd: ChangeDetectorRef);
     ngOnInit(): void;
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
     /** Controller-script bridge (see report_launcher.json). */
     onDataUpdated(): void;
     private loadTemplates;
+    /** Same dialog as Reporting → Reports: pick the template AND the period,
+     *  watch the progress, then the history refreshes (and auto-downloads when
+     *  the widget is configured to). The template list honours the widget's
+     *  whitelist. */
+    openGenerateDialog(): void;
+    /** Headless generation with the template's own period (kept for scripts). */
     generate(template: ReportTemplate): void;
     private pollStatus;
     private loadReports;
@@ -79,6 +87,9 @@ export declare class ReportLauncherWidgetComponent implements OnInit, AfterViewI
     private selectedViewable;
     /** Download is offered whenever any selected report is completed. */
     get canDownloadSelected(): boolean;
+    /** Delete is offered for any selection when the user may delete reports. */
+    get canDeleteSelected(): boolean;
+    deleteSelected(): void;
     /** Split-view is offered only for 2–3 selected viewable reports. */
     get canSplitViewSelected(): boolean;
     downloadSelected(): void;
@@ -89,7 +100,9 @@ export declare class ReportLauncherWidgetComponent implements OnInit, AfterViewI
     statusLabel(status: ReportStatus | undefined): string;
     private titleCase;
     createdTime(report: Report): string;
-    downloadReport(reportId: string, fallbackName?: string): void;
+    private downloadWithFormatChoice;
+    /** entry: one document of a multi-format report (e.g. 'pdf'); undefined = whole file. */
+    downloadReport(reportId: string, fallbackName?: string, entry?: string): void;
     downloadRow(report: Report, $event?: Event): void;
     isDownloading(report: Report): boolean;
     /** Open a completed report in the shared Reports viewer dialog. */

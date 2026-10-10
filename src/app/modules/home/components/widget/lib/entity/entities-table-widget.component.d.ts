@@ -70,9 +70,12 @@ export declare class EntitiesTableWidgetComponent extends PageComponent implemen
     private rowStylesInfo;
     private searchAction;
     private columnDisplayAction;
+    private tableStyleNamespace;
+    private themeChangeSubscription;
     constructor(store: Store<AppState>, elementRef: ElementRef, ngZone: NgZone, overlay: Overlay, viewContainerRef: ViewContainerRef, utils: UtilsService, datePipe: DatePipe, translate: TranslateService, domSanitizer: DomSanitizer, cd: ChangeDetectorRef, fb: FormBuilder);
     ngOnInit(): void;
     private isActionsConfigured;
+    private applyTableStyles;
     ngOnDestroy(): void;
     ngAfterViewInit(): void;
     onDataUpdated(): void;

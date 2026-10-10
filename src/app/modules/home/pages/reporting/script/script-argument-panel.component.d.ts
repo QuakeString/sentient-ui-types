@@ -52,7 +52,7 @@ export declare class ScriptArgumentPanelComponent implements OnInit {
     readonly typeOptions: ScriptArgumentType[];
     argumentForm: import("@angular/forms").FormGroup<{
         name: import("@angular/forms").FormControl<string>;
-        type: import("@angular/forms").FormControl<"attributes" | "timeseries" | "latest" | "batches" | "timeseriesSampled" | "fleetBatches">;
+        type: import("@angular/forms").FormControl<"attributes" | "latest" | "timeseries" | "batches" | "timeseriesSampled" | "fleetBatches">;
         entityType: import("@angular/forms").FormControl<EntityType>;
         entity: import("@angular/forms").FormControl<EntityId>;
         key: import("@angular/forms").FormControl<string>;

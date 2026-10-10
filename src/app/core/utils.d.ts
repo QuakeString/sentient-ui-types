@@ -51,6 +51,7 @@ export declare function mergeDeep<T>(target: T, ...sources: T[]): T;
 export declare function substituteStateKeyParams(text: string, stateParams: {
     [key: string]: any;
 }, skipReservedLabelParams?: boolean): string;
+export declare function resolveUnsuppliedLabelParams(label: string, keyName: string, siblingLabels: Set<string>): string;
 export declare function mergeDeepIgnoreArray<T>(target: T, ...sources: T[]): T;
 export declare function guid(): string;
 export declare function snakeCase(name: string, separator: string): string;

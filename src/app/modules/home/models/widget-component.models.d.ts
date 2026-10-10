@@ -373,14 +373,19 @@ export declare class WidgetContext {
 }
 export declare class LabelVariablePattern {
     private ctx;
+    private label;
     private pattern;
     private hasVariables;
+    private translationSubscription;
     private labelSubject;
     label$: RxJS.Observable<string>;
     constructor(label: string, ctx: WidgetContext);
     setupPattern(label: string): void;
     update(): void;
     destroy(): void;
+    private translateLabel;
+    private watchTranslationChanges;
+    private unwatchTranslationChanges;
 }
 export declare const widgetContextToken: InjectionToken<WidgetContext>;
 export declare const widgetErrorMessagesToken: InjectionToken<string[]>;

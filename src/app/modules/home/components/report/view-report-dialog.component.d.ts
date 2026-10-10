@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl, SafeHtml } from '@angular/platform-browser';
 import { ReportService } from '@core/http/report.service';
 import { Report } from '@home/pages/reporting/models/report.models';
+import { ToggleHeaderOption } from '@shared/components/toggle-header.component';
 import * as i0 from "@angular/core";
 export interface ViewReportDialogData {
     report?: Report;
@@ -31,7 +32,9 @@ export declare class ViewReportDialogComponent implements OnInit, OnDestroy {
     private originalSize;
     private pollingSubscription;
     zipFormats: string[];
+    zipEntryOptions: ToggleHeaderOption[];
     activeEntry: string | null;
+    private currentBlob;
     isTestReport: boolean;
     testFileName: string;
     testFormat: string;
@@ -47,6 +50,12 @@ export declare class ViewReportDialogComponent implements OnInit, OnDestroy {
     selectEntry(format: string): void;
     private pollTestReportStatus;
     private downloadTestReportResult;
+    /** Download is available once the displayed document has loaded. */
+    get canDownload(): boolean;
+    /** File name for the displayed document: report name with the entry's extension for zip entries. */
+    downloadFileName(): string;
+    /** Save exactly what is on screen: the current zip entry, or the single-format file. */
+    download(): void;
     private handleBlob;
     private checkIfSpreadsheet;
     private loadSpreadsheet;

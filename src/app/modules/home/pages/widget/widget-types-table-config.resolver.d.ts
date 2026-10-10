@@ -28,7 +28,6 @@ export declare class WidgetTypesTableConfigResolver {
     openWidgetEditor($event: Event, widgetType: BaseWidgetType): void;
     private openWidgetTypeDetails;
     exportWidgetType($event: Event, widgetType: BaseWidgetType): void;
-    exportWidgetTypes($event: Event, widgetTypes: BaseWidgetType[]): void;
     onWidgetTypeAction(action: EntityAction<BaseWidgetType>, config: EntityTableConfig<BaseWidgetType>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetTypesTableConfigResolver, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<WidgetTypesTableConfigResolver>;

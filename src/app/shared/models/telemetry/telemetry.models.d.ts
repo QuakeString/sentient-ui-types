@@ -312,6 +312,40 @@ export interface DataUpdateMsg<T> extends CmdUpdateMsg {
 export interface EntityDataUpdateMsg extends DataUpdateMsg<EntityData> {
     cmdUpdateType: CmdUpdateType.ENTITY_DATA;
 }
+/** One device push encoded once for every entity-data subscription that
+ *  received the same values (packed sessions only): a latest-values table
+ *  per bucket and/or a timeseries table (points per key) and, per
+ *  subscription, the keys it gets. Expanded by TelemetryWebsocketService
+ *  into ordinary EntityDataUpdateMsg objects, so nothing downstream knows
+ *  the difference. Sent as cmdUpdateType "ENTITY_DATA_SHARED". */
+export interface EntityDataSharedUpdateMsg {
+    cmdUpdateType: 'ENTITY_DATA_SHARED';
+    entityId: EntityId;
+    latest?: {
+        [entityKeyType: string]: {
+            [key: string]: TsValue;
+        };
+    };
+    timeseries?: {
+        [key: string]: Array<TsValue>;
+    };
+    cmds: Array<{
+        cmdId: number;
+        keys?: {
+            [entityKeyType: string]: string[];
+        };
+        tsKeys?: string[];
+    }>;
+    errorCode?: number;
+    errorMsg?: string;
+}
+export declare const isEntityDataSharedUpdateMsg: (message: any) => message is EntityDataSharedUpdateMsg;
+/** The per-subscription messages a shared update stands for. Every TsValue
+ *  and point is copied: EntityDataUpdate.prepareData adds the ts offset IN
+ *  PLACE, and two subscriptions must not share one object. Shapes mirror the
+ *  server's plain messages: a latest update carries `timeseries: null`, a
+ *  timeseries update carries `latest: {}` and `aggLatest: {}`. */
+export declare const expandEntityDataSharedUpdate: (message: EntityDataSharedUpdateMsg) => Array<EntityDataUpdateMsg>;
 export interface AlarmDataUpdateMsg extends DataUpdateMsg<AlarmData> {
     cmdUpdateType: CmdUpdateType.ALARM_DATA;
     allowedEntities: number;

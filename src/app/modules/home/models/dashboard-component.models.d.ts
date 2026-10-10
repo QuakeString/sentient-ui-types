@@ -75,6 +75,7 @@ export interface IDashboardComponent {
     pauseChangeNotifications(): any;
     resumeChangeNotifications(): any;
     notifyLayoutUpdated(): any;
+    notifyRuntimeVisibilityChanged?(): void;
     /** Chunked initial mount: called per admission step so the (OnPush) dashboard
      *  re-evaluates its widget ngFor. Optional — see DashboardWidgets.doCheck. */
     notifyWidgetsAdmitted?(): void;
@@ -139,6 +140,7 @@ export declare class DashboardWidgets implements Iterable<DashboardWidget> {
     updateRowsAndSort(): void;
     sortWidgets(): void;
 }
+export declare const normalizeCardBorderWidth: (value: any) => string | undefined;
 export declare class DashboardWidget implements GridsterItem, IDashboardWidget {
     private dashboard;
     widget: Widget;
@@ -228,6 +230,7 @@ export declare class DashboardWidget implements GridsterItem, IDashboardWidget {
     get zOrder(): number;
     get layerHidden(): boolean;
     get layerLocked(): boolean;
+    runtimeVisible: boolean;
     get runtimeHidden(): boolean;
     computeRuntimeHidden(isEdit: boolean): boolean;
     get dragEnabled(): boolean;

@@ -65,6 +65,8 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     widgetHeaderActionsPanel: TemplateRef<any>;
     isEdit: boolean;
     isPreview: boolean;
+    private runtimeVisibilityGetter;
+    private runtimeVisibilityActive;
     isMobile: boolean;
     dashboardWidget: DashboardWidget;
     widget: Widget;
@@ -103,6 +105,8 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
         [key: string]: string;
     }, buttonColor: string, backgroundColor: string, borderColor: string): {};
     ngOnChanges(changes: SimpleChanges): void;
+    private setupRuntimeVisibility;
+    private destroyRuntimeVisibility;
     ngOnDestroy(): void;
     private displayWidgetInstance;
     private onDestroy;

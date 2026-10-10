@@ -15,7 +15,8 @@ export declare enum JobType {
     DUMMY = "DUMMY",
     OTA_UPDATE = "OTA_UPDATE",
     REPORT_GENERATION = "REPORT_GENERATION",
-    DATA_EXPORT = "DATA_EXPORT"
+    DATA_EXPORT = "DATA_EXPORT",
+    ENTITY_CLEANUP = "ENTITY_CLEANUP"
 }
 export interface JobEntityInfo {
     entityId: string;

@@ -215,6 +215,8 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     pauseChangeNotifications(): void;
     resumeChangeNotifications(): void;
     notifyLayoutUpdated(): void;
+    notifyRuntimeVisibilityChanged(): void;
+    private runtimeVisibilityCdPending;
     private detectRowSize;
     private checkIsMobileSize;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardComponent, never>;

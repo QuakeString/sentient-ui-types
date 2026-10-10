@@ -93,8 +93,11 @@ export declare class AlarmsTableWidgetComponent extends PageComponent implements
     private searchAction;
     private columnDisplayAction;
     private alarmFilterAction;
+    private tableStyleNamespace;
+    private themeChangeSubscription;
     constructor(store: Store<AppState>, elementRef: ElementRef, ngZone: NgZone, overlay: Overlay, viewContainerRef: ViewContainerRef, utils: UtilsService, translate: TranslateService, domSanitizer: DomSanitizer, datePipe: DatePipe, dialog: MatDialog, dialogService: DialogService, entityService: EntityService, alarmService: AlarmService, cd: ChangeDetectorRef, fb: FormBuilder);
     ngOnInit(): void;
+    private applyTableStyles;
     ngOnDestroy(): void;
     ngAfterViewInit(): void;
     onDataUpdated(): void;

@@ -245,6 +245,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private updateLayouts;
     private updateLayout;
     private updateReuseCacheability;
+    private leaveFullscreenForParking;
     private mobileToggleLayoutFn;
     private registerMobileToggleLayout;
     private unregisterMobileToggleLayout;

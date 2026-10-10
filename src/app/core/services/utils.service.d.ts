@@ -23,6 +23,7 @@ export declare class UtilsService {
     defaultDataKey: DataKey;
     defaultDatasource: Datasource;
     defaultAlarmDataKeys: Array<DataKey>;
+    readonly translationChange$: Observable<void>;
     constructor(window: Window, document: Document, zone: NgZone, datePipe: DatePipe, translate: TranslateService);
     getPredefinedFunctionsList(): Array<string>;
     getPredefinedFunctionBody(func: string): string;

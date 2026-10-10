@@ -87,6 +87,7 @@ export declare class WidgetContainerComponent extends PageComponent implements O
     onRotate(event: MouseEvent): void;
     onDragHandleMouseDown(event: MouseEvent): void;
     updateEditWidgetActionsTooltipState(): void;
+    private liveEditWidgetActionsTooltip;
     private initEditWidgetActionTooltip;
     private updateEditWidgetActionsTooltipSelectedState;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetContainerComponent, never>;

@@ -43,6 +43,13 @@ export declare class DashboardReuseService {
     markStale(dashboardId: string, dashboard: Dashboard): void;
     private static recreatePending;
     static hasPendingRecreate(dashboardId: string): boolean;
+    private fullscreenCarry;
+    private detachPreparers;
+    setDetachPreparer(dashboardId: string, preparer: () => void): void;
+    clearDetachPreparer(dashboardId: string): void;
+    prepareDetach(dashboardId: string): void;
+    carryFullscreen(): void;
+    takeFullscreen(): boolean;
     requestRecreate(dashboardId: string): void;
     consumeRecreate(dashboardId: string): boolean;
     invalidate(dashboardId: string): void;

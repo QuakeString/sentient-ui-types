@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { ReportService } from '@core/http/report.service';
 import { DialogService } from '@core/services/dialog.service';
+import { ImportExportService } from '@shared/import-export/import-export.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PermissionService } from '@core/services/permission.service';
 import { ReportTemplate } from '@home/pages/reporting/models/report.models';
@@ -21,8 +22,9 @@ export declare class ReportTemplatesTableConfigResolver {
     private datePipe;
     private dialog;
     private permissionService;
+    private importExport;
     private readonly config;
-    constructor(store: Store<AppState>, router: Router, reportService: ReportService, dialogService: DialogService, translate: TranslateService, datePipe: DatePipe, dialog: MatDialog, permissionService: PermissionService);
+    constructor(store: Store<AppState>, router: Router, reportService: ReportService, dialogService: DialogService, translate: TranslateService, datePipe: DatePipe, dialog: MatDialog, permissionService: PermissionService, importExport: ImportExportService);
     resolve(route: ActivatedRouteSnapshot): Observable<EntityTableConfig<ReportTemplate>>;
     configureColumns(): Array<EntityTableColumn<ReportTemplate>>;
     private getTemplateTypeLabel;
@@ -30,12 +32,21 @@ export declare class ReportTemplatesTableConfigResolver {
     configureEntityFunctions(): void;
     configureGroupActions(): Array<GroupActionDescriptor<ReportTemplate>>;
     exportSelectedTemplates($event: Event, templates: ReportTemplate[]): void;
+    /** The file a report template exports to (single and ZIP export). */
+    private templateExportData;
     configureCellActions(): Array<CellActionDescriptor<ReportTemplate>>;
     editTemplate($event: Event, template: ReportTemplate): void;
     configureAddActions(): Array<any>;
     createTemplate(): Observable<ReportTemplate>;
     importTemplate(): void;
     private validateImportedTemplate;
+    /** The template an imported file creates (single and ZIP import). */
+    private templateFromImport;
+    /**
+     * ZIP import of report templates: each saved as the import dialog would save it
+     * with no owner picked, keeping the exported configuration as is.
+     */
+    private templateZipHandler;
     scheduleReport($event: Event, template: ReportTemplate): void;
     exportTemplate($event: Event, template: ReportTemplate): void;
     openTemplate($event: Event, template: ReportTemplate): void;

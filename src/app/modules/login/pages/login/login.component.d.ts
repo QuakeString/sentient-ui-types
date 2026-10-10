@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { ChangeDetectorRef, OnInit } from '@angular/core';
 import { AuthService } from '@core/auth/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
@@ -18,12 +18,15 @@ export declare class LoginComponent extends PageComponent implements OnInit {
     themeService: ThemeService;
     private matDialog;
     private backendConfigService;
+    private cd;
+    textureUrl: string;
+    textureReady: boolean;
     passwordViolation: boolean;
     isTauri: boolean;
     currentBackend: string;
     loginFormGroup: import("@angular/forms").UntypedFormGroup;
     oauth2Clients: Array<OAuth2ClientLoginInfo>;
-    constructor(store: Store<AppState>, authService: AuthService, fb: UntypedFormBuilder, router: Router, themeService: ThemeService, matDialog: MatDialog, backendConfigService: BackendConfigService);
+    constructor(store: Store<AppState>, authService: AuthService, fb: UntypedFormBuilder, router: Router, themeService: ThemeService, matDialog: MatDialog, backendConfigService: BackendConfigService, cd: ChangeDetectorRef);
     ngOnInit(): void;
     login(): void;
     getOAuth2Uri(oauth2Client: OAuth2ClientLoginInfo): string;

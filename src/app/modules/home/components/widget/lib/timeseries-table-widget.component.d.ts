@@ -109,8 +109,11 @@ export declare class TimeseriesTableWidgetComponent extends PageComponent implem
     private destroy$;
     private searchAction;
     private columnDisplayAction;
+    private tableStyleNamespace;
+    private themeChangeSubscription;
     constructor(store: Store<AppState>, elementRef: ElementRef, overlay: Overlay, viewContainerRef: ViewContainerRef, utils: UtilsService, translate: TranslateService, domSanitizer: DomSanitizer, datePipe: DatePipe, cd: ChangeDetectorRef, fb: FormBuilder, zone: NgZone);
     ngOnInit(): void;
+    private applyTableStyles;
     ngOnDestroy(): void;
     ngAfterViewInit(): void;
     onDataUpdated(): void;

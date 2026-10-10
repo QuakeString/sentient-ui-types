@@ -12,7 +12,7 @@ export interface ToggleHeaderOption {
     value: any;
     error$?: Observable<string>;
 }
-export type ToggleHeaderAppearance = 'fill' | 'fill-invert' | 'stroked';
+export type ToggleHeaderAppearance = 'fill' | 'fill-invert' | 'fill-on-primary' | 'stroked';
 export type ScrollDirection = 'after' | 'before';
 export declare class ToggleOption implements OnChanges, OnDestroy {
     private _element;

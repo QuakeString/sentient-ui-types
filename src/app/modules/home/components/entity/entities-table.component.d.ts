@@ -20,6 +20,7 @@ import { TbAnchorComponent } from '@shared/components/tb-anchor.component';
 import { IEntitiesTableComponent } from '@home/models/entity/entity-table-component.models';
 import { EntityDetailsPanelComponent } from '@home/components/entity/entity-details-panel.component';
 import { FormBuilder } from '@angular/forms';
+import { ImportExportService } from '@shared/import-export/import-export.service';
 import * as i0 from "@angular/core";
 export declare class EntitiesTableComponent extends PageComponent implements IEntitiesTableComponent, AfterViewInit, OnInit, OnChanges, OnDestroy {
     protected store: Store<AppState>;
@@ -33,6 +34,7 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     private elementRef;
     private fb;
     private zone;
+    private importExport;
     viewContainerRef: ViewContainerRef;
     entitiesTableConfig: EntityTableConfig<BaseData<HasId>>;
     translations: EntityTypeTranslation;
@@ -69,7 +71,7 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     private viewInited;
     private widgetResize$;
     private destroy$;
-    constructor(store: Store<AppState>, route: ActivatedRoute, translate: TranslateService, dialog: MatDialog, dialogService: DialogService, domSanitizer: DomSanitizer, cd: ChangeDetectorRef, router: Router, elementRef: ElementRef, fb: FormBuilder, zone: NgZone, viewContainerRef: ViewContainerRef);
+    constructor(store: Store<AppState>, route: ActivatedRoute, translate: TranslateService, dialog: MatDialog, dialogService: DialogService, domSanitizer: DomSanitizer, cd: ChangeDetectorRef, router: Router, elementRef: ElementRef, fb: FormBuilder, zone: NgZone, importExport: ImportExportService, viewContainerRef: ViewContainerRef);
     ngOnInit(): void;
     ngOnDestroy(): void;
     ngOnChanges(changes: SimpleChanges): void;
@@ -78,6 +80,7 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     private updatePaginationSubscriptions;
     addEnabled(): boolean;
     clearSelection(): void;
+    exportEntities($event: Event, entities: Array<BaseData<HasId>>): void;
     updateData(closeDetails?: boolean, reloadEntity?: boolean, silent?: boolean): void;
     private dataLoaded;
     onRowClick($event: Event, entity: any): void;

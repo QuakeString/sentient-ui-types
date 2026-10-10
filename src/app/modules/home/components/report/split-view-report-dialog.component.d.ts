@@ -20,6 +20,7 @@ interface ReportView {
     loading: boolean;
     error: string | null;
     blobUrl: string | null;
+    blob: Blob | null;
     width: number;
 }
 export declare class SplitViewReportDialogComponent implements OnInit, OnDestroy {
@@ -46,6 +47,8 @@ export declare class SplitViewReportDialogComponent implements OnInit, OnDestroy
     private loadSpreadsheet;
     private renderSheet;
     selectSheet(view: ReportView, index: number): void;
+    /** Save the file shown in this pane under the report's own file name. */
+    downloadView(view: ReportView, $event?: Event): void;
     getFormatLabel(report: Report): string;
     close(): void;
     toggleFullscreen(): void;
