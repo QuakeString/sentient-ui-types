@@ -1,4 +1,4 @@
-import { ElementRef, NgZone, OnInit, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, ElementRef, NgZone, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { DragRef, Point } from '@angular/cdk/drag-drop';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 import { DialogComponent } from '@shared/components/dialog.component';
 import { Dashboard } from '@shared/models/dashboard.models';
 import { IDashboardComponent } from '@home/models/dashboard-component.models';
-import { DialogGeometry } from '@home/components/widget/dialog/embed-dashboard-dialog-token';
+import { DialogGeometry, EmbedDialogCloseHost } from '@home/components/widget/dialog/embed-dashboard-dialog-token';
 import * as i0 from "@angular/core";
 export interface EmbedDashboardDialogData {
     dashboard: Dashboard;
@@ -22,19 +22,25 @@ export interface EmbedDashboardDialogData {
     savedGeometry?: DialogGeometry;
     parentDashboard?: IDashboardComponent;
 }
-export declare class EmbedDashboardDialogComponent extends DialogComponent<EmbedDashboardDialogComponent> implements OnInit {
+export declare class EmbedDashboardDialogComponent extends DialogComponent<EmbedDashboardDialogComponent> implements OnInit, AfterViewInit, OnDestroy {
     protected store: Store<AppState>;
     protected router: Router;
     data: EmbedDashboardDialogData;
     dialogRef: MatDialogRef<EmbedDashboardDialogComponent>;
     private elementRef;
     private zone;
+    private cd;
     dashboardContentContainer: ViewContainerRef;
     private drag;
     resizeDirections: string[];
     private static readonly minWidth;
     private static readonly minHeight;
     private static readonly minVisible;
+    private static readonly titleBarReach;
+    private static readonly interactive;
+    /** Pointer is over a spot that would move the dialog; shows the move cursor. */
+    dragReady: boolean;
+    private removeDragListeners;
     dashboard: Dashboard;
     state: string;
     title: string;
@@ -43,8 +49,18 @@ export declare class EmbedDashboardDialogComponent extends DialogComponent<Embed
     autoHideHeader: boolean;
     parentDashboard: IDashboardComponent;
     dialogStyle: any;
-    constructor(store: Store<AppState>, router: Router, data: EmbedDashboardDialogData, dialogRef: MatDialogRef<EmbedDashboardDialogComponent>, elementRef: ElementRef<HTMLElement>, zone: NgZone);
+    closeHost: EmbedDialogCloseHost;
+    constructor(store: Store<AppState>, router: Router, data: EmbedDashboardDialogData, dialogRef: MatDialogRef<EmbedDashboardDialogComponent>, elementRef: ElementRef<HTMLElement>, zone: NgZone, cd: ChangeDetectorRef);
     ngOnInit(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    /**
+     * A press moves the dialog when Ctrl is held (anywhere but the resize
+     * edges), or when it lands on the title bar: the dialog's own header, or
+     * the header of a widget along the dialog's top edge, away from its
+     * buttons and other controls.
+     */
+    private dragAllowed;
     dragConstrainPosition: (pointer: Point, dragRef: DragRef, dimensions: DOMRect, pickup: Point) => Point;
     startResize(event: PointerEvent, dir: string): void;
     private saveGeometry;

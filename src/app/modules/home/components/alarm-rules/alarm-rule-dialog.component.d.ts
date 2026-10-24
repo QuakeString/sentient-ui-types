@@ -29,16 +29,6 @@ export interface AlarmRuleDialogData {
     isDirty?: boolean;
     getTestScriptDialogFn?: AlarmRuleTestScriptFn;
 }
-/**
- * Ported from ThingsBoard CE
- * (~/thingsboard/ui-ngx/.../alarm-rules/alarm-rule-dialog.component.ts).
- *
- * Phase AR2b ships the dialog shell + general/arguments/clear-rule
- * advanced-settings sections verbatim. The two custom rule editors
- * (`tb-create-cf-alarm-rules`, `tb-cf-alarm-rule`) referenced by the
- * template are not yet ported — the template stubs them with
- * placeholder cards that land replaced in AR2c–g.
- */
 export declare class AlarmRuleDialogComponent extends DialogComponent<AlarmRuleDialogComponent, CalculatedFieldAlarmRule> {
     protected store: Store<AppState>;
     protected router: Router;
@@ -47,6 +37,9 @@ export declare class AlarmRuleDialogComponent extends DialogComponent<AlarmRuleD
     private alarmRulesService;
     private destroyRef;
     private cfFormService;
+    private alarmTypeTexts;
+    /** The alarm type, for the "Translations" panel. */
+    get alarmTypeText(): string[];
     entitySelect: EntitySelectComponent;
     fieldFormGroup: FormGroup;
     additionalDebugActionConfig: {

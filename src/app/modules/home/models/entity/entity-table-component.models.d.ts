@@ -12,7 +12,7 @@ import { EntityAction } from '@home/models/entity/entity-component.models';
 import { CellActionDescriptor, EntityActionTableColumn, EntityColumn, EntityTableColumn, EntityTableConfig, GroupActionDescriptor, HeaderActionDescriptor } from '@home/models/entity/entities-table-config.models';
 import { ActivatedRoute } from '@angular/router';
 import type { EntityDetailsPanelComponent } from '@home/components/entity/entity-details-panel.component';
-export type EntitiesTableAction = 'add';
+export type EntitiesTableAction = 'add' | string;
 export interface IEntitiesTableComponent {
     entitiesTableConfig: EntityTableConfig<BaseData<HasId>>;
     translations: EntityTypeTranslation;

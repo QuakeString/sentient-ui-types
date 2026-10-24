@@ -1,3 +1,4 @@
+import { Injector } from '@angular/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { CellActionDescriptor, EntityTableConfig, GroupActionDescriptor, HeaderActionDescriptor } from '@home/models/entity/entities-table-config.models';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,15 +34,21 @@ export declare class DashboardsTableConfigResolver {
     private dialog;
     private entityGroupService;
     private permissionService;
+    private injector;
     private readonly config;
-    constructor(store: Store<AppState>, dashboardService: DashboardService, customerService: CustomerService, tenantService: TenantService, edgeService: EdgeService, dialogService: DialogService, homeDialogs: HomeDialogsService, importExport: ImportExportService, translate: TranslateService, datePipe: DatePipe, router: Router, dialog: MatDialog, entityGroupService: EntityGroupService, permissionService: PermissionService);
+    constructor(store: Store<AppState>, dashboardService: DashboardService, customerService: CustomerService, tenantService: TenantService, edgeService: EdgeService, dialogService: DialogService, homeDialogs: HomeDialogsService, importExport: ImportExportService, translate: TranslateService, datePipe: DatePipe, router: Router, dialog: MatDialog, entityGroupService: EntityGroupService, permissionService: PermissionService, injector: Injector);
     resolve(route: ActivatedRouteSnapshot): Observable<EntityTableConfig<DashboardInfo | Dashboard>>;
     configureColumns(dashboardScope: string, includeCustomers?: boolean): Array<any>;
     configureEntityFunctions(dashboardScope: string): void;
     configureCellActions(dashboardScope: string): Array<CellActionDescriptor<DashboardInfo>>;
     configureGroupActions(dashboardScope: string): Array<GroupActionDescriptor<DashboardInfo>>;
     configureAddActions(dashboardScope: string): Array<HeaderActionDescriptor>;
-    openDashboard($event: Event, dashboard: DashboardInfo): void;
+    openDashboard($event: Event, dashboard: DashboardInfo, edit?: boolean): void;
+    /** "Create split view": name it, then set it up on the split view itself. */
+    createSplitView(): void;
+    /** Titles of the split views (not among those being deleted) that show any of these dashboards. */
+    private splitViewsUsing;
+    private withSplitViewWarning;
     importDashboard(_$event: Event): void;
     private editMissingAliases;
     exportDashboard($event: Event, dashboard: DashboardInfo): void;

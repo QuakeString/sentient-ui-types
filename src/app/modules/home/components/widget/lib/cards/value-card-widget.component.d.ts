@@ -48,6 +48,7 @@ export declare class ValueCardWidgetComponent implements OnInit, AfterViewInit, 
     onInit(): void;
     onDataUpdated(): void;
     private onResize;
+    private fitValue;
     static ɵfac: i0.ɵɵFactoryDeclaration<ValueCardWidgetComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ValueCardWidgetComponent, "tb-value-card-widget", never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, false, never>;
 }

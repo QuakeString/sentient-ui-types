@@ -3,8 +3,9 @@ import { AggregationType, HistoryWindowType, Interval, QuickTimeInterval, Realti
 import { PageComponent } from '@shared/components/page.component';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TimeService } from '@core/services/time.service';
+import { TimewindowPreferenceService } from '@core/services/timewindow-preference.service';
 import { OverlayRef } from '@angular/cdk/overlay';
 import { ToggleHeaderOption } from '@shared/components/toggle-header.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -19,6 +20,8 @@ export interface TimewindowPanelData {
     timezone: boolean;
     isEdit: boolean;
     panelMode: boolean;
+    /** Offer "save as my default" for this place (null: don't). */
+    preferenceKey?: string;
 }
 export declare const TIMEWINDOW_PANEL_DATA: InjectionToken<any>;
 export declare class TimewindowPanelComponent extends PageComponent implements OnInit, OnDestroy {
@@ -30,6 +33,7 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     private translate;
     viewContainerRef: ViewContainerRef;
     private dialog;
+    private timewindowPreference;
     changeTimewindow: EventEmitter<Timewindow>;
     historyOnly: boolean;
     forAllTimeEnabled: boolean;
@@ -45,6 +49,8 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     timewindowTypes: typeof TimewindowType;
     aggregationTypes: typeof AggregationType;
     result: Timewindow;
+    preferenceKey: string;
+    saveAsDefault: UntypedFormControl;
     timewindowTypeOptions: ToggleHeaderOption[];
     realtimeTimewindowOptions: ToggleHeaderOption[];
     historyTimewindowOptions: ToggleHeaderOption[];
@@ -65,7 +71,7 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     historyAllowedQuickIntervals: Array<QuickTimeInterval>;
     allowedAggTypes: Array<AggregationType>;
     private destroy$;
-    constructor(data: TimewindowPanelData, overlayRef: OverlayRef, store: Store<AppState>, fb: UntypedFormBuilder, timeService: TimeService, translate: TranslateService, viewContainerRef: ViewContainerRef, dialog: MatDialog);
+    constructor(data: TimewindowPanelData, overlayRef: OverlayRef, store: Store<AppState>, fb: UntypedFormBuilder, timeService: TimeService, translate: TranslateService, viewContainerRef: ViewContainerRef, dialog: MatDialog, timewindowPreference: TimewindowPreferenceService);
     ngOnInit(): void;
     ngOnDestroy(): void;
     private updateValidators;
@@ -84,6 +90,6 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     get historyAllowedAggIntervals(): Array<Interval>;
     openTimewindowConfig(): void;
     private updateTimewindowAdvancedParams;
-    static ɵfac: i0.ɵɵFactoryDeclaration<TimewindowPanelComponent, [null, { optional: true; }, null, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<TimewindowPanelComponent, [null, { optional: true; }, null, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<TimewindowPanelComponent, "tb-timewindow-panel", never, {}, { "changeTimewindow": "changeTimewindow"; }, never, never, false, never>;
 }

@@ -1,3 +1,4 @@
+import { Injector } from '@angular/core';
 import { DashboardService } from '@core/http/dashboard.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -74,7 +75,8 @@ export declare class ImportExportService {
     private alarmRulesService;
     private converterService;
     private dialog;
-    constructor(window: Window, document: Document, store: Store<AppState>, translate: TranslateService, dashboardService: DashboardService, dashboardUtils: DashboardUtilsService, widgetService: WidgetService, deviceProfileService: DeviceProfileService, assetProfileService: AssetProfileService, tenantProfileService: TenantProfileService, entityService: EntityService, ruleChainService: RuleChainService, deviceService: DeviceService, assetService: AssetService, edgeService: EdgeService, imageService: ImageService, utils: UtilsService, itembuffer: ItemBufferService, calculatedFieldsService: CalculatedFieldsService, alarmRulesService: AlarmRulesService, converterService: ConverterService, dialog: MatDialog);
+    private injector;
+    constructor(window: Window, document: Document, store: Store<AppState>, translate: TranslateService, dashboardService: DashboardService, dashboardUtils: DashboardUtilsService, widgetService: WidgetService, deviceProfileService: DeviceProfileService, assetProfileService: AssetProfileService, tenantProfileService: TenantProfileService, entityService: EntityService, ruleChainService: RuleChainService, deviceService: DeviceService, assetService: AssetService, edgeService: EdgeService, imageService: ImageService, utils: UtilsService, itembuffer: ItemBufferService, calculatedFieldsService: CalculatedFieldsService, alarmRulesService: AlarmRulesService, converterService: ConverterService, dialog: MatDialog, injector: Injector);
     exportFormProperties(properties: FormProperty[], fileName: string): void;
     importFormProperties(): Observable<FormProperty[]>;
     exportImage(type: ImageResourceType, key: string): void;
@@ -187,7 +189,9 @@ export declare class ImportExportService {
     private exportToPc;
     exportJson(data: any, filename: string): void;
     private downloadFile;
-    private prepareDashboardExport;
+    /** The dashboard JSON a single dashboard import takes, ready to save. */
+    prepareDashboardImport(dashboard: Dashboard): Dashboard;
+    prepareDashboardExport(dashboard: Dashboard): Dashboard;
     private prepareProfileExport;
     private prepareCalculatedFieldExport;
     private prepareExport;

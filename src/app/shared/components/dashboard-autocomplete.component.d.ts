@@ -1,3 +1,4 @@
+import { DashboardType } from '@shared/models/split-view.models';
 import { ElementRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -25,6 +26,8 @@ export declare class DashboardAutocompleteComponent implements ControlValueAcces
     placeholder: string;
     dashboardsScope: 'customer' | 'tenant';
     tenantId: string;
+    /** Only this kind of dashboard (e.g. DASHBOARD for a split view's panes); all kinds when unset. */
+    dashboardType: DashboardType;
     customerId: string;
     floatLabel: FloatLabelType;
     appearance: MatFormFieldAppearance;
@@ -56,5 +59,5 @@ export declare class DashboardAutocompleteComponent implements ControlValueAcces
     clear(): void;
     textIsNotEmpty(text: string): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardAutocompleteComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardAutocompleteComponent, "tb-dashboard-autocomplete", never, { "useIdValue": { "alias": "useIdValue"; "required": false; }; "selectFirstDashboard": { "alias": "selectFirstDashboard"; "required": false; }; "label": { "alias": "label"; "required": false; }; "placeholder": { "alias": "placeholder"; "required": false; }; "dashboardsScope": { "alias": "dashboardsScope"; "required": false; }; "tenantId": { "alias": "tenantId"; "required": false; }; "customerId": { "alias": "customerId"; "required": false; }; "floatLabel": { "alias": "floatLabel"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "subscriptSizing": { "alias": "subscriptSizing"; "required": false; }; "inlineField": { "alias": "inlineField"; "required": false; }; "requiredText": { "alias": "requiredText"; "required": false; }; "required": { "alias": "required"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, ["[tb-error]", "[tb-hint]"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardAutocompleteComponent, "tb-dashboard-autocomplete", never, { "useIdValue": { "alias": "useIdValue"; "required": false; }; "selectFirstDashboard": { "alias": "selectFirstDashboard"; "required": false; }; "label": { "alias": "label"; "required": false; }; "placeholder": { "alias": "placeholder"; "required": false; }; "dashboardsScope": { "alias": "dashboardsScope"; "required": false; }; "tenantId": { "alias": "tenantId"; "required": false; }; "dashboardType": { "alias": "dashboardType"; "required": false; }; "customerId": { "alias": "customerId"; "required": false; }; "floatLabel": { "alias": "floatLabel"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "subscriptSizing": { "alias": "subscriptSizing"; "required": false; }; "inlineField": { "alias": "inlineField"; "required": false; }; "requiredText": { "alias": "requiredText"; "required": false; }; "required": { "alias": "required"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, ["[tb-error]", "[tb-hint]"], false, never>;
 }

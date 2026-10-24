@@ -33,11 +33,13 @@ import * as i31 from "@home/pages/ai-model/ai-model.module";
 import * as i32 from "@home/pages/reporting/reporting.module";
 import * as i33 from "@home/pages/entity-group/entity-group.module";
 import * as i34 from "@home/pages/role/role.module";
-import * as i35 from "@home/pages/analytics/analytics.module";
-import * as i36 from "@home/pages/calculated-fields/calculated-fields.module";
-import * as i37 from "@home/pages/integration/integration-center.module";
+import * as i35 from "@home/pages/secret/secret.module";
+import * as i36 from "@home/pages/solution-hub/solution-hub.module";
+import * as i37 from "@home/pages/analytics/analytics.module";
+import * as i38 from "@home/pages/calculated-fields/calculated-fields.module";
+import * as i39 from "@home/pages/integration/integration-center.module";
 export declare class HomePagesModule {
     static ɵfac: i0.ɵɵFactoryDeclaration<HomePagesModule, never>;
-    static ɵmod: i0.ɵɵNgModuleDeclaration<HomePagesModule, never, never, [typeof i1.AdminModule, typeof i2.HomeLinksModule, typeof i3.ProfileModule, typeof i4.SecurityModule, typeof i5.TenantProfileModule, typeof i6.TenantModule, typeof i7.DeviceProfileModule, typeof i8.AssetProfileModule, typeof i9.ProfilesModule, typeof i10.EntitiesModule, typeof i11.FeaturesModule, typeof i12.MobileModule, typeof i13.NotificationModule, typeof i14.DeviceModule, typeof i15.AssetModule, typeof i16.AlarmModule, typeof i17.EdgeModule, typeof i18.EntityViewModule, typeof i19.CustomerModule, typeof i20.RuleChainModule, typeof i21.WidgetLibraryModule, typeof i22.DashboardModule, typeof i23.AuditLogModule, typeof i24.ApiUsageModule, typeof i25.GatewaysModule, typeof i26.OtaUpdateModule, typeof i27.UserModule, typeof i28.VcModule, typeof i29.AccountModule, typeof i30.ScadaSymbolModule, typeof i31.AiModelModule, typeof i32.ReportingModule, typeof i33.EntityGroupModule, typeof i34.RoleModule, typeof i35.AnalyticsModule, typeof i36.CalculatedFieldsModule, typeof i37.IntegrationCenterModule]>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<HomePagesModule, never, never, [typeof i1.AdminModule, typeof i2.HomeLinksModule, typeof i3.ProfileModule, typeof i4.SecurityModule, typeof i5.TenantProfileModule, typeof i6.TenantModule, typeof i7.DeviceProfileModule, typeof i8.AssetProfileModule, typeof i9.ProfilesModule, typeof i10.EntitiesModule, typeof i11.FeaturesModule, typeof i12.MobileModule, typeof i13.NotificationModule, typeof i14.DeviceModule, typeof i15.AssetModule, typeof i16.AlarmModule, typeof i17.EdgeModule, typeof i18.EntityViewModule, typeof i19.CustomerModule, typeof i20.RuleChainModule, typeof i21.WidgetLibraryModule, typeof i22.DashboardModule, typeof i23.AuditLogModule, typeof i24.ApiUsageModule, typeof i25.GatewaysModule, typeof i26.OtaUpdateModule, typeof i27.UserModule, typeof i28.VcModule, typeof i29.AccountModule, typeof i30.ScadaSymbolModule, typeof i31.AiModelModule, typeof i32.ReportingModule, typeof i33.EntityGroupModule, typeof i34.RoleModule, typeof i35.SecretModule, typeof i36.SolutionHubModule, typeof i37.AnalyticsModule, typeof i38.CalculatedFieldsModule, typeof i39.IntegrationCenterModule]>;
     static ɵinj: i0.ɵɵInjectorDeclaration<HomePagesModule>;
 }

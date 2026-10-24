@@ -10,6 +10,8 @@ export interface SysParamsState {
     rhaiEnabled: boolean;
     persistDeviceStateToTelemetry: boolean;
     mobileQrEnabled: boolean;
+    /** Most dashboards a user may keep in memory (DASHBOARD_KEEP_ALIVE_MAX); 0 = no limit. */
+    dashboardKeepAliveMax?: number;
     userSettings: UserSettings;
     maxResourceSize: number;
     maxDebugModeDurationMinutes: number;

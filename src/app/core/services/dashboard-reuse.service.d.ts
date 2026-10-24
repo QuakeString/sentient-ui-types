@@ -8,7 +8,11 @@ import * as i0 from "@angular/core";
  *  one a cached page was built from. */
 export interface StaleDashboard {
     dashboardId: string;
-    dashboard: Dashboard;
+    /** The fresh copy, or null when only the fact of a change is known (the
+     *  page then re-creates from the server). */
+    dashboard: Dashboard | null;
+    /** Set when the AI assistant saved the dashboard. */
+    byAssistant?: boolean;
 }
 /** `runGuardsAndResolvers` for the dashboard routes: Angular's default
  *  ('paramsChange') plus "a stale on-screen page asked to be re-created". */
@@ -22,6 +26,7 @@ export declare class DashboardReuseService {
     private readonly staleSubject;
     readonly stale$: import("rxjs").Observable<StaleDashboard>;
     private depthSetting;
+    private depthLimit;
     private routerEventsHooked;
     private dashboardActivationPending;
     constructor(store: Store<AppState>, injector: Injector);
@@ -41,6 +46,9 @@ export declare class DashboardReuseService {
      *  null when there is no cached page to serve. */
     peekResolved(dashboardId: string): Dashboard;
     markStale(dashboardId: string, dashboard: Dashboard): void;
+    /** The AI assistant saved this dashboard: a page showing it re-creates from
+     *  the server, a parked one is dropped (same path as a background revalidation). */
+    changedByAssistant(dashboardId: string): void;
     private static recreatePending;
     static hasPendingRecreate(dashboardId: string): boolean;
     private fullscreenCarry;

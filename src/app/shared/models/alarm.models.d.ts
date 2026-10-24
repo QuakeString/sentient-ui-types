@@ -83,6 +83,8 @@ export interface AlarmAssignee {
     firstName: string;
     lastName: string;
     email: string;
+    /** Profile photo version, when the user has one. */
+    avatarVersion?: number;
 }
 export declare enum AlarmAssigneeOption {
     noAssignee = "noAssignee",

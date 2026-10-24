@@ -60,6 +60,8 @@ export interface IDashboardController {
     commitWidgetChange(): any;
     hiddenLayers?: Set<number>;
     lockedLayers?: Set<number>;
+    switchBreakpointToGrid?(layoutCtx: DashboardPageLayoutContext): any;
+    manageDashboardLayouts?($event: Event): any;
 }
 export interface DashboardPageLayoutContext {
     id: DashboardLayoutId;

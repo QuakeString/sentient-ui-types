@@ -80,7 +80,22 @@ export interface DefaultTenantProfileConfiguration {
     maxReportSchedules: number;
     maxTelemetryKeys: number;
     maxAttributeKeys: number;
+    aiOwnModelsEnabled: boolean;
+    aiSystemModelsEnabled: boolean;
+    maxAiSystemTokensPerMonth: number;
+    maxAiSystemRequestsPerMinute: number;
+    aiAssistantEnabled: boolean;
+    aiAssistantCustomerUsersEnabled: boolean;
 }
+/** AI section of a tenant profile, as it reads before anything is set. */
+export declare const defaultAiTenantProfileConfiguration: {
+    aiOwnModelsEnabled: boolean;
+    aiSystemModelsEnabled: boolean;
+    maxAiSystemTokensPerMonth: number;
+    maxAiSystemRequestsPerMinute: number;
+    aiAssistantEnabled: boolean;
+    aiAssistantCustomerUsersEnabled: boolean;
+};
 export type TenantProfileConfigurations = DefaultTenantProfileConfiguration;
 export interface TenantProfileConfiguration extends TenantProfileConfigurations {
     type: TenantProfileType;

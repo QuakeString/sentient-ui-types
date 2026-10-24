@@ -77,6 +77,7 @@ export declare class ToggleHeaderComponent extends _ToggleBase implements OnInit
     useSelect$: Observable<boolean>;
     private observeBreakpointSubscription;
     private pillResizeObserver$;
+    private pillUserChangeAt;
     constructor(store: Store<AppState>, cd: ChangeDetectorRef, platform: Platform, breakpointObserver: BreakpointObserver, zone: NgZone);
     ngOnInit(): void;
     ngOnDestroy(): void;
@@ -97,6 +98,8 @@ export declare class ToggleHeaderComponent extends _ToggleBase implements OnInit
     private getMaxScrollDistance;
     private _scrollTo;
     private updateToggleHeaderScrollPosition;
+    /** The pill slides only after a click on an option; on first show, a
+     *  value set from outside or a resize it moves into place at once. */
     private updateSlidingPill;
     static ɵfac: i0.ɵɵFactoryDeclaration<ToggleHeaderComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ToggleHeaderComponent, "tb-toggle-header", never, { "value": { "alias": "value"; "required": false; }; "name": { "alias": "name"; "required": false; }; "disablePagination": { "alias": "disablePagination"; "required": false; }; "selectMediaBreakpoint": { "alias": "selectMediaBreakpoint"; "required": false; }; "useSelectOnMdLg": { "alias": "useSelectOnMdLg"; "required": false; }; "ignoreMdLgSize": { "alias": "ignoreMdLgSize"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "fillHeight": { "alias": "fillHeight"; "required": false; }; "extraPadding": { "alias": "extraPadding"; "required": false; }; "primaryBackground": { "alias": "primaryBackground"; "required": false; }; "slidingPill": { "alias": "slidingPill"; "required": false; }; }, { "valueChange": "valueChange"; }, never, never, false, never>;

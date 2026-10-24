@@ -6,6 +6,8 @@ import * as i0 from "@angular/core";
 export declare class DashboardTableHeaderComponent extends EntityTableHeaderComponent<DashboardInfo> {
     protected store: Store<AppState>;
     constructor(store: Store<AppState>);
+    get showTypeFilter(): boolean;
+    dashboardTypeChanged(value: string): void;
     includeCustomersChanged(includeCustomers: boolean): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardTableHeaderComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DashboardTableHeaderComponent, "tb-dashboard-table-header", never, {}, {}, never, never, false, never>;

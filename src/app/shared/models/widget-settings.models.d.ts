@@ -112,6 +112,17 @@ export declare const defaultRange: () => ColorRangeSettings;
 export declare const defaultColorFunction: string;
 export declare const cssSizeToStrSize: (size?: number, unit?: cssUnit) => string;
 export declare const resolveCssSize: (strSize?: string) => [number, cssUnit];
+/**
+ * A CSS length or shorthand (padding, margin, border radius or width) with
+ * bare numbers read as pixels: 10 → '10px', '8 12' → '8px 12px'. A unitless
+ * value is invalid CSS and the browser would silently ignore it. Anything that
+ * is not a list of plain lengths (calc(), var(), '1em', '') comes back as is.
+ */
+export declare const cssLengthWithPx: (value: any) => any;
+/** The value as shown in a px field: '8px 12px' → '8 12'; left as is when any part has another unit. */
+export declare const cssLengthToPxText: (value: any) => string;
+/** True when the text is one to four CSS lengths, or a calc()/var() expression. */
+export declare const isValidCssLength: (value: any) => boolean;
 export declare const validateCssSize: (strSize?: string) => string | undefined;
 export interface ColorProcessorSettings {
     settings: ColorSettings;

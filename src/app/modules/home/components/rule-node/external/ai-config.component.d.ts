@@ -12,15 +12,17 @@ export declare class AiConfigComponent extends RuleNodeConfigurationComponent {
     aiConfigForm: UntypedFormGroup;
     entityType: typeof EntityType;
     responseFormat: typeof ResponseFormat;
+    allowedResponseFormats: ResponseFormat[];
+    EntityType: typeof EntityType;
     constructor(fb: UntypedFormBuilder, translate: TranslateService, dialog: MatDialog);
     protected configForm(): UntypedFormGroup;
     protected onConfigurationSet(configuration: RuleNodeConfiguration): void;
     protected validatorTriggers(): string[];
     protected updateValidators(emitEvent: boolean): void;
-    protected prepareOutputConfig(configuration: RuleNodeConfiguration): RuleNodeConfiguration;
+    protected prepareOutputConfig(): RuleNodeConfiguration;
     onEntityChange($event: AiModel): void;
     get getResponseFormatHint(): any;
-    createModelAi(formControl: string): void;
+    createModelAi(name: string, formControl: string): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiConfigComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AiConfigComponent, "tb-external-node-ai-config", never, {}, {}, never, never, false, never>;
 }

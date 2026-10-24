@@ -13,6 +13,9 @@ export declare class ImageService {
     private resourcesService;
     private imagesLoading;
     private imageStringCache;
+    private imageBlobCache;
+    private static readonly BLOB_CACHE_MAX;
+    private static readonly BLOB_CACHE_MAX_BYTES;
     private clearImageStringCache;
     constructor(http: HttpClient, sanitizer: DomSanitizer, resourcesService: ResourcesService);
     uploadImage(file: File, title: string, imageSubType?: ResourceSubType, config?: RequestConfig): Observable<ImageResourceInfo>;

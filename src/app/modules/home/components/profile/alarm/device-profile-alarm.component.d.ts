@@ -11,6 +11,9 @@ export declare class DeviceProfileAlarmComponent implements ControlValueAccessor
     private utils;
     private fb;
     private destroyRef;
+    private alarmTypeTexts;
+    /** The alarm type, for the "Translations" panel. */
+    get alarmTypeText(): string[];
     disabled: boolean;
     removeAlarm: EventEmitter<any>;
     separatorKeysCodes: number[];

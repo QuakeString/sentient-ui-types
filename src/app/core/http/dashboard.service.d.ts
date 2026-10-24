@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { PageLink } from '@shared/models/page/page-link';
 import { PageData } from '@shared/models/page/page-data';
 import { Dashboard, DashboardInfo, HomeDashboard, HomeDashboardInfo } from '@shared/models/dashboard.models';
+import { DashboardType, SplitViewPaneDashboardInfo } from '@shared/models/split-view.models';
 import { Router } from '@angular/router';
 import * as i0 from "@angular/core";
 /** What GET /api/dashboard/{id}/bundle returns: the dashboard, its ETag and
@@ -33,9 +34,9 @@ export declare class DashboardService {
     stDiffObservable: Observable<number>;
     currentUrl: string;
     constructor(http: HttpClient, primedResponses: PrimedResponseService, router: Router, window: Window);
-    getTenantDashboards(pageLink: PageLink, includeCustomers?: boolean, config?: RequestConfig): Observable<PageData<DashboardInfo>>;
+    getTenantDashboards(pageLink: PageLink, includeCustomers?: boolean, config?: RequestConfig, dashboardType?: DashboardType): Observable<PageData<DashboardInfo>>;
     getTenantDashboardsByTenantId(tenantId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<DashboardInfo>>;
-    getCustomerDashboards(customerId: string, pageLink: PageLink, config?: RequestConfig, includeSubCustomers?: boolean): Observable<PageData<DashboardInfo>>;
+    getCustomerDashboards(customerId: string, pageLink: PageLink, config?: RequestConfig, includeSubCustomers?: boolean, dashboardType?: DashboardType): Observable<PageData<DashboardInfo>>;
     getDashboard(dashboardId: string, config?: RequestConfig): Observable<Dashboard>;
     /** Like getDashboard, but the response ETag rides along as a non-enumerable
      *  `etag` property (see getDashboardEtag). The backend sends one on every
@@ -65,6 +66,10 @@ export declare class DashboardService {
     setTenantHomeDashboardInfo(homeDashboardInfo: HomeDashboardInfo, config?: RequestConfig): Observable<any>;
     getPublicDashboardLink(dashboard: DashboardInfo): string | null;
     getServerTimeDiff(): Observable<number>;
+    /** The split views that show this dashboard in one of their panes (for the delete warning). */
+    getSplitViewsUsingDashboard(dashboardId: string, config?: RequestConfig): Observable<Array<DashboardInfo>>;
+    /** The dashboards a split view's panes show, with whether the customer (or the public) already has each. */
+    getSplitViewPaneDashboards(splitViewId: string, customerId?: string, config?: RequestConfig): Observable<Array<SplitViewPaneDashboardInfo>>;
     getEdgeDashboards(edgeId: string, pageLink: PageLink, type?: string, config?: RequestConfig): Observable<PageData<DashboardInfo>>;
     assignDashboardToEdge(edgeId: string, dashboardId: string, config?: RequestConfig): Observable<Dashboard>;
     unassignDashboardFromEdge(edgeId: string, dashboardId: string, config?: RequestConfig): Observable<Object>;

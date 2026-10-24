@@ -9,7 +9,8 @@ import * as i6 from "@core/core.module";
 import * as i7 from "@core/tauri/tauri.module";
 import * as i8 from "@modules/login/login.module";
 import * as i9 from "@home/home.module";
-import * as i10 from "@modules/dashboard/dashboard-routing.module";
+import * as i10 from "@home/components/ai-assistant/ai-assistant.module";
+import * as i11 from "@modules/dashboard/dashboard-routing.module";
 export default class TbUrlSerializer implements UrlSerializer {
     private _defaultUrlSerializer;
     parse(url: string): UrlTree;
@@ -22,6 +23,6 @@ export declare class PageNotFoundRoutingModule {
 }
 export declare class AppModule {
     static ɵfac: i0.ɵɵFactoryDeclaration<AppModule, never>;
-    static ɵmod: i0.ɵɵNgModuleDeclaration<AppModule, [typeof i2.AppComponent], [typeof i3.BrowserModule, typeof i4.BrowserAnimationsModule, typeof i5.AppRoutingModule, typeof i6.CoreModule, typeof i7.TauriModule, typeof i8.LoginModule, typeof i9.HomeModule, typeof i10.DashboardRoutingModule, typeof PageNotFoundRoutingModule], never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AppModule, [typeof i2.AppComponent], [typeof i3.BrowserModule, typeof i4.BrowserAnimationsModule, typeof i5.AppRoutingModule, typeof i6.CoreModule, typeof i7.TauriModule, typeof i8.LoginModule, typeof i9.HomeModule, typeof i10.AiAssistantModule, typeof i11.DashboardRoutingModule, typeof PageNotFoundRoutingModule], never>;
     static ɵinj: i0.ɵɵInjectorDeclaration<AppModule>;
 }

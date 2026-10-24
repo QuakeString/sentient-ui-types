@@ -1,4 +1,4 @@
-export type WindowMessageType = 'widgetException' | 'widgetEditModeInited' | 'widgetEditUpdated' | 'openDashboardMessage' | 'reloadUserMessage' | 'toggleDashboardLayout' | 'widgetEditModeToggle';
+export type WindowMessageType = 'widgetException' | 'widgetEditModeInited' | 'widgetEditUpdated' | 'openDashboardMessage' | 'reloadUserMessage' | 'toggleDashboardLayout' | 'widgetEditModeToggle' | 'toggleAiAssistant';
 export interface WindowMessage {
     type: WindowMessageType;
     data?: any;

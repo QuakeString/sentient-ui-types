@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, ElementRef, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { ImagePipe } from '@shared/pipe/image.pipe';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ScadaSymbolObject, ScadaSymbolObjectCallbacks } from '@home/components/widget/lib/scada/scada-symbol.models';
+import { ScadaSymbolObject, ScadaSymbolObjectCallbacks, ScadaSymbolOperateRequest } from '@home/components/widget/lib/scada/scada-symbol.models';
 import { Observable } from 'rxjs';
 import { ComponentStyle } from '@shared/models/widget-settings.models';
 import { ImageService } from '@core/http/image.service';
@@ -31,6 +31,8 @@ export declare class ScadaSymbolWidgetComponent implements OnInit, AfterViewInit
     scadaSymbolObject: ScadaSymbolObject;
     noScadaSymbol: boolean;
     private lastContent;
+    private operatePopover;
+    compactError: string;
     constructor(widgetComponent: WidgetComponent, imagePipe: ImagePipe, sanitizer: DomSanitizer, imageService: ImageService, iconRegistry: MatIconRegistry, raf: RafService, cd: ChangeDetectorRef);
     ngOnInit(): void;
     ngAfterViewInit(): void;
@@ -48,7 +50,12 @@ export declare class ScadaSymbolWidgetComponent implements OnInit, AfterViewInit
     onInit(): void;
     onScadaSymbolObjectLoadingState(loading: boolean): void;
     onScadaSymbolObjectError(error: string): void;
+    private showCompactError;
+    private liftWidget;
+    dismissCompactError(): void;
     onScadaSymbolObjectMessage(message: string): void;
+    /** Switchgear: the operate dialog, next to the clicked part of the symbol. */
+    onScadaSymbolObjectOperate(event: Event, request: ScadaSymbolOperateRequest): void;
     private initObject;
     static ɵfac: i0.ɵɵFactoryDeclaration<ScadaSymbolWidgetComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ScadaSymbolWidgetComponent, "tb-scada-symbol-widget", never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, false, never>;

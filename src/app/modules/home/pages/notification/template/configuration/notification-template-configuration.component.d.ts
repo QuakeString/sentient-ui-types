@@ -19,6 +19,9 @@ export declare class NotificationTemplateConfigurationComponent implements OnDes
     private readonly destroy$;
     private expendedBlocks;
     private propagateChangePending;
+    /** Length of the SMS text in characters and messages. Values filled into
+     *  `${...}` and translations in other scripts change it at send time. */
+    smsHint(): string;
     constructor(fb: FormBuilder, translate: TranslateService);
     ngOnDestroy(): void;
     writeValue(value: Partial<DeliveryMethodsTemplates>): void;

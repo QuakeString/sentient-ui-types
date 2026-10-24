@@ -17,6 +17,13 @@ export interface AiModel extends Omit<BaseData<AiModelId>, 'label'>, HasTenantId
             region?: string;
             accessKeyId?: string;
             secretAccessKey?: string;
+            baseUrl?: string;
+            auth?: {
+                type: AuthenticationType;
+                username?: string;
+                password?: string;
+                token?: string;
+            };
         };
         modelId: string;
         temperature?: number;
@@ -25,6 +32,7 @@ export interface AiModel extends Omit<BaseData<AiModelId>, 'label'>, HasTenantId
         frequencyPenalty?: number;
         presencePenalty?: number;
         maxOutputTokens?: number;
+        contextLength?: number;
     };
 }
 export declare enum ModelType {
@@ -38,7 +46,8 @@ export declare enum AiProvider {
     MISTRAL_AI = "MISTRAL_AI",
     ANTHROPIC = "ANTHROPIC",
     AMAZON_BEDROCK = "AMAZON_BEDROCK",
-    GITHUB_MODELS = "GITHUB_MODELS"
+    GITHUB_MODELS = "GITHUB_MODELS",
+    OLLAMA = "OLLAMA"
 }
 export declare const AiProviderTranslations: Map<AiProvider, string>;
 export declare const ProviderFieldsAllList: string[];
@@ -48,13 +57,14 @@ export declare const AiModelMap: Map<AiProvider, {
     providerFieldsList: string[];
     modelFieldsList: string[];
 }>;
-export declare const AiRuleNodeResponseFormatTypeOnlyText: AiProvider[];
 export declare enum ResponseFormat {
     TEXT = "TEXT",
     JSON = "JSON",
     JSON_SCHEMA = "JSON_SCHEMA"
 }
+export declare const aiRuleNodeResponseFormats: (provider: AiProvider) => ResponseFormat[];
 export interface AiModelWithUserMsg {
+    aiModelId?: string;
     userMessage: {
         contents: Array<{
             contentType: string;
@@ -73,6 +83,7 @@ export interface AiModelWithUserMsg {
             location?: string;
             serviceAccountKey?: string;
             fileName?: string;
+            baseUrl?: string;
         };
         modelId: string;
         maxRetries: number;
@@ -82,4 +93,9 @@ export interface AiModelWithUserMsg {
 export interface CheckConnectivityResult {
     status: string;
     errorDetails: string;
+}
+export declare enum AuthenticationType {
+    NONE = "NONE",
+    BASIC = "BASIC",
+    TOKEN = "TOKEN"
 }

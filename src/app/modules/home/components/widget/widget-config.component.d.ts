@@ -52,6 +52,7 @@ export declare class WidgetConfigComponent extends PageComponent implements OnIn
     widgetConfigCallbacks: WidgetConfigCallbacks;
     widgetEditMode: boolean;
     basicModeDirectiveError: string;
+    private designerTextsCache;
     modelValue: WidgetConfigComponentData;
     private propagateChange;
     headerOptions: ToggleHeaderOption[];
@@ -74,6 +75,8 @@ export declare class WidgetConfigComponent extends PageComponent implements OnIn
     private advancedSettingsSubscription;
     private actionsSettingsSubscription;
     private defaultConfigFormsType;
+    /** Texts the "Translations" panel shows; the same array while they don't change. */
+    get designerTexts(): string[];
     constructor(store: Store<AppState>, utils: UtilsService, entityService: EntityService, dialog: MatDialog, translate: TranslateService, fb: UntypedFormBuilder, cd: ChangeDetectorRef, widgetService: WidgetService, destroyRef: DestroyRef);
     ngOnInit(): void;
     ngOnDestroy(): void;

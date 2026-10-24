@@ -21,6 +21,11 @@ export declare class AuditLogTableConfig extends EntityTableConfig<AuditLog, Tim
     customerId: CustomerId;
     constructor(auditLogService: AuditLogService, translate: TranslateService, datePipe: DatePipe, dialog: MatDialog, auditLogMode?: AuditLogMode, entityId?: EntityId, userId?: UserId, customerId?: CustomerId, updateOnInit?: boolean, pageMode?: boolean);
     private getEntityTypeTranslation;
+    /**
+     * Changes made for the user by an AI or by the Solution Creator (actionData.via, stamped by the
+     * server) get a marker.
+     */
+    private viaMarker;
     private getActionTypeTranslation;
     private getActionStatusTranslation;
     fetchAuditLogs(pageLink: TimePageLink): Observable<PageData<AuditLog>>;

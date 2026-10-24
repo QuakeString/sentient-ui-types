@@ -13,7 +13,10 @@ export declare class MobileQrCodeWidgetSettingsComponent extends PageComponent i
     private fb;
     readonly badgePositionTranslationsMap: Map<BadgePosition, string>;
     readonly entityType: typeof EntityType;
+    /** A tenant can follow the system administrator's settings instead of its own. */
+    readonly isTenantAdmin: boolean;
     mobileAppSettingsForm: FormGroup<{
+        useSystemSettings: import("@angular/forms").FormControl<boolean>;
         useDefaultApp: import("@angular/forms").FormControl<boolean>;
         mobileAppBundleId: import("@angular/forms").FormControl<any>;
         androidEnabled: import("@angular/forms").FormControl<boolean>;
@@ -28,6 +31,8 @@ export declare class MobileQrCodeWidgetSettingsComponent extends PageComponent i
     }>;
     private mobileAppSettings;
     constructor(store: Store<AppState>, mobileAppService: MobileApplicationService, fb: FormBuilder);
+    /** Which controls can be edited, from the current values. */
+    private updateEnabledState;
     private processMobileAppSettings;
     save(): void;
     confirmForm(): FormGroup;

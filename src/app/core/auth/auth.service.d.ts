@@ -16,6 +16,7 @@ import { OAuth2ClientLoginInfo } from '@shared/models/oauth2.models';
 import { TwoFactorAuthProviderType, TwoFaProviderInfo } from '@shared/models/two-factor-auth.models';
 import { UserPasswordPolicy } from '@shared/models/settings.models';
 import { PermissionService } from '@core/services/permission.service';
+import { ContentTranslationMapService } from '@core/services/content-translation-map.service';
 import * as i0 from "@angular/core";
 export declare class AuthService {
     private store;
@@ -28,7 +29,8 @@ export declare class AuthService {
     private translate;
     private dialog;
     private permissionService;
-    constructor(store: Store<AppState>, http: HttpClient, userService: UserService, timeService: TimeService, router: Router, zone: NgZone, utils: UtilsService, translate: TranslateService, dialog: MatDialog, permissionService: PermissionService);
+    private contentTranslationMap;
+    constructor(store: Store<AppState>, http: HttpClient, userService: UserService, timeService: TimeService, router: Router, zone: NgZone, utils: UtilsService, translate: TranslateService, dialog: MatDialog, permissionService: PermissionService, contentTranslationMap: ContentTranslationMapService);
     redirectUrl: string;
     oauth2Clients: Array<OAuth2ClientLoginInfo>;
     twoFactorAuthProviders: Array<TwoFaProviderInfo>;

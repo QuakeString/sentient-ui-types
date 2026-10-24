@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, OnDestroy, OnInit, QueryList, Renderer2, ViewContainerRef } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, QueryList, Renderer2, ViewContainerRef } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
@@ -42,6 +42,7 @@ export declare class RuleChainPageComponent extends PageComponent implements Aft
     private renderer;
     private viewContainerRef;
     private changeDetector;
+    private ngZone;
     dialog: MatDialog;
     dialogService: DialogService;
     fb: FormBuilder;
@@ -51,6 +52,7 @@ export declare class RuleChainPageComponent extends PageComponent implements Aft
     width: string;
     height: string;
     ruleChainCanvas: NgxFlowchartComponent;
+    ruleChainCanvasRef: ElementRef<HTMLElement>;
     ruleChainGraph: ElementRef<HTMLElement>;
     expansionPanels: QueryList<MatExpansionPanel>;
     ruleChainMenuTrigger: MatMenuTrigger;
@@ -135,7 +137,7 @@ export declare class RuleChainPageComponent extends PageComponent implements Aft
     updateBreadcrumbs: EventEmitter<any>;
     private destroy$;
     private tooltipTimeout;
-    constructor(store: Store<AppState>, route: ActivatedRoute, router: Router, ruleChainService: RuleChainService, authService: AuthService, translate: TranslateService, itembuffer: ItemBufferService, popoverService: TbPopoverService, renderer: Renderer2, viewContainerRef: ViewContainerRef, changeDetector: ChangeDetectorRef, dialog: MatDialog, dialogService: DialogService, fb: FormBuilder);
+    constructor(store: Store<AppState>, route: ActivatedRoute, router: Router, ruleChainService: RuleChainService, authService: AuthService, translate: TranslateService, itembuffer: ItemBufferService, popoverService: TbPopoverService, renderer: Renderer2, viewContainerRef: ViewContainerRef, changeDetector: ChangeDetectorRef, ngZone: NgZone, dialog: MatDialog, dialogService: DialogService, fb: FormBuilder);
     ngOnInit(): void;
     ngAfterViewChecked(): void;
     ngAfterViewInit(): void;
@@ -150,13 +152,43 @@ export declare class RuleChainPageComponent extends PageComponent implements Aft
     private createRuleChainModel;
     openRuleChainContextMenu($event: TbContextMenuEvent): void;
     onRuleChainContextMenuMouseLeave(): void;
+    zoomPercent: number;
+    private readonly minZoom;
+    private readonly maxZoom;
+    private readonly libraryDrawerWidth;
+    private zoomScale;
+    private zoomOffset;
     private panActive;
+    private panMoved;
     private panStart;
-    private readonly panDownHandler;
-    private panMoveUnlisten;
-    private panUpUnlisten;
-    private setupGraphPan;
-    private onGraphPanStart;
+    private suppressGraphClick;
+    private boxSelectActive;
+    private libraryDragActive;
+    private libraryOpen;
+    private animateTimer;
+    private graphUnlisteners;
+    private panUnlisteners;
+    zoomIn(): void;
+    zoomOut(): void;
+    zoomReset(): void;
+    /** Fits every node into the visible canvas (not past 100%). */
+    zoomFit(): void;
+    /** The library starts opening or closing: slide the graph with it. */
+    onLibraryToggled(opened: boolean): void;
+    private libraryWidth;
+    private clampZoom;
+    private zoomAtViewCenter;
+    /** Zooms keeping the graph point under (x, y), in graph pixels, in place. */
+    private zoomAt;
+    private applyZoom;
+    private setupGraphZoom;
+    private overrideEvent;
+    /** Rewrites the pointer position of an event over the canvas into unscaled canvas space. */
+    private toCanvasSpace;
+    private onGraphMouseDown;
+    private onGraphClick;
+    private onGraphWheel;
+    private startGraphPan;
     private onGraphPanMove;
     private endGraphPan;
     private prepareContextMenu;

@@ -10,8 +10,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { BreakpointId, DashboardSettings, GridSettings, ViewFormatType } from '@app/shared/models/dashboard.models';
 import { StatesControllerService } from './states/states-controller.service';
 import { DashboardUtilsService } from '@core/services/dashboard-utils.service';
+import { ContentTranslationService } from '@core/http/content-translation.service';
 import * as i0 from "@angular/core";
 export interface DashboardSettingsDialogData {
+    /** The dashboard's title, edited in the Title row (dashboard settings only). */
+    title?: string;
     settings?: DashboardSettings;
     gridSettings?: GridSettings;
     isRightLayout?: boolean;
@@ -27,6 +30,7 @@ export declare class DashboardSettingsDialogComponent extends DialogComponent<Da
     private translate;
     private statesControllerService;
     private dashboardUtils;
+    private contentTranslation;
     viewFormatTypes: ViewFormatType[];
     viewFormatTypeTranslationMap: Map<ViewFormatType, string>;
     dashboardTitlePreview: string;
@@ -35,6 +39,7 @@ export declare class DashboardSettingsDialogComponent extends DialogComponent<Da
     isRightLayout: boolean;
     settingsFormGroup: FormGroup;
     gridSettingsFormGroup: FormGroup;
+    titleControl: FormControl<string | null>;
     stateControllerIds: string[];
     layoutSettingsType: string;
     submitted: boolean;
@@ -42,8 +47,10 @@ export declare class DashboardSettingsDialogComponent extends DialogComponent<Da
     private layoutType;
     private breakpointId;
     private destroy$;
+    /** The tenant has content languages, so the toolbar's language menu has something to offer. */
+    hasContentLanguages: boolean;
     private stateControllerTranslationMap;
-    constructor(store: Store<AppState>, router: Router, data: DashboardSettingsDialogData, errorStateMatcher: ErrorStateMatcher, dialogRef: MatDialogRef<DashboardSettingsDialogComponent, DashboardSettingsDialogData>, fb: FormBuilder, translate: TranslateService, statesControllerService: StatesControllerService, dashboardUtils: DashboardUtilsService);
+    constructor(store: Store<AppState>, router: Router, data: DashboardSettingsDialogData, errorStateMatcher: ErrorStateMatcher, dialogRef: MatDialogRef<DashboardSettingsDialogComponent, DashboardSettingsDialogData>, fb: FormBuilder, translate: TranslateService, statesControllerService: StatesControllerService, dashboardUtils: DashboardUtilsService, contentTranslation: ContentTranslationService);
     ngOnDestroy(): void;
     isScada(): boolean;
     get isDefaultLayout(): boolean;
@@ -53,6 +60,6 @@ export declare class DashboardSettingsDialogComponent extends DialogComponent<Da
     save(): void;
     getStatesControllerTranslation(stateControllerId: string): string;
     private updateGridSettingsFormState;
-    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardSettingsDialogComponent, [null, null, null, { skipSelf: true; }, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardSettingsDialogComponent, [null, null, null, { skipSelf: true; }, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DashboardSettingsDialogComponent, "tb-dashboard-settings-dialog", never, {}, {}, never, never, false, never>;
 }

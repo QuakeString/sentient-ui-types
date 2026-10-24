@@ -16,11 +16,13 @@ export declare class ColorPickerComponent implements ControlValueAccessor, OnDes
     control: ColorPickerControl;
     presentationControl: UntypedFormControl;
     colorPresets: Color[];
+    readonly eyeDropperSupported: boolean;
     private modelValue;
     private subscriptions;
     private propagateChange;
     private setValue;
     constructor();
+    pickFromScreen(): void;
     registerOnChange(fn: any): void;
     registerOnTouched(fn: any): void;
     writeValue(value: string): void;

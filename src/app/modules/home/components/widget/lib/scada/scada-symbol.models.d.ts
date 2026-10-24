@@ -2,9 +2,9 @@ import { ValueType } from '@shared/models/constants';
 import { Element, MatrixTransformParam, Svg } from '@svgdotjs/svg.js';
 import '@svgdotjs/svg.panzoom.js';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
-import { Observer } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { WidgetContext } from '@home/models/widget-component.models';
-import { Font, ValueFormatSettings } from '@shared/models/widget-settings.models';
+import { ComponentStyle, Font, ValueFormatSettings } from '@shared/models/widget-settings.models';
 import { WidgetAction } from '@shared/models/widget.models';
 import { MatIconRegistry } from '@angular/material/icon';
 import { RafService } from '@core/services/raf.service';
@@ -28,6 +28,7 @@ export interface ScadaSymbolApi {
     disable: (element: Element | Element[]) => void;
     enable: (element: Element | Element[]) => void;
     callAction: (event: Event, behaviorId: string, value?: any, observer?: Partial<Observer<void>>) => void;
+    operate: (event: Event, operations: ScadaSymbolOperation[]) => boolean;
     setValue: (valueId: string, value: any) => void;
     unitSymbol: (unit: TbUnit) => string;
     convertUnitValue: (value: any, unit: TbUnit) => number;
@@ -102,6 +103,9 @@ export interface ScadaSymbolMetadata {
     widgetSizeX: number;
     widgetSizeY: number;
     scaleToFit?: 'contain' | 'fill';
+    catalog?: {
+        [key: string]: any;
+    };
     stateRenderFunction?: string;
     stateRender?: ScadaSymbolStateRenderFunction;
     tags: ScadaSymbolTag[];
@@ -136,6 +140,38 @@ export interface ScadaSymbolObjectCallbacks {
     onScadaSymbolObjectLoadingState: (loading: boolean) => void;
     onScadaSymbolObjectError: (error: string) => void;
     onScadaSymbolObjectMessage: (message: string) => void;
+    onScadaSymbolObjectOperate?: (event: Event, request: ScadaSymbolOperateRequest) => void;
+}
+/**
+ * The reason an action failed, as one plain sentence: the last line of the
+ * (HTML) action error, e.g. "Failed to perform the <b>Close breaker</b>
+ * action.<br>Error: 400 - Bad Request<br>Invalid input: Device is offline"
+ * reads "Device is offline."
+ */
+export declare const readableActionError: (err: any) => string;
+/** One operation a switchgear symbol offers: close, open, trip, select-a/-b, on, off. */
+export interface ScadaSymbolOperation {
+    id: string;
+    action: string;
+    current?: boolean;
+    enabled?: boolean;
+}
+/** What the operate dialog shows and how it sends the chosen operation. */
+export interface ScadaSymbolOperateRequest {
+    title: string;
+    showTitle: boolean;
+    titleStyle: ComponentStyle;
+    titleColor: string;
+    stateColor: string;
+    kind: string;
+    operations: ScadaSymbolOperation[];
+    confirm: boolean;
+    confirmSeconds: number;
+    control: 'local' | 'remote' | 'unknown';
+    blockLocal: boolean;
+    accentColor: string;
+    tripColor: string;
+    execute: (action: string) => Observable<void>;
 }
 export declare const clearScadaSymbolCompiledCache: () => void;
 export declare class ScadaSymbolObject {
@@ -208,6 +244,7 @@ export declare class ScadaSymbolObject {
      *  gets its release action when the pointer is let go outside the
      *  element (drag-off) or the interaction is cancelled. */
     private bindTagAction;
+    private operate;
     private callAction;
     private resize;
     private applyCornerScale;

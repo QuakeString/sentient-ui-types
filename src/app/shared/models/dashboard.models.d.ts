@@ -1,3 +1,4 @@
+import { DashboardType } from '@shared/models/split-view.models';
 import { BaseData, ExportableEntity } from '@shared/models/base-data';
 import { DashboardId } from '@shared/models/id/dashboard-id';
 import { TenantId } from '@shared/models/id/tenant-id';
@@ -24,6 +25,8 @@ export interface DashboardInfo extends BaseData<DashboardId>, HasTenantId, HasVe
     assignedCustomers?: Array<ShortCustomerInfo>;
     mobileHide?: boolean;
     mobileOrder?: number;
+    /** DASHBOARD (default when missing) or SPLIT_VIEW (several dashboards on one screen). Fixed at creation. */
+    dashboardType?: DashboardType;
 }
 export interface WidgetLayout {
     sizeX?: number;
@@ -136,6 +139,8 @@ export interface DashboardSettings {
     showDashboardTimewindow?: boolean;
     showDashboardExport?: boolean;
     showUpdateDashboardImage?: boolean;
+    showDashboardReload?: boolean;
+    showDashboardLanguage?: boolean;
     toolbarAlwaysOpen?: boolean;
     hideToolbar?: boolean;
     titleColor?: string;

@@ -24,9 +24,10 @@ export declare class NotificationComponent implements OnInit {
     ngOnInit(): void;
     markRead($event: Event): void;
     navigate($event: Event): void;
-    alarmColorSeverity(alpha: number): string;
+    /** An alarm notification whose alarm is not cleared: shown in its severity colour. */
+    isActiveAlarm(): boolean;
+    severityColor(): string;
     notificationColor(): string;
-    notificationBackgroundColor(): string;
     notificationIconColor(): object;
     static ɵfac: i0.ɵɵFactoryDeclaration<NotificationComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<NotificationComponent, "tb-notification", never, { "notification": { "alias": "notification"; "required": false; }; "onClose": { "alias": "onClose"; "required": false; }; "preview": { "alias": "preview"; "required": false; }; }, { "markAsRead": "markAsRead"; }, never, never, false, never>;

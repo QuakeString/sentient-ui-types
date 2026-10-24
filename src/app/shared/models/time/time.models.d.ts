@@ -91,6 +91,8 @@ export interface Timewindow {
     hideAggregation?: boolean;
     hideAggInterval?: boolean;
     hideTimezone?: boolean;
+    /** Hide "save current settings as my default time window" from end users. */
+    hideSaveAsDefault?: boolean;
     selectedTab?: TimewindowType;
     realtime?: RealtimeWindow;
     history?: HistoryWindow;

@@ -12,6 +12,17 @@ import { Router } from '@angular/router';
 import { IBasicWidgetConfigComponent } from '@home/components/widget/config/widget-config.component.models';
 import { ResourcesService } from '@core/services/resources.service';
 import * as i0 from "@angular/core";
+export interface WidgetSearchOptions {
+    deprecatedFilter?: DeprecatedFilter;
+    widgetTypes?: Array<widgetType>;
+    /** The bundle the user is in: its widgets rank higher. */
+    widgetsBundleId?: string;
+    limit?: number;
+}
+export interface WidgetSearchResult {
+    bundles: Array<WidgetsBundle>;
+    widgets: Array<WidgetTypeInfo>;
+}
 export declare class WidgetService {
     private http;
     private router;
@@ -48,6 +59,9 @@ export declare class WidgetService {
     getWidgetTypeInfoById(widgetTypeId: string, config?: RequestConfig): Observable<WidgetTypeInfo>;
     saveWidgetType(widgetTypeDetails: WidgetTypeDetails, config?: RequestConfig): Observable<WidgetTypeDetails>;
     deleteWidgetType(widgetTypeId: string, config?: RequestConfig): Observable<Object>;
+    /** The add-widget drawer's search: matching bundles and widgets together,
+     *  best first (fuzzy, over names, bundles, kinds, descriptions and tags). */
+    searchWidgets(query: string, options?: WidgetSearchOptions, config?: RequestConfig): Observable<WidgetSearchResult>;
     getWidgetTypes(pageLink: PageLink, tenantOnly?: boolean, fullSearch?: boolean, scadaFirst?: boolean, deprecatedFilter?: DeprecatedFilter, widgetTypes?: Array<widgetType>, config?: RequestConfig): Observable<PageData<WidgetTypeInfo>>;
     addWidgetFqnToWidgetBundle(widgetsBundleId: string, fqn: string, config?: RequestConfig): Observable<void>;
     getWidgetTemplate(widgetTypeParam: widgetType, config?: RequestConfig): Observable<WidgetInfo>;

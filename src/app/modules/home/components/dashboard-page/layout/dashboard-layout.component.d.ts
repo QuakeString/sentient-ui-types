@@ -43,6 +43,23 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     get autoFillHeight(): boolean;
     get mobileAutoFillHeight(): boolean;
     get isMobileValue(): boolean;
+    /** Editing a breakpoint in List view, where widgets stack and cannot be moved or resized. */
+    get listViewInEdit(): boolean;
+    /** The List-view notice shows once the user tries to drag or resize a
+     *  widget, until it is dismissed (for the rest of this edit session on
+     *  this breakpoint). */
+    listViewHint: boolean;
+    private listViewHintDismissed;
+    private dragAttempt;
+    /** Pointer travel (px) that reads as a drag rather than a click. */
+    private static readonly DRAG_THRESHOLD;
+    get showListViewNotice(): boolean;
+    onPointerDown(e: PointerEvent): void;
+    onPointerMove(e: PointerEvent): void;
+    onPointerUp(): void;
+    dismissListViewNotice(): void;
+    switchToGrid(): void;
+    openLayoutSettings($event: Event): void;
     get isMobileDisabled(): boolean;
     get mobielRowHeigth(): number;
     get columns(): number;
@@ -62,6 +79,7 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     private initHotKeys;
     private loadDashboardStyle;
     reload(): void;
+    recreateWidgets(): void;
     resetHighlight(): void;
     highlightWidget(widgetId: string, delay?: number): void;
     focusWidgetForEdit(widgetId: string, drawerLeftX?: number, verticalOnly?: boolean): void;
@@ -96,6 +114,7 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     zoomIn(): void;
     zoomOut(): void;
     zoomReset(): void;
+    afterEditClosed(): void;
     zoomFit(): void;
     copyWidgetReference($event: Event, widget: Widget): void;
     pasteWidget($event: TbContextMenuEvent | KeyboardEvent): void;

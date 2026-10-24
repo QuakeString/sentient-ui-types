@@ -43,7 +43,9 @@ export declare enum EntityType {
     RECIPE = "RECIPE",
     RECIPE_DATA = "RECIPE_DATA",
     INTEGRATION = "INTEGRATION",
-    CONVERTER = "CONVERTER"
+    CONVERTER = "CONVERTER",
+    API_KEY = "API_KEY",
+    SECRET = "SECRET"
 }
 export declare enum AliasEntityType {
     CURRENT_CUSTOMER = "CURRENT_CUSTOMER",

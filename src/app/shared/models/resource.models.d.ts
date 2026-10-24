@@ -6,7 +6,9 @@ export declare enum ResourceType {
     LWM2M_MODEL = "LWM2M_MODEL",
     PKCS_12 = "PKCS_12",
     JKS = "JKS",
-    JS_MODULE = "JS_MODULE"
+    JS_MODULE = "JS_MODULE",
+    /** Any other file; SENTIENT keeps solution templates (`*.solution.json`) as GENERAL resources. */
+    GENERAL = "GENERAL"
 }
 export declare enum ResourceSubType {
     IMAGE = "IMAGE",

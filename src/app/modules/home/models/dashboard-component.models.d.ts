@@ -75,6 +75,7 @@ export interface IDashboardComponent {
     pauseChangeNotifications(): any;
     resumeChangeNotifications(): any;
     notifyLayoutUpdated(): any;
+    recreateWidgets?(): void;
     notifyRuntimeVisibilityChanged?(): void;
     /** Chunked initial mount: called per admission step so the (OnPush) dashboard
      *  re-evaluates its widget ngFor. Optional — see DashboardWidgets.doCheck. */
@@ -92,6 +93,7 @@ export interface IDashboardComponent {
     zoomOut(): void;
     zoomReset(): void;
     zoomFit(): void;
+    afterEditClosed(): void;
 }
 export declare const maxGridsterCol = 3000;
 export declare const maxGridsterRow = 3000;
@@ -125,6 +127,11 @@ export declare class DashboardWidgets implements Iterable<DashboardWidget> {
     doCheck(): void;
     private applyUpdateRecord;
     widgetLayoutsUpdated(): void;
+    /**
+     * Create every widget again from its unchanged config, so widgets redo
+     * what they compute once (translated texts for "Preview in").
+     */
+    recreateAll(): void;
     setWidgets(widgets: Iterable<Widget>, widgetLayouts: WidgetLayouts): void;
     highlightWidget(widgetId: string): DashboardWidget;
     selectWidget(widgetId: string, mode?: WidgetSelectionMode): DashboardWidget;
@@ -206,6 +213,7 @@ export declare class DashboardWidget implements GridsterItem, IDashboardWidget {
     private _widgetLayoutUpdated;
     constructor(dashboard: IDashboardComponent, widget: Widget, widgetLayoutValue?: WidgetLayout, parentDashboard?: IDashboardComponent, popoverComponent?: TbPopoverComponent);
     applyThemeAwareColors(): void;
+    private resolveBorder;
     gridsterItemComponent$(): Observable<GridsterItemComponentInterface>;
     updateWidgetParams(detectChanges?: boolean): void;
     updateParamsFromData(detectChanges?: boolean): void;

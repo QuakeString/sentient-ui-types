@@ -62,6 +62,7 @@ export declare class WidgetContainerComponent extends PageComponent implements O
     private themeChangeSubscription;
     private selectionChangeSubscription;
     private editWidgetActionsTooltip;
+    readonly dialogCloseHost: import("@home/components/widget/dialog/embed-dashboard-dialog-token").EmbedDialogCloseHost;
     constructor(store: Store<AppState>, cd: ChangeDetectorRef, renderer: Renderer2, container: ViewContainerRef, dashboardUtils: DashboardUtilsService, widgetDataExportService: WidgetDataExportService, utils: UtilsService);
     exportData(format: WidgetDataExportFormat): void;
     ngOnInit(): void;

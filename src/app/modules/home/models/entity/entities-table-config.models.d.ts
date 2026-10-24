@@ -56,7 +56,7 @@ export interface HeaderActionDescriptor {
     isEnabled: () => boolean;
     onAction: ($event: MouseEvent) => void;
 }
-export type EntityTableColumnType = 'content' | 'action' | 'link' | 'entityChips' | 'sparkline';
+export type EntityTableColumnType = 'content' | 'action' | 'link' | 'entityChips' | 'sparkline' | 'userAvatar';
 export declare class BaseEntityTableColumn<T extends BaseData<HasId>> {
     type: EntityTableColumnType;
     key: string;
@@ -124,7 +124,18 @@ export declare class SparkLineTableColumn<T extends BaseData<HasId>> extends Bas
     cellStyleFunction: CellStyleFunction<T>;
     constructor(key: string, title: string, width?: string, dataFunction?: (entity: T) => number[], totalFunction?: (entity: T) => number, cellStyleFunction?: CellStyleFunction<T>);
 }
-export type EntityColumn<T extends BaseData<HasId>> = EntityTableColumn<T> | EntityActionTableColumn<T> | EntityLinkTableColumn<T> | EntityChipsEntityTableColumn<T> | SparkLineTableColumn<T>;
+/**
+ * A narrow cell with the row user's photo (or initials), rendered by the
+ * `st-user-avatar` component; the row must be a user-like entity.
+ */
+export declare class UserAvatarTableColumn<T extends BaseData<HasId>> extends BaseEntityTableColumn<T> {
+    key: string;
+    width: string;
+    size: number;
+    cellStyleFunction: CellStyleFunction<T>;
+    constructor(key: string, width?: string, size?: number, cellStyleFunction?: CellStyleFunction<T>);
+}
+export type EntityColumn<T extends BaseData<HasId>> = EntityTableColumn<T> | EntityActionTableColumn<T> | EntityLinkTableColumn<T> | EntityChipsEntityTableColumn<T> | SparkLineTableColumn<T> | UserAvatarTableColumn<T>;
 export declare class EntityTableConfig<T extends BaseData<HasId>, P extends PageLink = PageLink, L extends BaseData<HasId> = T> {
     constructor();
     private table;
@@ -177,6 +188,14 @@ export declare class EntityTableConfig<T extends BaseData<HasId>, P extends Page
     deleteEntityContent: EntityStringFunction<L>;
     deleteEntitiesTitle: EntityCountStringFunction;
     deleteEntitiesContent: EntityCountStringFunction;
+    /** When set, the delete confirmation waits for this text instead of deleteEntityContent (e.g. to look up what uses the entity). */
+    deleteEntityContentAsync: ((entity: L) => Observable<string>) | null;
+    /** When set, the bulk delete confirmation waits for this text instead of deleteEntitiesContent. */
+    deleteEntitiesContentAsync: ((entities: L[]) => Observable<string>) | null;
+    /** ?action=<name> on the list page runs the handler (besides the built-in ?action=add). */
+    queryActions: {
+        [action: string]: () => void;
+    };
     loadEntity: EntityByIdOperation<T | L>;
     saveEntity: EntityTwoWayOperation<T>;
     deleteEntity: EntityIdOneWayOperation;

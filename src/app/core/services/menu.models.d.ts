@@ -50,6 +50,7 @@ export declare enum MenuId {
     general = "general",
     mail_server = "mail_server",
     home_settings = "home_settings",
+    translation_settings = "translation_settings",
     notification_settings = "notification_settings",
     repository_settings = "repository_settings",
     auto_commit_settings = "auto_commit_settings",
@@ -62,6 +63,10 @@ export declare enum MenuId {
     clients = "clients",
     audit_log = "audit_log",
     alarms = "alarms",
+    solution_hub = "solution_hub",
+    solution_templates = "solution_templates",
+    solution_drafts = "solution_drafts",
+    solution_installed = "solution_installed",
     alarms_list = "alarms_list",
     alarm_rules = "alarm_rules",
     dashboards = "dashboards",
@@ -84,6 +89,8 @@ export declare enum MenuId {
     version_control = "version_control",
     api_usage = "api_usage",
     trendz_settings = "trendz_settings",
+    ai_mcp_settings = "ai_mcp_settings",
+    ai_assistant_settings = "ai_assistant_settings",
     ai_models = "ai_models",
     reporting = "reporting",
     report_templates = "report_templates",
@@ -100,11 +107,16 @@ export declare enum MenuId {
     license = "license",
     entity_groups = "entity_groups",
     roles = "roles",
+    secrets = "secrets",
     users = "users",
     analytics = "analytics",
     analytics_templates = "analytics_templates",
     analytics_data_pipelines = "analytics_data_pipelines",
-    calculated_fields = "calculated_fields"
+    calculated_fields = "calculated_fields",
+    monitor_and_control = "monitor_and_control",
+    devices_and_assets = "devices_and_assets",
+    customers_and_users = "customers_and_users",
+    data_processing = "data_processing"
 }
 export declare const menuSectionMap: Map<MenuId, MenuSection>;
 export declare const buildUserMenu: (authState: AuthState) => Array<MenuSection>;

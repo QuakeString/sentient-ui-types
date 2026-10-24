@@ -1,3 +1,5 @@
+import { HomeService } from '@core/services/home.service';
+import { TimewindowPreferenceService } from '@core/services/timewindow-preference.service';
 import { ChangeDetectorRef, ComponentRef, ElementRef, Injector, NgZone, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
 import { DashboardWidget } from '@home/models/dashboard-component.models';
 import { Widget, WidgetHeaderActionButtonType, WidgetTypeParameters } from '@shared/models/widget.models';
@@ -32,6 +34,7 @@ import { HttpClient } from '@angular/common/http';
 import * as i0 from "@angular/core";
 export declare class WidgetComponent extends PageComponent implements OnInit, OnChanges, OnDestroy {
     protected store: Store<AppState>;
+    private timewindowPreference;
     private route;
     private router;
     private widgetComponentService;
@@ -60,6 +63,7 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private ngZone;
     private cd;
     private http;
+    private homeService;
     private static openStateDialogs;
     widgetTitlePanel: TemplateRef<any>;
     widgetHeaderActionsPanel: TemplateRef<any>;
@@ -99,7 +103,11 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private widgetResize$;
     private cssParser;
     private rxSubscriptions;
-    constructor(store: Store<AppState>, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient);
+    /** A resize that came while the left menu animated (see the widget's ResizeObserver). */
+    private resizePending;
+    private pendingResize;
+    private shellResizingSubscribed;
+    constructor(store: Store<AppState>, timewindowPreference: TimewindowPreferenceService, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient, homeService: HomeService);
     ngOnInit(): void;
     headerButtonStyle(buttonType: WidgetHeaderActionButtonType, customButtonStyle: {
         [key: string]: string;
@@ -110,6 +118,8 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     ngOnDestroy(): void;
     private displayWidgetInstance;
     private onDestroy;
+    /** Where this user's own default time window for the widget is kept. */
+    timewindowPreferenceKey(): string;
     onTimewindowChanged(timewindow: Timewindow): void;
     private loadFromWidgetInfo;
     private detectChanges;
@@ -147,6 +157,6 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private processResourcesLoadErrors;
     private getActiveEntityInfo;
     private checkSize;
-    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponent, [null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<WidgetComponent, "tb-widget", never, { "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; "widgetHeaderActionsPanel": { "alias": "widgetHeaderActionsPanel"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isPreview": { "alias": "isPreview"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "dashboardWidget": { "alias": "dashboardWidget"; "required": false; }; "widget": { "alias": "widget"; "required": false; }; }, {}, never, never, false, never>;
 }

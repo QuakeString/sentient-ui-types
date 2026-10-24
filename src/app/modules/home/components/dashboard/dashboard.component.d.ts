@@ -8,6 +8,7 @@ import { TimeService } from '@core/services/time.service';
 import { GridsterComponent, GridsterConfig, GridType } from 'angular-gridster2';
 import { DashboardCallbacks, DashboardWidget, IDashboardComponent, ContextMenuItem, WidgetSelectionMode } from '../../models/dashboard-component.models';
 import { Subject, Subscription } from 'rxjs';
+import { HomeService } from '@core/services/home.service';
 import { WidgetLayouts } from '@shared/models/dashboard.models';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { IAliasController, IStateController } from '@app/core/api/widget-api.models';
@@ -30,6 +31,7 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     private renderer;
     private cd;
     private ngZone;
+    private homeService;
     authUser: AuthUser;
     widgets: Iterable<Widget>;
     widgetLayouts: WidgetLayouts;
@@ -48,6 +50,11 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     gridType: GridType;
     centerVertical: boolean;
     centerHorizontal: boolean;
+    /**
+     * SCADA view: lay the grid out narrower so the whole diagram also fits the
+     * height of the screen (cells stay square), centred. Not while editing.
+     */
+    scadaFitScreen: boolean;
     isEdit: boolean;
     isEditingWidget: boolean;
     isPreview: boolean;
@@ -78,6 +85,7 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     editScrollSpacer: number;
     private zoomBeforeEdit;
     private wheelUnlisten;
+    private zoomedDuringEdit;
     private panDownHandler;
     private panMoveHandler;
     private panUpHandler;
@@ -89,6 +97,9 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     private boxStartClientX;
     private boxStartClientY;
     private boxAdditive;
+    private boxFromCtrl;
+    private altKeyHandler;
+    private altBlurHandler;
     private boxMoved;
     private boxMoveHandler;
     private boxUpHandler;
@@ -125,11 +136,24 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     breakpointObserverSubscription: Subscription;
     private optionsChangeNotificationsPaused;
     private gridsterResize$;
-    constructor(store: Store<AppState>, utils: UtilsService, timeService: TimeService, breakpointObserver: BreakpointObserver, differs: IterableDiffers, kvDiffers: KeyValueDiffers, renderer: Renderer2, cd: ChangeDetectorRef, ngZone: NgZone);
+    private shellResizePending;
+    private scadaFitResize$;
+    private scadaFitTimer;
+    private scadaFitRetries;
+    private scadaFitSettle;
+    /** Watches the grid's items: re-fit whenever the grid re-lays them out. */
+    private scadaFitItems$;
+    private scadaFitGrid$;
+    private scadaFitDebounce;
+    /** The fitted diagram's height per unit of width, as last measured. */
+    private scadaFitRatio;
+    private shellResizingSubscription;
+    constructor(store: Store<AppState>, utils: UtilsService, timeService: TimeService, breakpointObserver: BreakpointObserver, differs: IterableDiffers, kvDiffers: KeyValueDiffers, renderer: Renderer2, cd: ChangeDetectorRef, ngZone: NgZone, homeService: HomeService);
     ngOnInit(): void;
     ngOnDestroy(): void;
     ngDoCheck(): void;
     ngOnChanges(changes: SimpleChanges): void;
+    afterEditClosed(): void;
     captureZoomBeforeEdit(): void;
     private scrollRestoreHandle;
     private restoreScrollAfterLayout;
@@ -175,6 +199,18 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     getEventGridPosition(event: TbContextMenuEvent | KeyboardEvent): WidgetPosition;
     resetHighlight(): void;
     private scrollToWidget;
+    /**
+     * Fit a SCADA diagram on screen: the grid gets the width at which its
+     * height (rows of square cells) equals the space available, never wider
+     * than the screen, and is centred. Real layout, not a zoom, so symbols
+     * render at their actual size.
+     */
+    /** Fit now and keep re-checking briefly while the layout settles. */
+    private scheduleScadaFit;
+    private applyScadaFit;
+    /** The fit from the last measured ratio, without waiting for the grid. */
+    private fitScadaToRatio;
+    private setScadaFitWidth;
     private onGridsterParentResize;
     private updateGridOpts;
     private updateColumnOpts;
@@ -187,8 +223,12 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     private static isPassiveSymbol;
     private symbolPartitionCache;
     private lastConsolidationActive;
+    /** The grid's width from its resize observer (see consolidationActive). */
+    private gridWidth;
     private consolidationActive;
     private static consolidatable;
+    private static showsTitle;
+    private static partitionMembers;
     keepHiddenWidgets(widgets: Array<DashboardWidget>): Array<DashboardWidget>;
     private symbolPartition;
     private static readonly EMPTY_WIDGETS;
@@ -208,6 +248,7 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     zoomReset(): void;
     zoomFit(): void;
     onWheelZoom(event: WheelEvent): void;
+    private onAltKey;
     private onPanMouseDown;
     private onPanMouseMove;
     private onPanMouseUp;
@@ -215,10 +256,11 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     pauseChangeNotifications(): void;
     resumeChangeNotifications(): void;
     notifyLayoutUpdated(): void;
+    recreateWidgets(): void;
     notifyRuntimeVisibilityChanged(): void;
     private runtimeVisibilityCdPending;
     private detectRowSize;
     private checkIsMobileSize;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardComponent, "tb-dashboard", never, { "widgets": { "alias": "widgets"; "required": false; }; "widgetLayouts": { "alias": "widgetLayouts"; "required": false; }; "callbacks": { "alias": "callbacks"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "stateController": { "alias": "stateController"; "required": false; }; "consolidateSymbols": { "alias": "consolidateSymbols"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "setGridSize": { "alias": "setGridSize"; "required": false; }; "margin": { "alias": "margin"; "required": false; }; "outerMargin": { "alias": "outerMargin"; "required": false; }; "multiLayer": { "alias": "multiLayer"; "required": false; }; "hiddenLayers": { "alias": "hiddenLayers"; "required": false; }; "lockedLayers": { "alias": "lockedLayers"; "required": false; }; "displayGrid": { "alias": "displayGrid"; "required": false; }; "gridType": { "alias": "gridType"; "required": false; }; "centerVertical": { "alias": "centerVertical"; "required": false; }; "centerHorizontal": { "alias": "centerHorizontal"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isEditingWidget": { "alias": "isEditingWidget"; "required": false; }; "isPreview": { "alias": "isPreview"; "required": false; }; "autofillHeight": { "alias": "autofillHeight"; "required": false; }; "mobileAutofillHeight": { "alias": "mobileAutofillHeight"; "required": false; }; "mobileRowHeight": { "alias": "mobileRowHeight"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "isMobileDisabled": { "alias": "isMobileDisabled"; "required": false; }; "isEditActionEnabled": { "alias": "isEditActionEnabled"; "required": false; }; "isCopyActionEnabled": { "alias": "isCopyActionEnabled"; "required": false; }; "isExportActionEnabled": { "alias": "isExportActionEnabled"; "required": false; }; "isRemoveActionEnabled": { "alias": "isRemoveActionEnabled"; "required": false; }; "disableWidgetInteraction": { "alias": "disableWidgetInteraction"; "required": false; }; "dashboardStyle": { "alias": "dashboardStyle"; "required": false; }; "backgroundImage": { "alias": "backgroundImage"; "required": false; }; "dashboardClass": { "alias": "dashboardClass"; "required": false; }; "ignoreLoading": { "alias": "ignoreLoading"; "required": false; }; "dashboardTimewindow": { "alias": "dashboardTimewindow"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; "zoomEnabled": { "alias": "zoomEnabled"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardComponent, "tb-dashboard", never, { "widgets": { "alias": "widgets"; "required": false; }; "widgetLayouts": { "alias": "widgetLayouts"; "required": false; }; "callbacks": { "alias": "callbacks"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "stateController": { "alias": "stateController"; "required": false; }; "consolidateSymbols": { "alias": "consolidateSymbols"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "setGridSize": { "alias": "setGridSize"; "required": false; }; "margin": { "alias": "margin"; "required": false; }; "outerMargin": { "alias": "outerMargin"; "required": false; }; "multiLayer": { "alias": "multiLayer"; "required": false; }; "hiddenLayers": { "alias": "hiddenLayers"; "required": false; }; "lockedLayers": { "alias": "lockedLayers"; "required": false; }; "displayGrid": { "alias": "displayGrid"; "required": false; }; "gridType": { "alias": "gridType"; "required": false; }; "centerVertical": { "alias": "centerVertical"; "required": false; }; "centerHorizontal": { "alias": "centerHorizontal"; "required": false; }; "scadaFitScreen": { "alias": "scadaFitScreen"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isEditingWidget": { "alias": "isEditingWidget"; "required": false; }; "isPreview": { "alias": "isPreview"; "required": false; }; "autofillHeight": { "alias": "autofillHeight"; "required": false; }; "mobileAutofillHeight": { "alias": "mobileAutofillHeight"; "required": false; }; "mobileRowHeight": { "alias": "mobileRowHeight"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "isMobileDisabled": { "alias": "isMobileDisabled"; "required": false; }; "isEditActionEnabled": { "alias": "isEditActionEnabled"; "required": false; }; "isCopyActionEnabled": { "alias": "isCopyActionEnabled"; "required": false; }; "isExportActionEnabled": { "alias": "isExportActionEnabled"; "required": false; }; "isRemoveActionEnabled": { "alias": "isRemoveActionEnabled"; "required": false; }; "disableWidgetInteraction": { "alias": "disableWidgetInteraction"; "required": false; }; "dashboardStyle": { "alias": "dashboardStyle"; "required": false; }; "backgroundImage": { "alias": "backgroundImage"; "required": false; }; "dashboardClass": { "alias": "dashboardClass"; "required": false; }; "ignoreLoading": { "alias": "ignoreLoading"; "required": false; }; "dashboardTimewindow": { "alias": "dashboardTimewindow"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; "zoomEnabled": { "alias": "zoomEnabled"; "required": false; }; }, {}, never, never, false, never>;
 }

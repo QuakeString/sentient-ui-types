@@ -25,6 +25,8 @@ export interface UserAdditionalInfo {
     homeDashboardHideToolbar: boolean;
     unitSystem: UnitSystem;
     lang: string;
+    /** Profile photo version (epoch ms of the upload); absent without a photo. Set by the server only. */
+    avatarVersion?: number;
     [key: string]: any;
 }
 export declare enum ActivationMethod {
@@ -53,4 +55,6 @@ export interface UserEmailInfo {
     email: string;
     firstName: string;
     lastName: string;
+    /** Profile photo version, when the user has one. */
+    avatarVersion?: number;
 }

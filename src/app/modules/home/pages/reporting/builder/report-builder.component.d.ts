@@ -237,6 +237,7 @@ export declare class ReportBuilderComponent implements OnInit, OnDestroy, AfterV
         name: string;
         namePattern: string;
         timeDataPattern: string;
+        language: string;
         description: string;
         pageSize: string;
         pageOrientation: "PORTRAIT" | "LANDSCAPE";
@@ -616,6 +617,13 @@ export declare class ReportBuilderComponent implements OnInit, OnDestroy, AfterV
      */
     clearStChartConfigCache(componentId?: string): void;
     private stTableConfigCache;
+    /**
+     * Tables authored outside the builder (API, AI assistant) carry their title
+     * and column options at the config root. The table shows its heading, not
+     * the card title, so the title becomes the heading text, and the column
+     * options (timestamp, sort) carry over instead of falling back to defaults.
+     */
+    private transferTableHeadingAndColumns;
     /**
      * Get StTableConfig from component for canvas rendering.
      * Returns CACHED config - canvas only updates when clearStChartConfigCache is called (on save).

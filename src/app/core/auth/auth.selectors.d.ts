@@ -22,6 +22,8 @@ export declare const selectTbelEnabled: import("@ngrx/store").MemoizedSelector<o
 export declare const selectRhaiEnabled: import("@ngrx/store").MemoizedSelector<object, boolean, (s1: AuthState) => boolean>;
 export declare const selectPersistDeviceStateToTelemetry: import("@ngrx/store").MemoizedSelector<object, boolean, (s1: AuthState) => boolean>;
 export declare const selectMobileQrEnabled: import("@ngrx/store").MemoizedSelector<object, boolean, (s1: AuthState) => boolean>;
+/** Most dashboards a user may keep in memory; 0 = no limit. */
+export declare const selectDashboardKeepAliveMax: import("@ngrx/store").MemoizedSelector<object, number, (s1: AuthState) => number>;
 export declare const selectHomeDashboardParams: import("@ngrx/store").MemoizedSelector<object, {
     persistDeviceStateToTelemetry: boolean;
     mobileQrEnabled: boolean;

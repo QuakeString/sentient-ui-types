@@ -3,6 +3,8 @@ import { Widget } from '@shared/models/widget.models';
 import { CopiedWidgetStyleInfo } from '@core/services/item-buffer.service';
 export interface ILayoutController {
     reload(): any;
+    /** Create the widgets again, e.g. after their texts' translations changed. */
+    recreateWidgets?(): void;
     resetHighlight(): any;
     highlightWidget(widgetId: string, delay?: number): any;
     focusWidgetForEdit?(widgetId: string, drawerLeftX?: number, verticalOnly?: boolean): void;
@@ -25,6 +27,7 @@ export interface ILayoutController {
     zoomIn?(): void;
     zoomOut?(): void;
     zoomReset?(): void;
+    afterEditClosed?(): void;
     zoomFit?(): void;
 }
 export declare enum LayoutWidthType {

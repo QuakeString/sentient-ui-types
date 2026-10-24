@@ -1,3 +1,4 @@
+import { TimewindowPreferenceService } from '@core/services/timewindow-preference.service';
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
 import { Store } from '@ngrx/store';
@@ -35,6 +36,7 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     private fb;
     private zone;
     private importExport;
+    private timewindowPreference;
     viewContainerRef: ViewContainerRef;
     entitiesTableConfig: EntityTableConfig<BaseData<HasId>>;
     translations: EntityTypeTranslation;
@@ -71,7 +73,10 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     private viewInited;
     private widgetResize$;
     private destroy$;
-    constructor(store: Store<AppState>, route: ActivatedRoute, translate: TranslateService, dialog: MatDialog, dialogService: DialogService, domSanitizer: DomSanitizer, cd: ChangeDetectorRef, router: Router, elementRef: ElementRef, fb: FormBuilder, zone: NgZone, importExport: ImportExportService, viewContainerRef: ViewContainerRef);
+    constructor(store: Store<AppState>, route: ActivatedRoute, translate: TranslateService, dialog: MatDialog, dialogService: DialogService, domSanitizer: DomSanitizer, cd: ChangeDetectorRef, router: Router, elementRef: ElementRef, fb: FormBuilder, zone: NgZone, importExport: ImportExportService, timewindowPreference: TimewindowPreferenceService, viewContainerRef: ViewContainerRef);
+    /** Where this user's own default time window for the table is kept: one
+     *  per kind of table on a page, not per entity shown. */
+    timewindowPreferenceKey(): string;
     ngOnInit(): void;
     ngOnDestroy(): void;
     ngOnChanges(changes: SimpleChanges): void;

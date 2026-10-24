@@ -5,6 +5,8 @@ import { OAuth2ClientInfo, PlatformType } from '@shared/models/oauth2.models';
 import { MobileAppBundleId } from '@shared/models/id/mobile-app-bundle-id';
 export declare const WEB_URL_REGEX: RegExp;
 export interface QrCodeSettings extends HasTenantId {
+    /** Tenant only: follow the system administrator's settings. */
+    useSystemSettings?: boolean;
     useDefaultApp: boolean;
     mobileAppBundleId: MobileAppBundleId;
     androidEnabled: boolean;

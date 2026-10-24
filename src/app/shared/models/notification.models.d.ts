@@ -113,6 +113,8 @@ export interface AlarmNotificationRuleTriggerConfig {
     alarmSeverities?: Array<AlarmSeverity>;
     notifyOn: Array<AlarmAction>;
     clearRule?: ClearRule;
+    /** Leave out the user who acknowledged or cleared the alarm. */
+    skipActor?: boolean;
 }
 interface ClearRule {
     alarmStatuses: Array<AlarmSearchStatus>;
@@ -126,6 +128,7 @@ export interface EntityActionNotificationRuleTriggerConfig {
     created: boolean;
     updated: boolean;
     deleted: boolean;
+    skipActor?: boolean;
 }
 export interface AlarmCommentNotificationRuleTriggerConfig {
     alarmTypes?: Array<string>;
@@ -133,12 +136,17 @@ export interface AlarmCommentNotificationRuleTriggerConfig {
     alarmStatuses?: Array<AlarmSearchStatus>;
     onlyUserComments?: boolean;
     notifyOnCommentUpdate?: boolean;
+    /** Only replies; the "Affected user" recipient is the author of the comment answered. */
+    onlyReplies?: boolean;
+    /** Leave the user who caused the trigger out of the recipients. */
+    skipActor?: boolean;
 }
 export interface AlarmAssignmentNotificationRuleTriggerConfig {
     alarmTypes?: Array<string>;
     alarmSeverities?: Array<AlarmSeverity>;
     alarmStatuses?: Array<AlarmSearchStatus>;
     notifyOn: Array<AlarmAssignmentAction>;
+    skipActor?: boolean;
 }
 export interface RuleEngineLifecycleEventNotificationRuleTriggerConfig {
     ruleChains?: Array<string>;

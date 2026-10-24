@@ -157,6 +157,9 @@ export interface ReportConfiguration {
     format: ReportFormat;
     namePattern: string;
     timeDataPattern: string;
+    /** Content language the PDF's texts are translated into; unset means
+     *  the requesting user's language. */
+    language?: string;
     widgets?: {
         [id: string]: Widget;
     };
