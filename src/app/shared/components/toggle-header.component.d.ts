@@ -11,6 +11,8 @@ export interface ToggleHeaderOption {
     name: string;
     value: any;
     error$?: Observable<string>;
+    isDisabled?: () => boolean;
+    disabledTooltip?: () => string;
 }
 export type ToggleHeaderAppearance = 'fill' | 'fill-invert' | 'fill-on-primary' | 'stroked';
 export type ScrollDirection = 'after' | 'before';
@@ -18,13 +20,15 @@ export declare class ToggleOption implements OnChanges, OnDestroy {
     private _element;
     value: any;
     error: string;
+    disabled: boolean;
+    disabledTooltip: string;
     currentError: ReplaySubject<string>;
     get viewValue(): string;
     constructor(_element: ElementRef<HTMLElement>);
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ToggleOption, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<ToggleOption, "tb-toggle-option", never, { "value": { "alias": "value"; "required": false; }; "error": { "alias": "error"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<ToggleOption, "tb-toggle-option", never, { "value": { "alias": "value"; "required": false; }; "error": { "alias": "error"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "disabledTooltip": { "alias": "disabledTooltip"; "required": false; }; }, {}, never, never, false, never>;
 }
 export declare abstract class _ToggleBase extends PageComponent implements AfterContentInit, OnDestroy {
     protected store: Store<AppState>;

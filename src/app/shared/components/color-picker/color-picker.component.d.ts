@@ -1,4 +1,4 @@
-import { OnDestroy } from '@angular/core';
+import { ElementRef, OnDestroy } from '@angular/core';
 import { Color, ColorPickerControl } from '@iplab/ngx-color-picker';
 import { ControlValueAccessor, UntypedFormControl } from '@angular/forms';
 import * as i0 from "@angular/core";
@@ -12,16 +12,16 @@ export declare enum ColorType {
     cmyk = "cmyk"
 }
 export declare class ColorPickerComponent implements ControlValueAccessor, OnDestroy {
+    private elementRef;
     presentations: ColorType[];
     control: ColorPickerControl;
     presentationControl: UntypedFormControl;
     colorPresets: Color[];
-    readonly eyeDropperSupported: boolean;
     private modelValue;
     private subscriptions;
     private propagateChange;
     private setValue;
-    constructor();
+    constructor(elementRef: ElementRef<HTMLElement>);
     pickFromScreen(): void;
     registerOnChange(fn: any): void;
     registerOnTouched(fn: any): void;

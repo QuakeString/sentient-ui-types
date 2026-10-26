@@ -46,6 +46,9 @@ export declare class GetValueActionSettingsPanelComponent extends PageComponent 
     ngOnInit(): void;
     cancel(): void;
     applyGetValueSettings(): void;
+    /** The keys picked for the current action (time series or attribute). */
+    get selectedKeys(): string[];
+    get multipleKeys(): boolean;
     getParseValueFunctionHelpId(): string;
     private updateValidators;
     static ɵfac: i0.ɵɵFactoryDeclaration<GetValueActionSettingsPanelComponent, never>;

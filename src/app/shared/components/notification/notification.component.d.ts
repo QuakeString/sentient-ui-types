@@ -1,11 +1,12 @@
 import { EventEmitter, OnInit } from '@angular/core';
-import { Notification, NotificationType } from '@shared/models/notification.models';
+import { AlarmDetailsOpener, Notification, NotificationType } from '@shared/models/notification.models';
 import { UtilsService } from '@core/services/utils.service';
 import { Router } from '@angular/router';
 import * as i0 from "@angular/core";
 export declare class NotificationComponent implements OnInit {
     private utils;
     private router;
+    private alarmDetailsOpener;
     notification: Notification;
     onClose: () => void;
     markAsRead: EventEmitter<string>;
@@ -14,21 +15,23 @@ export declare class NotificationComponent implements OnInit {
     showButton: boolean;
     buttonLabel: string;
     hideMarkAsReadButton: boolean;
+    opensAlarm: boolean;
     notificationType: typeof NotificationType;
     notificationTypeIcons: Map<NotificationType, string>;
     alarmSeverityTranslations: Map<import("@shared/models/alarm.models").AlarmSeverity, string>;
     currentDate: number;
     title: string;
     message: string;
-    constructor(utils: UtilsService, router: Router);
+    constructor(utils: UtilsService, router: Router, alarmDetailsOpener: AlarmDetailsOpener);
     ngOnInit(): void;
     markRead($event: Event): void;
     navigate($event: Event): void;
+    openAlarm(): void;
     /** An alarm notification whose alarm is not cleared: shown in its severity colour. */
     isActiveAlarm(): boolean;
     severityColor(): string;
     notificationColor(): string;
     notificationIconColor(): object;
-    static ɵfac: i0.ɵɵFactoryDeclaration<NotificationComponent, never>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NotificationComponent, [null, null, { optional: true; }]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<NotificationComponent, "tb-notification", never, { "notification": { "alias": "notification"; "required": false; }; "onClose": { "alias": "onClose"; "required": false; }; "preview": { "alias": "preview"; "required": false; }; }, { "markAsRead": "markAsRead"; }, never, never, false, never>;
 }

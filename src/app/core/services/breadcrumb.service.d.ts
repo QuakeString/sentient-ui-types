@@ -27,11 +27,19 @@ export declare class BreadcrumbService {
     private breadcrumbsSubject;
     private updateBreadcrumbsSubscription;
     private activeComponent;
+    private crumbMenuIds;
     readonly breadcrumbs$: Observable<Array<BreadCrumb>>;
     readonly lastBreadcrumb$: Observable<BreadCrumb>;
     constructor(router: Router, activatedRoute: ActivatedRoute, translate: TranslateService, menuService: MenuService, activeComponentService: ActiveComponentService, customerNavService: CustomerNavigationService, store: Store<AppState>);
     private setActiveComponent;
     private update;
+    /**
+     * Drops a parent crumb the side menu no longer puts the page under. Routes
+     * keep their old nesting when the menu is regrouped (recipes are still at
+     * /features/recipes, device profiles at /profiles/deviceProfiles), so the
+     * trail follows the menu, not the URL.
+     */
+    private followMenu;
     private lastChild;
     private buildBreadCrumbs;
     private fullscreenHomeBreadcrumb;

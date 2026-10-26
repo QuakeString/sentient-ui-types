@@ -20,7 +20,7 @@ export declare enum AlarmRuleConditionType {
 export declare const AlarmRuleConditionTypeTranslationMap: Map<AlarmRuleConditionType, string>;
 export declare enum AlarmRuleExpressionType {
     SIMPLE = "SIMPLE",
-    TBEL = "TBEL"
+    RHAI = "RHAI"
 }
 export declare const FilterPredicateTypeTranslationMap: Map<FilterPredicateType, string>;
 export interface AlarmRule {

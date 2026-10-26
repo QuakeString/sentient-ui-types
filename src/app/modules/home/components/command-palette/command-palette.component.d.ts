@@ -100,6 +100,11 @@ export declare class CommandPaletteComponent implements OnInit, AfterViewInit {
     private scrollActiveIntoView;
     /** New results keep the selected row selected, when it is still there. */
     private setResultsKeepingActive;
+    /**
+     * A user kept in a fullscreen home dashboard may only open dashboards at
+     * /dashboard/:id; /dashboards/:id sends them back to the home dashboard.
+     */
+    private routeUrl;
     execute(item: PaletteItem, newTab: boolean): void;
     private buildGroups;
     private aiGroup;

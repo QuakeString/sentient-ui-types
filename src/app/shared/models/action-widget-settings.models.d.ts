@@ -26,7 +26,10 @@ export interface AlarmStatusSettings {
 }
 export interface TelemetryValueSettings {
     key: string;
+    keys?: string[];
 }
+/** The keys a Get value reads: `keys` when set, else the single `key`. */
+export declare const telemetryValueKeys: (settings: TelemetryValueSettings) => string[];
 export interface GetAttributeValueSettings extends TelemetryValueSettings {
     scope: AttributeScope | null;
 }

@@ -1,3 +1,4 @@
+import { InjectionToken } from '@angular/core';
 import { NotificationId } from '@shared/models/id/notification-id';
 import { NotificationRequestId } from '@shared/models/id/notification-request-id';
 import { UserId } from '@shared/models/id/user-id';
@@ -30,6 +31,7 @@ export interface NotificationInfo {
     alarmSeverity?: AlarmSeverity;
     alarmStatus?: AlarmStatus;
     alarmType?: string;
+    alarmId?: string;
     stateEntityId?: EntityId;
     acknowledged?: boolean;
     cleared?: boolean;
@@ -403,4 +405,12 @@ export interface NotificationUserSetting {
         [key: string]: boolean;
     };
 }
+/**
+ * Opens an alarm's details dialog by id. The dialog lives in the home
+ * module, which provides this; a notification card uses it when present.
+ */
+export interface AlarmDetailsOpener {
+    open(alarmId: string): void;
+}
+export declare const ALARM_DETAILS_OPENER: InjectionToken<AlarmDetailsOpener>;
 export {};
