@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { DataToValueType, GetValueAction, GetValueSettings } from '@shared/models/action-widget-settings.models';
 import { ValueType } from '@shared/models/constants';
+import { TranslateService } from '@ngx-translate/core';
 import { TargetDevice, widgetType } from '@shared/models/widget.models';
 import { AttributeScope, DataKeyType } from '@shared/models/telemetry/telemetry.models';
 import { IAliasController } from '@core/api/widget-api.models';
@@ -18,6 +19,7 @@ export declare class GetValueActionSettingsPanelComponent extends PageComponent 
     private widgetService;
     protected store: Store<AppState>;
     private destroyRef;
+    private translate;
     getValueSettings: GetValueSettings<any>;
     panelTitle: string;
     valueType: ValueType;
@@ -42,7 +44,11 @@ export declare class GetValueActionSettingsPanelComponent extends PageComponent 
     entityType: typeof EntityType;
     alarmSeverities: AlarmSeverity[];
     alarmSeverityTranslationMap: Map<AlarmSeverity, string>;
-    constructor(fb: UntypedFormBuilder, widgetService: WidgetService, store: Store<AppState>, destroyRef: DestroyRef);
+    constructor(fb: UntypedFormBuilder, widgetService: WidgetService, store: Store<AppState>, destroyRef: DestroyRef, translate: TranslateService);
+    /** What the AI script assist is told about this converter. */
+    readonly scriptAssistContext: () => {
+        [label: string]: string;
+    };
     ngOnInit(): void;
     cancel(): void;
     applyGetValueSettings(): void;

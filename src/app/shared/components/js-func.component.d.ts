@@ -13,6 +13,7 @@ import { TbPopoverService } from '@shared/components/popover.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ThemeService } from '@core/services/theme.service';
+import { ScriptAssistContext, ScriptAssistMode, ScriptAssistRequest, ScriptAssistService } from '@core/http/script-assist.service';
 import * as i0 from "@angular/core";
 export declare class JsFuncComponent implements OnInit, OnChanges, OnDestroy, ControlValueAccessor, Validator {
     elementRef: ElementRef;
@@ -26,6 +27,7 @@ export declare class JsFuncComponent implements OnInit, OnChanges, OnDestroy, Co
     private viewContainerRef;
     private http;
     private themeService;
+    private scriptAssist;
     javascriptEditorElmRef: ElementRef;
     private jsEditor;
     private initialCompleters;
@@ -50,6 +52,8 @@ export declare class JsFuncComponent implements OnInit, OnChanges, OnDestroy, Co
     disableUndefinedCheck: boolean;
     helpId: string;
     scriptLanguage: ScriptLanguage;
+    /** What the dialog around the editor knows, for script assist: label → value. */
+    assistContext: ScriptAssistContext;
     hideBrackets: boolean;
     hideLabel: boolean;
     withModules: boolean;
@@ -71,10 +75,21 @@ export declare class JsFuncComponent implements OnInit, OnChanges, OnDestroy, Co
     errorMarkers: number[];
     errorAnnotationId: number;
     private functionArgsString;
+    /** Script assist: the open panel's mode, if any. */
+    assistMode: ScriptAssistMode;
+    readonly assistAvailable$: Observable<boolean>;
+    /** Suggestions while typing (ghost text, Tab accepts). */
+    suggestOn: boolean;
+    private assistAvailable;
+    private assistAvailableSub;
+    private suggestTimer;
+    private suggestSub;
+    /** The shown suggestion: its text, the cursor it was made for, and where it goes. */
+    private ghost;
     private propagateChange;
     private _onTouched;
     hasErrors: boolean;
-    constructor(elementRef: ElementRef, utils: UtilsService, translate: TranslateService, store: Store<AppState>, raf: RafService, cd: ChangeDetectorRef, popoverService: TbPopoverService, renderer: Renderer2, viewContainerRef: ViewContainerRef, http: HttpClient, themeService: ThemeService);
+    constructor(elementRef: ElementRef, utils: UtilsService, translate: TranslateService, store: Store<AppState>, raf: RafService, cd: ChangeDetectorRef, popoverService: TbPopoverService, renderer: Renderer2, viewContainerRef: ViewContainerRef, http: HttpClient, themeService: ThemeService, scriptAssist: ScriptAssistService);
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     ngOnDestroy(): void;
@@ -113,7 +128,24 @@ export declare class JsFuncComponent implements OnInit, OnChanges, OnDestroy, Co
     private updateByChangesPropName;
     private updateHighlightRules;
     private updateJsWorkerGlobals;
+    /** The editor's state for the model: script, signature, error, context. */
+    readonly assistRequest: () => Omit<ScriptAssistRequest, "mode" | "instruction">;
+    assistHasError(): boolean;
+    openAssist(mode: ScriptAssistMode): void;
+    closeAssist(): void;
+    /** Puts the accepted script in the editor as one edit, so Ctrl+Z brings the old one back. */
+    acceptAssist(code: string): void;
+    toggleSuggest(): void;
+    /** The editor's error, for FIX: the last validation error, else the error annotations. */
+    private assistError;
+    /** Asks for a suggestion once the user pauses typing at the end of a line. */
+    private scheduleSuggestion;
+    private requestSuggestion;
+    private cancelSuggestion;
+    private clearSuggestion;
+    /** Tab takes the suggestion, Esc drops it; with none shown both keep their usual job. */
+    private setupSuggestionKeys;
     updateCompleters(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<JsFuncComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<JsFuncComponent, "tb-js-func", never, { "label": { "alias": "label"; "required": false; }; "functionTitle": { "alias": "functionTitle"; "required": false; }; "functionName": { "alias": "functionName"; "required": false; }; "functionArgs": { "alias": "functionArgs"; "required": false; }; "validationArgs": { "alias": "validationArgs"; "required": false; }; "resultType": { "alias": "resultType"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "fillHeight": { "alias": "fillHeight"; "required": false; }; "minHeight": { "alias": "minHeight"; "required": false; }; "editorCompleter": { "alias": "editorCompleter"; "required": false; }; "highlightRules": { "alias": "highlightRules"; "required": false; }; "globalVariables": { "alias": "globalVariables"; "required": false; }; "helpPopupStyle": { "alias": "helpPopupStyle"; "required": false; }; "disableUndefinedCheck": { "alias": "disableUndefinedCheck"; "required": false; }; "helpId": { "alias": "helpId"; "required": false; }; "scriptLanguage": { "alias": "scriptLanguage"; "required": false; }; "hideBrackets": { "alias": "hideBrackets"; "required": false; }; "hideLabel": { "alias": "hideLabel"; "required": false; }; "withModules": { "alias": "withModules"; "required": false; }; "noValidate": { "alias": "noValidate"; "required": false; }; "required": { "alias": "required"; "required": false; }; }, {}, never, ["[toolbarStartButton]", "[toolbarPrefixButton]", "[toolbarSuffixButton]"], false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<JsFuncComponent, "tb-js-func", never, { "label": { "alias": "label"; "required": false; }; "functionTitle": { "alias": "functionTitle"; "required": false; }; "functionName": { "alias": "functionName"; "required": false; }; "functionArgs": { "alias": "functionArgs"; "required": false; }; "validationArgs": { "alias": "validationArgs"; "required": false; }; "resultType": { "alias": "resultType"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "fillHeight": { "alias": "fillHeight"; "required": false; }; "minHeight": { "alias": "minHeight"; "required": false; }; "editorCompleter": { "alias": "editorCompleter"; "required": false; }; "highlightRules": { "alias": "highlightRules"; "required": false; }; "globalVariables": { "alias": "globalVariables"; "required": false; }; "helpPopupStyle": { "alias": "helpPopupStyle"; "required": false; }; "disableUndefinedCheck": { "alias": "disableUndefinedCheck"; "required": false; }; "helpId": { "alias": "helpId"; "required": false; }; "scriptLanguage": { "alias": "scriptLanguage"; "required": false; }; "assistContext": { "alias": "assistContext"; "required": false; }; "hideBrackets": { "alias": "hideBrackets"; "required": false; }; "hideLabel": { "alias": "hideLabel"; "required": false; }; "withModules": { "alias": "withModules"; "required": false; }; "noValidate": { "alias": "noValidate"; "required": false; }; "required": { "alias": "required"; "required": false; }; }, {}, never, ["[toolbarStartButton]", "[toolbarPrefixButton]", "[toolbarSuffixButton]"], false, never>;
 }
