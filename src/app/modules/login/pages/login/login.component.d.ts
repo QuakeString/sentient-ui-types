@@ -39,6 +39,8 @@ export declare class LoginComponent extends PageComponent implements OnInit {
     oauth2Clients: Array<OAuth2ClientLoginInfo>;
     constructor(store: Store<AppState>, authService: AuthService, fb: UntypedFormBuilder, router: Router, themeService: ThemeService, matDialog: MatDialog, backendConfigService: BackendConfigService, cd: ChangeDetectorRef, sanitizer: DomSanitizer);
     private static logoPart;
+    /** Wide tracking suits Latin, Greek and Cyrillic; it breaks joined scripts such as Arabic. */
+    isSpacedScript(text: string): boolean;
     get usernameInvalid(): boolean;
     checkCapsLock(event: KeyboardEvent): void;
     ngOnInit(): void;

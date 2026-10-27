@@ -35,7 +35,6 @@ import { TbPopoverService } from '@shared/components/popover.service';
 import { ILayoutController } from '@home/components/dashboard-page/layout/layout.models';
 import { TbPopoverComponent } from '@shared/components/popover.component';
 import { HasDirtyFlag } from '@core/guards/confirm-on-exit.guard';
-import { HttpClient } from '@angular/common/http';
 import { Timewindow } from '@shared/models/time/time.models';
 import * as i0 from "@angular/core";
 export declare class DashboardPageComponent extends PageComponent implements IDashboardController, HasDirtyFlag, OnInit, AfterViewInit, DoCheck, OnDestroy {
@@ -66,7 +65,6 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private cd;
     elRef: ElementRef;
     private injector;
-    private http;
     private dashboardReuseService;
     private homeService;
     LayoutType: typeof LayoutType;
@@ -229,7 +227,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private readonly widgetBarKeypress;
     private readonly widgetBarKeyup;
     private changeMobileSize;
-    constructor(store: Store<AppState>, window: Window, document: Document, breakpointObserver: BreakpointObserver, route: ActivatedRoute, router: Router, utils: UtilsService, dashboardUtils: DashboardUtilsService, entityService: EntityService, dialogService: DialogService, widgetComponentService: WidgetComponentService, dashboardService: DashboardService, itembuffer: ItemBufferService, importExport: ImportExportService, mobileService: MobileService, dialog: MatDialog, translate: TranslateService, popoverService: TbPopoverService, renderer: Renderer2, ngZone: NgZone, timewindowPreference: TimewindowPreferenceService, embeddedValue: any, overlay: Overlay, viewContainerRef: ViewContainerRef, cd: ChangeDetectorRef, elRef: ElementRef, injector: Injector, http: HttpClient, dashboardReuseService: DashboardReuseService, homeService: HomeService);
+    constructor(store: Store<AppState>, window: Window, document: Document, breakpointObserver: BreakpointObserver, route: ActivatedRoute, router: Router, utils: UtilsService, dashboardUtils: DashboardUtilsService, entityService: EntityService, dialogService: DialogService, widgetComponentService: WidgetComponentService, dashboardService: DashboardService, itembuffer: ItemBufferService, importExport: ImportExportService, mobileService: MobileService, dialog: MatDialog, translate: TranslateService, popoverService: TbPopoverService, renderer: Renderer2, ngZone: NgZone, timewindowPreference: TimewindowPreferenceService, embeddedValue: any, overlay: Overlay, viewContainerRef: ViewContainerRef, cd: ChangeDetectorRef, elRef: ElementRef, injector: Injector, dashboardReuseService: DashboardReuseService, homeService: HomeService);
     ngOnInit(): void;
     ngAfterViewInit(): void;
     private prefetchWidgetTypes;
@@ -486,6 +484,6 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     get currentBreakpointValue(): string;
     private parseBreakpointsResponse;
     private isMobileSize;
-    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardPageComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardPageComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DashboardPageComponent, "tb-dashboard-page", never, { "embedded": { "alias": "embedded"; "required": false; }; "currentState": { "alias": "currentState"; "required": false; }; "hideToolbar": { "alias": "hideToolbar"; "required": false; }; "syncStateWithQueryParam": { "alias": "syncStateWithQueryParam"; "required": false; }; "hideMainToolbar": { "alias": "hideMainToolbar"; "required": false; }; "dashboard": { "alias": "dashboard"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; "parentAliasController": { "alias": "parentAliasController"; "required": false; }; }, {}, never, never, false, never>;
 }
