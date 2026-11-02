@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, ElementRef, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { AiAssistantStore } from './ai-assistant.store';
 import { ViewportInsetService } from '@core/services/viewport-inset.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import * as i0 from "@angular/core";
 type ResizeEdge = 'n' | 's' | 'e' | 'w' | 'ne' | 'nw' | 'se' | 'sw';
 /**
@@ -22,6 +23,7 @@ export declare class AiAssistantHostComponent implements OnInit, OnDestroy {
     private insets;
     private cd;
     private zone;
+    private overlayContainer;
     private elRef;
     available: boolean;
     open: boolean;
@@ -45,7 +47,7 @@ export declare class AiAssistantHostComponent implements OnInit, OnDestroy {
     private homeNext;
     private lastPrefs;
     private lastButtons;
-    constructor(store: AiAssistantStore, insets: ViewportInsetService, cd: ChangeDetectorRef, zone: NgZone, elRef: ElementRef<HTMLElement>);
+    constructor(store: AiAssistantStore, insets: ViewportInsetService, cd: ChangeDetectorRef, zone: NgZone, overlayContainer: OverlayContainer, elRef: ElementRef<HTMLElement>);
     get docked(): boolean;
     ngOnInit(): void;
     ngOnDestroy(): void;

@@ -35,6 +35,8 @@ export declare class TbEditorCompleter implements Ace.Completer {
     constructor(editorCompletions: TbEditorCompletions);
     updateCompletions(completions: TbEditorCompletions): void;
     getCompletions(editor: Ace.Editor, session: Ace.EditSession, position: Ace.Point, prefix: string, callback: Ace.CompleterCallback): void;
+    /** Whether `path` (e.g. `data` or `ctx.args`) names an entry with members. */
+    hasMembers(path: string): boolean;
     private resolvePath;
     private prepareCompletions;
     private toAceCompletionsList;

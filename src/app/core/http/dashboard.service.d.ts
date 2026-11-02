@@ -33,6 +33,7 @@ export declare class DashboardService {
     private window;
     stDiffObservable: Observable<number>;
     currentUrl: string;
+    private prefetchedBundle;
     constructor(http: HttpClient, primedResponses: PrimedResponseService, router: Router, window: Window);
     getTenantDashboards(pageLink: PageLink, includeCustomers?: boolean, config?: RequestConfig, dashboardType?: DashboardType): Observable<PageData<DashboardInfo>>;
     getTenantDashboardsByTenantId(tenantId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<DashboardInfo>>;
@@ -55,6 +56,12 @@ export declare class DashboardService {
      *  the bundle did not cover still goes to the network as before. The
      *  dashboard's ETag rides along exactly as in getDashboardWithEtag. */
     getDashboardBundle(dashboardId: string, config?: RequestConfig): Observable<Dashboard>;
+    /** When the app starts on a dashboard URL, requests that dashboard's bundle
+     *  at once: it then loads in parallel with the start-up calls, the home
+     *  chunk and the route guards instead of after them. The resolver takes the
+     *  request over (getDashboardBundle); unclaimed, it is dropped. Returns the
+     *  dashboard id, or null when the URL is not a dashboard. */
+    prefetchBundleForUrl(path: string): string;
     exportDashboard(dashboardId: string, includeResources?: boolean, config?: RequestConfig): Observable<Dashboard>;
     getDashboardInfo(dashboardId: string, config?: RequestConfig): Observable<DashboardInfo>;
     saveDashboard(dashboard: Dashboard, config?: RequestConfig): Observable<Dashboard>;

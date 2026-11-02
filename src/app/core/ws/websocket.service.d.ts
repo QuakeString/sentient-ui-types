@@ -35,6 +35,14 @@ export declare abstract class WebsocketService<T extends WsSubscriber> implement
     private flushScheduled;
     protected publishCommands(): void;
     private flushCommands;
+    /**
+     * Opens and authenticates the socket ahead of the first subscription, for
+     * a page about to subscribe (a dashboard while its bundle loads and its
+     * widgets are built): the connect + auth round trips then overlap that
+     * work instead of following it. Closes after the usual idle timeout if
+     * nothing subscribes.
+     */
+    warmUp(): void;
     private static immediateFlush;
     private checkToClose;
     private reset;

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { IAliasController } from '@core/api/widget-api.models';
 import { TargetDevice } from '@shared/models/widget.models';
 import { EntityService } from '@core/http/entity.service';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import * as i0 from "@angular/core";
 export declare class DeviceKeyAutocompleteComponent extends PageComponent implements OnInit, ControlValueAccessor, OnChanges {
@@ -47,6 +47,8 @@ export declare class DeviceKeyAutocompleteComponent extends PageComponent implem
     get keys(): string[];
     addKey(event: MatChipInputEvent): void;
     keySelected(event: MatAutocompleteSelectedEvent): void;
+    /** Double-click a chip to rename its key; an empty name removes it. */
+    editKey(key: string, event: MatChipEditedEvent): void;
     removeKey(key: string): void;
     private pushKey;
     clearKey(): void;

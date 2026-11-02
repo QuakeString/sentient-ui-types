@@ -101,6 +101,8 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     };
     toastTargetId: string;
     private widgetResize$;
+    /** The container size the ResizeObserver last reported. */
+    private observedSize;
     private cssParser;
     private rxSubscriptions;
     /** A resize that came while the left menu animated (see the widget's ResizeObserver). */

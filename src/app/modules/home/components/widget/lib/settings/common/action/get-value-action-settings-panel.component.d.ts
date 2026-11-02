@@ -13,6 +13,8 @@ import { IAliasController } from '@core/api/widget-api.models';
 import { WidgetService } from '@core/http/widget.service';
 import { AlarmSeverity } from '@shared/models/alarm.models';
 import { EntityType } from '@shared/models/entity-type.models';
+import { TbEditorCompleter } from '@shared/models/ace/completion.models';
+import { AceHighlightRules } from '@shared/models/ace/ace.models';
 import * as i0 from "@angular/core";
 export declare class GetValueActionSettingsPanelComponent extends PageComponent implements OnInit {
     private fb;
@@ -49,6 +51,13 @@ export declare class GetValueActionSettingsPanelComponent extends PageComponent 
     readonly scriptAssistContext: () => {
         [label: string]: string;
     };
+    /** Suggests the picked keys after `data.` in the converter. */
+    readonly dataCompleter: TbEditorCompleter;
+    /** Marks `data.key` and `data['key']` for the picked keys. */
+    dataHighlightRules: AceHighlightRules;
+    private completedKeys;
+    /** An empty text is a value too: a text symbol then shows its own static text. */
+    get valueRequired(): boolean;
     ngOnInit(): void;
     cancel(): void;
     applyGetValueSettings(): void;
@@ -57,6 +66,7 @@ export declare class GetValueActionSettingsPanelComponent extends PageComponent 
     get multipleKeys(): boolean;
     getParseValueFunctionHelpId(): string;
     private updateValidators;
+    private updateDataCompletions;
     static ɵfac: i0.ɵɵFactoryDeclaration<GetValueActionSettingsPanelComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<GetValueActionSettingsPanelComponent, "tb-get-value-action-settings-panel", never, { "getValueSettings": { "alias": "getValueSettings"; "required": false; }; "panelTitle": { "alias": "panelTitle"; "required": false; }; "valueType": { "alias": "valueType"; "required": false; }; "trueLabel": { "alias": "trueLabel"; "required": false; }; "falseLabel": { "alias": "falseLabel"; "required": false; }; "stateLabel": { "alias": "stateLabel"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "targetDevice": { "alias": "targetDevice"; "required": false; }; "widgetType": { "alias": "widgetType"; "required": false; }; "popover": { "alias": "popover"; "required": false; }; }, { "getValueSettingsApplied": "getValueSettingsApplied"; }, never, never, false, never>;
 }

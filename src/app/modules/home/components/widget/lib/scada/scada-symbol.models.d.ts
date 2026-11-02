@@ -10,6 +10,16 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { RafService } from '@core/services/raf.service';
 import { FormProperty } from '@shared/models/dynamic-form.models';
 import { TbUnit } from '@shared/models/unit.models';
+/** requestAnimationFrame / cancelAnimationFrame handed to symbol scripts. */
+export interface ScadaFrameFunctions {
+    requestAnimationFrame: (callback: FrameRequestCallback) => number;
+    cancelAnimationFrame: (id: number) => void;
+}
+export interface ScadaTextBox {
+    width: number;
+    ascent: number;
+    descent: number;
+}
 export interface ScadaSymbolApi {
     generateElementId: () => string;
     formatValue(value: any, dec?: number, units?: string, showZeroDecimals?: boolean): string | undefined;
@@ -39,6 +49,7 @@ export interface ScadaSymbolApi {
         y: number;
     };
     measureText: (text: string, font: Partial<Font>) => number;
+    measureTextBox?: (text: string, font: Partial<Font>) => ScadaTextBox;
 }
 export interface ScadaSymbolContext {
     api: ScadaSymbolApi;
@@ -53,8 +64,8 @@ export interface ScadaSymbolContext {
     };
     svg: Svg;
 }
-export type ScadaSymbolStateRenderFunction = (ctx: ScadaSymbolContext, svg: Svg) => void;
-export type ScadaSymbolTagStateRenderFunction = (ctx: ScadaSymbolContext, element: Element) => void;
+export type ScadaSymbolStateRenderFunction = (ctx: ScadaSymbolContext, svg: Svg, requestAnimationFrame?: ScadaFrameFunctions['requestAnimationFrame'], cancelAnimationFrame?: ScadaFrameFunctions['cancelAnimationFrame']) => void;
+export type ScadaSymbolTagStateRenderFunction = (ctx: ScadaSymbolContext, element: Element, requestAnimationFrame?: ScadaFrameFunctions['requestAnimationFrame'], cancelAnimationFrame?: ScadaFrameFunctions['cancelAnimationFrame']) => void;
 export type ScadaSymbolActionTrigger = 'click' | 'press' | 'release';
 export type ScadaSymbolActionFunction = (ctx: ScadaSymbolContext, element: Element, event: Event) => void;
 export interface ScadaSymbolAction {
@@ -196,6 +207,8 @@ export declare class ScadaSymbolObject {
     private stateValueSubjects;
     private valueProcessor;
     private readonly shapeResize$;
+    /** The root element's content box as the ResizeObserver last reported it. */
+    private observedSize;
     private readonly destroy$;
     private themeListener;
     private lastIsDark;
@@ -209,6 +222,7 @@ export declare class ScadaSymbolObject {
     private flipV;
     private performInit;
     private destroyed;
+    private readonly frameFns;
     constructor(rootElement: HTMLElement, ctx: WidgetContext, iconRegistry: MatIconRegistry, raf: RafService, svgContent: string, inputSettings: ScadaSymbolObjectSettings, callbacks: ScadaSymbolObjectCallbacks, simulated: boolean, symbolTransform?: {
         rotation?: number;
         flipHorizontal?: boolean;
@@ -221,9 +235,13 @@ export declare class ScadaSymbolObject {
     private docHidden;
     private docVisibilityListener;
     private visibility$;
+    private onScreenWatcher;
+    private offScreenPaused;
+    private offScreenSmilPaused;
     private renderSuppressed;
     private renderDirty;
     private rebaking;
+    private setOnScreen;
     /** Owner-driven suppression: call before hiding/detaching the symbol. */
     pause(): void;
     /** Owner-driven resume: rebakes if anything was missed while paused. */

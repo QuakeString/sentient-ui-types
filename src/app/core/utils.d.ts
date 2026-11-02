@@ -93,6 +93,8 @@ export declare const genNextLabelForDataKeys: (name: string, dataKeys: DataKey[]
 export declare const getOS: () => string;
 export declare const isSafari: () => boolean;
 export declare const isFirefox: () => boolean;
+/** Chrome, Edge, Opera and other Blink browsers. */
+export declare const isChromium: () => boolean;
 export declare const camelCase: (str: string) => string;
 export declare const convertKeysToCamelCase: (obj: Record<string, any>) => Record<string, any>;
 export declare const unwrapModule: (module: any) => any;

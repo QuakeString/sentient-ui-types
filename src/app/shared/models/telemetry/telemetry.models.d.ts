@@ -271,6 +271,7 @@ export declare class TelemetryPluginCmdsWrapper implements CmdWrapper {
     private static popCmds;
     setAuth(token: string): void;
     hasCommands(): boolean;
+    hasAuth(): boolean;
     clear(): void;
     preparePublishCommands(maxCommands: number, maxBytes?: number): TelemetryPluginCmdsWrapper;
 }
