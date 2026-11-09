@@ -26,6 +26,7 @@ export declare class LoginComponent extends PageComponent implements OnInit {
     isTauri: boolean;
     currentBackend: string;
     version: any;
+    releaseUrl: string;
     helpUrl: string;
     showPassword: boolean;
     capsLockOn: boolean;

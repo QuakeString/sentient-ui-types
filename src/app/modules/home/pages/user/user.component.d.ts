@@ -9,6 +9,8 @@ import { EntityTableConfig } from '@home/models/entity/entities-table-config.mod
 import { TranslateService } from '@ngx-translate/core';
 import { EntityGroup } from '@shared/models/entity-group.model';
 import { EntityGroupService } from '@core/http/entity-group.service';
+import { UserService } from '@core/http/user.service';
+import { DialogService } from '@core/services/dialog.service';
 import * as i0 from "@angular/core";
 export declare class UserComponent extends EntityComponent<User> {
     protected store: Store<AppState>;
@@ -18,18 +20,25 @@ export declare class UserComponent extends EntityComponent<User> {
     protected cd: ChangeDetectorRef;
     protected translate: TranslateService;
     private entityGroupService;
+    private userService;
+    private dialogService;
     authority: typeof Authority;
     currentGroups: EntityGroup[];
+    /** Whether the shown user has two-factor authentication set up. */
+    twoFaEnabled: boolean;
+    private twoFaUserId;
     private authUserId;
     loginAsUserEnabled$: import("rxjs").Observable<boolean>;
-    constructor(store: Store<AppState>, entityValue: User, entitiesTableConfigValue: EntityTableConfig<User>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, translate: TranslateService, entityGroupService: EntityGroupService);
+    constructor(store: Store<AppState>, entityValue: User, entitiesTableConfigValue: EntityTableConfig<User>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, translate: TranslateService, entityGroupService: EntityGroupService, userService: UserService, dialogService: DialogService);
     isSelf(): boolean;
     hideDelete(): boolean;
     isUserCredentialsEnabled(): boolean;
     isUserActivated(): boolean;
     buildForm(entity: User): UntypedFormGroup;
     updateForm(entity: User): void;
+    private loadTwoFaStatus;
+    resetTwoFa($event: Event): void;
     onUserIdCopied($event: any): void;
-    static ɵfac: i0.ɵɵFactoryDeclaration<UserComponent, [null, { optional: true; }, { optional: true; }, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<UserComponent, [null, { optional: true; }, { optional: true; }, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<UserComponent, "tb-user", never, {}, {}, never, never, false, never>;
 }

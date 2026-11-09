@@ -13,6 +13,7 @@ export declare abstract class BasicActionWidgetComponent implements OnInit, OnDe
     ctx: WidgetContext;
     widgetTitlePanel: TemplateRef<any>;
     private loadingSubject;
+    private releaseFirstLoad;
     private valueGetters;
     private valueActions;
     /**

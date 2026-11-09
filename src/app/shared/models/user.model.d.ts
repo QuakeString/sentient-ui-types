@@ -38,6 +38,11 @@ export interface ActivationLinkInfo {
     value: string;
     ttlMs: number;
 }
+/** Two-factor methods a user has set up (administrator view). */
+export interface UserTwoFaStatus {
+    enabled: boolean;
+    providers: string[];
+}
 export interface AuthUser {
     sub: string;
     scopes: string[];

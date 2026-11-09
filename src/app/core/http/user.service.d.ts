@@ -1,5 +1,5 @@
 import { RequestConfig } from './http-utils';
-import { ActivationLinkInfo, User, UserEmailInfo } from '@shared/models/user.model';
+import { ActivationLinkInfo, User, UserEmailInfo, UserTwoFaStatus } from '@shared/models/user.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { PageLink } from '@shared/models/page/page-link';
@@ -22,6 +22,8 @@ export declare class UserService {
     sendActivationEmail(email: string, config?: RequestConfig): Observable<Object>;
     setUserCredentialsEnabled(userId: string, userCredentialsEnabled?: boolean, config?: RequestConfig): Observable<any>;
     setUserPassword(userId: string, password: string, config?: RequestConfig): Observable<any>;
+    getUserTwoFaStatus(userId: string, config?: RequestConfig): Observable<UserTwoFaStatus>;
+    resetUserTwoFa(userId: string, config?: RequestConfig): Observable<UserTwoFaStatus>;
     findUsersByQuery(pageLink: PageLink, config?: RequestConfig): Observable<PageData<UserEmailInfo>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<UserService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<UserService>;

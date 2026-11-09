@@ -149,6 +149,8 @@ export type ScadaSymbolObjectSettings = {
 };
 export interface ScadaSymbolObjectCallbacks {
     onScadaSymbolObjectLoadingState: (loading: boolean) => void;
+    /** The first values are in, or the symbol has none to wait for. */
+    onScadaSymbolObjectFirstLoad?: () => void;
     onScadaSymbolObjectError: (error: string) => void;
     onScadaSymbolObjectMessage: (message: string) => void;
     onScadaSymbolObjectOperate?: (event: Event, request: ScadaSymbolOperateRequest) => void;

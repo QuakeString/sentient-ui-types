@@ -28,6 +28,9 @@ export declare class MobileAppQrcodeWidgetComponent extends PageComponent implem
     private deepLinkTTLTimeoutID;
     googlePlayLink: string;
     appStoreLink: string;
+    /** The default SENTIENT app ships as an APK, not on Google Play: the
+     * Google Play badge is only shown for a real Play Store listing. */
+    get isGooglePlayLink(): boolean;
     previewMode: boolean;
     badgePosition: typeof BadgePosition;
     showBadgeContainer: boolean;

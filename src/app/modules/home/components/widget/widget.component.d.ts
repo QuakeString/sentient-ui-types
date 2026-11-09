@@ -1,3 +1,4 @@
+import { WidgetFirstLoadService } from '@core/services/widget-first-load.service';
 import { HomeService } from '@core/services/home.service';
 import { TimewindowPreferenceService } from '@core/services/timewindow-preference.service';
 import { ChangeDetectorRef, ComponentRef, ElementRef, Injector, NgZone, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
@@ -64,6 +65,7 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private cd;
     private http;
     private homeService;
+    private widgetFirstLoad;
     private static openStateDialogs;
     widgetTitlePanel: TemplateRef<any>;
     widgetHeaderActionsPanel: TemplateRef<any>;
@@ -82,7 +84,17 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     typeParameters: WidgetTypeParameters;
     widgetTypeInstance: WidgetTypeInstance;
     widgetErrorData: ExceptionData;
-    loadingData: boolean;
+    private loadingDataValue;
+    get loadingData(): boolean;
+    set loadingData(loading: boolean);
+    /** Has not had its first data yet. */
+    firstLoadPending: boolean;
+    /** Still no first data after FIRST_LOAD_PATIENCE_MS. */
+    firstLoadStuck: boolean;
+    /** Holds by the widget's own content, whose values arrive after the widget's data. */
+    firstLoadHolds: number;
+    private endFirstLoadCount;
+    private firstLoadTimer;
     displayNoData: boolean;
     noDataDisplayMessageText: string;
     hoverMessageText: string;
@@ -109,7 +121,7 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private resizePending;
     private pendingResize;
     private shellResizingSubscribed;
-    constructor(store: Store<AppState>, timewindowPreference: TimewindowPreferenceService, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient, homeService: HomeService);
+    constructor(store: Store<AppState>, timewindowPreference: TimewindowPreferenceService, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient, homeService: HomeService, widgetFirstLoad: WidgetFirstLoadService);
     ngOnInit(): void;
     headerButtonStyle(buttonType: WidgetHeaderActionButtonType, customButtonStyle: {
         [key: string]: string;
@@ -134,6 +146,10 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private reInitImpl;
     private initialize;
     private destroyDynamicWidgetComponent;
+    private startFirstLoad;
+    private holdFirstLoad;
+    private scheduleFirstLoadCheck;
+    private finishFirstLoad;
     private handleWidgetException;
     private displayMessage;
     private clearMessage;
@@ -159,6 +175,6 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private processResourcesLoadErrors;
     private getActiveEntityInfo;
     private checkSize;
-    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<WidgetComponent, "tb-widget", never, { "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; "widgetHeaderActionsPanel": { "alias": "widgetHeaderActionsPanel"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isPreview": { "alias": "isPreview"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "dashboardWidget": { "alias": "dashboardWidget"; "required": false; }; "widget": { "alias": "widget"; "required": false; }; }, {}, never, never, false, never>;
 }

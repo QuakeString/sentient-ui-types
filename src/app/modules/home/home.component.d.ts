@@ -12,11 +12,13 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { LicenseService } from '@core/http/license.service';
+import { WidgetFirstLoadService } from '@core/services/widget-first-load.service';
 import { HomeService } from '@core/services/home.service';
 import { CommandPaletteService } from '@home/components/command-palette/command-palette.service';
 import * as i0 from "@angular/core";
 export declare class HomeComponent extends PageComponent implements AfterViewInit, OnInit, OnDestroy {
     protected store: Store<AppState>;
+    widgetFirstLoad: WidgetFirstLoadService;
     private window;
     private activeComponentService;
     private fb;
@@ -53,7 +55,7 @@ export declare class HomeComponent extends PageComponent implements AfterViewIni
     textSearch: import("@angular/forms").FormControl<string>;
     hideLoadingBar: boolean;
     private destroy$;
-    constructor(store: Store<AppState>, window: Window, activeComponentService: ActiveComponentService, fb: FormBuilder, router: Router, breakpointObserver: BreakpointObserver, dialog: MatDialog, licenseService: LicenseService, homeService: HomeService, elementRef: ElementRef<HTMLElement>, cd: ChangeDetectorRef, commandPalette: CommandPaletteService, ngZone: NgZone, sanitizer: DomSanitizer);
+    constructor(store: Store<AppState>, widgetFirstLoad: WidgetFirstLoadService, window: Window, activeComponentService: ActiveComponentService, fb: FormBuilder, router: Router, breakpointObserver: BreakpointObserver, dialog: MatDialog, licenseService: LicenseService, homeService: HomeService, elementRef: ElementRef<HTMLElement>, cd: ChangeDetectorRef, commandPalette: CommandPaletteService, ngZone: NgZone, sanitizer: DomSanitizer);
     /**
      * One-shot license-prompt dialog (Phase 5C+5E). Fires after sys_admin
      * login when no license is active. Tenant-scoped users never see it

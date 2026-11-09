@@ -51,6 +51,18 @@ export declare function mergeDeep<T>(target: T, ...sources: T[]): T;
 export declare function substituteStateKeyParams(text: string, stateParams: {
     [key: string]: any;
 }, skipReservedLabelParams?: boolean): string;
+export declare function substituteStateParamNumber(value: any, stateParams: {
+    [key: string]: any;
+}): any;
+export declare function substituteStateParamUnit(unit: any, stateParams: {
+    [key: string]: any;
+}): any;
+export declare function expandSettingsStateParams<T>(settings: T, stateParams: {
+    [key: string]: any;
+}, tokenNames?: Set<string>, depth?: number): T;
+export declare function stateParamsKey(stateParams: {
+    [key: string]: any;
+}, tokenNames: Set<string>): string;
 export declare function resolveUnsuppliedLabelParams(label: string, keyName: string, siblingLabels: Set<string>): string;
 export declare function mergeDeepIgnoreArray<T>(target: T, ...sources: T[]): T;
 export declare function guid(): string;

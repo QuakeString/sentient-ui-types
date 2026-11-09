@@ -89,6 +89,9 @@ export declare class WidgetContext {
     get aliasController(): IAliasController;
     get dashboardTimewindow(): Timewindow;
     get widgetConfig(): WidgetConfig;
+    private stateParamSettingsCache;
+    private get ownStateParams();
+    private settingsWithStateParams;
     get settings(): any;
     get units(): TbUnit;
     get decimals(): number;
@@ -144,6 +147,12 @@ export declare class WidgetContext {
     height: number;
     $scope: IDynamicWidgetComponent;
     isEdit: boolean;
+    /**
+     * Content whose values arrive after the widget's own data calls this while it
+     * waits, and the returned function when they are in. Until then the widget
+     * shows that what it draws is not a reading yet.
+     */
+    holdFirstLoad?: () => () => void;
     isPreview: boolean;
     isMobile: boolean;
     toastTargetId: string;

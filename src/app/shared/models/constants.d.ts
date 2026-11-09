@@ -41,6 +41,8 @@ export declare const MediaBreakpoints: {
 };
 export declare const resolveBreakpoint: (breakpoint: string) => string;
 export declare const helpBaseUrl = "https://sentient.invenia.in";
+/** A release's notes; a build that is not a release (e.g. master-acf57dd9) gets the list of releases. */
+export declare const releaseNotesUrl: (version: string) => string;
 export declare const docPlatformPrefix = "";
 export declare const HelpLinks: {
     linksMap: {

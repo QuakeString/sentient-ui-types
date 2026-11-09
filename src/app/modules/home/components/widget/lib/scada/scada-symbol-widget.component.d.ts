@@ -22,6 +22,7 @@ export declare class ScadaSymbolWidgetComponent implements OnInit, AfterViewInit
     ctx: WidgetContext;
     widgetTitlePanel: TemplateRef<any>;
     private loadingSubject;
+    private releaseFirstLoad;
     private settings;
     private scadaSymbolContent$;
     backgroundStyle$: Observable<ComponentStyle>;
@@ -48,6 +49,7 @@ export declare class ScadaSymbolWidgetComponent implements OnInit, AfterViewInit
         padding?: string;
     }): void;
     onInit(): void;
+    onScadaSymbolObjectFirstLoad(): void;
     onScadaSymbolObjectLoadingState(loading: boolean): void;
     onScadaSymbolObjectError(error: string): void;
     private showCompactError;

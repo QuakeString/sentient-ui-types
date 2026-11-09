@@ -76,6 +76,19 @@ import * as TranslateCore from '@ngx-translate/core';
 import * as MatDateTimePicker from '@mat-datetimepicker/core';
 import _moment from 'moment';
 import * as tslib from 'tslib';
+import * as EchartsCore from 'echarts/core';
+import { BarChart, CustomChart, LineChart, PieChart, RadarChart } from 'echarts/charts';
+import {
+  DataZoomComponent,
+  GridComponent,
+  MarkLineComponent,
+  PolarComponent,
+  RadarComponent,
+  TooltipComponent,
+  VisualMapComponent
+} from 'echarts/components';
+import { LabelLayout } from 'echarts/features';
+import { CanvasRenderer, SVGRenderer } from 'echarts/renderers';
 
 import * as TbCore from '@core/public-api';
 import * as TbShared from '@shared/public-api';
@@ -342,6 +355,19 @@ import { IModulesMap } from '@modules/common/modules-map.models';
 import { Observable, of } from 'rxjs';
 import { isJSResourceUrl } from '@shared/public-api';
 
+// ECharts for extensions (the gateway extension's statistics chart): the
+// parts the UI already bundles for its own charts, so exposing them costs
+// nothing and an extension no longer ships a second ECharts. A part not
+// listed here is undefined to an extension: add it here (and to the UI's
+// own use) before an extension imports it.
+const EchartsCharts = { BarChart, CustomChart, LineChart, PieChart, RadarChart };
+const EchartsComponents = {
+  DataZoomComponent, GridComponent, MarkLineComponent, PolarComponent, RadarComponent,
+  TooltipComponent, VisualMapComponent
+};
+const EchartsFeatures = { LabelLayout };
+const EchartsRenderers = { CanvasRenderer, SVGRenderer };
+
 class ModulesMap implements IModulesMap {
 
   private initialized = false;
@@ -406,6 +432,11 @@ class ModulesMap implements IModulesMap {
     '@mat-datetimepicker/core': MatDateTimePicker,
     moment: _moment,
     tslib,
+    'echarts/core': EchartsCore,
+    'echarts/charts': EchartsCharts,
+    'echarts/components': EchartsComponents,
+    'echarts/features': EchartsFeatures,
+    'echarts/renderers': EchartsRenderers,
 
     '@core/public-api': TbCore,
     '@shared/public-api': TbShared,

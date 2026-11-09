@@ -1,4 +1,6 @@
 import { TimewindowPreferenceService } from '@core/services/timewindow-preference.service';
+import { DashboardDraft, DashboardDraftService } from '@core/services/dashboard-draft.service';
+import { WidgetFirstLoadService } from '@core/services/widget-first-load.service';
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, Injector, NgZone, DoCheck, OnDestroy, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
 import { Store } from '@ngrx/store';
@@ -66,7 +68,9 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     elRef: ElementRef;
     private injector;
     private dashboardReuseService;
+    private draftService;
     private homeService;
+    widgetFirstLoad: WidgetFirstLoadService;
     LayoutType: typeof LayoutType;
     private destroyed;
     private forcePristine;
@@ -119,10 +123,22 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     saving: boolean;
     private static readonly SAVE_TIMEOUT_MS;
     prevDashboard: Dashboard;
-    private undoStack;
-    private redoStack;
-    private pendingUndoSnapshot;
     private static readonly UNDO_DEPTH;
+    private static readonly UNDO_MAX_BYTES;
+    private undoHistory;
+    private pendingUndoSnapshot;
+    /** A draft found for this dashboard, offered for restore. */
+    draftNotice: DashboardDraft;
+    /** The dashboard was saved on the server after the draft was taken. */
+    draftNoticeNewer: boolean;
+    private lastDraftJson;
+    private draftBaseHash;
+    private draftWritten;
+    private draftTimer;
+    private draftInterval;
+    private draftCheck;
+    private static readonly DRAFT_DEBOUNCE_MS;
+    private static readonly DRAFT_INTERVAL_MS;
     iframeMode: boolean;
     widgetEditMode: boolean;
     singlePageMode: boolean;
@@ -158,6 +174,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private static readonly DEFAULT_LAYER_DEFINITIONS;
     isToolbarOpened: boolean;
     sentientVersion: string;
+    sentientReleaseUrl: string;
     isToolbarOpenedAnimate: boolean;
     isRightLayoutOpened: boolean;
     editingWidget: Widget;
@@ -227,7 +244,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private readonly widgetBarKeypress;
     private readonly widgetBarKeyup;
     private changeMobileSize;
-    constructor(store: Store<AppState>, window: Window, document: Document, breakpointObserver: BreakpointObserver, route: ActivatedRoute, router: Router, utils: UtilsService, dashboardUtils: DashboardUtilsService, entityService: EntityService, dialogService: DialogService, widgetComponentService: WidgetComponentService, dashboardService: DashboardService, itembuffer: ItemBufferService, importExport: ImportExportService, mobileService: MobileService, dialog: MatDialog, translate: TranslateService, popoverService: TbPopoverService, renderer: Renderer2, ngZone: NgZone, timewindowPreference: TimewindowPreferenceService, embeddedValue: any, overlay: Overlay, viewContainerRef: ViewContainerRef, cd: ChangeDetectorRef, elRef: ElementRef, injector: Injector, dashboardReuseService: DashboardReuseService, homeService: HomeService);
+    constructor(store: Store<AppState>, window: Window, document: Document, breakpointObserver: BreakpointObserver, route: ActivatedRoute, router: Router, utils: UtilsService, dashboardUtils: DashboardUtilsService, entityService: EntityService, dialogService: DialogService, widgetComponentService: WidgetComponentService, dashboardService: DashboardService, itembuffer: ItemBufferService, importExport: ImportExportService, mobileService: MobileService, dialog: MatDialog, translate: TranslateService, popoverService: TbPopoverService, renderer: Renderer2, ngZone: NgZone, timewindowPreference: TimewindowPreferenceService, embeddedValue: any, overlay: Overlay, viewContainerRef: ViewContainerRef, cd: ChangeDetectorRef, elRef: ElementRef, injector: Injector, dashboardReuseService: DashboardReuseService, draftService: DashboardDraftService, homeService: HomeService, widgetFirstLoad: WidgetFirstLoadService);
     ngOnInit(): void;
     ngAfterViewInit(): void;
     private prefetchWidgetTypes;
@@ -364,12 +381,29 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     canUndo(): boolean;
     canRedo(): boolean;
     private resetUndo;
-    private pushSnapshot;
     pushUndoSnapshot(): void;
     beginWidgetChange(): void;
     commitWidgetChange(): void;
     undo(): void;
     redo(): void;
+    /** Only a saved dashboard opened for editing by a signed-in user keeps a draft. */
+    private canKeepDraft;
+    private draftKey;
+    onVisibilityChange(): void;
+    onPageHide(): void;
+    /** This page no longer writes its dashboard's draft (the draft itself stays). */
+    private releaseLiveDraft;
+    private startDraftTimers;
+    private stopDraftTimers;
+    private scheduleDraftSave;
+    private writeDraft;
+    /** Forgets this edit session's draft (after a save or an agreed discard). */
+    private clearDraft;
+    private checkForDraft;
+    restoreDraft(): void;
+    discardDraft(): void;
+    /** Hides the notice; the draft is offered again next time. */
+    dismissDraftNotice(): void;
     /** Where this user's own default time window for the dashboard is kept. */
     timewindowPreferenceKey(): string;
     private restoreDashboardSnapshot;
@@ -484,6 +518,6 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     get currentBreakpointValue(): string;
     private parseBreakpointsResponse;
     private isMobileSize;
-    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardPageComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<DashboardPageComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DashboardPageComponent, "tb-dashboard-page", never, { "embedded": { "alias": "embedded"; "required": false; }; "currentState": { "alias": "currentState"; "required": false; }; "hideToolbar": { "alias": "hideToolbar"; "required": false; }; "syncStateWithQueryParam": { "alias": "syncStateWithQueryParam"; "required": false; }; "hideMainToolbar": { "alias": "hideMainToolbar"; "required": false; }; "dashboard": { "alias": "dashboard"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; "parentAliasController": { "alias": "parentAliasController"; "required": false; }; }, {}, never, never, false, never>;
 }
