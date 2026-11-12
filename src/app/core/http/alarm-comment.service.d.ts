@@ -12,5 +12,5 @@ export declare class AlarmCommentService {
     getAlarmComments(alarmId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<AlarmCommentInfo>>;
     deleteAlarmComments(alarmId: string, commentId: string, config?: RequestConfig): Observable<void>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AlarmCommentService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AlarmCommentService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

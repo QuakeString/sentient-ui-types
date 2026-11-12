@@ -30,6 +30,6 @@ export declare class EntityGroupMembersTableConfigResolver {
     private removeFromGroup;
     private addEntities;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityGroupMembersTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityGroupMembersTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export {};

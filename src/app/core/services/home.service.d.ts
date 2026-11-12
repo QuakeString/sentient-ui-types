@@ -36,5 +36,5 @@ export declare class HomeService {
     registerShellElement(element: HTMLElement | null): void;
     private publish;
     static ɵfac: i0.ɵɵFactoryDeclaration<HomeService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<HomeService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -2,7 +2,7 @@ import { NgZone, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AppState } from '@core/core.state';
 import { EntityService } from '@core/http/entity.service';
@@ -57,6 +57,8 @@ export declare class AiAssistantStore implements OnDestroy {
     readonly attachments$: BehaviorSubject<AiAttachment[]>;
     readonly sending$: BehaviorSubject<boolean>;
     readonly error$: BehaviorSubject<string>;
+    /** Text of messages that were still waiting when the user pressed Stop: goes back into the message box. */
+    readonly unsent$: Subject<string>;
     /** Number of home toolbars showing the assistant button (0: the edge tab is the way in). */
     readonly toolbarButtons$: BehaviorSubject<number>;
     private userId;
@@ -89,6 +91,8 @@ export declare class AiAssistantStore implements OnDestroy {
     send(text: string): void;
     decide(decision: AiApprovalDecision): void;
     stop(): void;
+    /** Takes back a message that is still waiting for the assistant. */
+    removeQueued(messageId: string): void;
     private lastSeq;
     /** Applies conversation fields; `fresh` replaces the messages, otherwise they are kept. */
     private mergeConversation;
@@ -99,5 +103,5 @@ export declare class AiAssistantStore implements OnDestroy {
     private poll;
     private reset;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiAssistantStore, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AiAssistantStore>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

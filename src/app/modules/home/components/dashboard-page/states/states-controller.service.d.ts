@@ -21,5 +21,5 @@ export declare class StatesControllerService {
     withdrawStateControllerState(stateControllerInstanceId: string): any;
     cleanupPreservedStates(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<StatesControllerService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<StatesControllerService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

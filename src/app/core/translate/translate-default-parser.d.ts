@@ -7,5 +7,5 @@ export declare class TranslateDefaultParser extends TranslateParser {
     private interpolateFunction;
     private interpolateString;
     static ɵfac: i0.ɵɵFactoryDeclaration<TranslateDefaultParser, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TranslateDefaultParser>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

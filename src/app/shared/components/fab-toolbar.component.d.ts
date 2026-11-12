@@ -1,5 +1,6 @@
 import { AfterViewInit, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { _Constructor, CanColor, ThemePalette } from '@angular/material/core';
+import { _Constructor, CanColor } from '@shared/components/color-mixin';
+import { ThemePalette } from '@angular/material/core';
 import * as i0 from "@angular/core";
 export declare type FabToolbarDirection = 'left' | 'right';
 declare class MatFabToolbarBase {

@@ -56,5 +56,5 @@ export declare class UsersTableConfigResolver {
     onUserAction(action: EntityAction<User>, config: EntityTableConfig<User>): boolean;
     manageOwnerAndGroups($event: Event, user: User): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<UsersTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UsersTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -15,5 +15,5 @@ export declare class ConverterService {
     testUpLink(request: TestUplinkRequest, config?: RequestConfig): Observable<ConverterTestResult>;
     testDownLink(request: TestDownlinkRequest, config?: RequestConfig): Observable<ConverterTestResult>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ConverterService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ConverterService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

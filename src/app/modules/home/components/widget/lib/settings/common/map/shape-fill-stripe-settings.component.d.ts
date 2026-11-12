@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { MapDataLayerType, ShapeFillStripeSettings } from '@shared/models/widget/maps/map.models';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -27,7 +27,7 @@ export declare class ShapeFillStripeSettingsComponent implements ControlValueAcc
     registerOnTouched(_fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: ShapeFillStripeSettings): void;
-    openStripeSettingsPopup($event: Event, matButton: MatButton): void;
+    openStripeSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updatePreview;
     static ɵfac: i0.ɵɵFactoryDeclaration<ShapeFillStripeSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ShapeFillStripeSettingsComponent, "tb-shape-fill-stripe-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; "context": { "alias": "context"; "required": false; }; "dsType": { "alias": "dsType"; "required": false; }; "dsEntityAliasId": { "alias": "dsEntityAliasId"; "required": false; }; "dsDeviceId": { "alias": "dsDeviceId"; "required": false; }; "dataLayerType": { "alias": "dataLayerType"; "required": false; }; }, {}, never, never, false, never>;

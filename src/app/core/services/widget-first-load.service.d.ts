@@ -20,5 +20,5 @@ export declare class WidgetFirstLoadService {
     begin(): () => void;
     private update;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetFirstLoadService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<WidgetFirstLoadService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

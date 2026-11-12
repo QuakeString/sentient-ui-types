@@ -10,5 +10,5 @@ export declare class ToastNotificationService {
     getNotification(): Observable<NotificationMessage>;
     getHideNotification(): Observable<HideNotification>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ToastNotificationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ToastNotificationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

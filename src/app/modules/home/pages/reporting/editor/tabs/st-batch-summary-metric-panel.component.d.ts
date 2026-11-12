@@ -27,7 +27,7 @@ export declare class StBatchSummaryMetricPanelComponent implements OnInit {
         decimals: import("@angular/forms").FormControl<number>;
         rangeMin: import("@angular/forms").FormControl<number>;
         rangeMax: import("@angular/forms").FormControl<number>;
-        attribution: import("@angular/forms").FormControl<"" | "end" | "start" | "prorated">;
+        attribution: import("@angular/forms").FormControl<"" | "start" | "end" | "prorated">;
     }>;
     private idTouched;
     constructor(fb: FormBuilder, popover: TbPopoverComponent<StBatchSummaryMetricPanelComponent>);

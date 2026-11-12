@@ -1,6 +1,6 @@
 import { TimeSeriesChartStateSettings, TimeSeriesChartTicksFormatter, TimeSeriesChartTicksGenerator } from '@home/components/widget/lib/chart/time-series-chart.models';
 import { UtilsService } from '@core/services/utils.service';
-import { LabelFormatterCallback } from 'echarts';
+import { LabelFormatterCallback } from 'echarts/types/dist/echarts';
 import { TimeSeriesChartTooltipValueFormatFunction } from '@home/components/widget/lib/chart/time-series-chart-tooltip.models';
 export declare class TimeSeriesChartStateValueConverter {
     private readonly constantsMap;

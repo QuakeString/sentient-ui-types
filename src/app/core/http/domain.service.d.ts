@@ -14,5 +14,5 @@ export declare class DomainService {
     getDomainInfoById(id: string, config?: RequestConfig): Observable<DomainInfo>;
     deleteDomain(id: string, config?: RequestConfig): Observable<void>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DomainService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DomainService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

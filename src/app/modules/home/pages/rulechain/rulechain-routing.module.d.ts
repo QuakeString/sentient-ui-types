@@ -14,14 +14,14 @@ export declare class RuleChainResolver {
     constructor(ruleChainService: RuleChainService);
     resolve(route: ActivatedRouteSnapshot): Observable<RuleChain>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleChainResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleChainResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare class RuleChainMetaDataResolver {
     private ruleChainService;
     constructor(ruleChainService: RuleChainService);
     resolve(route: ActivatedRouteSnapshot): Observable<RuleChainMetaData>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleChainMetaDataResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleChainMetaDataResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare class RuleNodeComponentsResolver {
     private ruleChainService;
@@ -29,13 +29,13 @@ export declare class RuleNodeComponentsResolver {
     constructor(ruleChainService: RuleChainService, modulesMap: IModulesMap);
     resolve(route: ActivatedRouteSnapshot): Observable<Array<RuleNodeComponentDescriptor>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleNodeComponentsResolver, [null, { optional: true; }]>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleNodeComponentsResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare class TooltipsterResolver {
     constructor();
     resolve(route: ActivatedRouteSnapshot): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<TooltipsterResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TooltipsterResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare class RuleChainImportGuard {
     private itembuffer;
@@ -43,7 +43,7 @@ export declare class RuleChainImportGuard {
     constructor(itembuffer: ItemBufferService, router: Router);
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleChainImportGuard, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleChainImportGuard>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare const ruleChainBreadcumbLabelFunction: BreadCrumbLabelFunction<RuleChainPageComponent>;
 export declare const importRuleChainBreadcumbLabelFunction: BreadCrumbLabelFunction<RuleChainPageComponent>;

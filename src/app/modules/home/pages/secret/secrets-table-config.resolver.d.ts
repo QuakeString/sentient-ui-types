@@ -24,5 +24,5 @@ export declare class SecretsTableConfigResolver {
     private openDialog;
     private copyReference;
     static ɵfac: i0.ɵɵFactoryDeclaration<SecretsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<SecretsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

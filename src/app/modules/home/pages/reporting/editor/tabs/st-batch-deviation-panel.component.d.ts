@@ -21,7 +21,7 @@ export declare class StBatchDeviationPanelComponent implements OnInit {
     deviationForm: import("@angular/forms").FormGroup<{
         name: import("@angular/forms").FormControl<string>;
         actual: import("@angular/forms").FormControl<string>;
-        setpointMode: import("@angular/forms").FormControl<"key" | "value">;
+        setpointMode: import("@angular/forms").FormControl<"value" | "key">;
         setpoint: import("@angular/forms").FormControl<string>;
         setpointValue: import("@angular/forms").FormControl<number>;
         tolerance: import("@angular/forms").FormControl<number>;

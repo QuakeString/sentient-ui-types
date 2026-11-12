@@ -18,9 +18,9 @@ import { SafeStyle } from '@angular/platform-browser';
 import { UtilsService } from '@core/services/utils.service';
 import { WidgetComponentAction } from '@home/components/widget/widget-container.component';
 import { TbPopoverComponent } from '@shared/components/popover.component';
-import { displayGrids } from 'angular-gridster2/lib/gridsterConfig.interface';
 import { TbContextMenuEvent } from '@shared/models/jquery-event.models';
 import * as i0 from "@angular/core";
+type displayGrids = 'always' | 'onDrag&Resize' | 'none';
 export declare class DashboardComponent extends PageComponent implements IDashboardComponent, DoCheck, OnInit, OnDestroy, AfterViewInit, OnChanges {
     protected store: Store<AppState>;
     utils: UtilsService;
@@ -178,6 +178,9 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     hasIconRowItems(items: ContextMenuItem[]): boolean;
     closeWidgetMenu(): void;
     closeDashboardMenu(): void;
+    private dragVisualsMove;
+    private holdDragVisuals;
+    private releaseDragVisuals;
     restoreHotkeysFocus(): void;
     onWidgetFullscreenChanged(expanded: boolean): void;
     onWidgetComponentAction(action: WidgetComponentAction, widget: DashboardWidget): void;
@@ -191,7 +194,7 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     private removeWidget;
     highlightWidget(widgetId: string, delay?: number): void;
     focusWidgetForEdit(widgetId: string, drawerLeftX?: number, verticalOnly?: boolean): void;
-    selectWidget(widgetId: string, delay?: number, mode?: WidgetSelectionMode): void;
+    selectWidget(widgetId: string, delay?: number, mode?: WidgetSelectionMode, scroll?: boolean): void;
     getSelectedWidget(): Widget;
     getSelectedWidgets(): Widget[];
     selectAllWidgets(): void;
@@ -277,3 +280,4 @@ export declare class DashboardComponent extends PageComponent implements IDashbo
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DashboardComponent, "tb-dashboard", never, { "widgets": { "alias": "widgets"; "required": false; }; "widgetLayouts": { "alias": "widgetLayouts"; "required": false; }; "callbacks": { "alias": "callbacks"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "stateController": { "alias": "stateController"; "required": false; }; "consolidateSymbols": { "alias": "consolidateSymbols"; "required": false; }; "columns": { "alias": "columns"; "required": false; }; "setGridSize": { "alias": "setGridSize"; "required": false; }; "margin": { "alias": "margin"; "required": false; }; "outerMargin": { "alias": "outerMargin"; "required": false; }; "multiLayer": { "alias": "multiLayer"; "required": false; }; "hiddenLayers": { "alias": "hiddenLayers"; "required": false; }; "lockedLayers": { "alias": "lockedLayers"; "required": false; }; "displayGrid": { "alias": "displayGrid"; "required": false; }; "gridType": { "alias": "gridType"; "required": false; }; "centerVertical": { "alias": "centerVertical"; "required": false; }; "centerHorizontal": { "alias": "centerHorizontal"; "required": false; }; "scadaFitScreen": { "alias": "scadaFitScreen"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isEditingWidget": { "alias": "isEditingWidget"; "required": false; }; "isPreview": { "alias": "isPreview"; "required": false; }; "autofillHeight": { "alias": "autofillHeight"; "required": false; }; "mobileAutofillHeight": { "alias": "mobileAutofillHeight"; "required": false; }; "mobileRowHeight": { "alias": "mobileRowHeight"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "isMobileDisabled": { "alias": "isMobileDisabled"; "required": false; }; "isEditActionEnabled": { "alias": "isEditActionEnabled"; "required": false; }; "isCopyActionEnabled": { "alias": "isCopyActionEnabled"; "required": false; }; "isExportActionEnabled": { "alias": "isExportActionEnabled"; "required": false; }; "isRemoveActionEnabled": { "alias": "isRemoveActionEnabled"; "required": false; }; "disableWidgetInteraction": { "alias": "disableWidgetInteraction"; "required": false; }; "dashboardStyle": { "alias": "dashboardStyle"; "required": false; }; "backgroundImage": { "alias": "backgroundImage"; "required": false; }; "dashboardClass": { "alias": "dashboardClass"; "required": false; }; "ignoreLoading": { "alias": "ignoreLoading"; "required": false; }; "dashboardTimewindow": { "alias": "dashboardTimewindow"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; "zoomEnabled": { "alias": "zoomEnabled"; "required": false; }; }, {}, never, never, false, never>;
 }
+export {};

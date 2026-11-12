@@ -18,5 +18,5 @@ export declare class AiModelsTableConfigResolver {
     private editModel;
     private addModel;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiModelsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AiModelsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

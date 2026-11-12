@@ -6,5 +6,5 @@ export declare class BroadcastService {
     broadcast(name: string, ...args: Array<any>): void;
     on(name: string, listener: BroadcastListener): Subscription;
     static ɵfac: i0.ɵɵFactoryDeclaration<BroadcastService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<BroadcastService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

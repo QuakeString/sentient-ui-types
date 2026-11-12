@@ -33,7 +33,7 @@ export declare class DataKeyConfigComponent extends PageComponent implements OnI
     dataKeyConfigModes: typeof DataKeyConfigMode;
     dataKeyTypes: typeof DataKeyType;
     widgetTypes: typeof widgetType;
-    aggregations: string[];
+    aggregations: AggregationType[];
     aggregationTypes: typeof AggregationType;
     aggregationTypesTranslations: Map<AggregationType, string>;
     dataKeyAggregationTypeHintTranslations: Map<AggregationType, string>;

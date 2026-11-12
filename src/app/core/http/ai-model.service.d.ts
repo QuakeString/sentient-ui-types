@@ -14,5 +14,5 @@ export declare class AiModelService {
     deleteAiModel(aiModelId: string, config?: RequestConfig): Observable<Object>;
     checkConnectivity(aiModelWithUserMsg: AiModelWithUserMsg, config?: RequestConfig): Observable<CheckConnectivityResult>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiModelService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AiModelService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -9,6 +9,7 @@ export declare class SelectActiveLayerComponent {
     get visible(): boolean;
     get layers(): LayerDefinition[];
     get activeLayer(): number;
+    get selectedLayers(): Set<number>;
     get widgetCounts(): {
         [layerId: number]: number;
     };

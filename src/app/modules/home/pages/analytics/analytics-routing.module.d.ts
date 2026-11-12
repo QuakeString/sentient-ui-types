@@ -11,7 +11,7 @@ export declare class AnalyticsPipelineResolver {
     constructor(analyticsService: AnalyticsService);
     resolve(route: ActivatedRouteSnapshot): Observable<AnalyticsPipeline>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AnalyticsPipelineResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AnalyticsPipelineResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare const pipelineBreadcrumbLabelFunction: BreadCrumbLabelFunction<PipelineBuilderComponent>;
 export declare class AnalyticsRoutingModule {

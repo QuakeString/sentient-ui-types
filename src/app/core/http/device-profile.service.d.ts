@@ -33,5 +33,5 @@ export declare class DeviceProfileService {
     getDeviceProfileDevicesTimeseriesKeys(deviceProfileId?: string, config?: RequestConfig): Observable<Array<string>>;
     getDeviceProfileNames(activeOnly?: boolean, config?: RequestConfig): Observable<Array<EntityInfoData>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DeviceProfileService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DeviceProfileService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

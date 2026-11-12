@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { TbEditorCompleter } from '@shared/models/ace/completion.models';
 import { AceHighlightRules } from '@shared/models/ace/ace.models';
 import { EntitySearchDirection } from '@shared/models/relation.models';
+import { AggregationParams, AggregationType } from '@shared/models/time/time.models';
 import { ValidatorFn } from '@angular/forms';
 import { AlarmRule } from "@shared/models/alarm-rule.models";
 import { AlarmSeverity } from "@shared/models/alarm.models";
@@ -281,7 +282,10 @@ export interface AggInterval {
     durationSec?: number;
 }
 export interface CalculatedFieldAggMetric {
-    function: AggFunction;
+    /** AggFunction, or (entity aggregation only) a computed AggregationType such as DELTA. */
+    function: AggFunction | AggregationType;
+    /** Tuning for computed functions. */
+    params?: AggregationParams;
     filter?: string;
     input: AggKeyInput | AggFunctionInput;
     defaultValue?: number;

@@ -32,5 +32,5 @@ export declare class AdminService {
     generateAccessToken(config?: RequestConfig): Observable<string>;
     getMailConfigTemplate(config?: RequestConfig): Observable<Array<MailConfigTemplate>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AdminService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AdminService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -34,5 +34,5 @@ export declare class RecipeDataTableConfigResolver {
      *  create vs update on `id` presence. */
     private duplicateRecipeData;
     static ɵfac: i0.ɵɵFactoryDeclaration<RecipeDataTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RecipeDataTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

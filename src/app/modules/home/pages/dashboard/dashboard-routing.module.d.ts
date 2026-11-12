@@ -24,7 +24,7 @@ export declare class DashboardResolver {
     private bundleDisabled;
     private reportVisit;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare const dashboardBreadcumbLabelFunction: BreadCrumbLabelFunction<DashboardPageComponent>;
 export declare class DashboardRoutingModule {

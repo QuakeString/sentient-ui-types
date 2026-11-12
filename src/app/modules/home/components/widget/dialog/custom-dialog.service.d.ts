@@ -16,5 +16,5 @@ export declare class CustomDialogService {
     setAdditionalImports(imports: Array<Type<any>>): void;
     customDialog(template: string, controller: (instance: CustomDialogComponent) => void, data?: any, config?: MatDialogConfig): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<CustomDialogService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CustomDialogService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

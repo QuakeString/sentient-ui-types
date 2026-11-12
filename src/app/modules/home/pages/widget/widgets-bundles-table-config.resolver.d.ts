@@ -31,5 +31,5 @@ export declare class WidgetsBundlesTableConfigResolver {
     exportWidgetsBundle($event: Event, widgetsBundle: WidgetsBundle): void;
     onWidgetsBundleAction(action: EntityAction<WidgetsBundle>, config: EntityTableConfig<WidgetsBundle>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetsBundlesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<WidgetsBundlesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

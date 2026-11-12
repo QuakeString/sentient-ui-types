@@ -9,5 +9,5 @@ export declare class TrendzSettingsService {
     getTrendzSettings(config?: RequestConfig): Observable<TrendzSettings>;
     saveTrendzSettings(trendzSettings: TrendzSettings, config?: RequestConfig): Observable<TrendzSettings>;
     static ɵfac: i0.ɵɵFactoryDeclaration<TrendzSettingsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TrendzSettingsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

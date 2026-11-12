@@ -2,7 +2,7 @@ import { ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { AppState } from '@core/core.state';
@@ -210,7 +210,7 @@ export declare class SchedulerEventDialogComponent implements OnInit, OnDestroy 
     onTemplateSelected(event: MatAutocompleteSelectedEvent): void;
     onTemplateFocus(): void;
     clearTemplateSelection(event: Event): void;
-    createTarget($event: Event, button: MatButton): void;
+    createTarget($event: Event, button: MatButton | MatIconButton): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<SchedulerEventDialogComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<SchedulerEventDialogComponent, "tb-scheduler-event-dialog", never, {}, {}, never, never, false, never>;
 }

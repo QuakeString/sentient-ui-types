@@ -1,5 +1,5 @@
 import { ChangeDetectorRef } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { EntityDebugSettings } from '@shared/models/entity.models';
 import { AppState } from '@core/core.state';
 import { Store } from '@ngrx/store';
@@ -30,7 +30,7 @@ export declare class EntityDebugSettingsButtonComponent implements ControlValueA
     constructor(store: Store<AppState>, fb: FormBuilder, entityDebugSettingsService: EntityDebugSettingsService, cd: ChangeDetectorRef);
     get failuresEnabled(): boolean;
     get allEnabledUntil(): number;
-    onOpenDebugStrategyPanel($event: Event, matButton: MatButton): void;
+    onOpenDebugStrategyPanel($event: Event, matButton: MatButton | MatIconButton): void;
     registerOnChange(fn: (settings: EntityDebugSettings) => void): void;
     registerOnTouched(_: () => void): void;
     writeValue(settings: EntityDebugSettings): void;

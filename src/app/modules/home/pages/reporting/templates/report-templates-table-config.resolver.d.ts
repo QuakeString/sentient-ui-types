@@ -35,6 +35,11 @@ export declare class ReportTemplatesTableConfigResolver {
     /** The file a report template exports to (single and ZIP export). */
     private templateExportData;
     configureCellActions(): Array<CellActionDescriptor<ReportTemplate>>;
+    /**
+     * Same as export + import in one step (like the calculated fields' Copy):
+     * the full template opens in the new-template dialog under a new name.
+     */
+    copyTemplate($event: Event, template: ReportTemplate): void;
     editTemplate($event: Event, template: ReportTemplate): void;
     configureAddActions(): Array<any>;
     createTemplate(): Observable<ReportTemplate>;
@@ -52,5 +57,5 @@ export declare class ReportTemplatesTableConfigResolver {
     openTemplate($event: Event, template: ReportTemplate): void;
     onTemplateAction(action: EntityAction<ReportTemplate>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<ReportTemplatesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ReportTemplatesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

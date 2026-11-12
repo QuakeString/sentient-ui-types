@@ -2,6 +2,7 @@ import { OnInit } from '@angular/core';
 import { TbPopoverComponent } from '@shared/components/popover.component';
 import { FormBuilder } from '@angular/forms';
 import { AggFunction, AggInputType, CalculatedFieldAggMetricValue } from '@shared/models/calculated-field.models';
+import { AggregationParams, AggregationType } from '@shared/models/time/time.models';
 import { EntityFilter } from '@shared/models/query/query.models';
 import { ScriptLanguage } from '@shared/models/rule-node.models';
 import { TbEditorCompleter } from '@shared/models/ace/completion.models';
@@ -25,7 +26,8 @@ export declare class CalculatedFieldMetricsPanelComponent implements OnInit {
     functionArgs: Array<string>;
     metricForm: import("@angular/forms").FormGroup<{
         name: import("@angular/forms").FormControl<string>;
-        function: import("@angular/forms").FormControl<AggFunction>;
+        function: import("@angular/forms").FormControl<AggregationType | AggFunction>;
+        params: import("@angular/forms").FormControl<AggregationParams>;
         allowFilter: import("@angular/forms").FormControl<boolean>;
         filter: import("@angular/forms").FormControl<string>;
         input: import("@angular/forms").FormGroup<{
@@ -37,7 +39,13 @@ export declare class CalculatedFieldMetricsPanelComponent implements OnInit {
     }>;
     entityFilter: EntityFilter;
     AggFunctions: AggFunction[];
+    /** Computed functions, offered for the owner entity's own history (entity aggregation). */
+    computedGroups: {
+        label: string;
+        types: AggregationType[];
+    }[];
     readonly AggFunctionTranslations: Map<AggFunction, string>;
+    readonly aggregationTranslations: Map<AggregationType, string>;
     readonly ScriptLanguage: typeof ScriptLanguage;
     readonly AggInputType: typeof AggInputType;
     readonly AggInputTypes: AggInputType[];

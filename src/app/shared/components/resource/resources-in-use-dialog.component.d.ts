@@ -5,7 +5,7 @@ import { AppState } from '@core/core.state';
 import { DialogComponent } from '@shared/components/dialog.component';
 import { Router } from '@angular/router';
 import { ResourceReferences, ResourceInfoWithReferences, ResourceInfo } from '@shared/models/resource.models';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Datasource } from "@shared/models/widget.models";
@@ -40,7 +40,7 @@ export declare class ResourcesInUseDialogComponent extends DialogComponent<Resou
     ngOnInit(): void;
     cancel(): void;
     delete(): void;
-    toggleShowReferences($event: Event, resource: ResourceInfoWithReferences, referencesButton: MatButton): void;
+    toggleShowReferences($event: Event, resource: ResourceInfoWithReferences, referencesButton: MatButton | MatIconButton): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ResourcesInUseDialogComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ResourcesInUseDialogComponent, "tb-resources-in-use-dialog", never, {}, {}, never, never, false, never>;
 }

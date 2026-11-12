@@ -19,5 +19,5 @@ export declare class UserSettingsService {
     getUserDashboardsInfo(config?: RequestConfig): Observable<UserDashboardsInfo>;
     reportUserDashboardAction(dashboardId: string, action: UserDashboardAction, config?: RequestConfig): Observable<UserDashboardsInfo>;
     static ɵfac: i0.ɵɵFactoryDeclaration<UserSettingsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UserSettingsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

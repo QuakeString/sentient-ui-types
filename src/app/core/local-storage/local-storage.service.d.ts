@@ -8,5 +8,5 @@ export declare class LocalStorageService {
     /** Tests that localStorage exists, can be written to, and read from. */
     testLocalStorage(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<LocalStorageService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<LocalStorageService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

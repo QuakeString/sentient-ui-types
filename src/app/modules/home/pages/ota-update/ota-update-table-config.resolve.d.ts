@@ -22,5 +22,5 @@ export declare class OtaUpdateTableConfigResolve {
     checksumText(entity: OtaPackageInfo): string;
     onPackageAction(action: EntityAction<OtaPackageInfo>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<OtaUpdateTableConfigResolve, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<OtaUpdateTableConfigResolve>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

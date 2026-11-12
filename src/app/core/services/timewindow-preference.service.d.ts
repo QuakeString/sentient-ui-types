@@ -27,5 +27,5 @@ export declare class TimewindowPreferenceService {
     private saved;
     private choiceOf;
     static ɵfac: i0.ɵɵFactoryDeclaration<TimewindowPreferenceService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TimewindowPreferenceService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

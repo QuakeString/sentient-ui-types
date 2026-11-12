@@ -21,7 +21,7 @@ export declare class StThresholdSettingsPanelComponent implements OnInit {
     chartLineTypeTranslations: Map<string, string>;
     chartShapes: StChartShape[];
     chartShapeTranslations: Map<StChartShape, string>;
-    thresholdLabelPositions: ("end" | "start" | "middle")[];
+    thresholdLabelPositions: ("start" | "end" | "middle")[];
     thresholdLabelPositionTranslations: Map<string, string>;
     labelPreviewFn: any;
     thresholdSettingsFormGroup: UntypedFormGroup;

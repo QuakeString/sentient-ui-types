@@ -61,7 +61,8 @@ export declare enum SetValueAction {
     DO_NOTHING = "DO_NOTHING",
     EXECUTE_RPC = "EXECUTE_RPC",
     SET_ATTRIBUTE = "SET_ATTRIBUTE",
-    ADD_TIME_SERIES = "ADD_TIME_SERIES"
+    ADD_TIME_SERIES = "ADD_TIME_SERIES",
+    WAIT = "WAIT"
 }
 export declare const setValueActions: SetValueAction[];
 export declare const setValueActionsByWidgetType: (type: widgetType) => SetValueAction[];
@@ -77,10 +78,23 @@ export interface ValueToDataSettings {
     constantValue: any;
     valueToDataFunction: TbFunction;
 }
-export interface SetValueSettings extends ValueActionSettings {
+export interface WaitSettings {
+    delayMs: number;
+}
+/** One action of a write. The top level of SetValueSettings is action 1. */
+export interface SetValueActionStep {
     action: SetValueAction;
     executeRpc: RpcSettings;
     setAttribute: SetAttributeValueSettings;
     putTimeSeries: TelemetryValueSettings;
     valueToData: ValueToDataSettings;
+    wait?: WaitSettings;
 }
+export interface SetValueSettings extends ValueActionSettings, SetValueActionStep {
+    additionalActions?: SetValueActionStep[];
+}
+export declare const defaultWaitDelayMs = 500;
+/** Every action of a write, action 1 first. */
+export declare const setValueActionSteps: (settings: SetValueSettings) => SetValueActionStep[];
+/** True when the write does something (any action other than Do nothing / Wait). */
+export declare const hasSetValueAction: (settings: SetValueSettings) => boolean;

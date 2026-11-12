@@ -36,6 +36,7 @@ export declare class ReportTemplateComponent extends EntityComponent<ReportTempl
     private tenantOwnerOption;
     private fetchCustomers;
     displayOwnerFn: (value: Customer | string) => string;
+    onOwnerSelected(): void;
     clearOwnerSelection(event: Event): void;
     hideDelete(): boolean;
     buildForm(entity: ReportTemplate): UntypedFormGroup;

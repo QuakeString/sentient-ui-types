@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { MarkerImageSettings, MarkerImageType } from '@shared/models/widget/maps/map.models';
 import * as i0 from "@angular/core";
@@ -18,7 +18,7 @@ export declare class MarkerImageSettingsComponent implements ControlValueAccesso
     registerOnTouched(fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: MarkerImageSettings): void;
-    openImageSettingsPopup($event: Event, matButton: MatButton): void;
+    openImageSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<MarkerImageSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<MarkerImageSettingsComponent, "tb-marker-image-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
 }

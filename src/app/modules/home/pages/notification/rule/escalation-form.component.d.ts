@@ -3,7 +3,7 @@ import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, Validator } 
 import { NonConfirmedNotificationEscalation, NotificationType } from '@shared/models/notification.models';
 import { EntityType } from '@shared/models/entity-type.models';
 import { MatDialog } from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import * as i0 from "@angular/core";
 export declare class EscalationFormComponent implements ControlValueAccessor, OnInit, OnDestroy, Validator {
     private fb;
@@ -24,7 +24,7 @@ export declare class EscalationFormComponent implements ControlValueAccessor, On
     ngOnDestroy(): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: NonConfirmedNotificationEscalation): void;
-    createTarget($event: Event, button: MatButton): void;
+    createTarget($event: Event, button: MatButton | MatIconButton): void;
     validate(c: FormControl): {
         escalation: {
             valid: boolean;

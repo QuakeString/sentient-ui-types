@@ -33,7 +33,7 @@ export declare class ViewportInsetService implements OnDestroy {
     private rewriteSheet;
     private rewriteRules;
     static ɵfac: i0.ɵɵFactoryDeclaration<ViewportInsetService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ViewportInsetService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 /** MediaMatcher for the CDK BreakpointObserver that honours {@link ViewportInsetService}. */
 export declare class InsetMediaMatcher {
@@ -41,7 +41,7 @@ export declare class InsetMediaMatcher {
     constructor(insets: ViewportInsetService);
     matchMedia(query: string): MediaQueryList;
     static ɵfac: i0.ɵɵFactoryDeclaration<InsetMediaMatcher, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<InsetMediaMatcher>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 /** Provider replacing the CDK MediaMatcher application-wide. */
 export declare const INSET_MEDIA_MATCHER_PROVIDER: {

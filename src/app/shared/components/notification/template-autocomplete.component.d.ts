@@ -10,7 +10,7 @@ import { TruncatePipe } from '@shared/pipe/truncate.pipe';
 import { NotificationTemplate, NotificationType } from '@shared/models/notification.models';
 import { NotificationService } from '@core/http/notification.service';
 import { MatDialog } from '@angular/material/dialog';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import * as i0 from "@angular/core";
 export declare class TemplateAutocompleteComponent implements ControlValueAccessor, OnInit {
     private store;
@@ -46,7 +46,7 @@ export declare class TemplateAutocompleteComponent implements ControlValueAccess
     displayTemplateFn(template?: NotificationTemplate): string | undefined;
     clear(): void;
     editTemplate($event: Event): void;
-    createTemplate($event: Event, button: MatButton): void;
+    createTemplate($event: Event, button: MatButton | MatIconButton): void;
     createTemplateByName($event: Event, name?: string): void;
     private openNotificationTemplateDialog;
     private updateView;

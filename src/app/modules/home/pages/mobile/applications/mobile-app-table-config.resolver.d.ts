@@ -21,5 +21,5 @@ export declare class MobileAppTableConfigResolver {
     private mobileStatus;
     private mobileStatusStyle;
     static ɵfac: i0.ɵɵFactoryDeclaration<MobileAppTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MobileAppTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

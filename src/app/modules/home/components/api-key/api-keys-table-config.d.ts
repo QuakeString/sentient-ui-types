@@ -28,5 +28,5 @@ export declare class ApiKeysTableConfig extends EntityTableConfig<ApiKeyInfo> {
     private apiKeyStatusStyle;
     private updateApiKeyDescription;
     static ɵfac: i0.ɵɵFactoryDeclaration<ApiKeysTableConfig, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ApiKeysTableConfig>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

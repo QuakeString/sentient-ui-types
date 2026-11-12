@@ -30,5 +30,5 @@ export declare class AssetService {
     getEdgeAssets(edgeId: string, pageLink: PageLink, type?: string, config?: RequestConfig): Observable<PageData<AssetInfo>>;
     bulkImportAssets(entitiesData: BulkImportRequest, config?: RequestConfig): Observable<BulkImportResult>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AssetService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AssetService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

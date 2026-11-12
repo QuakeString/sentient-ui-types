@@ -8,5 +8,5 @@ export declare class HomeDialogsService {
     importEntities(entityType: EntityType): Observable<boolean>;
     private openImportDialogCSV;
     static ɵfac: i0.ɵɵFactoryDeclaration<HomeDialogsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<HomeDialogsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

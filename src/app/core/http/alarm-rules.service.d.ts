@@ -29,5 +29,5 @@ export declare class AlarmRulesService {
     getAlarmRuleNames(pageLink: PageLink, config?: RequestConfig): Observable<PageData<string>>;
     getLatestAlarmRuleDebugEvent(alarmRuleId: string, config?: RequestConfig): Observable<unknown>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AlarmRulesService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AlarmRulesService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

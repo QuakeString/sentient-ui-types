@@ -30,5 +30,5 @@ export declare class ConvertersTableConfigResolver {
     private importConverter;
     onConverterAction(action: EntityAction<Converter>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<ConvertersTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ConvertersTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

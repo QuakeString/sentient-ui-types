@@ -72,5 +72,5 @@ export declare class ReportService {
     makeReportPrivate(reportId: string, config?: RequestConfig): Observable<Report>;
     getPublicReportLink(report: Report): string | null;
     static ɵfac: i0.ɵɵFactoryDeclaration<ReportService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ReportService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

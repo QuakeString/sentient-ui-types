@@ -42,7 +42,7 @@ declare abstract class FleetWidgetBase extends CmChartBase implements OnInit {
     open(m: FleetMachine): void;
     group(m: FleetMachine): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<FleetWidgetBase, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FleetWidgetBase, never, never, {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FleetWidgetBase, never, never, {}, {}, never, never, true, never>;
 }
 interface TileGroup {
     name: string;

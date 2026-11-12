@@ -81,5 +81,5 @@ export declare class DashboardService {
     assignDashboardToEdge(edgeId: string, dashboardId: string, config?: RequestConfig): Observable<Dashboard>;
     unassignDashboardFromEdge(edgeId: string, dashboardId: string, config?: RequestConfig): Observable<Object>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

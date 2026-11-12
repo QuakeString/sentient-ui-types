@@ -37,7 +37,7 @@ export declare class StBatchTriggerDialogComponent extends DialogComponent<StBat
     readonly: boolean;
     availableKeys: string[];
     triggerFormGroup: FormGroup<{
-        match: import("@angular/forms").FormControl<"all" | "any">;
+        match: import("@angular/forms").FormControl<"any" | "all">;
         conditions: import("@angular/forms").FormArray<FormGroup<any>>;
         edge: import("@angular/forms").FormControl<"level" | "rising" | "falling">;
         allowTimeout: import("@angular/forms").FormControl<boolean>;

@@ -17,5 +17,5 @@ export declare class AlarmDetailsOpenerService implements AlarmDetailsOpener {
     constructor(dialog: MatDialog, alarmService: AlarmService, store: Store<AppState>, translate: TranslateService);
     open(alarmId: string): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AlarmDetailsOpenerService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AlarmDetailsOpenerService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

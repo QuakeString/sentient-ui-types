@@ -32,5 +32,5 @@ export declare class EdgeService {
     getEdgeUpgradeInstructions(edgeVersion: string, method?: string, config?: RequestConfig): Observable<EdgeInstructions>;
     isEdgeUpgradeAvailable(edgeId: string, config?: RequestConfig): Observable<boolean>;
     static ɵfac: i0.ɵɵFactoryDeclaration<EdgeService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EdgeService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

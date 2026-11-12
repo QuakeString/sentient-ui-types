@@ -48,5 +48,5 @@ export declare class ScriptAssistService {
     /** The model the user picked in the AI assistant panel, if any. */
     private chosenModelId;
     static ɵfac: i0.ɵɵFactoryDeclaration<ScriptAssistService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ScriptAssistService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

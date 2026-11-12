@@ -13,5 +13,5 @@ export declare class AuthEffects {
     putUserSettings: import("rxjs").Observable<void> & import("@ngrx/effects").CreateEffectMetadata;
     deleteUserSettings: import("rxjs").Observable<Object> & import("@ngrx/effects").CreateEffectMetadata;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuthEffects, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AuthEffects>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

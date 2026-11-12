@@ -25,5 +25,5 @@ export declare class TimeService {
     private toIntervalBound;
     getLocalBrowserTimezoneInfoPlaceholder(): TimezoneInfo;
     static ɵfac: i0.ɵɵFactoryDeclaration<TimeService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TimeService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

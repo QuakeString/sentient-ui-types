@@ -9,5 +9,5 @@ export declare class RafService {
     constructor(window: Window, ngZone: NgZone);
     raf(frameCallback: () => void, runInZone?: boolean): CancelAnimationFrame;
     static ɵfac: i0.ɵɵFactoryDeclaration<RafService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RafService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

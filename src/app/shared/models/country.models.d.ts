@@ -262,5 +262,5 @@ export declare enum CountryISO {
 export declare class CountryData {
     allCountries: Array<Country>;
     static ɵfac: i0.ɵɵFactoryDeclaration<CountryData, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CountryData>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

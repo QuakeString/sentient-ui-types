@@ -20,5 +20,5 @@ export declare class AssetProfileService {
     getAssetProfileInfos(pageLink: PageLink, config?: RequestConfig): Observable<PageData<AssetProfileInfo>>;
     getAssetProfileNames(activeOnly?: boolean, config?: RequestConfig): Observable<Array<EntityInfoData>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AssetProfileService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AssetProfileService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -28,5 +28,5 @@ export declare class AuthGuard {
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | import("@angular/router").UrlTree>;
     private isRoutePermissionDenied;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuthGuard, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AuthGuard>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

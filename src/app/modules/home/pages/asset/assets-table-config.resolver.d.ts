@@ -50,5 +50,5 @@ export declare class AssetsTableConfigResolver {
     unassignFromEdge($event: Event, asset: AssetInfo): void;
     unassignAssetsFromEdge($event: Event, assets: Array<AssetInfo>): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AssetsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AssetsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

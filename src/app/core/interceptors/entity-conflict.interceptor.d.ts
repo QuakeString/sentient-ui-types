@@ -12,5 +12,5 @@ export declare class EntityConflictInterceptor implements HttpInterceptor {
     private isVersionedEntity;
     private openConflictDialog;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityConflictInterceptor, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityConflictInterceptor>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

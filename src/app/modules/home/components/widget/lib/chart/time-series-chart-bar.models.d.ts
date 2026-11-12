@@ -1,7 +1,7 @@
 import { LinearGradientObject } from 'zrender/lib/graphic/LinearGradient';
 import { Interval } from '@shared/models/time/time.models';
 import { TimeSeriesChartDataItem, TimeSeriesChartNoAggregationBarWidthStrategy } from '@home/components/widget/lib/chart/time-series-chart.models';
-import { CustomSeriesRenderItemParams } from 'echarts';
+import { CustomSeriesRenderItemParams } from 'echarts/types/dist/echarts';
 import { CustomSeriesRenderItemAPI, CustomSeriesRenderItemReturn } from 'echarts/types/dist/shared';
 import { BarSeriesLabelOption } from 'echarts/types/src/chart/bar/BarSeries';
 export interface BarVisualSettings {

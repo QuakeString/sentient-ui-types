@@ -9,5 +9,5 @@ export declare class NotificationEffects {
     dispatchNotification: import("rxjs").Observable<void> & import("@ngrx/effects").CreateEffectMetadata;
     hideNotification: import("rxjs").Observable<void> & import("@ngrx/effects").CreateEffectMetadata;
     static ɵfac: i0.ɵɵFactoryDeclaration<NotificationEffects, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<NotificationEffects>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

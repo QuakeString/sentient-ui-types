@@ -7,5 +7,5 @@ export declare class TranslateDefaultCompiler extends TranslateMessageFormatComp
     private defaultCompile;
     private checkIsPlural;
     static ɵfac: i0.ɵɵFactoryDeclaration<TranslateDefaultCompiler, [{ optional: true; }]>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TranslateDefaultCompiler>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

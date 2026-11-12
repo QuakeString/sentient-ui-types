@@ -64,5 +64,5 @@ export declare class DashboardReuseService {
     clear(): void;
     private destroyEntry;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardReuseService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardReuseService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

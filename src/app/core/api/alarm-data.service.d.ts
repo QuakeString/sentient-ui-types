@@ -20,5 +20,5 @@ export declare class AlarmDataService {
     stopSubscription(listener: AlarmDataListener): void;
     private createAlarmSubscriptionOptions;
     static ɵfac: i0.ɵɵFactoryDeclaration<AlarmDataService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AlarmDataService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -10,7 +10,7 @@ import { EntityType } from '@shared/models/entity-type.models';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatStepper } from '@angular/material/stepper';
 import { StepperOrientation, StepperSelectionEvent } from '@angular/cdk/stepper';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TemplateConfiguration } from '@home/pages/notification/template/template-configuration';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
@@ -58,7 +58,7 @@ export declare class SentNotificationDialogComponent extends TemplateConfigurati
     private isTenantAdmin;
     minDate(): Date;
     maxDate(): Date;
-    createTarget($event: Event, button: MatButton): void;
+    createTarget($event: Event, button: MatButton | MatIconButton): void;
     getDeliveryMethodsTemplatesControl(deliveryMethod: NotificationDeliveryMethod): AbstractControl;
     getDeliveryMethodsTooltip(deliveryMethod: NotificationDeliveryMethod): string;
     allowConfigureDeliveryMethod(deliveryMethod: NotificationDeliveryMethod): boolean;

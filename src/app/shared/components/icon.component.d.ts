@@ -1,9 +1,9 @@
-import { CanColor } from '@angular/material/core';
+import { CanColor } from '@shared/components/color-mixin';
 import { AfterContentInit, AfterViewChecked, ElementRef, ErrorHandler, OnDestroy, Renderer2 } from '@angular/core';
 import { MatIconLocation, MatIconRegistry } from '@angular/material/icon';
 import { ContentObserver } from '@angular/cdk/observers';
 import * as i0 from "@angular/core";
-declare const _TbIconBase: import("@angular/material/core")._Constructor<CanColor> & import("@angular/material/core")._AbstractConstructor<CanColor> & {
+declare const _TbIconBase: import("@shared/components/color-mixin")._Constructor<CanColor> & {
     new (_elementRef: ElementRef): {
         _elementRef: ElementRef;
     };

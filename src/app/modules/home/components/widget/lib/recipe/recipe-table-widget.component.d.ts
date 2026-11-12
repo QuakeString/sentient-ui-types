@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { TelemetryWebsocketService } from '@core/ws/telemetry-websocket.service';
 import { RecipeData, RecipeElement, RecipeElementType } from '@shared/models/recipe.models';
-import { specFor } from '@shared/models/recipe-element-type.spec';
+import { specFor, recipeInputKind } from '@shared/models/recipe-element-type.spec';
 import { RecipeTableWidgetSettings } from './recipe-table-widget.models';
 import { WidgetDataExportService, WidgetDataExportFormat } from '@core/services/widget-data-export.service';
 import * as i0 from "@angular/core";
@@ -95,6 +95,7 @@ export declare class RecipeTableWidgetComponent implements OnInit, OnDestroy {
     saving: Set<string>;
     /** Element-type constants re-exported for the template. */
     readonly TYPE: typeof RecipeElementType;
+    readonly inputKind: typeof recipeInputKind;
     readonly specFor: typeof specFor;
     private destroy$;
     private fetchSub?;

@@ -49,5 +49,5 @@ export declare class EntityViewsTableConfigResolver {
     unassignFromEdge($event: Event, entityView: EntityViewInfo): void;
     unassignEntityViewsFromEdge($event: Event, entityViews: Array<EntityViewInfo>): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityViewsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityViewsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

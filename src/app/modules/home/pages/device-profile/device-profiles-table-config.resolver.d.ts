@@ -30,5 +30,5 @@ export declare class DeviceProfilesTableConfigResolver {
     exportDeviceProfile($event: Event, deviceProfile: DeviceProfile): void;
     onDeviceProfileAction(action: EntityAction<DeviceProfile>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<DeviceProfilesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DeviceProfilesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

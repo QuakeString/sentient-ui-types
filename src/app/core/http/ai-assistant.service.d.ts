@@ -58,6 +58,12 @@ export interface AiConversationMessage {
     role: 'USER' | 'ASSISTANT' | 'TOOL';
     content: any;
 }
+/** A message sent while the assistant was working: it waits for the run's next step. */
+export interface AiQueuedMessage {
+    id: string;
+    createdTime: number;
+    content: any;
+}
 export interface AiConversation {
     id: string;
     title: string;
@@ -75,6 +81,10 @@ export interface AiConversation {
     outputTokens: number;
     contextTokens: number;
     messages?: AiConversationMessage[];
+    /** Messages waiting for the assistant's next step, oldest first. */
+    queued?: AiQueuedMessage[];
+    /** After Stop: the text of the messages that were still waiting, for the message box. */
+    unsent?: string;
 }
 /** The page the user is on. */
 export interface AiPageContext {
@@ -129,6 +139,10 @@ export declare class AiAssistantService {
     startConversation(message: AiOutgoingMessage, config?: RequestConfig): Observable<AiConversation>;
     sendMessage(id: string, message: AiOutgoingMessage, config?: RequestConfig): Observable<AiConversation>;
     decide(id: string, decision: AiApprovalDecision, config?: RequestConfig): Observable<AiConversation>;
+    /** Takes back a message that is still waiting. */
+    removeQueued(id: string, messageId: string, config?: RequestConfig): Observable<{
+        queued: AiQueuedMessage[];
+    }>;
     stop(id: string, config?: RequestConfig): Observable<AiConversation>;
     deleteConversation(id: string, config?: RequestConfig): Observable<boolean>;
     /** Tenant admin: the model customer users get (null: none). */
@@ -141,5 +155,5 @@ export declare class AiAssistantService {
         customerModelId?: string;
     }>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiAssistantService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AiAssistantService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

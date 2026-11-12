@@ -200,5 +200,5 @@ export declare class ImportExportService {
     private openExportDialog;
     private updateUserSettingsIncludeResourcesIfNeeded;
     static ɵfac: i0.ɵɵFactoryDeclaration<ImportExportService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ImportExportService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

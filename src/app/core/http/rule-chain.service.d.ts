@@ -53,5 +53,5 @@ export declare class RuleChainService {
     getAutoAssignToEdgeRuleChains(config?: RequestConfig): Observable<Array<RuleChain>>;
     setEdgeRootRuleChain(edgeId: string, ruleChainId: string, config?: RequestConfig): Observable<Edge>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleChainService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleChainService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

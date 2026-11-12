@@ -15,5 +15,5 @@ export declare class CustomPaginatorIntl implements MatPaginatorIntl {
     getRangeLabel(page: number, pageSize: number, length: number): string;
     private applyLabels;
     static ɵfac: i0.ɵɵFactoryDeclaration<CustomPaginatorIntl, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CustomPaginatorIntl>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

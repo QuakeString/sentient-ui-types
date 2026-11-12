@@ -139,6 +139,7 @@ export declare const defaultSetValueSettings: (valueType: ValueType) => SetValue
 export declare const defaultWidgetActionSettings: WidgetAction;
 export declare const updateBehaviorDefaultSettings: (behavior: ScadaSymbolBehavior) => ScadaSymbolBehavior;
 export declare const defaultScadaSymbolObjectSettings: (metadata: ScadaSymbolMetadata) => ScadaSymbolObjectSettings;
+export declare const mergeScadaSymbolObjectSettings: (metadata: ScadaSymbolMetadata, input: ScadaSymbolObjectSettings) => ScadaSymbolObjectSettings;
 export type ScadaSymbolObjectSettings = {
     behavior: {
         [id: string]: any;

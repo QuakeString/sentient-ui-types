@@ -28,5 +28,5 @@ export declare class AiUsageService {
     constructor(http: HttpClient);
     getUsage(config?: RequestConfig): Observable<AiUsage>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiUsageService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AiUsageService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

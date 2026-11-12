@@ -60,5 +60,5 @@ export declare class DevicesTableConfigResolver {
     unassignDevicesFromEdge($event: Event, devices: Array<DeviceInfo>): void;
     checkConnectivity($event: Event, deviceId: EntityId, afterAdd?: boolean): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DevicesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DevicesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

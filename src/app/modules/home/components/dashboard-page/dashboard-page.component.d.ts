@@ -32,7 +32,6 @@ import { DashboardReuseService } from '@core/services/dashboard-reuse.service';
 import { HomeService } from '@core/services/home.service';
 import { DashboardSelectComponent } from '@shared/components/dashboard-select.component';
 import { IAliasController } from '@core/api/widget-api.models';
-import { MatButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { ILayoutController } from '@home/components/dashboard-page/layout/layout.models';
 import { TbPopoverComponent } from '@shared/components/popover.component';
@@ -208,6 +207,33 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     updateBreadcrumbs: EventEmitter<any>;
     private rxSubscriptions;
     get toolbarOpened(): boolean;
+    toolbarRevealed: boolean;
+    private autoHideWasActive;
+    private autoHideTimer;
+    private pointerOnToolbar;
+    autoHideToolbar(): boolean;
+    autoHideActive(): boolean;
+    /**
+     * One rule, so the timing is always the same: the bar leaves
+     * AUTO_HIDE_DELAY_MS after the pointer last left it (or after a tap on the
+     * top edge, which has no "leave"). While a menu, select list or popover
+     * opened from it is on screen the countdown waits, and starts again in full
+     * once that closes. Tooltips do not count.
+     */
+    private static readonly AUTO_HIDE_DELAY_MS;
+    private lastToolbarTouch;
+    private recentTouch;
+    /** A touch on the bar (or on the top edge): count down from this touch. */
+    onToolbarTouch(): void;
+    revealToolbar(fromTap?: boolean): void;
+    onToolbarPointer(over: boolean): void;
+    /** Any menu, list, panel or dialog on screen (time window, dashboard select, user menu...); tooltips and toasts do not count. */
+    private toolbarMenuOpen;
+    private scheduleToolbarHide;
+    private waitForToolbarMenu;
+    private clearToolbarHide;
+    /** On entering auto-hide (open / leaving edit mode) show the bar briefly so people know it is there. */
+    private checkAutoHideTransition;
     set toolbarOpened(toolbarOpened: boolean);
     get rightLayoutOpened(): boolean;
     set rightLayoutOpened(rightLayoutOpened: boolean);
@@ -345,6 +371,10 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     toggleLayerHidden(layer: number): void;
     toggleLayerLocked(layer: number): void;
     private refreshLayerStateOnDashboards;
+    /** Layers holding the selected widget(s); marked in the layer picker. */
+    getSelectedWidgetLayers(): Set<number>;
+    /** "Layer 2" / "2: Pumps" for one layer, "1, 3" when the widgets are on several. */
+    private widgetLayersHint;
     getLayerWidgetCounts(): {
         [layerId: number]: number;
     };
@@ -431,7 +461,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     copyWidget($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
     copyWidgetReference($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
     copyWidgetsReference($event: Event, layoutCtx: DashboardPageLayoutContext, widgets: Widget[]): void;
-    pasteWidgetDimensions($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
+    pasteWidgetDimensions($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget, which?: 'both' | 'width' | 'height'): void;
     pasteWidgetStyle($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
     copyWidgets($event: Event, layoutCtx: DashboardPageLayoutContext, widgets: Widget[]): void;
     pasteWidget($event: Event, layoutCtx: DashboardPageLayoutContext, pos: WidgetPosition): void;
@@ -513,7 +543,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     clearSelectedWidgetBundle(): void;
     editWidgetsTypesToDisplay($event: Event): void;
     updateDashboardImage($event: Event): void;
-    toggleVersionControl($event: Event, versionControlButton: MatButton): void;
+    toggleVersionControl($event: Event, versionControlButton: any): void;
     get showMainLayoutFiller(): boolean;
     get currentBreakpointValue(): string;
     private parseBreakpointsResponse;

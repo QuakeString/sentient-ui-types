@@ -9,5 +9,5 @@ export declare class BackendConfigService {
     derivedWsBase(): string;
     private normalize;
     static ɵfac: i0.ɵɵFactoryDeclaration<BackendConfigService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<BackendConfigService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

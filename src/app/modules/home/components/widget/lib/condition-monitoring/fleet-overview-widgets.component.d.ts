@@ -44,7 +44,7 @@ declare abstract class FleetOverviewBase extends CmChartBase implements OnInit {
     openMachine(m: OverviewMachine): void;
     levelColor(level: 'plan' | 'healthy'): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<FleetOverviewBase, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FleetOverviewBase, never, never, {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FleetOverviewBase, never, never, {}, {}, never, never, true, never>;
 }
 /** One headline number about the machines under the widget's entity: fleet
  *  health, machines at risk, open findings, open work orders or sensors

@@ -44,5 +44,5 @@ export declare class BreadcrumbService {
     private buildBreadCrumbs;
     private fullscreenHomeBreadcrumb;
     static ɵfac: i0.ɵɵFactoryDeclaration<BreadcrumbService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<BreadcrumbService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

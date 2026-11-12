@@ -1,6 +1,6 @@
 import { AfterViewChecked, ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { AiApprovalDecision, AiConversation, AiPendingAction } from '@core/http/ai-assistant.service';
+import { AiApprovalDecision, AiConversation, AiPendingAction, AiQueuedMessage } from '@core/http/ai-assistant.service';
 import { AiAssistantService } from '@core/http/ai-assistant.service';
 import { AiApprovalMode, AiAssistantStore } from './ai-assistant.store';
 import { AiPointService } from './ai-point.service';
@@ -72,7 +72,13 @@ export declare class AiAssistantPanelComponent implements OnInit, OnDestroy, Aft
     get floating(): boolean;
     get contextFill(): number;
     get starters(): string[];
+    /** While the assistant works a message can still be sent: it waits and is read at the next step. */
     canSend(): boolean;
+    /** Something is in the message box (text, files or pointed widgets). */
+    hasDraft(): boolean;
+    get working(): boolean;
+    /** One line of a waiting message for the list above the message box. */
+    queuedLabel(q: AiQueuedMessage): string;
     private tokensOf;
     /** Starts the clock when a run starts and stops it when the run ends. */
     private trackRun;

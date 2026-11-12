@@ -44,7 +44,7 @@ declare abstract class DiagnosisWidgetBase implements OnInit, OnDestroy {
     canOpenSetup(r?: DiagnosisResult): boolean;
     openSetup(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DiagnosisWidgetBase, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<DiagnosisWidgetBase, never, never, { "ctx": { "alias": "ctx"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<DiagnosisWidgetBase, never, never, { "ctx": { "alias": "ctx"; "required": false; }; }, {}, never, never, true, never>;
 }
 /** Score card: the machine's health score, state with its reason, the top
  *  finding with its recommendation, and what lowers the score. */

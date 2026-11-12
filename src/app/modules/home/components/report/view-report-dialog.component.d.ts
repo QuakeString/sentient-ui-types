@@ -56,6 +56,7 @@ export declare class ViewReportDialogComponent implements OnInit, OnDestroy {
     downloadFileName(): string;
     /** Save exactly what is on screen: the current zip entry, or the single-format file. */
     download(): void;
+    private formatFromMime;
     private handleBlob;
     private checkIfSpreadsheet;
     private loadSpreadsheet;

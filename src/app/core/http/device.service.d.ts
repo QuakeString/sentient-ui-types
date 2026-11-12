@@ -46,5 +46,5 @@ export declare class DeviceService {
     getDevicePublishTelemetryCommands(deviceId: string, config?: RequestConfig): Observable<PublishTelemetryCommand>;
     downloadGatewayDockerComposeFile(deviceId: string): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DeviceService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DeviceService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

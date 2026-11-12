@@ -79,5 +79,5 @@ export declare class AuthService {
     private userHasProfile;
     private userHasDefaultDashboard;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuthService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AuthService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

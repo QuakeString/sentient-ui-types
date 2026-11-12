@@ -13,5 +13,5 @@ export declare class ComponentDescriptorService {
     getComponentDescriptorsByTypes(componentTypes: Array<ComponentType>, ruleChainType: RuleChainType, config?: RequestConfig): Observable<Array<ComponentDescriptor>>;
     getComponentDescriptorByClazz(componentDescriptorClazz: string, config?: RequestConfig): Observable<ComponentDescriptor>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ComponentDescriptorService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ComponentDescriptorService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

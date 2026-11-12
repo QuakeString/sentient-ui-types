@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { ShapeFillImageSettings, ShapeFillImageType } from '@shared/models/widget/maps/map.models';
 import * as i0 from "@angular/core";
@@ -18,7 +18,7 @@ export declare class ShapeFillImageSettingsComponent implements ControlValueAcce
     registerOnTouched(_fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: ShapeFillImageSettings): void;
-    openImageSettingsPopup($event: Event, matButton: MatButton): void;
+    openImageSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ShapeFillImageSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<ShapeFillImageSettingsComponent, "tb-shape-fill-image-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;
 }

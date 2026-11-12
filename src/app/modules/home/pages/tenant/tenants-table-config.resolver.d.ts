@@ -32,5 +32,5 @@ export declare class TenantsTableConfigResolver {
     manageOwnerAndGroups($event: Event, tenant: TenantInfo): void;
     onTenantAction(action: EntityAction<TenantInfo>, config: EntityTableConfig<TenantInfo>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<TenantsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TenantsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

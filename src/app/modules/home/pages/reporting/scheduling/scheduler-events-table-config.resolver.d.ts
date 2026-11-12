@@ -35,5 +35,5 @@ export declare class SchedulerEventsTableConfigResolver {
     toggleEnabled($event: Event, event: SchedulerEvent): void;
     onEventAction(action: EntityAction<SchedulerEvent>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<SchedulerEventsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<SchedulerEventsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

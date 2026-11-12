@@ -9,5 +9,5 @@ export declare class DynamicComponentFactoryService {
     getComponentDef<T>(componentType: Type<T>): ɵComponentDef<T>;
     private createAndCompileDynamicComponent;
     static ɵfac: i0.ɵɵFactoryDeclaration<DynamicComponentFactoryService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DynamicComponentFactoryService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

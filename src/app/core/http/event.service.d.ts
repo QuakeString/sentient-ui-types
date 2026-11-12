@@ -13,5 +13,5 @@ export declare class EventService {
     getFilterEvents(entityId: EntityId, eventType: EventType | DebugEventType, tenantId: string, filters: FilterEventBody, pageLink: TimePageLink, config?: RequestConfig): Observable<PageData<Event>>;
     clearEvents(entityId: EntityId, eventType: EventType | DebugEventType, filters: FilterEventBody, tenantId: string, pageLink: TimePageLink, config?: RequestConfig): Observable<Object>;
     static ɵfac: i0.ɵɵFactoryDeclaration<EventService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EventService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

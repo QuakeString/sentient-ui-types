@@ -5,7 +5,7 @@ import { AppState } from '@core/core.state';
 import { EntitiesVersionControlService } from '@core/http/entities-version-control.service';
 import { EntityId } from '@shared/models/id/entity-id';
 import { TbPopoverComponent } from '@shared/components/popover.component';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { ThemeService } from '@core/services/theme.service';
 import * as i0 from "@angular/core";
@@ -51,7 +51,7 @@ export declare class EntityVersionDiffComponent extends PageComponent implements
     private resizeEditors;
     ngOnDestroy(): void;
     close(): void;
-    toggleRestoreEntityVersion($event: Event, restoreVersionButton: MatButton): void;
+    toggleRestoreEntityVersion($event: Event, restoreVersionButton: MatButton | MatIconButton): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityVersionDiffComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<EntityVersionDiffComponent, "tb-entity-version-diff", never, { "versionName": { "alias": "versionName"; "required": false; }; "versionId": { "alias": "versionId"; "required": false; }; "entityId": { "alias": "entityId"; "required": false; }; "externalEntityId": { "alias": "externalEntityId"; "required": false; }; "onClose": { "alias": "onClose"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; }, { "versionRestored": "versionRestored"; }, never, never, false, never>;
 }

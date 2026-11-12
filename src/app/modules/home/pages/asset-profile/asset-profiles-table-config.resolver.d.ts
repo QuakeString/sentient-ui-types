@@ -27,5 +27,5 @@ export declare class AssetProfilesTableConfigResolver {
     exportAssetProfile($event: Event, assetProfile: AssetProfile): void;
     onAssetProfileAction(action: EntityAction<AssetProfile>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<AssetProfilesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AssetProfilesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

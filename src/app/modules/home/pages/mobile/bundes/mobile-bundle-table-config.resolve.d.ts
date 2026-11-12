@@ -23,5 +23,5 @@ export declare class MobileBundleTableConfigResolver {
     private editBundle;
     private configurationApp;
     static ɵfac: i0.ɵɵFactoryDeclaration<MobileBundleTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MobileBundleTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -1,6 +1,6 @@
 import { DestroyRef, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { MarkerIconSettings, MarkerShapeSettings, MarkerType } from '@shared/models/widget/maps/map.models';
 import { Observable } from 'rxjs';
@@ -36,7 +36,7 @@ export declare class MarkerShapeSettingsComponent implements ControlValueAccesso
     registerOnTouched(fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: MarkerShapeSettings | MarkerIconSettings): void;
-    openShapePopup($event: Event, matButton: MatButton): void;
+    openShapePopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updateModel;
     private updatePreview;
     static ɵfac: i0.ɵɵFactoryDeclaration<MarkerShapeSettingsComponent, never>;

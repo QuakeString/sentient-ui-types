@@ -20,5 +20,5 @@ export declare class EntityRelationService {
     findByQuery(query: EntityRelationsQuery, config?: RequestConfig): Observable<Array<EntityRelation>>;
     findInfoByQuery(query: EntityRelationsQuery, config?: RequestConfig): Observable<Array<EntityRelationInfo>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityRelationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityRelationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

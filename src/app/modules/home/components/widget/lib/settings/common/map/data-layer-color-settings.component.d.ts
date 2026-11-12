@@ -1,7 +1,7 @@
 import { Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { ComponentStyle } from '@shared/models/widget-settings.models';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { DataLayerColorSettings, DataLayerColorType } from '@shared/models/widget/maps/map.models';
 import { MapSettingsContext } from '@home/components/widget/lib/settings/common/map/map-settings.component.models';
@@ -26,7 +26,7 @@ export declare class DataLayerColorSettingsComponent implements ControlValueAcce
     registerOnTouched(fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: DataLayerColorSettings): void;
-    openColorSettingsPopup($event: Event, matButton: MatButton): void;
+    openColorSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updateColorStyle;
     static ɵfac: i0.ɵɵFactoryDeclaration<DataLayerColorSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DataLayerColorSettingsComponent, "tb-data-layer-color-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; "context": { "alias": "context"; "required": false; }; "dsType": { "alias": "dsType"; "required": false; }; "dsEntityAliasId": { "alias": "dsEntityAliasId"; "required": false; }; "dsDeviceId": { "alias": "dsDeviceId"; "required": false; }; "helpId": { "alias": "helpId"; "required": false; }; }, {}, never, never, false, never>;

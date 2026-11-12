@@ -17,5 +17,5 @@ export declare class HelpService {
     private processVariables;
     private processIncludes;
     static ɵfac: i0.ɵɵFactoryDeclaration<HelpService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<HelpService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

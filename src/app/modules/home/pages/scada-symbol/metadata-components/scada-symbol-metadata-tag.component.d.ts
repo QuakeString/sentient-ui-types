@@ -2,7 +2,7 @@ import { OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validator } from '@angular/forms';
 import { ScadaSymbolTag } from '@home/components/widget/lib/scada/scada-symbol.models';
 import { TbEditorCompleter } from '@shared/models/ace/completion.models';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import * as i0 from "@angular/core";
 export declare class ScadaSymbolMetadataTagComponent implements ControlValueAccessor, OnInit, Validator {
@@ -10,10 +10,10 @@ export declare class ScadaSymbolMetadataTagComponent implements ControlValueAcce
     private popoverService;
     private renderer;
     private viewContainerRef;
-    editStateRenderFunctionButton: MatButton;
-    editClickActionButton: MatButton;
-    editPressActionButton: MatButton;
-    editReleaseActionButton: MatButton;
+    editStateRenderFunctionButton: MatButton | MatIconButton;
+    editClickActionButton: MatButton | MatIconButton;
+    editPressActionButton: MatButton | MatIconButton;
+    editReleaseActionButton: MatButton | MatIconButton;
     disabled: boolean;
     elementStateRenderFunctionCompleter: TbEditorCompleter;
     clickActionFunctionCompleter: TbEditorCompleter;

@@ -6,7 +6,7 @@ import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@ang
 import { DialogService } from '@core/services/dialog.service';
 import { TranslateService } from '@ngx-translate/core';
 import { TbPopoverService } from '@shared/components/popover.service';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
 import * as i0 from "@angular/core";
 export declare class MaterialIconSelectComponent extends PageComponent implements OnInit, ControlValueAccessor {
@@ -40,7 +40,7 @@ export declare class MaterialIconSelectComponent extends PageComponent implement
     writeValue(value: string): void;
     private updateModel;
     openIconDialog(): void;
-    openIconPopup($event: Event, matButton: MatButton): void;
+    openIconPopup($event: Event, matButton: MatButton | MatIconButton): void;
     clear(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<MaterialIconSelectComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<MaterialIconSelectComponent, "tb-material-icon-select", never, { "asBoxInput": { "alias": "asBoxInput"; "required": false; }; "label": { "alias": "label"; "required": false; }; "color": { "alias": "color"; "required": false; }; "backgroundColor": { "alias": "backgroundColor"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "iconClearButton": { "alias": "iconClearButton"; "required": false; }; "required": { "alias": "required"; "required": false; }; }, {}, never, never, false, never>;

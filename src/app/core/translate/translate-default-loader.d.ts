@@ -12,5 +12,5 @@ export declare class TranslateDefaultLoader implements TranslateLoader {
      */
     getTranslation(lang: string): Observable<object>;
     static ɵfac: i0.ɵɵFactoryDeclaration<TranslateDefaultLoader, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TranslateDefaultLoader>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

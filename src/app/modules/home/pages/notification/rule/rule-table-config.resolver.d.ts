@@ -21,5 +21,5 @@ export declare class RuleTableConfigResolver {
     private notificationRuleDialog;
     private toggleEnableMode;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

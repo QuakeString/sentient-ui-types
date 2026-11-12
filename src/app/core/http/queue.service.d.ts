@@ -18,5 +18,5 @@ export declare class QueueService {
     getQueueStatisticsById(queueStatId: string, config?: RequestConfig): Observable<QueueStatisticsInfo>;
     getQueueStatisticsByIds(queueStatIds: Array<string>, config?: RequestConfig): Observable<Array<QueueStatisticsInfo>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<QueueService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<QueueService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

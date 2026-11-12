@@ -31,6 +31,12 @@ export declare class AiPointService {
     private box;
     private pill;
     private drag;
+    /** Latest pointer move, handled once per frame (a heavy page must not lay out on every event). */
+    private pendingMove;
+    private moveFrame;
+    /** Widget pictures run one after another, never several at once. */
+    private snapshotQueue;
+    private snapshotsTaken;
     private listeners;
     constructor(zone: NgZone, translate: TranslateService);
     get active(): boolean;
@@ -48,6 +54,7 @@ export declare class AiPointService {
     private showOutline;
     /** Events on the assistant (panel, its window) and the pill pass through untouched. */
     private ours;
+    private queueMove;
     private onMove;
     private onDown;
     private onUp;
@@ -64,5 +71,5 @@ export declare class AiPointService {
     /** A picture of the widget as it looks now, at most 800 px wide. */
     private snapshot;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiPointService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AiPointService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

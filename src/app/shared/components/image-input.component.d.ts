@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { ControlValueAccessor } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { FlowDirective } from '@flowjs/ngx-flow';
+import { FlowConfig as FlowDirective } from '@flowjs/ngx-flow';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { UtilsService } from '@core/services/utils.service';
 import { DialogService } from '@core/services/dialog.service';

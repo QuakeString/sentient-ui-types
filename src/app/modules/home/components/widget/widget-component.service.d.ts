@@ -40,5 +40,5 @@ export declare class WidgetComponentService {
     private processWidgetLoadError;
     private resolveWidgetsInfoFetchQueue;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponentService, [null, { optional: true; }, null, null, null, null, null, null, null]>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<WidgetComponentService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

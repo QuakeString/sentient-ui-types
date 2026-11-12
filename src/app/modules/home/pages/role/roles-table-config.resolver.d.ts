@@ -21,5 +21,5 @@ export declare class RolesTableConfigResolver {
     private openRole;
     private onRoleAction;
     static ɵfac: i0.ɵɵFactoryDeclaration<RolesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RolesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

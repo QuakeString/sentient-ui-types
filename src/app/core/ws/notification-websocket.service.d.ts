@@ -18,5 +18,5 @@ export declare class NotificationWebsocketService extends WebsocketService<Telem
     unsubscribe(subscriber: TelemetrySubscriber): void;
     processOnMessage(message: WebsocketDataMsg): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<NotificationWebsocketService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<NotificationWebsocketService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
