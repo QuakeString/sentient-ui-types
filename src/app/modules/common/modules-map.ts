@@ -18,6 +18,8 @@
 
 import * as AngularAnimations from '@angular/animations';
 import * as AngularCore from '@angular/core';
+// Extensions must share the UI's copy of this entry point: a bundled copy cannot see the UI's injection context.
+import * as AngularCoreRxjsInterop from '@angular/core/rxjs-interop';
 import * as AngularCommon from '@angular/common';
 import * as AngularForms from '@angular/forms';
 import * as AngularPlatformBrowser from '@angular/platform-browser';
@@ -375,6 +377,7 @@ class ModulesMap implements IModulesMap {
   private modulesMap: {[key: string]: any} = {
     '@angular/animations': AngularAnimations,
     '@angular/core': AngularCore,
+    '@angular/core/rxjs-interop': AngularCoreRxjsInterop,
     '@angular/common': AngularCommon,
     '@angular/common/http': HttpClientModule,
     '@angular/forms': AngularForms,
