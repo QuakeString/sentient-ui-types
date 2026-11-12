@@ -33,6 +33,7 @@ export declare class CalculatedFieldComponent extends EntityComponent<Calculated
     readonly CalculatedFieldTypeTranslations: Map<CalculatedFieldType, import("@shared/models/calculated-field.models").CalculatedFieldTypeTranslate>;
     private cfFormService;
     private destroyRef;
+    private destroyed;
     constructor(store: Store<AppState>, translate: TranslateService, entityValue: CalculatedFieldInfo, entitiesTableConfigValue: CalculatedFieldsTableConfig, fb: FormBuilder, cd: ChangeDetectorRef, entityService: EntityService);
     hideDelete(): boolean;
     additionalDebugActionConfig: {

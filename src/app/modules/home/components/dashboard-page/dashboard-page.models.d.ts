@@ -5,7 +5,7 @@ import { IAliasController, IStateController } from '@core/api/widget-api.models'
 import { ILayoutController } from './layout/layout.models';
 import { DashboardContextMenuItem, WidgetContextMenuItem } from '@home/models/dashboard-component.models';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { displayGrids } from 'angular-gridster2/lib/gridsterConfig.interface';
+type displayGrids = 'always' | 'onDrag&Resize' | 'none';
 import { ElementRef } from '@angular/core';
 export declare type DashboardPageScope = 'tenant' | 'customer';
 export interface DashboardPageInitData {
@@ -98,3 +98,4 @@ export declare class LayoutWidgetsArray implements Iterable<Widget> {
     widgetByIndex(index: number): Widget;
     private widgetById;
 }
+export {};

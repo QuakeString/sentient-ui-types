@@ -34,5 +34,5 @@ export declare class AnalyticsService {
     deleteAnalyticsPipeline(pipelineId: string, config?: RequestConfig): Observable<void>;
     private toPipeline;
     static ɵfac: i0.ɵɵFactoryDeclaration<AnalyticsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AnalyticsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

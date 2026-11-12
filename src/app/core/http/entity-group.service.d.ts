@@ -19,5 +19,5 @@ export declare class EntityGroupService {
     makeEntityGroupPublic(entityGroupId: string, config?: RequestConfig): Observable<EntityGroup>;
     makeEntityGroupPrivate(entityGroupId: string, config?: RequestConfig): Observable<EntityGroup>;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityGroupService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityGroupService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

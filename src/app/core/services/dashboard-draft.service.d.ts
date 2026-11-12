@@ -46,5 +46,5 @@ export declare class DashboardDraftService {
     private open;
     private pruneOld;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardDraftService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardDraftService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

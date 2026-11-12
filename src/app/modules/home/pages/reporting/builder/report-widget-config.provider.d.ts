@@ -68,7 +68,7 @@ export declare class ReportWidgetConfigProvider {
      */
     setWidgetType(type: widgetType): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ReportWidgetConfigProvider, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ReportWidgetConfigProvider>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 /**
  * Factory function to provide ReportWidgetConfigProvider as WidgetConfigComponent.

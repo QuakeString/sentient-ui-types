@@ -25,5 +25,5 @@ export declare class AlarmService {
     getHighestAlarmSeverity(entityId: EntityId, alarmSearchStatus: AlarmSearchStatus, alarmStatus: AlarmStatus, config?: RequestConfig): Observable<AlarmSeverity>;
     getAlarmTypes(pageLink: PageLink, config?: RequestConfig): Observable<PageData<EntitySubtype>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AlarmService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AlarmService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

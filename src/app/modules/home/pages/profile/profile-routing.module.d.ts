@@ -12,7 +12,7 @@ export declare class UserProfileResolver {
     constructor(store: Store<AppState>, userService: UserService);
     resolve(): Observable<User>;
     static ɵfac: i0.ɵɵFactoryDeclaration<UserProfileResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UserProfileResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare const profileRoutes: Routes;
 export declare class ProfileRoutingModule {

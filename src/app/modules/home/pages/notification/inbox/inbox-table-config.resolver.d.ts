@@ -21,5 +21,5 @@ export declare class InboxTableConfigResolver {
     private markAsRead;
     private showNotification;
     static ɵfac: i0.ɵɵFactoryDeclaration<InboxTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<InboxTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

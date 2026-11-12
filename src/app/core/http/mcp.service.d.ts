@@ -25,5 +25,5 @@ export declare class McpService {
     getSettings(config?: RequestConfig): Observable<AdminSettings<McpSettings>>;
     saveSettings(settings: McpSettings, config?: RequestConfig): Observable<AdminSettings<McpSettings>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<McpService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<McpService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

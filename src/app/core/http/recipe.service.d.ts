@@ -57,6 +57,6 @@ export declare class RecipeService {
         totalElements: number;
     }>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RecipeService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RecipeService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export {};

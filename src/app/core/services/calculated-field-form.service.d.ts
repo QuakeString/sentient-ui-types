@@ -13,5 +13,5 @@ export declare class CalculatedFieldFormService {
     prepareConfig(configuration: CalculatedFieldConfiguration): CalculatedFieldConfiguration;
     testScript(calculatedFieldId: string, formValue: CalculatedField, testDialogFn: (calculatedField: CalculatedFieldsTableEntity, argumentsObj?: CalculatedFieldEventArguments, openCalculatedFieldEdit?: boolean, expression?: string) => Observable<string>, destroyRef: DestroyRef, expression?: string): Observable<string>;
     static ɵfac: i0.ɵɵFactoryDeclaration<CalculatedFieldFormService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CalculatedFieldFormService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

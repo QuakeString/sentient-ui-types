@@ -143,6 +143,7 @@ export interface DashboardSettings {
     showDashboardLanguage?: boolean;
     toolbarAlwaysOpen?: boolean;
     hideToolbar?: boolean;
+    autoHideToolbar?: boolean;
     titleColor?: string;
     titleFont?: Font;
     dashboardCss?: string;

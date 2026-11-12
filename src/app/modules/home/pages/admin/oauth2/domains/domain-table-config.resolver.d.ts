@@ -15,5 +15,5 @@ export declare class DomainTableConfigResolver {
     private toggleEnableOAuth;
     private togglePropagateToEdge;
     static ɵfac: i0.ɵɵFactoryDeclaration<DomainTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DomainTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

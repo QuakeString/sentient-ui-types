@@ -16,5 +16,5 @@ export declare class CustomerService {
     getSubCustomers(customerId: string, pageLink: PageLink, includeSubCustomers?: boolean, config?: RequestConfig): Observable<PageData<Customer>>;
     getCustomerHierarchy(customerId: string, config?: RequestConfig): Observable<Customer[]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<CustomerService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CustomerService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

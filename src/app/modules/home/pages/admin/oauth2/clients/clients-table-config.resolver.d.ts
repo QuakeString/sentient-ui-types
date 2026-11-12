@@ -13,5 +13,5 @@ export declare class ClientsTableConfigResolver {
     constructor(translate: TranslateService, datePipe: DatePipe, oauth2Service: OAuth2Service);
     resolve(): EntityTableConfig<OAuth2Client, PageLink, OAuth2ClientInfo>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ClientsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ClientsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

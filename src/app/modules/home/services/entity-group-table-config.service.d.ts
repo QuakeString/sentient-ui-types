@@ -53,5 +53,5 @@ export declare class EntityGroupTableConfigService {
     hasWizardForType(groupType: EntityGroupType): boolean;
     resolveProperty(obj: any, path: string): any;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityGroupTableConfigService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityGroupTableConfigService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

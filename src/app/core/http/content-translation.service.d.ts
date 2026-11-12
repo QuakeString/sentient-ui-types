@@ -82,5 +82,5 @@ export declare class ContentTranslationService {
     saveAppLanguage(language: AppLanguageRequest, config?: RequestConfig): Observable<AppLanguage>;
     deleteAppLanguage(code: string, config?: RequestConfig): Observable<void>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ContentTranslationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ContentTranslationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

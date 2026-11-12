@@ -2,7 +2,7 @@ import { TbColorScheme } from '@shared/models/color.models';
 import { LinearGradientObject } from 'zrender/lib/graphic/LinearGradient';
 import { ComponentStyle, Font } from '@shared/models/widget-settings.models';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
-import { LabelFormatterCallback, RadialGradientObject } from 'echarts';
+import { LabelFormatterCallback, RadialGradientObject } from 'echarts/types/dist/echarts';
 import { AnimationOptionMixin, LabelLayoutOption } from 'echarts/types/src/util/types';
 import { LabelLayoutOptionCallback } from 'echarts/types/dist/shared';
 import { BuiltinTextPosition } from 'zrender/src/core/types';

@@ -127,5 +127,5 @@ export declare class ItemBufferService {
     private storeRemove;
     private getNamespacedKey;
     static ɵfac: i0.ɵɵFactoryDeclaration<ItemBufferService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ItemBufferService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

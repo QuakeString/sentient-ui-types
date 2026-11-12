@@ -7,4 +7,4 @@ release's `ui-ngx`, so its changes are the release's changes:
 - SENTIENT's CHANGELOG.md, where changes to the public UI API that extensions
   compile against are marked **Extension API**.
 
-This tag: 4.3.0.58 (https://github.com/QuakeString/sentient-release/releases/tag/4.3.0.58).
+This tag: 4.4.0.1 (https://github.com/QuakeString/sentient-release/releases/tag/4.4.0.1).

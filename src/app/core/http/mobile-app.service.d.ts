@@ -19,5 +19,5 @@ export declare class MobileAppService {
     getMobileAppBundleInfoById(id: string, config?: RequestConfig): Observable<MobileAppBundleInfo>;
     deleteMobileAppBundle(id: string, config?: RequestConfig): Observable<void>;
     static ɵfac: i0.ɵɵFactoryDeclaration<MobileAppService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MobileAppService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

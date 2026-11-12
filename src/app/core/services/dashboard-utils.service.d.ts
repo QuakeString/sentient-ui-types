@@ -75,5 +75,5 @@ export declare class DashboardUtilsService {
     getBreakpointSizeDescription(breakpointId: BreakpointId): string;
     updatedLayoutForBreakpoint(layout: DashboardPageLayout, breakpointId: BreakpointId): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardUtilsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardUtilsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

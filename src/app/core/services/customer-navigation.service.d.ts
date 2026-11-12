@@ -27,5 +27,5 @@ export declare class CustomerNavigationService {
     findIndex(customerId: string): number;
     getAncestors(): CustomerNavEntry[];
     static ɵfac: i0.ɵɵFactoryDeclaration<CustomerNavigationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CustomerNavigationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

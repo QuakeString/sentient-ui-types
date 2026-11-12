@@ -35,5 +35,5 @@ export declare class PrimedResponseService {
     private key;
     private materialize;
     static ɵfac: i0.ɵɵFactoryDeclaration<PrimedResponseService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<PrimedResponseService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

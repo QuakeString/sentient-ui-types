@@ -57,5 +57,5 @@ export declare class RuleChainsTableConfigResolver {
     fetchRuleChains(pageLink: PageLink): Observable<PageData<RuleChain>>;
     fetchEdgeRuleChains(pageLink: PageLink): Observable<PageData<RuleChain>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleChainsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RuleChainsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

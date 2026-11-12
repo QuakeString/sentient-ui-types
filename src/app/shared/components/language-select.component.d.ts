@@ -27,7 +27,7 @@ export declare class LanguageSelectComponent implements ControlValueAccessor {
     private onTouched;
     constructor();
     nameOf(locale: string): import("@shared/models/script.models").NativeLanguageName;
-    dirOf(locale: string): "ltr" | "rtl";
+    dirOf(locale: string): "rtl" | "ltr";
     /** BCP 47 tag for a lang attribute. */
     langOf(locale: string): string;
     refresh(): void;

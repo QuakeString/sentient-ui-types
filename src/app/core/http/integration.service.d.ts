@@ -16,5 +16,5 @@ export declare class IntegrationService {
     checkConnection(integration: Integration, config?: RequestConfig): Observable<any>;
     getIntegrationDebugEvents(integrationId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<any>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<IntegrationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<IntegrationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

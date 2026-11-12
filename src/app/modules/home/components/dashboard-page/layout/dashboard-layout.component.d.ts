@@ -1,4 +1,4 @@
-import { OnDestroy, OnInit } from '@angular/core';
+import { ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { ILayoutController } from '@home/components/dashboard-page/layout/layout.models';
 import { DashboardContext, DashboardPageLayoutContext } from '@home/components/dashboard-page/dashboard-page.models';
 import { PageComponent } from '@shared/components/page.component';
@@ -14,10 +14,10 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { TbCheatSheetComponent } from '@shared/components/cheatsheet.component';
 import { TbPopoverComponent } from '@shared/components/popover.component';
 import { ImagePipe } from '@shared/pipe/image.pipe';
-import { displayGrids } from 'angular-gridster2/lib/gridsterConfig.interface';
 import { TbContextMenuEvent } from '@shared/models/jquery-event.models';
 import { ThemeService } from '@core/services/theme.service';
 import * as i0 from "@angular/core";
+type displayGrids = 'always' | 'onDrag&Resize' | 'none';
 export declare class DashboardLayoutComponent extends PageComponent implements ILayoutController, DashboardCallbacks, OnInit, OnDestroy {
     protected store: Store<AppState>;
     private translate;
@@ -72,6 +72,7 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     parentDashboard?: IDashboardComponent;
     popoverComponent?: TbPopoverComponent;
     dashboard: IDashboardComponent;
+    hotkeysHost: ElementRef<HTMLElement>;
     private rxSubscriptions;
     constructor(store: Store<AppState>, translate: TranslateService, itembuffer: ItemBufferService, imagePipe: ImagePipe, sanitizer: DomSanitizer, themeService: ThemeService);
     ngOnInit(): void;
@@ -83,7 +84,7 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     resetHighlight(): void;
     highlightWidget(widgetId: string, delay?: number): void;
     focusWidgetForEdit(widgetId: string, drawerLeftX?: number, verticalOnly?: boolean): void;
-    selectWidget(widgetId: string, delay?: number, mode?: 'replace' | 'toggle'): void;
+    selectWidget(widgetId: string, delay?: number, mode?: 'replace' | 'toggle', scroll?: boolean): void;
     isWidgetSelected(widgetId: string): boolean;
     captureZoomBeforeEdit(): void;
     getSelectedWidgets(): Widget[];
@@ -95,6 +96,7 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     onExportWidget($event: Event, widget: Widget, widgetTitle: string): void;
     onRemoveWidget($event: Event, widget: Widget): void;
     onWidgetMouseDown($event: Event, widget: Widget): void;
+    private focusHotkeys;
     onWidgetChangeStart(): void;
     onWidgetChangeEnd(): void;
     onDashboardMouseDown($event: Event): void;
@@ -122,3 +124,4 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardLayoutComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<DashboardLayoutComponent, "tb-dashboard-layout", never, { "dashboardCheatSheet": { "alias": "dashboardCheatSheet"; "required": false; }; "layoutCtx": { "alias": "layoutCtx"; "required": false; }; "dashboardCtx": { "alias": "dashboardCtx"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isEditingWidget": { "alias": "isEditingWidget"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "widgetEditMode": { "alias": "widgetEditMode"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; }, {}, never, never, false, never>;
 }
+export {};

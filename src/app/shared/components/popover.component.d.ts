@@ -1,11 +1,14 @@
 import { AfterViewInit, ChangeDetectorRef, ComponentRef, ElementRef, EventEmitter, Injector, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, TemplateRef, Type, ViewContainerRef } from '@angular/core';
 import { Direction, Directionality } from '@angular/cdk/bidi';
-import { CdkConnectedOverlay, CdkOverlayOrigin, ConnectedOverlayPositionChange, ConnectionPositionPair, NoopScrollStrategy } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay, ConnectedOverlayPositionChange, ConnectionPositionPair, NoopScrollStrategy } from '@angular/cdk/overlay';
 import { Subject } from 'rxjs';
 import { PopoverPlacement, PopoverPreferredPlacement } from '@shared/components/popover.models';
 import { AnimationBuilder } from '@angular/animations';
 import * as i0 from "@angular/core";
 export type TbPopoverTrigger = 'click' | 'focus' | 'hover' | null;
+export interface TbPopoverOrigin {
+    elementRef: ElementRef<any>;
+}
 export declare class TbPopoverDirective implements OnChanges, OnDestroy, AfterViewInit {
     private elementRef;
     private hostView;
@@ -106,7 +109,7 @@ export declare class TbPopoverComponent<T = any> implements OnDestroy, OnInit {
     };
     preferredPlacement: PopoverPlacement;
     strictPosition: boolean;
-    origin: CdkOverlayOrigin;
+    origin: TbPopoverOrigin;
     dir: Direction;
     classMap: {
         [klass: string]: any;
@@ -130,7 +133,7 @@ export declare class TbPopoverComponent<T = any> implements OnDestroy, OnInit {
     updatePosition(): void;
     onPositionChange(position: ConnectedOverlayPositionChange): void;
     updateStyles(): void;
-    setOverlayOrigin(origin: CdkOverlayOrigin): void;
+    setOverlayOrigin(origin: TbPopoverOrigin): void;
     onClickOutside(event: MouseEvent): void;
     onComponentChange(component: ComponentRef<any>): void;
     animationDone(): void;

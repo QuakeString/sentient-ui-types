@@ -12,7 +12,7 @@ export declare class WidgetEditorDashboardResolver {
     constructor(dashboardService: DashboardService, dashboardUtils: DashboardUtilsService, utils: UtilsService);
     resolve(route: ActivatedRouteSnapshot): Dashboard;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetEditorDashboardResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<WidgetEditorDashboardResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare class DashboardPagesRoutingModule {
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardPagesRoutingModule, never>;

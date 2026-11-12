@@ -22,5 +22,5 @@ export declare class TbPopoverService {
     private removePopoverByComponent;
     private elementsAreEqualOrDescendant;
     static ɵfac: i0.ɵɵFactoryDeclaration<TbPopoverService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TbPopoverService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

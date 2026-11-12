@@ -7,6 +7,8 @@ export declare class DeviceCredentialsLwm2mServerComponent implements OnDestroy,
     serverFormGroup: UntypedFormGroup;
     securityConfigLwM2MType: typeof Lwm2mSecurityType;
     securityConfigLwM2MTypes: Lwm2mSecurityType[];
+    /** The bootstrap server's account: it is not reached over OSCORE. */
+    set bootstrapServer(value: boolean);
     lwm2mSecurityTypeTranslationMap: Map<Lwm2mSecurityType, string>;
     publicKeyOrIdTooltipNamesMap: Map<Lwm2mSecurityType, string>;
     clientSecretKeyTooltipNamesMap: Map<Lwm2mSecurityType, string>;
@@ -23,5 +25,5 @@ export declare class DeviceCredentialsLwm2mServerComponent implements OnDestroy,
     private updateValidate;
     private setValidatorsSecurity;
     static ɵfac: i0.ɵɵFactoryDeclaration<DeviceCredentialsLwm2mServerComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DeviceCredentialsLwm2mServerComponent, "tb-device-credentials-lwm2m-server", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DeviceCredentialsLwm2mServerComponent, "tb-device-credentials-lwm2m-server", never, { "bootstrapServer": { "alias": "bootstrapServer"; "required": false; }; }, {}, never, never, false, never>;
 }

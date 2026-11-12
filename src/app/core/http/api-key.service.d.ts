@@ -14,5 +14,5 @@ export declare class ApiKeyService {
     enableApiKey(id: string, enabledValue: boolean, config?: RequestConfig): Observable<ApiKeyInfo>;
     getUserApiKeys(userId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<ApiKeyInfo>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ApiKeyService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ApiKeyService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

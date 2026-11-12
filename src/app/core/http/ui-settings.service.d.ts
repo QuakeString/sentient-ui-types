@@ -7,5 +7,5 @@ export declare class UiSettingsService {
     constructor(http: HttpClient);
     getHelpBaseUrl(): Observable<string>;
     static ɵfac: i0.ɵɵFactoryDeclaration<UiSettingsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UiSettingsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

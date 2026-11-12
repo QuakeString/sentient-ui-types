@@ -17,5 +17,5 @@ export declare class TwoFactorAuthenticationService {
     deleteTwoFaAccountConfig(providerType: TwoFactorAuthProviderType, config?: RequestConfig): Observable<AccountTwoFaSettings>;
     requestTwoFaVerificationCodeSend(providerType: TwoFactorAuthProviderType, config?: RequestConfig): Observable<Object>;
     static ɵfac: i0.ɵɵFactoryDeclaration<TwoFactorAuthenticationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TwoFactorAuthenticationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

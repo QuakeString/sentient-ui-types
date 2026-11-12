@@ -26,5 +26,5 @@ export declare class ResourcesLibraryTableConfigResolver {
     private detailsReadonly;
     private isResourceEditable;
     static ɵfac: i0.ɵɵFactoryDeclaration<ResourcesLibraryTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ResourcesLibraryTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

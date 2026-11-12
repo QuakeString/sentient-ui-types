@@ -7,7 +7,18 @@ export declare enum RecipeElementType {
     Boolean = "boolean",
     String = "string",
     Enum = "enum",
-    Time = "time"
+    Time = "time",
+    Float = "float",
+    Int8 = "int8",
+    Int16 = "int16",
+    Int32 = "int32",
+    Int64 = "int64",
+    Uint8 = "uint8",
+    Uint16 = "uint16",
+    Uint32 = "uint32",
+    Uint64 = "uint64",
+    Date = "date",
+    Datetime = "datetime"
 }
 export declare enum RecipeElementTargetKind {
     Rpc = "rpc",

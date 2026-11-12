@@ -45,5 +45,5 @@ export declare class EdgesTableConfigResolver {
     openInstructions($event: Event, edge: EdgeInfo, afterAdd?: boolean, upgradeAvailable?: boolean): void;
     onEdgeAction(action: EntityAction<EdgeInfo>, config: EntityTableConfig<EdgeInfo>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<EdgesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EdgesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

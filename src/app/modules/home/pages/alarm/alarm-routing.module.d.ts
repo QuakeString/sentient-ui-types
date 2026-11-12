@@ -7,7 +7,7 @@ export declare class OAuth2LoginProcessingUrlResolver {
     constructor(oauth2Service: OAuth2Service);
     resolve(): Observable<string>;
     static ɵfac: i0.ɵɵFactoryDeclaration<OAuth2LoginProcessingUrlResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<OAuth2LoginProcessingUrlResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare class AlarmRoutingModule {
     static ɵfac: i0.ɵɵFactoryDeclaration<AlarmRoutingModule, never>;

@@ -11,5 +11,5 @@ export declare class NodeScriptTestService {
     testNodeScript(script: string, scriptType: string, functionTitle: string, functionName: string, argNames: string[], ruleNodeId: string, helpId?: string, scriptLang?: ScriptLanguage, debugEventBody?: DebugRuleNodeEventBody): Observable<string>;
     private openTestScriptDialog;
     static ɵfac: i0.ɵɵFactoryDeclaration<NodeScriptTestService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<NodeScriptTestService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

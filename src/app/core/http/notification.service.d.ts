@@ -39,5 +39,5 @@ export declare class NotificationService {
     getNotificationUserSettings(config?: RequestConfig): Observable<NotificationUserSettings>;
     saveNotificationUserSettings(settings: NotificationUserSettings, config?: RequestConfig): Observable<NotificationUserSettings>;
     static ɵfac: i0.ɵɵFactoryDeclaration<NotificationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<NotificationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -101,5 +101,5 @@ export declare class SolutionService {
     preflightPackage(file: Blob, config?: RequestConfig): Observable<PackagePreflight>;
     importPackage(file: Blob, acceptUnsigned: boolean, replace: boolean, config?: RequestConfig): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<SolutionService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<SolutionService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

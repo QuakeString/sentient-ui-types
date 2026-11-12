@@ -46,5 +46,5 @@ export declare class GlobalHttpInterceptor implements HttpInterceptor {
      */
     private showLicensePromptDialog;
     static ɵfac: i0.ɵɵFactoryDeclaration<GlobalHttpInterceptor, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<GlobalHttpInterceptor>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

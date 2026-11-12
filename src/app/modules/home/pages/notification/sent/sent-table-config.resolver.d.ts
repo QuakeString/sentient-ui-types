@@ -23,5 +23,5 @@ export declare class SentTableConfigResolver {
     private requestStatusStyle;
     private openStatsErrorDialog;
     static ɵfac: i0.ɵɵFactoryDeclaration<SentTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<SentTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

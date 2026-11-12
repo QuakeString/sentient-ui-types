@@ -37,7 +37,7 @@ declare abstract class PointWidgetBase extends CmChartBase implements OnInit {
     get point(): MeasurementPoint | undefined;
     private loadPoints;
     static ɵfac: i0.ɵɵFactoryDeclaration<PointWidgetBase, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<PointWidgetBase, never, never, {}, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<PointWidgetBase, never, never, {}, {}, never, never, true, never>;
 }
 /** Envelope (demodulated) waveform: the Hilbert magnitude of the capture
  *  band-passed to [lo, hi] Hz, as the server's envelope spectrum (500 Hz up). */

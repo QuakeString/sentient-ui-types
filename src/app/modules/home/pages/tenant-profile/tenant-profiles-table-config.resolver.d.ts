@@ -27,5 +27,5 @@ export declare class TenantProfilesTableConfigResolver {
     exportTenantProfile($event: Event, tenantProfile: TenantProfile): void;
     onTenantProfileAction(action: EntityAction<TenantProfile>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<TenantProfilesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TenantProfilesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

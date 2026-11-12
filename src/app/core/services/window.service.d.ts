@@ -8,7 +8,7 @@ export declare class BrowserWindowRef extends WindowRef {
     constructor();
     get nativeWindow(): Window | object;
     static ɵfac: i0.ɵɵFactoryDeclaration<BrowserWindowRef, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<BrowserWindowRef>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare function windowFactory(browserWindowRef: BrowserWindowRef, platformId: object): Window | object;
 export declare const browserWindowProvider: ClassProvider;

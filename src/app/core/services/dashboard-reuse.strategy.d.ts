@@ -11,5 +11,5 @@ export declare class DashboardReuseStrategy extends BaseRouteReuseStrategy {
     shouldAttach(route: ActivatedRouteSnapshot): boolean;
     retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardReuseStrategy, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardReuseStrategy>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

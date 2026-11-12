@@ -14,5 +14,5 @@ export declare class AuditLogService {
     getAuditLogsByUserId(userId: string, pageLink: TimePageLink, config?: RequestConfig): Observable<PageData<AuditLog>>;
     getAuditLogsByEntityId(entityId: EntityId, pageLink: TimePageLink, config?: RequestConfig): Observable<PageData<AuditLog>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuditLogService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AuditLogService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

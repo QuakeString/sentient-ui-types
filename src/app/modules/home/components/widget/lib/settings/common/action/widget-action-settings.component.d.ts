@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { TranslateService } from '@ngx-translate/core';
 import { WidgetAction, WidgetActionType, widgetType } from '@shared/models/widget.models';
@@ -27,7 +27,7 @@ export declare class WidgetActionSettingsComponent implements OnInit, ControlVal
     registerOnTouched(_fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: WidgetAction): void;
-    openActionSettingsPopup($event: Event, matButton: MatButton): void;
+    openActionSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updateDisplayValue;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetActionSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<WidgetActionSettingsComponent, "tb-widget-action-settings", never, { "panelTitle": { "alias": "panelTitle"; "required": false; }; "widgetType": { "alias": "widgetType"; "required": false; }; "callbacks": { "alias": "callbacks"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "additionalWidgetActionTypes": { "alias": "additionalWidgetActionTypes"; "required": false; }; }, {}, never, never, false, never>;

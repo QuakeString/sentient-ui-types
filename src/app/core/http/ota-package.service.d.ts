@@ -28,5 +28,5 @@ export declare class OtaPackageService {
     countUpdateDeviceAfterChangePackage(type: OtaUpdateType, entityId: EntityId, config?: RequestConfig): Observable<number>;
     confirmDialogUpdatePackage(entity: BaseData<EntityId> & OtaPagesIds, originEntity: BaseData<EntityId> & OtaPagesIds): Observable<boolean>;
     static ɵfac: i0.ɵɵFactoryDeclaration<OtaPackageService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<OtaPackageService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

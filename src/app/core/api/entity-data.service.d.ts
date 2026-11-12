@@ -43,5 +43,5 @@ export declare class EntityDataService {
     stopSubscription(listener: EntityDataListener): void;
     private createSubscriptionOptions;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityDataService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityDataService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

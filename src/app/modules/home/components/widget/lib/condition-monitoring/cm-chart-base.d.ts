@@ -51,5 +51,5 @@ export declare abstract class CmChartBase implements AfterViewInit, OnDestroy {
     };
     private onResize;
     static ɵfac: i0.ɵɵFactoryDeclaration<CmChartBase, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<CmChartBase, never, never, { "ctx": { "alias": "ctx"; "required": false; }; "embedded": { "alias": "embedded"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<CmChartBase, never, never, { "ctx": { "alias": "ctx"; "required": false; }; "embedded": { "alias": "embedded"; "required": false; }; }, {}, never, never, true, never>;
 }

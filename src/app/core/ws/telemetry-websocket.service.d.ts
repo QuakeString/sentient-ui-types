@@ -17,5 +17,5 @@ export declare class TelemetryWebsocketService extends WebsocketService<Telemetr
     unsubscribe(subscriber: TelemetrySubscriber): void;
     processOnMessage(message: WebsocketDataMsg): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TelemetryWebsocketService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TelemetryWebsocketService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

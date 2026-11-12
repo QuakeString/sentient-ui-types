@@ -10,5 +10,5 @@ export declare class MobileApplicationService {
     saveMobileAppSettings(mobileAppSettings: QrCodeSettings, config?: RequestConfig): Observable<QrCodeSettings>;
     getMobileAppDeepLink(config?: RequestConfig): Observable<string>;
     static ɵfac: i0.ɵɵFactoryDeclaration<MobileApplicationService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MobileApplicationService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

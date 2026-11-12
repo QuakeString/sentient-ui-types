@@ -16,5 +16,5 @@ export declare class OAuth2Service {
     deleteOauth2Client(id: string, config?: RequestConfig): Observable<void>;
     getLoginProcessingUrl(config?: RequestConfig): Observable<string>;
     static ɵfac: i0.ɵɵFactoryDeclaration<OAuth2Service, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<OAuth2Service>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

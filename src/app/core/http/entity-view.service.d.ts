@@ -24,5 +24,5 @@ export declare class EntityViewService {
     unassignEntityViewFromEdge(edgeId: string, entityViewId: string, config?: RequestConfig): Observable<Object>;
     getEdgeEntityViews(edgeId: string, pageLink: PageLink, type?: string, config?: RequestConfig): Observable<PageData<EntityViewInfo>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityViewService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityViewService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

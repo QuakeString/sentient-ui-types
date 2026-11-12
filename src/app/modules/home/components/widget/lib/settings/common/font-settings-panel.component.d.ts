@@ -22,7 +22,7 @@ export declare class FontSettingsPanelComponent extends PageComponent implements
     fontApplied: EventEmitter<Font>;
     familyInput: ElementRef;
     fontWeightsList: readonly ["normal", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
-    fontWeightTranslationsMap: Map<"bold" | "normal" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "bolder", string>;
+    fontWeightTranslationsMap: Map<"bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "normal" | "bolder" | "lighter", string>;
     fontStylesList: readonly ["normal", "italic", "oblique"];
     fontStyleTranslationsMap: Map<"normal" | "italic" | "oblique", string>;
     fontFormGroup: UntypedFormGroup;

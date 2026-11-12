@@ -6,5 +6,5 @@ export declare class ThemeToggleComponent {
     constructor(themeService: ThemeService);
     setTheme(mode: ThemeMode): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ThemeToggleComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ThemeToggleComponent, "tb-theme-toggle", never, {}, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ThemeToggleComponent, "tb-theme-toggle", never, {}, {}, never, never, true, never>;
 }

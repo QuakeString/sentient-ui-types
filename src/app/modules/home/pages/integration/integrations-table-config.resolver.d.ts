@@ -38,5 +38,5 @@ export declare class IntegrationsTableConfigResolver {
     private openIntegration;
     onIntegrationAction(action: EntityAction<Integration>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<IntegrationsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<IntegrationsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

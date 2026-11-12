@@ -38,5 +38,5 @@ export declare class AnalyticsPipelinesTableConfigResolver {
     private pipelineZipHandler;
     openBuilder($event: Event, pipeline: AnalyticsPipeline): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AnalyticsPipelinesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AnalyticsPipelinesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

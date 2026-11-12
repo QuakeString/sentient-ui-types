@@ -46,5 +46,5 @@ export declare class CustomersTableConfigResolver {
     manageOwnerAndGroups($event: Event, customer: Customer): void;
     onCustomerAction(action: EntityAction<Customer>, config: EntityTableConfig<Customer>): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<CustomersTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CustomersTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

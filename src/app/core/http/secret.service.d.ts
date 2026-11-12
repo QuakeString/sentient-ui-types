@@ -18,5 +18,5 @@ export declare class SecretService {
     /** Replaces the master key and re-encrypts everything stored (system administrator). */
     rotateMasterKey(config?: RequestConfig): Observable<MasterKeyRotation>;
     static ɵfac: i0.ɵɵFactoryDeclaration<SecretService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<SecretService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -73,6 +73,6 @@ export declare class ReportChartService {
      */
     getOptionsForBackend(config: ReportChartWidgetConfig, data: ReportChartData): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<ReportChartService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ReportChartService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export {};

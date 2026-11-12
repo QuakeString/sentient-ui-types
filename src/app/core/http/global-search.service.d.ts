@@ -33,5 +33,5 @@ export declare class GlobalSearchService {
     constructor(http: HttpClient);
     search(query: string, types?: GlobalSearchEntityType[], limit?: number): Observable<GlobalSearchResult>;
     static ɵfac: i0.ɵɵFactoryDeclaration<GlobalSearchService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<GlobalSearchService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

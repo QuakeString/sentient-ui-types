@@ -8,5 +8,5 @@ export declare class UsageInfoService {
     constructor(http: HttpClient);
     getUsageInfo(config?: RequestConfig): Observable<UsageInfo>;
     static ɵfac: i0.ɵɵFactoryDeclaration<UsageInfoService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UsageInfoService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

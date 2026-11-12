@@ -22,5 +22,5 @@ export declare class UnitService {
     convertUnitValue(value: number, from: string, to: string): number;
     private getUnitSystemByTimezone;
     static ɵfac: i0.ɵɵFactoryDeclaration<UnitService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UnitService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

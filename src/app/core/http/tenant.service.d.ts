@@ -15,5 +15,5 @@ export declare class TenantService {
     saveTenant(tenant: Tenant, config?: RequestConfig): Observable<Tenant>;
     deleteTenant(tenantId: string, config?: RequestConfig): Observable<Object>;
     static ɵfac: i0.ɵɵFactoryDeclaration<TenantService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TenantService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

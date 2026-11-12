@@ -16,5 +16,5 @@ export declare class EntityDebugSettingsService {
     getDebugConfigLabel(debugSettings: EntityDebugSettings): string;
     isDebugActive(allEnabledUntil: number): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityDebugSettingsService, [null, { optional: true; }, { optional: true; }, null, null]>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityDebugSettingsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

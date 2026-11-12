@@ -32,5 +32,5 @@ export declare class CalculatedFieldsService {
     getLatestCalculatedFieldDebugEvent(id: string, config?: RequestConfig): Observable<CalculatedFieldEventBody>;
     getCalculatedFieldNames(pageLink: PageLink, type: CalculatedFieldType, config?: RequestConfig): Observable<PageData<string>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<CalculatedFieldsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CalculatedFieldsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

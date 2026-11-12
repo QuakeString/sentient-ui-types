@@ -21,6 +21,7 @@ export interface ContextMenuItem {
     value: string;
     iconRow?: boolean;
     iconGrid?: boolean;
+    hint?: string;
 }
 export interface DashboardContextMenuItem extends ContextMenuItem {
     action: (contextMenuEvent: TbContextMenuEvent) => void;
@@ -64,7 +65,7 @@ export interface IDashboardComponent {
     resetHighlight(): void;
     highlightWidget(widgetId: string, delay?: number): any;
     focusWidgetForEdit(widgetId: string, drawerLeftX?: number, verticalOnly?: boolean): void;
-    selectWidget(widgetId: string, delay?: number, mode?: WidgetSelectionMode): any;
+    selectWidget(widgetId: string, delay?: number, mode?: WidgetSelectionMode, scroll?: boolean): any;
     getSelectedWidget(): Widget;
     getSelectedWidgets(): Widget[];
     selectAllWidgets(): void;

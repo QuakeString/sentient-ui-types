@@ -16,7 +16,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AlarmSearchStatus, AlarmSeverity } from '@shared/models/alarm.models';
 import { TranslateService } from '@ngx-translate/core';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { ApiFeature, ApiUsageStateValue } from '@shared/models/api-usage.models';
 import { EdgeConnectionEvent } from '@shared/models/edge.models';
 import * as i0 from "@angular/core";
@@ -97,7 +97,7 @@ export declare class RuleNotificationDialogComponent extends DialogComponent<Rul
     private add;
     private allValid;
     cancel(): void;
-    createTarget($event: Event, button: MatButton): void;
+    createTarget($event: Event, button: MatButton | MatIconButton): void;
     countRecipientsChainConfig(): number;
     formatLabel(value: number): string;
     private isSysAdmin;

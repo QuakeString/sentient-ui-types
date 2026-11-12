@@ -8,7 +8,7 @@ export interface ILayoutController {
     resetHighlight(): any;
     highlightWidget(widgetId: string, delay?: number): any;
     focusWidgetForEdit?(widgetId: string, drawerLeftX?: number, verticalOnly?: boolean): void;
-    selectWidget(widgetId: string, delay?: number, mode?: 'replace' | 'toggle'): any;
+    selectWidget(widgetId: string, delay?: number, mode?: 'replace' | 'toggle', scroll?: boolean): any;
     isWidgetSelected?(widgetId: string): boolean;
     captureZoomBeforeEdit?(): void;
     getSelectedWidgets?(): Widget[];

@@ -8,5 +8,5 @@ export declare class TitleService {
     constructor(translate: TranslateService, title: Title);
     setTitle(snapshot: ActivatedRouteSnapshot, lazyTranslate?: TranslateService): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<TitleService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TitleService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

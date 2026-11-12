@@ -26,7 +26,7 @@ export declare class UserAvatarService implements OnDestroy {
     removeAvatar(userId: string): Observable<void>;
     private revoke;
     static ɵfac: i0.ɵɵFactoryDeclaration<UserAvatarService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UserAvatarService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 /** Largest source file the photo editor opens (the upload itself is the small re-rendered image). */
 export declare const USER_AVATAR_MAX_SOURCE_BYTES: number;

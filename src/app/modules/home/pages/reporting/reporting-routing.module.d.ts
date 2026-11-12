@@ -11,7 +11,7 @@ export declare class ReportTemplateResolver {
     constructor(reportService: ReportService);
     resolve(route: ActivatedRouteSnapshot): Observable<ReportTemplate>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ReportTemplateResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ReportTemplateResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export declare const reportBuilderBreadcrumbLabelFunction: BreadCrumbLabelFunction<ReportBuilderComponent>;
 export declare class ReportingRoutingModule {

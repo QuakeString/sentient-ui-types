@@ -41,5 +41,5 @@ export declare class ContentTranslationMapService {
     apply(locale: string): void;
     private removeApplied;
     static ɵfac: i0.ɵɵFactoryDeclaration<ContentTranslationMapService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ContentTranslationMapService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

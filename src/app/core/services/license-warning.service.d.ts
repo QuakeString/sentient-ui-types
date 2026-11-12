@@ -56,5 +56,5 @@ export declare class LicenseWarningService implements OnDestroy {
      */
     isDialogOpen(): boolean;
     static ɵfac: i0.ɵɵFactoryDeclaration<LicenseWarningService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<LicenseWarningService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

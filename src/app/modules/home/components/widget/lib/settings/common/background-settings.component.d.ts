@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { BackgroundSettings, BackgroundType, ComponentStyle } from '@shared/models/widget-settings.models';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { Observable } from 'rxjs';
 import { ImagePipe } from '@shared/pipe/image.pipe';
@@ -26,7 +26,7 @@ export declare class BackgroundSettingsComponent implements OnInit, ControlValue
     registerOnTouched(fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: BackgroundSettings): void;
-    openBackgroundSettingsPopup($event: Event, matButton: MatButton): void;
+    openBackgroundSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updateBackgroundStyle;
     static ɵfac: i0.ɵɵFactoryDeclaration<BackgroundSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<BackgroundSettingsComponent, "tb-background-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;

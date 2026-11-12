@@ -41,5 +41,5 @@ export declare class ReportsTableConfigResolver {
     configureAddActions(): Array<any>;
     generateReport(): Observable<Report>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ReportsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ReportsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

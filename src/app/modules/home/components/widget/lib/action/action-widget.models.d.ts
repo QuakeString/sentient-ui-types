@@ -1,4 +1,4 @@
-import { TelemetryType } from '@shared/models/telemetry/telemetry.models';
+import { AttributeData, TelemetryType } from '@shared/models/telemetry/telemetry.models';
 import { WidgetContext } from '@home/models/widget-component.models';
 import { Observable, Observer } from 'rxjs';
 import { AfterViewInit, ChangeDetectorRef, OnDestroy, OnInit, TemplateRef } from '@angular/core';
@@ -41,7 +41,7 @@ export declare abstract class BasicActionWidgetComponent implements OnInit, OnDe
     private onError;
     protected updateValue<V>(valueSetter: ValueSetter<V>, value: V, setValueObserver?: Partial<Observer<void>>): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<BasicActionWidgetComponent, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<BasicActionWidgetComponent, never, never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<BasicActionWidgetComponent, never, never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, true, never>;
 }
 export declare class DataToValueConverter<V> {
     private http;
@@ -89,6 +89,9 @@ export declare abstract class ValueSetter<V> extends ValueAction {
     private readonly valueToDataConverter;
     protected constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
     setValue(value: V): Observable<any>;
+    /** The write itself, with the raw error (a multi-action write words its own message). */
+    setValueUnwrapped(value: V): Observable<any>;
+    convertValue(value: V): Observable<any>;
     protected abstract doSetValue(data: any): Observable<any>;
 }
 export declare class DefaultValueGetter<V> extends ValueGetter<V> {
@@ -184,6 +187,37 @@ export declare class DoNothingValueSetter<V> extends ValueSetter<V> {
     setValue(_value: V): Observable<any>;
     protected doSetValue(_data: any): Observable<any>;
 }
+export declare class WaitValueSetter<V> extends ValueSetter<V> {
+    protected ctx: WidgetContext;
+    protected settings: SetValueSettings;
+    protected simulated: boolean;
+    constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
+    setValue(_value: V): Observable<any>;
+    setValueUnwrapped(_value: V): Observable<any>;
+    protected doSetValue(_data: any): Observable<any>;
+}
+/**
+ * Several actions for one write (one entered value / one click), run in list
+ * order. Neighbouring attribute writes of the same scope — and neighbouring
+ * time-series writes — go in ONE save, so the device gets the keys in one
+ * update message. RPCs and waits run one at a time. The first failure stops
+ * the rest; actions already done stay done.
+ */
+export declare class MultiActionValueSetter<V> extends ValueSetter<V> {
+    protected ctx: WidgetContext;
+    protected settings: SetValueSettings;
+    protected simulated: boolean;
+    private readonly steps;
+    private readonly total;
+    constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
+    setValue(value: V): Observable<any>;
+    setValueUnwrapped(value: V): Observable<any>;
+    protected doSetValue(_data: any): Observable<any>;
+    private groups;
+    private batchKey;
+    private runGroup;
+    private stepName;
+}
 export declare class ExecuteRpcValueSetter<V> extends ValueSetter<V> {
     protected ctx: WidgetContext;
     protected settings: SetValueSettings;
@@ -199,8 +233,16 @@ export declare abstract class TelemetryValueSetter<V> extends ValueSetter<V> {
     protected targetEntityId: EntityId;
     protected constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
     protected doSetValue(data: any): Observable<V>;
+    /**
+     * One save for several setters of the same kind (and scope): each converts
+     * the value, then all keys go to the entity together.
+     */
+    saveBatch(setters: TelemetryValueSetter<V>[], value: V): Observable<any>;
+    private checkTarget;
+    protected doSetTelemetryValue(data: any): Observable<any>;
+    abstract telemetryKey(): string;
+    protected abstract saveEntries(entries: Array<AttributeData>): Observable<any>;
     protected scope(): TelemetryType;
-    protected abstract doSetTelemetryValue(data: any): Observable<V>;
 }
 export declare class AttributeValueSetter<V> extends TelemetryValueSetter<V> {
     protected ctx: WidgetContext;
@@ -208,7 +250,8 @@ export declare class AttributeValueSetter<V> extends TelemetryValueSetter<V> {
     protected simulated: boolean;
     private readonly setAttributeValueSettings;
     constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
-    protected doSetTelemetryValue(data: any): Observable<any>;
+    telemetryKey(): string;
+    protected saveEntries(attributes: Array<AttributeData>): Observable<any>;
     protected scope(): TelemetryType;
 }
 export declare class TimeSeriesValueSetter<V> extends TelemetryValueSetter<V> {
@@ -217,5 +260,6 @@ export declare class TimeSeriesValueSetter<V> extends TelemetryValueSetter<V> {
     protected simulated: boolean;
     private readonly putTimeSeriesValueSettings;
     constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
-    protected doSetTelemetryValue(data: any): Observable<any>;
+    telemetryKey(): string;
+    protected saveEntries(timeSeries: Array<AttributeData>): Observable<any>;
 }

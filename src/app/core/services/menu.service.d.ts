@@ -28,5 +28,5 @@ export declare class MenuService {
     menuLinkById(id: MenuId | string): Observable<MenuSection | undefined>;
     menuLinksByIds(ids: string[]): Observable<Array<MenuSection>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<MenuService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MenuService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

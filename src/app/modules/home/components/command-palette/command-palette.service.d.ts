@@ -93,5 +93,5 @@ export declare class CommandPaletteService {
     private placeScrim;
     private isAuthenticated;
     static ɵfac: i0.ɵɵFactoryDeclaration<CommandPaletteService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<CommandPaletteService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

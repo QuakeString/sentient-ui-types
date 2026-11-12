@@ -2,7 +2,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Recipe, RecipeElement, RecipeElementType } from '@shared/models/recipe.models';
-import { specFor } from '@shared/models/recipe-element-type.spec';
+import { specFor, recipeInputKind } from '@shared/models/recipe-element-type.spec';
 import * as i0 from "@angular/core";
 export interface RecipeDataAddDialogData {
     /** Recipes the widget is configured to surface — the user picks one as the
@@ -43,6 +43,7 @@ export declare class RecipeDataAddDialogComponent {
     private coerce;
     recipeName(r: Recipe): string;
     trackByKey: (_: number, el: RecipeElement) => string;
+    readonly inputKind: typeof recipeInputKind;
     private idOf;
     static ɵfac: i0.ɵɵFactoryDeclaration<RecipeDataAddDialogComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<RecipeDataAddDialogComponent, "tb-recipe-data-add-dialog", never, {}, {}, never, never, true, never>;

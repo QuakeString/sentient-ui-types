@@ -31,5 +31,5 @@ export declare class EntitiesVersionControlService {
     compareEntityDataToVersion(entityId: EntityId, versionId: string, config?: RequestConfig): Observable<EntityDataDiff>;
     entityLoadErrorToMessage(entityLoadError: EntityLoadError): SafeHtml;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntitiesVersionControlService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntitiesVersionControlService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

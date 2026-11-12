@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { GetValueSettings } from '@shared/models/action-widget-settings.models';
 import { TranslateService } from '@ngx-translate/core';
@@ -33,7 +33,7 @@ export declare class GetValueActionSettingsComponent implements OnInit, ControlV
     registerOnTouched(_fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: GetValueSettings<any>): void;
-    openActionSettingsPopup($event: Event, matButton: MatButton): void;
+    openActionSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updateDisplayValue;
     static ɵfac: i0.ɵɵFactoryDeclaration<GetValueActionSettingsComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<GetValueActionSettingsComponent, "tb-get-value-action-settings", never, { "panelTitle": { "alias": "panelTitle"; "required": false; }; "valueType": { "alias": "valueType"; "required": false; }; "trueLabel": { "alias": "trueLabel"; "required": false; }; "falseLabel": { "alias": "falseLabel"; "required": false; }; "stateLabel": { "alias": "stateLabel"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "targetDevice": { "alias": "targetDevice"; "required": false; }; "widgetType": { "alias": "widgetType"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; }, {}, never, never, false, never>;

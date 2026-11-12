@@ -30,5 +30,5 @@ export declare class QueuesTableConfigResolver {
     onQueueAction(action: EntityAction<QueueInfo>): boolean;
     private openQueue;
     static ɵfac: i0.ɵɵFactoryDeclaration<QueuesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<QueuesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

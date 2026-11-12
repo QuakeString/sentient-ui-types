@@ -115,5 +115,5 @@ export declare class EntityService {
     getEdgeEventContent(entity: EdgeEvent): Observable<BaseData<HasId> | RuleChainMetaData | string>;
     getEntitySubtypesObservable(entityType: EntityType): Observable<Array<string>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -36,9 +36,9 @@ export declare class ImageGalleryComponent extends PageComponent implements OnIn
     private cd;
     private fb;
     private zone;
-    private display;
-    private width;
-    private height;
+    display: string;
+    width: string;
+    height: string;
     pageMode: boolean;
     dialogMode: boolean;
     imageSubType: ResourceSubType;

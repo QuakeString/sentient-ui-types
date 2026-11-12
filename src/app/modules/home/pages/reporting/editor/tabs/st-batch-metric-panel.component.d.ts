@@ -19,7 +19,7 @@ export declare class StBatchMetricPanelComponent implements OnInit {
     fnOptions: StBatchMetricFn[];
     metricForm: import("@angular/forms").FormGroup<{
         key: import("@angular/forms").FormControl<string>;
-        fn: import("@angular/forms").FormControl<"max" | "delta" | "min" | "sum" | "first" | "count" | "last" | "avg" | "stddev">;
+        fn: import("@angular/forms").FormControl<"count" | "min" | "max" | "first" | "last" | "avg" | "stddev" | "delta" | "sum">;
     }>;
     constructor(fb: FormBuilder, popover: TbPopoverComponent<StBatchMetricPanelComponent>);
     /** Key suggestions for the autocomplete: the resolved telemetry keys,

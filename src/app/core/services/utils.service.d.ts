@@ -63,5 +63,5 @@ export declare class UtilsService {
     applyCssToElement(renderer: Renderer2, element: any, cssClassPrefix: string, css: string): string;
     clearCssElement(renderer: Renderer2, cssClass: string, element?: any): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<UtilsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UtilsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

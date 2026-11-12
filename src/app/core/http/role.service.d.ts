@@ -20,5 +20,5 @@ export declare class RoleService {
     getUserGroupPermissions(groupId: string, config?: RequestConfig): Observable<GroupPermission[]>;
     getEntityGroupPermissions(groupId: string, config?: RequestConfig): Observable<GroupPermission[]>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RoleService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RoleService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

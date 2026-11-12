@@ -15,7 +15,7 @@ export declare class SolutionHubActionsService {
     addFromHub(kind: string, target?: EntityId): Observable<SolutionItemInstalled>;
     saveToHub(itemType: SolutionItemType, entityId: string, name: string): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<SolutionHubActionsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<SolutionHubActionsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 /** For table configs that are not created by dependency injection: open the picker with their own MatDialog. */
 export declare function addFromSolutionHub(dialog: MatDialog, kind: string, target?: EntityId): Observable<SolutionItemInstalled>;

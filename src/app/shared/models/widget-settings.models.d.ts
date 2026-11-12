@@ -20,7 +20,7 @@ export type cssUnit = cssUnitTuple[number];
 export declare const fontWeights: readonly ["normal", "bold", "bolder", "lighter", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
 type fontWeightTuple = typeof fontWeights;
 export type fontWeight = fontWeightTuple[number];
-export declare const fontWeightTranslations: Map<"bold" | "normal" | "lighter" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "bolder", string>;
+export declare const fontWeightTranslations: Map<"bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | "normal" | "bolder" | "lighter", string>;
 export declare const fontStyles: readonly ["normal", "italic", "oblique"];
 type fontStyleTuple = typeof fontStyles;
 export type fontStyle = fontStyleTuple[number];

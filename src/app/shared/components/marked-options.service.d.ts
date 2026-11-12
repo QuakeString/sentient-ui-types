@@ -7,7 +7,7 @@ export declare class MarkedOptionsService implements MarkedOptions {
     private clipboardService;
     private readonly window;
     private readonly document;
-    renderer: MarkedRenderer;
+    renderer: MarkedRenderer<string, string>;
     headerIds: boolean;
     gfm: boolean;
     breaks: boolean;
@@ -24,5 +24,5 @@ export declare class MarkedOptionsService implements MarkedOptions {
     private getSelectedText;
     private markdownCopyCode;
     static ɵfac: i0.ɵɵFactoryDeclaration<MarkedOptionsService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MarkedOptionsService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

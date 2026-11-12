@@ -16,5 +16,5 @@ export declare class AttributeService {
     getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit?: number, agg?: AggregationType, interval?: number, orderBy?: DataSortOrder, useStrictDataTypes?: boolean, config?: RequestConfig): Observable<TimeseriesData>;
     getEntityTimeseriesLatest(entityId: EntityId, keys?: Array<string>, useStrictDataTypes?: boolean, config?: RequestConfig): Observable<TimeseriesData>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AttributeService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<AttributeService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

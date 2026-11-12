@@ -14,5 +14,5 @@ export declare class JobService {
     reprocessJob(jobId: string, config?: RequestConfig): Observable<Job>;
     deleteJob(jobId: string, config?: RequestConfig): Observable<void>;
     static ɵfac: i0.ɵɵFactoryDeclaration<JobService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<JobService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

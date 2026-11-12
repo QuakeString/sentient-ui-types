@@ -89,6 +89,7 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     updateData(closeDetails?: boolean, reloadEntity?: boolean, silent?: boolean): void;
     private dataLoaded;
     onRowClick($event: Event, entity: any): void;
+    onDetailsDrawerClosed(): void;
     toggleEntityDetails($event: Event, entity: any): void;
     addEntity($event: Event): void;
     onEntityUpdated(entity: BaseData<HasId>): void;

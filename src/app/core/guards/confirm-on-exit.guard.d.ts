@@ -21,5 +21,5 @@ export declare class ConfirmOnExitGuard {
     canDeactivate(component: HasConfirmForm & HasDirtyFlag, route: ActivatedRouteSnapshot, state: RouterStateSnapshot): true | import("rxjs").Observable<boolean>;
     private getMessage;
     static ɵfac: i0.ɵɵFactoryDeclaration<ConfirmOnExitGuard, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ConfirmOnExitGuard>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

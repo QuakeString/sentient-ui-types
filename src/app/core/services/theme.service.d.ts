@@ -16,5 +16,5 @@ export declare class ThemeService implements OnDestroy {
     private applyTheme;
     private onSystemChange;
     static ɵfac: i0.ɵɵFactoryDeclaration<ThemeService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ThemeService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

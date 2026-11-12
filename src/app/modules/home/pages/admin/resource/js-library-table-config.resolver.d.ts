@@ -31,5 +31,5 @@ export declare class JsLibraryTableConfigResolver {
     private deleteResources;
     private configureCellActions;
     static ɵfac: i0.ɵɵFactoryDeclaration<JsLibraryTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<JsLibraryTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -36,5 +36,5 @@ export declare class RecipesTableConfigResolver {
     private fetchRecipes;
     private saveRecipe;
     static ɵfac: i0.ɵɵFactoryDeclaration<RecipesTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RecipesTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

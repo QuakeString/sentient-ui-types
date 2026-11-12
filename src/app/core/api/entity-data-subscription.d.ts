@@ -82,6 +82,8 @@ export declare class EntityDataSubscription {
     private tickScheduledTime;
     private tickElapsed;
     private timeseriesTimer;
+    /** Re-queries the open bucket of a computed aggregation (DELTA, RUN_TIME, ...) in realtime mode. */
+    private computedAggRefreshTimer;
     private latestTimer;
     private dataResolved;
     private started;
@@ -91,6 +93,14 @@ export declare class EntityDataSubscription {
     unsubscribe(): void;
     subscribe(): Observable<EntityDataLoadResult>;
     start(): void;
+    /**
+     * The server folds computed aggregations (DELTA, INTEGRAL, RUN_TIME, ...)
+     * from raw points and does not push raw points for them, so in realtime
+     * mode the subscription is re-run periodically: same path as a websocket
+     * reconnect, which moves the window forward and resets the aggregators.
+     */
+    private startComputedAggRefresh;
+    private stopComputedAggRefresh;
     private prepareSubscriptionTimewindow;
     private prepareSubscriptionCommands;
     private startFunction;

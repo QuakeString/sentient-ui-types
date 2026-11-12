@@ -3,7 +3,7 @@ import { AutoDateFormatSettings, Font, ValueSourceConfig } from '@shared/models/
 import { TimeAxisBandWidthCalculator, VisualMapComponentOption, XAXisOption, YAXisOption } from 'echarts/types/dist/shared';
 import { CustomSeriesOption, LineSeriesOption } from 'echarts/charts';
 import { TimeAxisBaseOption, ValueAxisBaseOption } from 'echarts/types/src/coord/axisCommonTypes';
-import { LabelFormatterCallback } from 'echarts';
+import { LabelFormatterCallback } from 'echarts/types/dist/echarts';
 import { BarRenderContext, BarRenderSharedContext } from '@home/components/widget/lib/chart/time-series-chart-bar.models';
 import { DataKey, DataKeySettingsWithComparison, DataSet, Datasource, FormattedData, WidgetComparisonSettings } from '@shared/models/widget.models';
 import { AbstractControl, ValidationErrors } from '@angular/forms';

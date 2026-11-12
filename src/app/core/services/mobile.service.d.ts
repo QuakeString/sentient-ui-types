@@ -38,5 +38,5 @@ export declare class MobileService {
     private doDashboardNavigation;
     private reloadUser;
     static ɵfac: i0.ɵɵFactoryDeclaration<MobileService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<MobileService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -7,5 +7,5 @@ export declare class ActiveComponentService {
     setCurrentActiveComponent(component: any): void;
     onActiveComponentChanged(): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ActiveComponentService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ActiveComponentService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

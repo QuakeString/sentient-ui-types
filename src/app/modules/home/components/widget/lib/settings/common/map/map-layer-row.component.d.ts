@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, DestroyRef, EventEmitter, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { TbPopoverService } from '@shared/components/popover.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MapLayerSettings, MapProvider } from '@shared/models/widget/maps/map.models';
@@ -40,7 +40,7 @@ export declare class MapLayerRowComponent implements ControlValueAccessor, OnIni
     writeValue(value: MapLayerSettings): void;
     private displayLabel;
     labelPlaceholder(): string;
-    editLayer($event: Event, matButton: MatButton): void;
+    editLayer($event: Event, matButton: MatButton | MatIconButton): void;
     private onProviderChanged;
     private updateValidators;
     private updateModel;

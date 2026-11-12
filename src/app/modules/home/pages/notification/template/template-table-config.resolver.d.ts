@@ -18,5 +18,5 @@ export declare class TemplateTableConfigResolver {
     private editTemplate;
     private notificationTemplateDialog;
     static ɵfac: i0.ɵɵFactoryDeclaration<TemplateTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<TemplateTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

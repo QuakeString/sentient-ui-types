@@ -3,7 +3,7 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material/snack-bar';
 import { NotificationMessage } from '@app/core/notification/notification.models';
 import { ToastNotificationService } from '@core/services/toast-notification.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
 import { AnimationTriggerMetadata, AnimationEvent } from '@angular/animations';
 import * as i0 from "@angular/core";
 export declare class ToastDirective implements AfterViewInit, OnDestroy {
@@ -44,7 +44,7 @@ export declare class TbSnackBarComponent implements AfterViewInit, OnDestroy {
     private data;
     private elementRef;
     private snackBarRef;
-    actionButton: MatButton;
+    actionButton: MatButton | MatIconButton;
     get panelClass(): string[];
     private parentEl;
     private snackBarContainerEl;

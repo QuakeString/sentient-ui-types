@@ -33,5 +33,5 @@ export declare class ImageService {
     exportImage(type: ImageResourceType, key: string, config?: RequestConfig): Observable<ImageExportData>;
     importImage(imageData: ImageExportData, config?: RequestConfig): Observable<ImageResourceInfo>;
     static ɵfac: i0.ɵɵFactoryDeclaration<ImageService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ImageService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

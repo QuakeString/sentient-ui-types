@@ -35,5 +35,5 @@ export declare class NotificationCountService {
     private hold;
     private update;
     static ɵfac: i0.ɵɵFactoryDeclaration<NotificationCountService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<NotificationCountService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

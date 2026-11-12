@@ -12,7 +12,7 @@
 import { ValueType } from '@shared/models/constants';
 import { RecipeElementType } from '@shared/models/recipe.models';
 /** Drives how the consumer template renders the default / value field. */
-export type RecipeRenderKind = 'value-input' | 'enum' | 'time';
+export type RecipeRenderKind = 'value-input' | 'enum' | 'time' | 'date' | 'datetime';
 export interface RecipeElementTypeSpec {
     type: RecipeElementType;
     /** Which render branch to use. */
@@ -25,7 +25,18 @@ export interface RecipeElementTypeSpec {
     hasEnumValues: boolean;
     /** Returned by `defaultValueFor()` when no explicit default exists. */
     fallbackDefault: unknown;
+    /** Numeric types: whole numbers only. */
+    wholeNumber?: boolean;
+    /** Range the type itself holds (fixed-width integers, float); the server
+     *  rejects values outside it. */
+    typeMin?: number;
+    typeMax?: number;
 }
 /** Order here drives the order shown in the Type dropdown. */
 export declare const RECIPE_ELEMENT_TYPE_SPECS: readonly RecipeElementTypeSpec[];
 export declare function specFor(type: RecipeElementType | string | null | undefined): RecipeElementTypeSpec;
+/** True for every numeric type (integer, fixed-width integers, float, double). */
+export declare function isNumericRecipeType(type: RecipeElementType | string | null | undefined): boolean;
+/** Input widget for the plain value editors (recipe table widget, add-data dialog). */
+export type RecipeInputKind = 'whole' | 'decimal' | 'boolean' | 'enum' | 'time' | 'date' | 'datetime' | 'text';
+export declare function recipeInputKind(type: RecipeElementType | string | null | undefined): RecipeInputKind;

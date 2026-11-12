@@ -8,7 +8,7 @@ An extension is loaded into SENTIENT at runtime and resolves its imports through
 that runtime exposes, so an extension must depend on the tag matching the SENTIENT
 release it targets:
 
-    "sentient-ui-types": "https://github.com/QuakeString/sentient-ui-types.git#4.3.0"
+    "sentient-ui-types": "https://github.com/QuakeString/sentient-ui-types.git#4.4.0"
 
 ## Regenerate (from the SENTIENT repo)
 

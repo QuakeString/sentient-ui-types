@@ -26,5 +26,5 @@ export declare class UserService {
     resetUserTwoFa(userId: string, config?: RequestConfig): Observable<UserTwoFaStatus>;
     findUsersByQuery(pageLink: PageLink, config?: RequestConfig): Observable<PageData<UserEmailInfo>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<UserService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<UserService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

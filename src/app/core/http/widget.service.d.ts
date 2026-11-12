@@ -78,5 +78,5 @@ export declare class WidgetService {
     private loadWidgetsBundleCache;
     private invalidateWidgetsBundleCache;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<WidgetService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

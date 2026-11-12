@@ -40,5 +40,5 @@ export declare class ResourcesService {
     private getMetaInfo;
     private clearModulesWithComponentsCache;
     static ɵfac: i0.ɵɵFactoryDeclaration<ResourcesService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<ResourcesService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

@@ -61,5 +61,5 @@ export declare class DashboardsTableConfigResolver {
     unassignDashboardsFromEdge($event: Event, dashboards: Array<DashboardInfo>): void;
     saveAndAssignDashboard(dashboard: DashboardSetup): Observable<Dashboard>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DashboardsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

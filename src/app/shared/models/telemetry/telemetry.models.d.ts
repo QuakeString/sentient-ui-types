@@ -1,5 +1,5 @@
 import { EntityType } from '@shared/models/entity-type.models';
-import { AggregationType } from '../time/time.models';
+import { AggregationParams, AggregationType } from '../time/time.models';
 import { Observable } from 'rxjs';
 import { EntityId } from '@shared/models/id/entity-id';
 import { NgZone } from '@angular/core';
@@ -134,6 +134,8 @@ export interface EntityHistoryCmd {
     limit: number;
     agg: AggregationType;
     fetchLatestPreviousPoint?: boolean;
+    /** Tuning for computed aggregation types (DELTA, INTEGRAL, ...). */
+    aggParams?: AggregationParams;
 }
 export interface LatestValueCmd {
     keys: Array<EntityKey>;
@@ -148,6 +150,8 @@ export interface TimeSeriesCmd {
     limit: number;
     agg: AggregationType;
     fetchLatestPreviousPoint?: boolean;
+    /** Tuning for computed aggregation types (DELTA, INTEGRAL, ...). */
+    aggParams?: AggregationParams;
 }
 export interface AggKey {
     id: number;

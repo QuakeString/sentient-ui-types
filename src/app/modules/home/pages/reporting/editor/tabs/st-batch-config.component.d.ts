@@ -78,7 +78,7 @@ export declare class StBatchConfigComponent implements OnInit, OnChanges, Contro
     readonly columnSummaryOptions: string[];
     disabled: boolean;
     batchForm: FormGroup<{
-        datasetName: FormControl<"detail" | "summary" | "batches" | "rollup">;
+        datasetName: FormControl<"summary" | "detail" | "batches" | "rollup">;
         eventDefinitionId: FormControl<string>;
         summary: FormGroup<{
             bucket: FormControl<"shift" | "period">;
@@ -88,7 +88,7 @@ export declare class StBatchConfigComponent implements OnInit, OnChanges, Contro
             anchor: FormControl<string>;
             lengthSec: FormControl<number>;
         }>;
-        attribution: FormControl<"end" | "start">;
+        attribution: FormControl<"start" | "end">;
         restrictToTimeframe: FormControl<boolean>;
         open: FormControl<StBatchTrigger>;
         close: FormControl<StBatchTrigger>;

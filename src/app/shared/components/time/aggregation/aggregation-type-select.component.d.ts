@@ -18,6 +18,12 @@ export declare class AggregationTypeSelectComponent implements ControlValueAcces
     subscriptSizing: SubscriptSizing;
     appearance: MatFormFieldAppearance;
     aggregationTypes: Array<AggregationType>;
+    /** Native types first, then the computed ones in labelled groups. */
+    basicTypes: Array<AggregationType>;
+    groups: {
+        label: string;
+        types: AggregationType[];
+    }[];
     private defaultLabel;
     private allAggregationTypes;
     private propagateChange;
@@ -25,6 +31,8 @@ export declare class AggregationTypeSelectComponent implements ControlValueAcces
     registerOnChange(fn: any): void;
     registerOnTouched(fn: any): void;
     ngOnInit(): void;
+    private updateGroups;
+    hintFn(aggregationType: AggregationType): string;
     ngOnChanges({ allowedAggregationTypes }: SimpleChanges): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: AggregationType | null): void;

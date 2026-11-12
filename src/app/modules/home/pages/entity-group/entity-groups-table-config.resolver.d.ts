@@ -18,5 +18,5 @@ export declare class EntityGroupsTableConfigResolver {
     private manageEntities;
     private onEntityGroupAction;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityGroupsTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<EntityGroupsTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

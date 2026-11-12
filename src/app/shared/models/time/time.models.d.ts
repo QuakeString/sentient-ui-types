@@ -76,13 +76,69 @@ export declare enum AggregationType {
     AVG = "AVG",
     SUM = "SUM",
     COUNT = "COUNT",
-    NONE = "NONE"
+    NONE = "NONE",
+    DELTA = "DELTA",
+    INTEGRAL = "INTEGRAL",
+    FIRST = "FIRST",
+    LAST = "LAST",
+    VALUE_AT_START = "VALUE_AT_START",
+    MAX_DEMAND = "MAX_DEMAND",
+    TIME_WEIGHTED_AVG = "TIME_WEIGHTED_AVG",
+    STDDEV = "STDDEV",
+    MEDIAN = "MEDIAN",
+    PERCENTILE = "PERCENTILE",
+    RANGE = "RANGE",
+    TIME_OF_MIN = "TIME_OF_MIN",
+    TIME_OF_MAX = "TIME_OF_MAX",
+    RUN_TIME = "RUN_TIME",
+    TIME_IN_RANGE = "TIME_IN_RANGE",
+    COUNT_CHANGES = "COUNT_CHANGES",
+    COUNT_STARTS = "COUNT_STARTS",
+    COVERAGE = "COVERAGE"
 }
+/** Types every storage backend folds itself; the only ones rule nodes and per-key aggregation accept. */
+export declare const nativeAggregationTypes: AggregationType[];
+/** Types the server computes from raw points, grouped as the select lists them. */
+export declare const computedAggregationGroups: {
+    label: string;
+    types: AggregationType[];
+}[];
+export declare const computedAggregationTypes: AggregationType[];
+export declare const isComputedAggregation: (type: AggregationType) => boolean;
 export declare const aggregationTranslations: Map<AggregationType, string>;
+/** One-line explanation per computed type, shown as a tooltip. */
+export declare const aggregationHintTranslations: Map<AggregationType, string>;
+export declare enum AggregationTimeUnit {
+    SECONDS = "SECONDS",
+    MINUTES = "MINUTES",
+    HOURS = "HOURS"
+}
+/** Tuning for the computed aggregations. Every field is optional; the server has defaults. */
+export interface AggregationParams {
+    /** Longest gap between two points (ms) still treated as continuous data. */
+    maxGapMs?: number;
+    /** MAX_DEMAND window (ms). */
+    demandWindowMs?: number;
+    /** TIME_IN_RANGE lower limit. */
+    low?: number;
+    /** TIME_IN_RANGE upper limit. */
+    high?: number;
+    /** Unit of RUN_TIME / TIME_IN_RANGE results and of INTEGRAL's time axis. */
+    timeUnit?: AggregationTimeUnit;
+    /** PERCENTILE, 0-100. */
+    percentile?: number;
+}
+export type AggregationParamName = keyof AggregationParams;
+/** Which tuning fields matter for a type. */
+export declare const aggregationParamsFor: (type: AggregationType) => AggregationParamName[];
+/** Keep only the params that apply to `type`; undefined when none are set. */
+export declare const cleanAggregationParams: (type: AggregationType, params: AggregationParams) => AggregationParams | undefined;
 export interface Aggregation {
     interval?: Interval;
     type: AggregationType;
     limit: number;
+    /** Tuning for computed aggregation types. */
+    params?: AggregationParams;
 }
 export interface Timewindow {
     displayValue?: string;

@@ -19,5 +19,5 @@ export declare class RecipientTableConfigResolver {
     private editTarget;
     private notificationTargetDialog;
     static ɵfac: i0.ɵɵFactoryDeclaration<RecipientTableConfigResolver, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<RecipientTableConfigResolver>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

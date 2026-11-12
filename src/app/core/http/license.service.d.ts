@@ -54,5 +54,5 @@ export declare class LicenseService {
      */
     requestDemoLicense(request: DemoLicenseRequest, config?: RequestConfig): Observable<LicenseStatus>;
     static ɵfac: i0.ɵɵFactoryDeclaration<LicenseService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<LicenseService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

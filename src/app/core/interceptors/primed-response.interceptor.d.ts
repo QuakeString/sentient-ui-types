@@ -7,5 +7,5 @@ export declare class PrimedResponseInterceptor implements HttpInterceptor {
     constructor(primed: PrimedResponseService);
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<PrimedResponseInterceptor, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<PrimedResponseInterceptor>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

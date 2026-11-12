@@ -144,6 +144,6 @@ export declare class StChartService {
      */
     private formatTimeRange;
     static ɵfac: i0.ɵɵFactoryDeclaration<StChartService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<StChartService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
 export {};

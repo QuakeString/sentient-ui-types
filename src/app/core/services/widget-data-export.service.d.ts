@@ -36,5 +36,5 @@ export declare class WidgetDataExportService {
     private roundValue;
     private formatTs;
     static ɵfac: i0.ɵɵFactoryDeclaration<WidgetDataExportService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<WidgetDataExportService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

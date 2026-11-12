@@ -19,5 +19,5 @@ export declare class DialogService {
     forbidden(): Observable<boolean>;
     todo(): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<DialogService, never>;
-    static ɵprov: i0.ɵɵInjectableDeclaration<DialogService>;
+    static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }
