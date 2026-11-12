@@ -1,6 +1,6 @@
 import { ECharts, EChartsOption } from '@home/components/widget/lib/chart/echarts-widget.models';
 import { AutoDateFormatSettings, Font, ValueSourceConfig } from '@shared/models/widget-settings.models';
-import { VisualMapComponentOption, XAXisOption, YAXisOption } from 'echarts/types/dist/shared';
+import { TimeAxisBandWidthCalculator, VisualMapComponentOption, XAXisOption, YAXisOption } from 'echarts/types/dist/shared';
 import { CustomSeriesOption, LineSeriesOption } from 'echarts/charts';
 import { TimeAxisBaseOption, ValueAxisBaseOption } from 'echarts/types/src/coord/axisCommonTypes';
 import { LabelFormatterCallback } from 'echarts/types/dist/echarts';
@@ -39,7 +39,7 @@ export interface TimeSeriesChartDataItem {
     barRenderContext?: BarRenderContext;
     unitConvertor?: TbUnitConverter;
 }
-export declare const timeAxisBandWidthCalculator: any;
+export declare const timeAxisBandWidthCalculator: TimeAxisBandWidthCalculator;
 export declare const adjustTimeAxisExtentToData: (timeAxisOption: TimeAxisBaseOption, dataItems: TimeSeriesChartDataItem[], defaultMin: number, defaultMax: number) => void;
 export declare enum TimeSeriesChartType {
     default = "default",

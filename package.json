@@ -37,7 +37,7 @@
         "@types/tooltipster": "^0.0.35",
         "angular-gridster2": "20.2.4",
         "angular2-hotkeys": "^16.0.1",
-        "echarts": "https://github.com/thingsboard/echarts/archive/5.5.1-TB.tar.gz",
+        "echarts": "https://github.com/QuakeString/echarts/archive/5.5.1-TB.tar.gz",
         "jquery": "^3.7.1",
         "leaflet": "1.9.4",
         "leaflet-polylinedecorator": "1.6.0",
