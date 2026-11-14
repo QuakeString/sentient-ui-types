@@ -1,4 +1,5 @@
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { LicenseRequestKind } from '@shared/components/dialog/license-request-dialog.component';
 import { Router } from '@angular/router';
 import * as i0 from "@angular/core";
 /**
@@ -12,8 +13,8 @@ import * as i0 from "@angular/core";
  *      (interceptor-driven).
  *
  * Three actions, all of which dismiss the dialog:
- *   - "Request demo license"  → opens the public license portal demo form in a new tab
- *   - "Buy license"           → opens the public license portal purchase page in a new tab
+ *   - "Request demo license"  → closes this and opens the in-app demo request dialog
+ *   - "Buy license"           → closes this and opens the in-app purchase enquiry dialog
  *   - "I have a key"          → closes dialog and routes to /license so user can paste it
  */
 export interface LicensePromptDialogData {
@@ -26,15 +27,13 @@ export declare class LicensePromptDialogComponent {
     private dialogRef;
     data: LicensePromptDialogData;
     private router;
-    /** Public license portal demo-request URL (mirrors LicenseComponent). */
-    readonly demoUrl = "https://license.invenia.in/request-demo";
-    /** Public license portal purchase URL. */
-    readonly purchaseUrl = "https://license.invenia.in/buy";
+    private dialog;
     title: string;
     message: string;
-    constructor(dialogRef: MatDialogRef<LicensePromptDialogComponent>, data: LicensePromptDialogData, router: Router);
+    constructor(dialogRef: MatDialogRef<LicensePromptDialogComponent>, data: LicensePromptDialogData, router: Router, dialog: MatDialog);
     close(): void;
-    dismiss(): void;
+    /** Swap this prompt for the request dialog. */
+    openRequest(kind: LicenseRequestKind): void;
     goToActivate(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<LicensePromptDialogComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<LicensePromptDialogComponent, "tb-license-prompt-dialog", never, {}, {}, never, never, false, never>;

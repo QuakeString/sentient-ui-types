@@ -53,6 +53,16 @@ export declare class LicenseService {
      * Requires customer details (company name, email)
      */
     requestDemoLicense(request: DemoLicenseRequest, config?: RequestConfig): Observable<LicenseStatus>;
+    /**
+     * In-app "Request demo license" form. The server forwards it to the
+     * license server, which emails a demo key for this build's major version.
+     */
+    requestDemoInquiry(body: Record<string, unknown>, config?: RequestConfig): Observable<any>;
+    /**
+     * In-app "Buy SENTIENT license" enquiry, forwarded to the license
+     * server's sales inbox.
+     */
+    requestPurchaseInquiry(body: Record<string, unknown>, config?: RequestConfig): Observable<any>;
     static ɵfac: i0.ɵɵFactoryDeclaration<LicenseService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<any>;
 }

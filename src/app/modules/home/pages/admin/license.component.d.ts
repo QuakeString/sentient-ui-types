@@ -8,6 +8,7 @@ import { LicenseStatus, LicenseUsageResult, LicenseState, getLicenseTypeDisplay,
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from '@core/services/dialog.service';
+import { LicenseRequestKind } from '@shared/components/dialog/license-request-dialog.component';
 import * as i0 from "@angular/core";
 export declare class LicenseComponent extends PageComponent implements OnInit, OnDestroy {
     protected store: Store<AppState>;
@@ -30,13 +31,11 @@ export declare class LicenseComponent extends PageComponent implements OnInit, O
     errorMessage: string;
     successMessage: string;
     /**
-     * Public license-portal URLs. Both buttons in the "Don't have a
-     * license yet?" CTA section open these in new tabs. The user fills
-     * in their details on the portal, gets a key by email, then activates
-     * it from the form on this page.
+     * "Don't have a license yet?" buttons: the request dialogs, sent through
+     * this server so a kiosk browser never has to leave SENTIENT. A key
+     * activated from the demo dialog reloads this page's status.
      */
-    readonly demoRequestUrl = "https://license.invenia.in/request-demo";
-    readonly purchaseUrl = "https://license.invenia.in/buy";
+    openLicenseRequest(kind: LicenseRequestKind): void;
     private readonly destroy$;
     getLicenseTypeDisplay: typeof getLicenseTypeDisplay;
     getLimitDisplay: typeof getLimitDisplay;
