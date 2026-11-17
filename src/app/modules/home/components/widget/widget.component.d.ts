@@ -123,6 +123,22 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private shellResizingSubscribed;
     constructor(store: Store<AppState>, timewindowPreference: TimewindowPreferenceService, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient, homeService: HomeService, widgetFirstLoad: WidgetFirstLoadService);
     ngOnInit(): void;
+    /**
+     * Whether a header action button carries a colour the user picked. The
+     * action dialog always stores a colour, seeded with the button type's
+     * default (white on filled buttons, #305680 on outlined ones, the widget's
+     * text colour otherwise); only a different value, or a light/dark pair,
+     * counts as the user's own. Those keep their text colour in dark mode; the
+     * defaults still take the dark theme's readable colours. The outline is
+     * decided separately (headerButtonHasOwnBorder).
+     */
+    private headerButtonHasOwnColor;
+    /**
+     * Whether an outlined header button has an outline colour the user picked.
+     * The dialog stores #0000001F by default; that one gets the theme's
+     * standard border instead, so it stays visible in dark mode.
+     */
+    private headerButtonHasOwnBorder;
     headerButtonStyle(buttonType: WidgetHeaderActionButtonType, customButtonStyle: {
         [key: string]: string;
     }, buttonColor: string, backgroundColor: string, borderColor: string): {};

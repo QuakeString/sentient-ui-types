@@ -51,6 +51,7 @@ export declare function mergeDeep<T>(target: T, ...sources: T[]): T;
 export declare function substituteStateKeyParams(text: string, stateParams: {
     [key: string]: any;
 }, skipReservedLabelParams?: boolean): string;
+export declare const hasStateParamDefaultToken: (value: any) => boolean;
 export declare function substituteStateParamNumber(value: any, stateParams: {
     [key: string]: any;
 }): any;

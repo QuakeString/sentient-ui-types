@@ -21,6 +21,7 @@ export declare enum FormPropertyType {
     font = "font",
     units = "units",
     icon = "icon",
+    report_template = "report_template",
     fieldset = "fieldset",
     array = "array",
     htmlSection = "htmlSection"

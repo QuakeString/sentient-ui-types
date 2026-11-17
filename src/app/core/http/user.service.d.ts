@@ -13,7 +13,7 @@ export declare class UserService {
     getCustomerUsers(customerId: string, pageLink: PageLink, config?: RequestConfig, includeSubCustomers?: boolean): Observable<PageData<User>>;
     getUsersForAssign(alarmId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<UserEmailInfo>>;
     getUser(userId: string, config?: RequestConfig): Observable<User>;
-    saveUser(user: User, sendActivationMail?: boolean, config?: RequestConfig): Observable<User>;
+    saveUser(user: User, sendActivationMail?: boolean, config?: RequestConfig, entityGroupIds?: string[]): Observable<User>;
     deleteUser(userId: string, config?: RequestConfig): Observable<Object>;
     changeUserOwner(userId: string, customerId: string, config?: RequestConfig): Observable<User>;
     removeUserOwner(userId: string, config?: RequestConfig): Observable<User>;

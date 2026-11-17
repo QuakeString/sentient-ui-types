@@ -69,6 +69,10 @@ export interface WidgetHeaderAction extends IWidgetAction {
     customButtonStyle?: {
         [key: string]: string;
     };
+    /** The action sets its own text colour; the dark theme must not override it. */
+    keepOwnColor?: boolean;
+    /** The action sets its own outline colour (outlined buttons); kept in dark mode too. */
+    keepOwnBorder?: boolean;
     useShowWidgetHeaderActionFunction: boolean;
     showWidgetHeaderActionFunction: CompiledTbFunction<ShowWidgetHeaderActionFunction>;
 }

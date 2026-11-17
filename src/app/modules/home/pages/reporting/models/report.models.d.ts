@@ -414,6 +414,14 @@ export interface GenerateReportRequest {
      */
     timeWindow?: any;
     timezone?: string;
+    /**
+     * Values for this run of a script report, read in the script as
+     * `ctx.params` (for example `{batchId: 'B-1042'}` from a Print button).
+     * They override the defaults stored in the template's `params`.
+     */
+    params?: {
+        [key: string]: any;
+    };
 }
 export interface GenerateReportResponse {
     reportId: string;
