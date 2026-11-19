@@ -24,6 +24,7 @@ export declare class AddAttributeDialogComponent extends DialogComponent<AddAttr
     fb: FormBuilder;
     attributeFormGroup: FormGroup;
     submitted: boolean;
+    private readonly criticalWrite;
     isTelemetry: boolean;
     constructor(store: Store<AppState>, router: Router, data: AddAttributeDialogData, attributeService: AttributeService, errorStateMatcher: ErrorStateMatcher, dialogRef: MatDialogRef<AddAttributeDialogComponent, boolean>, fb: FormBuilder);
     ngOnInit(): void;

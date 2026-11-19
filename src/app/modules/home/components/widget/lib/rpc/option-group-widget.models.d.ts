@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { BackgroundSettings, Font } from '@shared/models/widget-settings.models';
 /** Value data type written by the selected option (matches the option values). */
@@ -24,6 +25,8 @@ export declare enum OptionGroupOrientation {
     horizontal = "horizontal"
 }
 export interface OptionGroupWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     initialState: GetValueSettings<any>;
     disabledState: GetValueSettings<boolean>;
     onSelect: SetValueSettings;

@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { BackgroundSettings, cssUnit, Font } from '@shared/models/widget-settings.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 export declare enum SingleSwitchLayout {
@@ -9,6 +10,8 @@ export declare const singleSwitchLayouts: SingleSwitchLayout[];
 export declare const singleSwitchLayoutTranslations: Map<SingleSwitchLayout, string>;
 export declare const singleSwitchLayoutImages: Map<SingleSwitchLayout, string>;
 export interface SingleSwitchWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     initialState: GetValueSettings<boolean>;
     disabledState: GetValueSettings<boolean>;
     onUpdateState: SetValueSettings;

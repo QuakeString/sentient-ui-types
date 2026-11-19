@@ -11,6 +11,25 @@ import * as i0 from "@angular/core";
 export interface AuditLogDetailsDialogData {
     auditLog: AuditLog;
 }
+/** One row of the "Changes" table: a key with its old and new value. */
+export interface AuditValueChangeRow {
+    key: string;
+    oldText: string;
+    newText: string;
+    added: boolean;
+    deleted: boolean;
+}
+/** Where a change came from, as recorded with it. */
+export interface AuditSourceInfo {
+    via: string;
+    dashboardId?: string;
+    dashboardName?: string;
+    state?: string;
+    page?: string;
+    clientAddress?: string;
+    browser?: string;
+    os?: string;
+}
 export declare class AuditLogDetailsDialogComponent extends DialogComponent<AuditLogDetailsDialogComponent> implements OnInit, OnDestroy {
     protected store: Store<AppState>;
     protected router: Router;
@@ -21,6 +40,14 @@ export declare class AuditLogDetailsDialogComponent extends DialogComponent<Audi
     actionDataEditorElmRef: ElementRef;
     failureDetailsEditorElmRef: ElementRef;
     auditLog: AuditLog;
+    changes: AuditValueChangeRow[];
+    changesTotal: number | null;
+    oldValuesUnknown: boolean;
+    source: AuditSourceInfo | null;
+    rpcRows: {
+        label: string;
+        value: string;
+    }[];
     displayFailureDetails: boolean;
     actionData: string;
     actionFailureDetails: string;
@@ -29,6 +56,8 @@ export declare class AuditLogDetailsDialogComponent extends DialogComponent<Audi
     ngOnInit(): void;
     ngOnDestroy(): void;
     createEditor(editorElementRef: ElementRef, content: string): void;
+    /** Translation key of the page a change came from. */
+    sourceViaKey(via: string): string;
     updateEditorSize(editorElement: any, content: string, editor: Ace.Editor): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuditLogDetailsDialogComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AuditLogDetailsDialogComponent, "tb-audit-log-details-dialog", never, {}, {}, never, never, false, never>;

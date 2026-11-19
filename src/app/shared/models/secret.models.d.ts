@@ -3,7 +3,15 @@ import { EntityId } from '@shared/models/id/entity-id';
 /** What a secret holds: one line (password, token, key) or several (certificate, key file). */
 export declare enum SecretType {
     TEXT = "TEXT",
-    FILE = "FILE"
+    FILE = "FILE",
+    /** A named password that protects widget actions: stored as a hash, only checked, never filled into configuration. */
+    ACTION_PASSWORD = "ACTION_PASSWORD"
+}
+/** Which rows the Secrets list shows. */
+export declare enum SecretKind {
+    ALL = "ALL",
+    SECRET = "SECRET",
+    ACTION_PASSWORD = "ACTION_PASSWORD"
 }
 /** A stored secret. The value is write-only and never part of this model. */
 export interface SecretInfo extends BaseData<EntityId> {
@@ -11,8 +19,15 @@ export interface SecretInfo extends BaseData<EntityId> {
     type: SecretType;
     description?: string;
     updatedTime: number;
-    /** `${secret:<name>}`, what configuration uses to refer to it. */
-    placeholder: string;
+    /** `${secret:<name>}`, what configuration uses to refer to it (secrets only). */
+    placeholder?: string;
+    kind: SecretKind.SECRET | SecretKind.ACTION_PASSWORD;
+    /** Action passwords: dashboards whose actions ask for it. */
+    usedBy?: number;
+    /** Action passwords: who changed it last. */
+    updatedBy?: string;
+    /** Action passwords: set while wrong tries have it blocked. */
+    blockedUntil?: number;
 }
 export interface SaveSecretRequest {
     id?: string;

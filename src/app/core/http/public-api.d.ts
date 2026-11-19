@@ -5,6 +5,7 @@ export * from './asset.service';
 export * from './asset-profile.service';
 export * from './attribute.service';
 export * from './audit-log.service';
+export * from './action-password.service';
 export * from './calculated-fields.service';
 export * from './component-descriptor.service';
 export * from './customer.service';

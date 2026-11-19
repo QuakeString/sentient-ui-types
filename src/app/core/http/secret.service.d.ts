@@ -3,13 +3,14 @@ import { Observable } from 'rxjs';
 import { RequestConfig } from '@core/http/http-utils';
 import { PageLink } from '@shared/models/page/page-link';
 import { PageData } from '@shared/models/page/page-data';
-import { MasterKeyInfo, MasterKeyRotation, SaveSecretRequest, SecretInfo } from '@shared/models/secret.models';
+import { MasterKeyInfo, MasterKeyRotation, SaveSecretRequest, SecretInfo, SecretKind } from '@shared/models/secret.models';
 import * as i0 from "@angular/core";
 /** The secrets store (`/api/secret…`). Values can be written, never read. */
 export declare class SecretService {
     private http;
     constructor(http: HttpClient);
-    getSecrets(pageLink: PageLink, config?: RequestConfig): Observable<PageData<SecretInfo>>;
+    /** Secrets and, for a tenant administrator, the tenant's action passwords. */
+    getSecrets(pageLink: PageLink, kind?: SecretKind, config?: RequestConfig): Observable<PageData<SecretInfo>>;
     getSecretNames(config?: RequestConfig): Observable<string[]>;
     saveSecret(secret: SaveSecretRequest, config?: RequestConfig): Observable<SecretInfo>;
     deleteSecret(id: string, config?: RequestConfig): Observable<void>;

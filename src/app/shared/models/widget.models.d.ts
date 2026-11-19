@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { BaseData, ExportableEntity } from '@shared/models/base-data';
 import { TenantId } from '@shared/models/id/tenant-id';
 import { WidgetTypeId } from '@shared/models/id/widget-type-id';
@@ -435,6 +436,8 @@ export interface WidgetAction extends CustomActionDescriptor {
     url?: string;
     mapItemType?: MapItemType;
     mapItemTooltips?: MapItemTooltips;
+    /** Ask for a confirmation or a password before the action runs. */
+    protection?: ActionProtection;
 }
 export interface MapItemTooltips {
     placeMarker?: string;

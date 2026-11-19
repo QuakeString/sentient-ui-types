@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { BackgroundSettings, Font } from '@shared/models/widget-settings.models';
 /** Value data type stored by the combo box (matches the option values). */
@@ -19,6 +20,8 @@ export declare enum ComboBoxOptionsSource {
     entity = "entity"
 }
 export interface ComboBoxWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     initialState: GetValueSettings<any>;
     disabledState: GetValueSettings<boolean>;
     onSelect: SetValueSettings;

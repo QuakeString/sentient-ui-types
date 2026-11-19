@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { AfterViewInit, ChangeDetectorRef, ElementRef, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
@@ -44,6 +45,9 @@ export declare class ManageWidgetActionsComponent extends PageComponent implemen
     sort: MatSort;
     private propagateChange;
     constructor(translate: TranslateService, utils: UtilsService, dialog: MatDialog, dialogs: DialogService, cd: ChangeDetectorRef, elementRef: ElementRef, zone: NgZone);
+    /** Label of an action's protection chip. */
+    protectionLabel(p: ActionProtection): string;
+    protectionParams(p: ActionProtection): any;
     ngOnInit(): void;
     ngOnDestroy(): void;
     ngAfterViewInit(): void;

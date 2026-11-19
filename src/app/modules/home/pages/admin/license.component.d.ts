@@ -88,18 +88,25 @@ export declare class LicenseComponent extends PageComponent implements OnInit, O
     formatLicenseKey(key?: string): string;
     /** Four-character tier abbreviation used inside the masked key. */
     private tierAbbrev;
-    /** "04 / 2027" formatting for the bottom-of-card valid-through stamp.
+    /** Whether the license never expires (enterprise, no date or a far-future one). */
+    isPerpetual(dateStr: string): boolean;
+    /** The full expiry date on the card ("14 Mar 2027").
      *  Enterprise-tier perpetual licenses surface as "PERPETUAL". */
     formatValidThrough(dateStr: string): string;
+    /** "14 Dec 2026": day, short month name, year, in that order for every language. */
+    private dayMonthYear;
+    /** Whole days until the license expires: the server's count when it sent
+     *  one, else counted from the expiry date. Null when there is no date. */
+    daysLeft(): number | null;
     formatDate(dateStr: string): string;
     getLimits(): import("@shared/models/license.model").LicenseLimits;
     /**
-     * BP-12: returns true iff the running binary's version is
-     * component-prefix-matched by at least one entry in the active
-     * license's allowed_versions list. Mirrors the SENTIENT verifier's
-     * acceptance rule so the dashboard shows a consistent verdict
-     * (e.g. license ["4.2"] + build "4.2.2" → compatible).
+     * BP-12: whether the active licence covers this build. The server
+     * decides (the one version rule, shared with activation and the
+     * licence server); the page only shows the verdict.
      */
+    /** Card status: active, expired, or why it is not honoured. */
+    statusLabel(): string;
     isVersionCompatible(): boolean;
     /**
      * BP-11 phase 2: human-readable label for the binary integrity

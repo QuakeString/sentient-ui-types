@@ -92,6 +92,8 @@ export declare class WidgetContext {
     get stateController(): IStateController;
     get aliasController(): IAliasController;
     get dashboardTimewindow(): Timewindow;
+    /** The widget's id in its dashboard. */
+    get widgetId(): string;
     get widgetConfig(): WidgetConfig;
     private stateParamSettingsCache;
     private get ownStateParams();

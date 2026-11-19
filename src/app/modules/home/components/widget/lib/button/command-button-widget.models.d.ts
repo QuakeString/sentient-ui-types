@@ -1,6 +1,9 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { WidgetButtonAppearance } from '@shared/components/button/widget-button.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 export interface CommandButtonWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     appearance: WidgetButtonAppearance;
     onClickState: SetValueSettings;
     /** Momentary (push-button) pair: fired on pointer down / pointer up.

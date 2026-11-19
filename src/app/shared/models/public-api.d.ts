@@ -9,6 +9,7 @@ export * from './alias.models';
 export * from './api-usage.models';
 export * from './asset.models';
 export * from './audit-log.models';
+export * from './action-protection.models';
 export * from './authority.enum';
 export * from './base-data';
 export * from './calculated-field.models';

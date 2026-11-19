@@ -1,7 +1,10 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { BackgroundSettings } from '@shared/models/widget-settings.models';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
 export interface PidControlWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     title: string;
     pvUnits: string;
     spUnits: string;

@@ -7,6 +7,7 @@ import { ValueType } from '@shared/models/constants';
 import { EntityId } from '@shared/models/id/entity-id';
 import { HttpClient } from '@angular/common/http';
 import { StateObject } from '@core/api/widget-api.models';
+import { PlannedWrite } from '@shared/models/critical-parameter.models';
 import * as i0 from "@angular/core";
 export declare abstract class BasicActionWidgetComponent implements OnInit, OnDestroy, AfterViewInit {
     protected cd: ChangeDetectorRef;
@@ -40,6 +41,11 @@ export declare abstract class BasicActionWidgetComponent implements OnInit, OnDe
     protected createValueSetter<V>(setValueSettings: SetValueSettings): ValueSetter<V>;
     private onError;
     protected updateValue<V>(valueSetter: ValueSetter<V>, value: V, setValueObserver?: Partial<Observer<void>>): void;
+    /** The device or asset a write goes to (its critical parameters apply). */
+    private writeTarget;
+    /** Where a protected write runs, for the prompt and its audit entry. */
+    private writeProtectionContext;
+    private runValueSetter;
     static ɵfac: i0.ɵɵFactoryDeclaration<BasicActionWidgetComponent, never>;
     static ɵdir: i0.ɵɵDirectiveDeclaration<BasicActionWidgetComponent, never, never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, true, never>;
 }
@@ -92,6 +98,8 @@ export declare abstract class ValueSetter<V> extends ValueAction {
     /** The write itself, with the raw error (a multi-action write words its own message). */
     setValueUnwrapped(value: V): Observable<any>;
     convertValue(value: V): Observable<any>;
+    /** What this click would write (key, kind, converted value), for the critical-parameter check. */
+    plannedWrites(_value: V): Observable<PlannedWrite[]>;
     protected abstract doSetValue(data: any): Observable<any>;
 }
 export declare class DefaultValueGetter<V> extends ValueGetter<V> {
@@ -213,6 +221,7 @@ export declare class MultiActionValueSetter<V> extends ValueSetter<V> {
     setValue(value: V): Observable<any>;
     setValueUnwrapped(value: V): Observable<any>;
     protected doSetValue(_data: any): Observable<any>;
+    plannedWrites(value: V): Observable<PlannedWrite[]>;
     private groups;
     private batchKey;
     private runGroup;
@@ -224,6 +233,7 @@ export declare class ExecuteRpcValueSetter<V> extends ValueSetter<V> {
     protected simulated: boolean;
     private readonly executeRpcSettings;
     constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
+    plannedWrites(value: V): Observable<PlannedWrite[]>;
     protected doSetValue(data: any): Observable<any>;
 }
 export declare abstract class TelemetryValueSetter<V> extends ValueSetter<V> {
@@ -251,6 +261,7 @@ export declare class AttributeValueSetter<V> extends TelemetryValueSetter<V> {
     private readonly setAttributeValueSettings;
     constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
     telemetryKey(): string;
+    plannedWrites(value: V): Observable<PlannedWrite[]>;
     protected saveEntries(attributes: Array<AttributeData>): Observable<any>;
     protected scope(): TelemetryType;
 }
@@ -261,5 +272,6 @@ export declare class TimeSeriesValueSetter<V> extends TelemetryValueSetter<V> {
     private readonly putTimeSeriesValueSettings;
     constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
     telemetryKey(): string;
+    plannedWrites(value: V): Observable<PlannedWrite[]>;
     protected saveEntries(timeSeries: Array<AttributeData>): Observable<any>;
 }

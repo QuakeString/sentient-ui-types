@@ -34,6 +34,24 @@ export interface LicenseState {
      * a popup at login + a banner on the License page.
      */
     bindingBlockReason?: string;
+    /**
+     * Why the activated licence is not honoured: past its date, does not
+     * cover this SENTIENT version, payload does not verify, or the clock
+     * was wound back. Each one works like an expired licence.
+     */
+    invalidReason?: LicenseInvalidReason;
+    /** `invalidReason` as text for the operator. */
+    invalidMessage?: string;
+}
+export type LicenseInvalidKind = 'EXPIRED' | 'VERSION_MISMATCH' | 'SIGNATURE_INVALID' | 'UNSIGNED' | 'CLOCK_ROLLBACK';
+export interface LicenseInvalidReason {
+    kind: LicenseInvalidKind;
+    /** VERSION_MISMATCH: the versions the licence covers. */
+    allowed?: string[];
+    /** VERSION_MISMATCH: the version compared (what activation reports). */
+    build?: string;
+    /** VERSION_MISMATCH: the full release this server runs. */
+    release?: string;
 }
 /**
  * License type determines feature availability and limits
@@ -164,6 +182,8 @@ export interface LicenseStatus {
      * login.
      */
     bindingBlockReason?: string;
+    /** Server's verdict: does the active licence cover `binaryVersion`. */
+    versionCompatible?: boolean;
 }
 /**
  * License usage check result

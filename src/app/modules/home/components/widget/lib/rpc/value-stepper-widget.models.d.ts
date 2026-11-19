@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { WidgetButtonCustomStyles } from '@shared/components/button/widget-button.models';
 import { BackgroundSettings, cssUnit, Font } from '@shared/models/widget-settings.models';
@@ -11,6 +12,8 @@ export declare const valueStepperTypes: ValueStepperType[];
 export declare const valueStepperTypeTranslations: Map<ValueStepperType, string>;
 export declare const valueStepperTypeImages: Map<ValueStepperType, string>;
 export interface ValueStepperWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     initialState: GetValueSettings<number>;
     leftButtonClick: SetValueSettings;
     rightButtonClick: SetValueSettings;

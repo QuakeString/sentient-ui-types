@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { BackgroundSettings } from '@shared/models/widget-settings.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { Circle, Element, G, Path, Svg, Text, Timeline } from '@svgdotjs/svg.js';
@@ -26,6 +27,8 @@ export interface ButtonIconSettings {
     icon: string;
 }
 export interface PowerButtonWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     initialState?: GetValueSettings<boolean>;
     disabledState?: GetValueSettings<boolean>;
     onUpdateState?: SetValueSettings;

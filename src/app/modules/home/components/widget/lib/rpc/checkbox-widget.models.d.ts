@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { BackgroundSettings, Font } from '@shared/models/widget-settings.models';
 /**
@@ -20,6 +21,8 @@ export declare enum CheckboxOrientation {
     horizontal = "horizontal"
 }
 export interface CheckboxWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     selectionMode: CheckboxSelectionMode;
     initialState: GetValueSettings<any>;
     disabledState: GetValueSettings<boolean>;

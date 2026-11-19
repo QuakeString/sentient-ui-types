@@ -79,6 +79,7 @@ export declare class AttributeTableComponent extends PageComponent implements Af
     sort: MatSort;
     textSearch: import("@angular/forms").FormControl<string>;
     private destroy$;
+    private readonly criticalWrite;
     constructor(store: Store<AppState>, attributeService: AttributeService, telemetryWsService: TelemetryWebsocketService, translate: TranslateService, dialog: MatDialog, overlay: Overlay, viewContainerRef: ViewContainerRef, dialogService: DialogService, entityService: EntityService, utils: UtilsService, dashboardUtils: DashboardUtilsService, widgetService: WidgetService, zone: NgZone, cd: ChangeDetectorRef, elementRef: ElementRef, fb: FormBuilder);
     ngOnInit(): void;
     ngOnDestroy(): void;

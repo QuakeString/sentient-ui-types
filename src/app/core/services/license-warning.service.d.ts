@@ -1,20 +1,25 @@
 import { OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LicenseService } from '@core/http/license.service';
+import { LicenseInvalidKind } from '@shared/models/license.model';
+import { TranslateService } from '@ngx-translate/core';
 import * as i0 from "@angular/core";
 /**
  * Service to monitor license state and show warning popups
  * Runs every 5 minutes to check license state
  */
+/** Dialog title for each reason an activated licence is not honoured. */
+export declare const invalidLicenseTitleKey: (kind?: LicenseInvalidKind) => string;
 export declare class LicenseWarningService implements OnDestroy {
     private licenseService;
     private dialog;
+    private translate;
     private readonly POPUP_INTERVAL_MS;
     private intervalId;
     private destroy$;
     private currentDialogRef;
     private isMonitoring;
-    constructor(licenseService: LicenseService, dialog: MatDialog);
+    constructor(licenseService: LicenseService, dialog: MatDialog, translate: TranslateService);
     ngOnDestroy(): void;
     /**
      * Start monitoring license state
@@ -30,6 +35,14 @@ export declare class LicenseWarningService implements OnDestroy {
      * Check license state and show warning if needed
      */
     private checkAndShowWarning;
+    /** The reason last shown, so a closed dialog is not reopened every check. */
+    private shownInvalidMessage;
+    /**
+     * The activated licence is not honoured (expired, version not covered,
+     * ...). Same state as an expired licence; closable like the expired
+     * dialog, shown again only when the reason changes.
+     */
+    private showInvalidLicenseDialog;
     /**
      * Show a "no licence active" dialog. Non-closable — the runtime
      * is functional but every entity-creation attempt will silently

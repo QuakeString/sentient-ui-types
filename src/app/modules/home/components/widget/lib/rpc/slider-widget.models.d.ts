@@ -1,3 +1,4 @@
+import { ActionProtection } from '@shared/models/action-protection.models';
 import { GetValueSettings, SetValueSettings } from '@shared/models/action-widget-settings.models';
 import { BackgroundSettings, cssUnit, Font } from '@shared/models/widget-settings.models';
 import { TbUnit } from '@shared/models/unit.models';
@@ -10,6 +11,8 @@ export declare const sliderLayouts: SliderLayout[];
 export declare const sliderLayoutTranslations: Map<SliderLayout, string>;
 export declare const sliderLayoutImages: Map<SliderLayout, string>;
 export interface SliderWidgetSettings {
+    /** Ask for a confirmation or a password before the widget writes. */
+    protection?: ActionProtection;
     initialState: GetValueSettings<number>;
     disabledState: GetValueSettings<boolean>;
     valueChange: SetValueSettings;

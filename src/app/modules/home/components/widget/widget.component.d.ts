@@ -1,3 +1,4 @@
+import { ActionProtectionService } from '@core/services/action-protection.service';
 import { WidgetFirstLoadService } from '@core/services/widget-first-load.service';
 import { HomeService } from '@core/services/home.service';
 import { TimewindowPreferenceService } from '@core/services/timewindow-preference.service';
@@ -60,6 +61,7 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private dashboardUtils;
     private mobileService;
     private raf;
+    private actionProtectionService;
     private unitService;
     private ngZone;
     private cd;
@@ -121,7 +123,7 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private resizePending;
     private pendingResize;
     private shellResizingSubscribed;
-    constructor(store: Store<AppState>, timewindowPreference: TimewindowPreferenceService, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient, homeService: HomeService, widgetFirstLoad: WidgetFirstLoadService);
+    constructor(store: Store<AppState>, timewindowPreference: TimewindowPreferenceService, route: ActivatedRoute, router: Router, widgetComponentService: WidgetComponentService, elementRef: ElementRef, injector: Injector, dialog: MatDialog, overlay: Overlay, renderer: Renderer2, popoverService: TbPopoverService, embedDashboardDialogComponent: ComponentType<any>, dashboardPageComponent: ComponentType<any>, modulesMap: IModulesMap, resources: ResourcesService, timeService: TimeService, deviceService: DeviceService, entityService: EntityService, dashboardService: DashboardService, entityDataService: EntityDataService, alarmDataService: AlarmDataService, translate: TranslateService, utils: UtilsService, dashboardUtils: DashboardUtilsService, mobileService: MobileService, raf: RafService, actionProtectionService: ActionProtectionService, unitService: UnitService, ngZone: NgZone, cd: ChangeDetectorRef, http: HttpClient, homeService: HomeService, widgetFirstLoad: WidgetFirstLoadService);
     ngOnInit(): void;
     /**
      * Whether a header action button carries a colour the user picked. The
@@ -176,12 +178,27 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private expandDataKeyStateParams;
     private createDefaultSubscription;
     private getActionDescriptors;
+    /**
+     * Runs a widget action; a protected one first asks for its confirmation
+     * or password (one prompt per click).
+     */
     private handleWidgetAction;
+    /** Where an action runs, for the protection prompt and its audit entry. */
+    private actionProtectionContext;
+    private runWidgetAction;
     private handleMobileAction;
     private handleWidgetMobileActionError;
     private openDashboardStateInPopover;
     private openDashboardStateInSeparateDialog;
     private elementClick;
+    private rightClickUnlisteners;
+    private longPressTimer;
+    /**
+     * "On right click": a right click on the widget, or a long press on a
+     * touch screen, runs the widget's right-click action. Only in view mode;
+     * in edit mode the right click keeps its editing menu.
+     */
+    private listenForRightClick;
     private cardClick;
     private click;
     private onClick;
@@ -191,6 +208,6 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private processResourcesLoadErrors;
     private getActiveEntityInfo;
     private checkSize;
-    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<WidgetComponent, [null, null, null, null, null, null, null, null, null, null, null, null, null, { optional: true; }, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<WidgetComponent, "tb-widget", never, { "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; "widgetHeaderActionsPanel": { "alias": "widgetHeaderActionsPanel"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isPreview": { "alias": "isPreview"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "dashboardWidget": { "alias": "dashboardWidget"; "required": false; }; "widget": { "alias": "widget"; "required": false; }; }, {}, never, never, false, never>;
 }

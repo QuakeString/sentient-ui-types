@@ -31,11 +31,17 @@ export declare class AuditLogTableComponent implements OnInit, AfterViewInit {
     set entityId(entityId: EntityId);
     set userId(userId: UserId);
     set customerId(customerId: CustomerId);
+    /**
+     * A profile's "Log every manual change", shown read-only after the time
+     * window: 'on' / 'off'; null hides it.
+     */
+    private readonly logSetting;
+    set logManualChanges(value: boolean | null | undefined);
     entitiesTable: EntitiesTableComponent;
     auditLogTableConfig: AuditLogTableConfig;
     constructor(auditLogService: AuditLogService, translate: TranslateService, datePipe: DatePipe, dialog: MatDialog, store: Store<AppState>, route: ActivatedRoute);
     ngAfterViewInit(): void;
     ngOnInit(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuditLogTableComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<AuditLogTableComponent, "tb-audit-log-table", never, { "auditLogMode": { "alias": "auditLogMode"; "required": false; }; "detailsMode": { "alias": "detailsMode"; "required": false; }; "active": { "alias": "active"; "required": false; }; "entityId": { "alias": "entityId"; "required": false; }; "userId": { "alias": "userId"; "required": false; }; "customerId": { "alias": "customerId"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<AuditLogTableComponent, "tb-audit-log-table", never, { "auditLogMode": { "alias": "auditLogMode"; "required": false; }; "detailsMode": { "alias": "detailsMode"; "required": false; }; "active": { "alias": "active"; "required": false; }; "entityId": { "alias": "entityId"; "required": false; }; "userId": { "alias": "userId"; "required": false; }; "customerId": { "alias": "customerId"; "required": false; }; "logManualChanges": { "alias": "logManualChanges"; "required": false; }; }, {}, never, never, false, never>;
 }
