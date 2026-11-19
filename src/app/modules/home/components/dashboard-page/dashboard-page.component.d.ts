@@ -173,7 +173,6 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private static readonly DEFAULT_LAYER_DEFINITIONS;
     isToolbarOpened: boolean;
     sentientVersion: string;
-    sentientReleaseUrl: string;
     isToolbarOpenedAnimate: boolean;
     isRightLayoutOpened: boolean;
     editingWidget: Widget;

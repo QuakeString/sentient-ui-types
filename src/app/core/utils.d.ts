@@ -6,6 +6,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { SubscriptionEntityInfo } from '@core/api/widget-api.models';
 import { CompiledTbFunction, GenericFunction, TbFunction } from '@shared/models/js-function.models';
+import { hasStateParamDefaultToken, substituteStateKeyParams } from './state-key-params';
+export { hasStateParamDefaultToken, substituteStateKeyParams };
 export declare function onParentScrollOrWindowResize(el: Node): Observable<Event>;
 export declare function isLocalUrl(url: string): boolean;
 export declare function animatedScroll(element: HTMLElement, scrollTop: number, delay?: number): void;
@@ -48,10 +50,6 @@ export declare const setByPath: <T extends object>(object: T, path: string | num
 export declare const isEqualIgnoreUndefined: (a: any, b: any) => boolean;
 export declare const isArraysEqualIgnoreUndefined: (a: any[], b: any[]) => boolean;
 export declare function mergeDeep<T>(target: T, ...sources: T[]): T;
-export declare function substituteStateKeyParams(text: string, stateParams: {
-    [key: string]: any;
-}, skipReservedLabelParams?: boolean): string;
-export declare const hasStateParamDefaultToken: (value: any) => boolean;
 export declare function substituteStateParamNumber(value: any, stateParams: {
     [key: string]: any;
 }): any;

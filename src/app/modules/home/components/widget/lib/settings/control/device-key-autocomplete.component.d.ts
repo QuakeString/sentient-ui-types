@@ -35,6 +35,13 @@ export declare class DeviceKeyAutocompleteComponent extends PageComponent implem
     deviceKeyFormGroup: UntypedFormGroup;
     filteredKeys: Observable<Array<string>>;
     keySearchText: string;
+    /**
+     * A key with a malformed parameter (`${.run_fb}`): the part at fault, shown
+     * next to the field. Keys may hold ${name} / ${name|default} parameters,
+     * filled from the dashboard state params when the widget runs.
+     */
+    readonly badToken: import("@angular/core").WritableSignal<string>;
+    private optionJustSelected;
     private latestKeySearchResult;
     private keysFetchObservable$;
     constructor(store: Store<AppState>, entityService: EntityService, fb: UntypedFormBuilder, destroyRef: DestroyRef);
@@ -47,6 +54,15 @@ export declare class DeviceKeyAutocompleteComponent extends PageComponent implem
     get keys(): string[];
     addKey(event: MatChipInputEvent): void;
     keySelected(event: MatAutocompleteSelectedEvent): void;
+    /**
+     * Leaving the field keeps what was typed as a key, as Enter does (a typed
+     * key was lost on blur and the field then showed "key required"). Waits a
+     * moment so a click on a suggestion is not added twice.
+     */
+    onKeyInputBlur(): void;
+    /** A malformed ${...} in the single key field. */
+    private paramTokenValidator;
+    get singleKeyBadToken(): string | null;
     /** Double-click a chip to rename its key; an empty name removes it. */
     editKey(key: string, event: MatChipEditedEvent): void;
     removeKey(key: string): void;
