@@ -11,6 +11,7 @@ import { IWidgetSubscription, WidgetSubscriptionCallbacks } from '@core/api/widg
 import { UnitService } from '@core/services/unit.service';
 import { TbUnit } from '@shared/models/unit.models';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
+import { BackgroundGradientSettings } from '@shared/models/background-gradient.models';
 export type ComponentStyle = {
     [klass: string]: any;
 };
@@ -80,7 +81,22 @@ export interface ColorGradientSettings extends AdvancedColorMode {
     gradientAdvanced?: AdvancedGradient[];
     minValue?: number;
     maxValue?: number;
+    /**
+     * Simple mode only: where each colour of `gradient` sits, in % from minValue
+     * (0) to maxValue (100). Missing (older settings) means evenly spaced.
+     */
+    positions?: number[];
 }
+/** Evenly spaced stop positions (0..100) for the given number of colours. */
+export declare const evenGradientPositions: (count: number) => number[];
+/**
+ * Stop positions (0..100) of a simple-mode gradient: the saved ones when they
+ * match the colours (one per colour, ascending, within 0..100), otherwise
+ * evenly spaced.
+ */
+export declare const gradientStopPositions: (gradient: ColorGradientSettings) => number[];
+/** True when the positions are (within rounding) evenly spaced; such positions are not saved. */
+export declare const isEvenGradientPositions: (positions: number[]) => boolean;
 export interface AdvancedGradient {
     source: ValueSourceConfig;
     color: ThemeAwareColor;
@@ -244,7 +260,8 @@ export declare const createValueFormatterFromSettings: (ctx: WidgetContext) => V
 export declare const tsToFormatTimeUnit: (ts: string | number | Date) => FormatTimeUnit;
 export declare enum BackgroundType {
     image = "image",
-    color = "color"
+    color = "color",
+    gradient = "gradient"
 }
 export declare const backgroundTypeTranslations: Map<BackgroundType, string>;
 export interface OverlaySettings {
@@ -256,6 +273,7 @@ export interface BackgroundSettings {
     type: BackgroundType;
     imageUrl?: string;
     color?: ThemeAwareColor;
+    gradient?: BackgroundGradientSettings;
     overlay: OverlaySettings;
 }
 export declare const isBackgroundSettings: (background: any) => background is BackgroundSettings;

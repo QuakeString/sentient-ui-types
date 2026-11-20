@@ -216,6 +216,12 @@ export declare class DashboardWidget implements GridsterItem, IDashboardWidget {
     applyThemeAwareColors(): void;
     private resolveBorder;
     gridsterItemComponent$(): Observable<GridsterItemComponentInterface>;
+    /**
+     * The card's background: the gradient when one is set (the `background`
+     * shorthand, with backgroundColor cleared so an older value cannot show),
+     * otherwise the plain colour.
+     */
+    private cardBackgroundStyle;
     updateWidgetParams(detectChanges?: boolean): void;
     updateParamsFromData(detectChanges?: boolean): void;
     private updateCustomHeaderActions;

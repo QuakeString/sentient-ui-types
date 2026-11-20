@@ -25,6 +25,7 @@ import { TbFunction } from '@shared/models/js-function.models';
 import { FormProperty } from '@shared/models/dynamic-form.models';
 import { TbUnit } from '@shared/models/unit.models';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
+import { BackgroundGradientSettings } from '@shared/models/background-gradient.models';
 import * as i0 from "@angular/core";
 export declare enum widgetType {
     timeseries = "timeseries",
@@ -516,6 +517,8 @@ export interface WidgetConfig {
     mobileOrder?: number;
     color?: ThemeAwareColor;
     backgroundColor?: ThemeAwareColor;
+    /** Card background gradient; when set it is drawn instead of backgroundColor. */
+    backgroundGradient?: BackgroundGradientSettings | null;
     padding?: string;
     margin?: string;
     borderRadius?: string;

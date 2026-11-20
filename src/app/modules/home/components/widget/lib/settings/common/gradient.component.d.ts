@@ -1,16 +1,15 @@
-import { ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormGroup, UntypedFormArray, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ColorGradientSettings } from '@shared/models/widget-settings.models';
 import { TbPopoverComponent } from '@shared/components/popover.component';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { IAliasController } from '@core/api/widget-api.models';
-import { DomSanitizer } from '@angular/platform-browser';
 import { DataKeysCallbacks } from '@home/components/widget/lib/settings/common/key/data-keys.component.models';
 import { Datasource } from '@shared/models/widget.models';
 import * as i0 from "@angular/core";
 export declare class GradientComponent implements OnInit, ControlValueAccessor, OnDestroy {
     private fb;
-    private sanitizer;
+    private cd;
     gradient: ElementRef;
     disabled: boolean;
     popover: TbPopoverComponent;
@@ -22,19 +21,32 @@ export declare class GradientComponent implements OnInit, ControlValueAccessor, 
     maxValue: number;
     advancedMode: boolean;
     modelValue: any;
+    /** Selected stop marker: index into the colour list (start = 0, end = last). */
+    readonly selectedMarker: import("@angular/core").WritableSignal<number>;
     gradientFormGroup: UntypedFormGroup;
     private destroy$;
     private propagateChange;
-    constructor(fb: UntypedFormBuilder, sanitizer: DomSanitizer);
+    constructor(fb: UntypedFormBuilder, cd: ChangeDetectorRef);
     ngOnInit(): void;
     ngOnDestroy(): void;
     registerOnChange(fn: any): void;
     registerOnTouched(fn: any): void;
     setDisabledState(isDisabled: boolean): void;
     writeValue(value: ColorGradientSettings): void;
-    get generatePointers(): string;
-    pointer(shift: number, index?: number, value?: number, advanced?: boolean): string;
-    get linearGradient(): import("@angular/platform-browser").SafeStyle;
+    /** Markers under the preview bar; simple-mode middle stops can be dragged. */
+    get markers(): {
+        position: number;
+        color: string;
+        label: string;
+        draggable: boolean;
+    }[];
+    get linearGradient(): string;
+    markerDown(e: PointerEvent, index: number, bar: HTMLElement): void;
+    markerKey(e: KeyboardEvent, index: number): void;
+    /** Moves middle stop `index` (1..n-2), kept between its neighbours. */
+    private setMarkerPosition;
+    /** Simple-mode positions of start, middle stops and end (0..100). */
+    private simplePositions;
     private colorGradientControl;
     get gradientListFormArray(): UntypedFormArray;
     get gradientListFormGroups(): FormGroup[];

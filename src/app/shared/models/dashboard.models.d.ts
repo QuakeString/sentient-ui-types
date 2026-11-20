@@ -1,3 +1,4 @@
+import { BackgroundGradientSettings } from '@shared/models/background-gradient.models';
 import { DashboardType } from '@shared/models/split-view.models';
 import { BaseData, ExportableEntity } from '@shared/models/base-data';
 import { DashboardId } from '@shared/models/id/dashboard-id';
@@ -75,6 +76,8 @@ export interface GridSettings {
     viewFormat?: ViewFormatType;
     backgroundSizeMode?: string;
     backgroundImageUrl?: string;
+    /** Drawn under the background image and instead of the background colour. */
+    backgroundGradient?: BackgroundGradientSettings;
     autoFillHeight?: boolean;
     rowHeight?: number;
     mobileAutoFillHeight?: boolean;
