@@ -110,7 +110,6 @@ export declare enum MenuId {
     secrets = "secrets",
     users = "users",
     analytics = "analytics",
-    analytics_templates = "analytics_templates",
     analytics_data_pipelines = "analytics_data_pipelines",
     calculated_fields = "calculated_fields",
     monitor_and_control = "monitor_and_control",
