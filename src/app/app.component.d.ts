@@ -1,4 +1,5 @@
 import 'hammerjs';
+import { TimeFormatService } from '@core/services/time-format.service';
 import { NgZone, Injector } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -27,9 +28,10 @@ export declare class AppComponent {
     private ngZone;
     private injector;
     private translateLoader;
+    private _timeFormatService;
     private aiAssistantHost;
     private aiAssistantLoaded;
-    constructor(store: Store<AppState>, storageService: LocalStorageService, translate: TranslateService, matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer, authService: AuthService, licenseWarningService: LicenseWarningService, _themeService: ThemeService, backendConfigService: BackendConfigService, matDialog: MatDialog, ngZone: NgZone, injector: Injector, translateLoader: TranslateDefaultLoader);
+    constructor(store: Store<AppState>, storageService: LocalStorageService, translate: TranslateService, matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer, authService: AuthService, licenseWarningService: LicenseWarningService, _themeService: ThemeService, backendConfigService: BackendConfigService, matDialog: MatDialog, ngZone: NgZone, injector: Injector, translateLoader: TranslateDefaultLoader, _timeFormatService: TimeFormatService);
     private openFirstLaunchBackendDialog;
     setupTranslate(): void;
     setupAuth(): void;

@@ -13,6 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '@core/auth/auth.service';
 import { UnitSystem } from '@shared/models/unit.models';
+import { TimeFormatService } from '@core/services/time-format.service';
+import { TimeFormatSetting } from '@shared/models/time-format.models';
 import { UnitService } from '@core/services/unit.service';
 import { AiAssistantStore } from '@home/components/ai-assistant/ai-assistant.store';
 import { UserSettingsService } from '@core/http/user-settings.service';
@@ -24,6 +26,7 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     private authService;
     private translate;
     private unitService;
+    private timeFormatService;
     private aiAssistantStore;
     private userSettingsService;
     private dialog;
@@ -34,6 +37,7 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     user: User;
     languageList: any;
     UnitSystems: UnitSystem[];
+    readonly timeFormatSettings: TimeFormatSetting[];
     /** Why the assistant switch is greyed out (null: the user decides). */
     aiAssistantNotAllowed: string | null;
     /** The user's own choice (additionalInfo.aiAssistantEnabled, on unless set to false). */
@@ -50,7 +54,7 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     photoActionsVisible: boolean;
     /** How the photo was last pressed: a touch first reveals the actions instead of running one. */
     photoPointerType: string;
-    constructor(store: Store<AppState>, route: ActivatedRoute, userService: UserService, authService: AuthService, translate: TranslateService, unitService: UnitService, aiAssistantStore: AiAssistantStore, userSettingsService: UserSettingsService, dialog: MatDialog, http: HttpClient, fb: UntypedFormBuilder);
+    constructor(store: Store<AppState>, route: ActivatedRoute, userService: UserService, authService: AuthService, translate: TranslateService, unitService: UnitService, timeFormatService: TimeFormatService, aiAssistantStore: AiAssistantStore, userSettingsService: UserSettingsService, dialog: MatDialog, http: HttpClient, fb: UntypedFormBuilder);
     /** Same as the left menu's profile row: the RBAC role's name, else a name for the authority. */
     private loadRoleName;
     ngOnInit(): void;
@@ -76,6 +80,8 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     /** What an empty field means. */
     get keepAliveDefault(): number;
     private buildProfileForm;
+    /** "Auto" names the clock it resolves to without the user's own setting. */
+    timeFormatLabel(setting: TimeFormatSetting): string;
     save(): void;
     private userLoaded;
     confirmForm(): UntypedFormGroup;

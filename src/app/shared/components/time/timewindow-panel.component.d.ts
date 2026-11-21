@@ -34,6 +34,7 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     viewContainerRef: ViewContainerRef;
     private dialog;
     private timewindowPreference;
+    is12h(): boolean;
     changeTimewindow: EventEmitter<Timewindow>;
     historyOnly: boolean;
     forAllTimeEnabled: boolean;
