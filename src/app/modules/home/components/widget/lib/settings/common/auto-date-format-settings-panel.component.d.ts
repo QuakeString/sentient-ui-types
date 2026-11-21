@@ -24,6 +24,8 @@ export declare class AutoDateFormatSettingsPanelComponent extends PageComponent 
     };
     constructor(date: DatePipe, fb: UntypedFormBuilder, store: Store<AppState>, destroyRef: DestroyRef);
     ngOnInit(): void;
+    /** As the widget draws it: the default follows the clock, a changed format is shown as written. */
+    private preview;
     cancel(): void;
     applyAutoDateFormatSettings(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AutoDateFormatSettingsPanelComponent, never>;

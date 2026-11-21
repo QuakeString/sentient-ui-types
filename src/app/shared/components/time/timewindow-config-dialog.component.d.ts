@@ -9,11 +9,16 @@ import { ToggleHeaderOption } from '@shared/components/toggle-header.component';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TbPopoverService } from '@shared/components/popover.service';
+import { TimeFormat, TimeFormatScope } from '@shared/models/time-format.models';
 import * as i0 from "@angular/core";
 export interface TimewindowConfigDialogData {
     quickIntervalOnly: boolean;
     aggregation: boolean;
     timewindow: Timewindow;
+    /** Shows the Time format section: a widget's or the dashboard's time window. */
+    timeFormatScope?: TimeFormatScope;
+    /** The clock Time format › Default gives now. */
+    defaultTimeFormat?: TimeFormat;
 }
 export declare class TimewindowConfigDialogComponent extends PageComponent implements OnInit, OnDestroy {
     data: TimewindowConfigDialogData;
@@ -34,6 +39,10 @@ export declare class TimewindowConfigDialogComponent extends PageComponent imple
     timewindowTypes: typeof TimewindowType;
     aggregationTypes: typeof AggregationType;
     result: Timewindow;
+    /** Shows the Time format section (null: not a widget's or dashboard's time window). */
+    timeFormatScope: TimeFormatScope;
+    /** The clock Time format › Default gives now. */
+    defaultTimeFormat: TimeFormat;
     timewindowTypeOptions: ToggleHeaderOption[];
     realtimeTimewindowOptions: ToggleHeaderOption[];
     historyTimewindowOptions: ToggleHeaderOption[];

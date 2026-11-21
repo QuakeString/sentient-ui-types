@@ -119,6 +119,8 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private observedSize;
     private cssParser;
     private rxSubscriptions;
+    /** The clock the widget was last drawn in. */
+    private drawnTimeFormat;
     /** A resize that came while the left menu animated (see the widget's ResizeObserver). */
     private resizePending;
     private pendingResize;
@@ -160,6 +162,10 @@ export declare class WidgetComponent extends PageComponent implements OnInit, On
     private onResize;
     private onEditModeChanged;
     private onMobileModeChanged;
+    /** The clock this widget draws times in (see resolveWidgetTimeFormat). */
+    private widgetTimeFormat;
+    /** Redraws the widget when its clock changed since it was drawn. */
+    private checkTimeFormatChanged;
     private reInit;
     private reInitImpl;
     private initialize;

@@ -11,6 +11,8 @@ export type TimeFormat = '24h' | '12h';
 export type TimeFormatSetting = 'auto' | TimeFormat;
 export declare const timeFormatSettings: TimeFormatSetting[];
 export declare const timeFormatSettingTranslations: Map<TimeFormatSetting, string>;
+/** Whose time window a Time format belongs to: what its Default follows differs. */
+export type TimeFormatScope = 'widget' | 'dashboard';
 export declare const isTimeFormat: (value: any) => value is TimeFormat;
 /** Name of the tenant SERVER_SCOPE attribute that holds the tenant default. */
 export declare const TENANT_TIME_FORMAT_ATTRIBUTE = "timeFormat";
@@ -42,9 +44,37 @@ export declare const formatDateAsWritten: (pipe: DatePipe, value: any, format?: 
  * for the app's stock patterns. Done once, before anything is formatted.
  */
 export declare const patchDatePipe: () => void;
+/**
+ * Key in DATE_PIPE_DEFAULT_OPTIONS for a function that gives the clock of the
+ * place the pipe belongs to (a widget). Every date pipe created inside that
+ * place, injected or in a template, then follows it instead of the profile.
+ */
+export declare const SCOPED_TIME_FORMAT_OPTION = "stTimeFormat";
+/** The clock a date pipe draws stock patterns in: its place's, else the profile's. */
+export declare const pipeTimeFormat: (pipe: DatePipe) => TimeFormat;
+/** Formats with a stock pattern in the given clock; other patterns as written. */
+export declare const formatDateInClock: (pipe: DatePipe, value: any, format: string, timeFormat: TimeFormat, timezone?: string, locale?: string) => string | null;
+/**
+ * The clock of a widget: its own time window's Time format (only when it uses
+ * its own time window), else the dashboard time window's, else the user's
+ * clock (profile, tenant default, 24-hour). A date format chosen in the widget
+ * settings is applied on top of this by the widget itself.
+ */
+export declare const resolveWidgetTimeFormat: (useDashboardTimewindow: boolean, widgetTimewindow: {
+    timeFormat?: any;
+}, dashboardTimewindow: {
+    timeFormat?: any;
+}, userTimeFormat: TimeFormat) => TimeFormat;
+/**
+ * 12-hour twins for a date format list: after each entry with hours in 24-hour
+ * form comes the same entry in 12-hour form (fixed, drawn as written).
+ */
+export declare const withTwelveHourTwins: (formats: string[]) => string[];
 /** Used when neither the user nor the tenant chose a time format. */
 export declare const DEFAULT_TIME_FORMAT: TimeFormat;
 /** User setting first, then the tenant default, then 24-hour. */
 export declare const resolveTimeFormat: (user: any, tenantDefault: any) => TimeFormat;
 export declare const getCurrentTimeFormat: () => TimeFormat;
+/** Emits the user's clock whenever it changes (profile or tenant default). */
+export declare const timeFormatChanges: import("rxjs").Observable<TimeFormat>;
 export declare const setCurrentTimeFormat: (timeFormat: TimeFormat) => void;

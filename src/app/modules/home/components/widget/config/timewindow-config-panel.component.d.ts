@@ -5,6 +5,7 @@ import { WidgetConfig, widgetType } from '@shared/models/widget.models';
 import { Timewindow } from '@shared/models/time/time.models';
 import { TranslateService } from '@ngx-translate/core';
 import { TimewindowStyle } from '@shared/models/widget-settings.models';
+import { TimeFormat } from '@shared/models/time-format.models';
 import * as i0 from "@angular/core";
 export interface TimewindowConfigData {
     useDashboardTimewindow: boolean;
@@ -26,6 +27,8 @@ export declare class TimewindowConfigPanelComponent implements ControlValueAcces
     timewindowConfig: UntypedFormGroup;
     private propagateChange;
     constructor(fb: UntypedFormBuilder, translate: TranslateService, widgetConfigComponent: WidgetConfigComponent, destroyRef: DestroyRef);
+    /** The clock of the dashboard time window: what the widget's Time format › Default gives. */
+    get dashboardTimeFormat(): TimeFormat;
     ngOnInit(): void;
     writeValue(data?: TimewindowConfigData): void;
     registerOnChange(fn: any): void;

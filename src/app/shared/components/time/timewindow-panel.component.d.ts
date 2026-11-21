@@ -2,6 +2,7 @@ import { ShiftSelection } from '@shared/models/time/shift.models';
 import { EventEmitter, InjectionToken, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { AggregationType, HistoryWindowType, Interval, QuickTimeInterval, RealtimeWindowType, Timewindow, TimewindowAdvancedParams, TimewindowType } from '@shared/models/time/time.models';
 import { PageComponent } from '@shared/components/page.component';
+import { TimeFormat, TimeFormatScope } from '@shared/models/time-format.models';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
@@ -23,6 +24,10 @@ export interface TimewindowPanelData {
     panelMode: boolean;
     /** Offer "save as my default" for this place (null: don't). */
     preferenceKey?: string;
+    /** Whose time window this is; the settings then offer its Time format. */
+    timeFormatScope?: TimeFormatScope;
+    /** The clock Time format › Default gives now. */
+    defaultTimeFormat?: TimeFormat;
 }
 export declare const TIMEWINDOW_PANEL_DATA: InjectionToken<any>;
 export declare class TimewindowPanelComponent extends PageComponent implements OnInit, OnDestroy {

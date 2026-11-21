@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MillisecondsToTimeStringPipe } from '@shared/pipe/milliseconds-to-time-string.pipe';
 import { Timewindow } from '@shared/models/time/time.models';
 import { DatePipe } from '@angular/common';
+import { TimeFormat, TimeFormatScope } from '@shared/models/time-format.models';
 import { TimeService } from '@core/services/time.service';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { Overlay } from '@angular/cdk/overlay';
@@ -46,6 +47,10 @@ export declare class TimewindowComponent implements ControlValueAccessor, OnInit
     isEditValue: boolean;
     set isEdit(val: boolean);
     get isEdit(): boolean;
+    /** Whose time window this is ('widget' or 'dashboard'); its settings then offer a Time format. */
+    timeFormatScope: TimeFormatScope;
+    /** The clock used when the time window has no Time format of its own (unset: the user's). */
+    defaultTimeFormat: TimeFormat;
     tooltipPosition: TooltipPosition;
     timewindowStyle: TimewindowStyle;
     disabled: boolean;
@@ -71,6 +76,8 @@ export declare class TimewindowComponent implements ControlValueAccessor, OnInit
     displayValue(): string;
     /** "current shift", or "20 Nov, Shift C (22:00 – 06:00)" for one shift of a day. */
     private shiftLabel;
+    /** The clock of this time window: its own Time format, else the default given, else the user's. */
+    timeFormat(): TimeFormat;
     updateDisplayValue(): void;
     private isTimewindowDisabled;
     /** Points the panel's notch at the time window: on the side facing it,
@@ -78,5 +85,5 @@ export declare class TimewindowComponent implements ControlValueAccessor, OnInit
     private placeNotch;
     private createPanel;
     static ɵfac: i0.ɵɵFactoryDeclaration<TimewindowComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TimewindowComponent, "tb-timewindow", never, { "historyOnly": { "alias": "historyOnly"; "required": false; }; "noMargin": { "alias": "noMargin"; "required": false; }; "noPadding": { "alias": "noPadding"; "required": false; }; "disablePanel": { "alias": "disablePanel"; "required": false; }; "forAllTimeEnabled": { "alias": "forAllTimeEnabled"; "required": false; }; "alwaysDisplayTypePrefix": { "alias": "alwaysDisplayTypePrefix"; "required": false; }; "quickIntervalOnly": { "alias": "quickIntervalOnly"; "required": false; }; "aggregation": { "alias": "aggregation"; "required": false; }; "timezone": { "alias": "timezone"; "required": false; }; "isToolbar": { "alias": "isToolbar"; "required": false; }; "asButton": { "alias": "asButton"; "required": false; }; "strokedButton": { "alias": "strokedButton"; "required": false; }; "flatButton": { "alias": "flatButton"; "required": false; }; "displayTimewindowValue": { "alias": "displayTimewindowValue"; "required": false; }; "hideLabel": { "alias": "hideLabel"; "required": false; }; "preferenceKey": { "alias": "preferenceKey"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "tooltipPosition": { "alias": "tooltipPosition"; "required": false; }; "timewindowStyle": { "alias": "timewindowStyle"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "panelMode": { "alias": "panelMode"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TimewindowComponent, "tb-timewindow", never, { "historyOnly": { "alias": "historyOnly"; "required": false; }; "noMargin": { "alias": "noMargin"; "required": false; }; "noPadding": { "alias": "noPadding"; "required": false; }; "disablePanel": { "alias": "disablePanel"; "required": false; }; "forAllTimeEnabled": { "alias": "forAllTimeEnabled"; "required": false; }; "alwaysDisplayTypePrefix": { "alias": "alwaysDisplayTypePrefix"; "required": false; }; "quickIntervalOnly": { "alias": "quickIntervalOnly"; "required": false; }; "aggregation": { "alias": "aggregation"; "required": false; }; "timezone": { "alias": "timezone"; "required": false; }; "isToolbar": { "alias": "isToolbar"; "required": false; }; "asButton": { "alias": "asButton"; "required": false; }; "strokedButton": { "alias": "strokedButton"; "required": false; }; "flatButton": { "alias": "flatButton"; "required": false; }; "displayTimewindowValue": { "alias": "displayTimewindowValue"; "required": false; }; "hideLabel": { "alias": "hideLabel"; "required": false; }; "preferenceKey": { "alias": "preferenceKey"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "timeFormatScope": { "alias": "timeFormatScope"; "required": false; }; "defaultTimeFormat": { "alias": "defaultTimeFormat"; "required": false; }; "tooltipPosition": { "alias": "tooltipPosition"; "required": false; }; "timewindowStyle": { "alias": "timewindowStyle"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "panelMode": { "alias": "panelMode"; "required": false; }; }, {}, never, never, false, never>;
 }

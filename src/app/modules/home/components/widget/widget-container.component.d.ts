@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, OnChanges, OnDestroy, OnInit, Renderer2, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
 import { DashboardWidget, DashboardWidgets } from '@home/models/dashboard-component.models';
+import { TimeFormat } from '@shared/models/time-format.models';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { SafeStyle } from '@angular/platform-browser';
@@ -65,6 +66,8 @@ export declare class WidgetContainerComponent extends PageComponent implements O
     readonly dialogCloseHost: import("@home/components/widget/dialog/embed-dashboard-dialog-token").EmbedDialogCloseHost;
     constructor(store: Store<AppState>, cd: ChangeDetectorRef, renderer: Renderer2, container: ViewContainerRef, dashboardUtils: DashboardUtilsService, widgetDataExportService: WidgetDataExportService, utils: UtilsService);
     exportData(format: WidgetDataExportFormat): void;
+    /** The clock of the dashboard time window: what the widget's Time format › Default gives. */
+    dashboardTimeFormat(): TimeFormat;
     ngOnInit(): void;
     ngAfterViewInit(): void;
     ngOnChanges(changes: SimpleChanges): void;

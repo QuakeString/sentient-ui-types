@@ -3,6 +3,7 @@ import { TimeService } from '@core/services/time.service';
 import moment_ from 'moment';
 import { IntervalType } from '@shared/models/telemetry/telemetry.models';
 import { FormGroup } from '@angular/forms';
+import { TimeFormat } from '@shared/models/time-format.models';
 export declare const SECOND = 1000;
 export declare const MINUTE: number;
 export declare const HOUR: number;
@@ -157,6 +158,9 @@ export interface Timewindow {
     timezone?: string;
     /** Shift selection (Time window settings › Shifts). */
     shiftSettings?: TimewindowShiftSettings;
+    /** Clock for times drawn with this time window; unset follows the dashboard,
+     *  then the user's profile (Time window settings › Time format). */
+    timeFormat?: TimeFormat;
 }
 export interface SubscriptionAggregation extends Aggregation {
     interval?: Interval;
