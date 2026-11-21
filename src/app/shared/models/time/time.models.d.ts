@@ -1,3 +1,4 @@
+import { TimewindowShiftSettings } from '@shared/models/time/shift.models';
 import { TimeService } from '@core/services/time.service';
 import moment_ from 'moment';
 import { IntervalType } from '@shared/models/telemetry/telemetry.models';
@@ -154,6 +155,8 @@ export interface Timewindow {
     history?: HistoryWindow;
     aggregation?: Aggregation;
     timezone?: string;
+    /** Shift selection (Time window settings › Shifts). */
+    shiftSettings?: TimewindowShiftSettings;
 }
 export interface SubscriptionAggregation extends Aggregation {
     interval?: Interval;

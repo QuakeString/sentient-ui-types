@@ -38,6 +38,11 @@ export declare class TimewindowConfigDialogComponent extends PageComponent imple
     realtimeTimewindowOptions: ToggleHeaderOption[];
     historyTimewindowOptions: ToggleHeaderOption[];
     realtimeTypeSelectionAvailable: boolean;
+    readonly shiftType: any;
+    readonly shiftSelections: import("@shared/models/time/shift.models").ShiftSelection[];
+    readonly shiftSelectionTranslations: Map<import("@shared/models/time/shift.models").ShiftSelection, string>;
+    shiftsEnabled: boolean;
+    shiftTargetOptions: ToggleHeaderOption[];
     private timewindow;
     private destroy$;
     constructor(data: TimewindowConfigDialogData, dialogRef: MatDialogRef<TimewindowConfigDialogComponent, Timewindow>, store: Store<AppState>, fb: FormBuilder, timeService: TimeService, translate: TranslateService, popoverService: TbPopoverService, renderer: Renderer2, cd: ChangeDetectorRef, viewContainerRef: ViewContainerRef);
@@ -45,6 +50,10 @@ export declare class TimewindowConfigDialogComponent extends PageComponent imple
     ngOnDestroy(): void;
     private updateDisableAdvancedOptionState;
     private updateValidators;
+    /** "Shift" in the Realtime and History types while shift selection is on. */
+    private updateShiftOptions;
+    /** A stored shift default shows as the Shift type. */
+    private applyShiftToForm;
     private onTimewindowTypeChange;
     update(): void;
     cancel(): void;

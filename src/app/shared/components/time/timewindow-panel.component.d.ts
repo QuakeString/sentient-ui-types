@@ -1,3 +1,4 @@
+import { ShiftSelection } from '@shared/models/time/shift.models';
 import { EventEmitter, InjectionToken, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { AggregationType, HistoryWindowType, Interval, QuickTimeInterval, RealtimeWindowType, Timewindow, TimewindowAdvancedParams, TimewindowType } from '@shared/models/time/time.models';
 import { PageComponent } from '@shared/components/page.component';
@@ -56,6 +57,11 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     realtimeTimewindowOptions: ToggleHeaderOption[];
     historyTimewindowOptions: ToggleHeaderOption[];
     realtimeTypeSelectionAvailable: boolean;
+    readonly shiftType: any;
+    readonly shiftSelections: ShiftSelection[];
+    readonly shiftSelectionTranslations: Map<ShiftSelection, string>;
+    shiftsEnabled: boolean;
+    shiftTargetOptions: ToggleHeaderOption[];
     realtimeIntervalSelectionAvailable: boolean;
     historyTypeSelectionAvailable: boolean;
     historyIntervalSelectionAvailable: boolean;
@@ -89,6 +95,19 @@ export declare class TimewindowPanelComponent extends PageComponent implements O
     private currentHistoryTimewindow;
     get realtimeAllowedAggIntervals(): Array<Interval>;
     get historyAllowedAggIntervals(): Array<Interval>;
+    /** "Shift" in the Realtime and History options when shifts are set up. */
+    private updateShiftOptions;
+    /** Shows a stored shift interval as the Shift option (or presets one). */
+    private applyShiftToForm;
+    /** The shift that ended last, as a production day and shift: History's starting choice. */
+    private previousShiftOnDay;
+    private now;
+    private formatShiftTime;
+    /** "Shift A · today 06:00–14:00" for a live selection. */
+    shiftSelectionHint(selection: ShiftSelection): string;
+    shiftSelectionText(selection: ShiftSelection): string;
+    /** "Shift C: 20 Nov 2026 22:00 → 21 Nov 2026 06:00 (8 h)" for History › Shift. */
+    shiftPreview(): string;
     openTimewindowConfig(): void;
     private updateTimewindowAdvancedParams;
     static ɵfac: i0.ɵɵFactoryDeclaration<TimewindowPanelComponent, [null, { optional: true; }, null, null, null, null, null, null, null]>;

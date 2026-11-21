@@ -69,6 +69,8 @@ export declare class TimewindowComponent implements ControlValueAccessor, OnInit
     writeValue(obj: Timewindow): void;
     notifyChanged(): void;
     displayValue(): string;
+    /** "current shift", or "20 Nov, Shift C (22:00 – 06:00)" for one shift of a day. */
+    private shiftLabel;
     updateDisplayValue(): void;
     private isTimewindowDisabled;
     /** Points the panel's notch at the time window: on the side facing it,
