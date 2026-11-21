@@ -64,6 +64,10 @@ export declare class DashboardService {
     prefetchBundleForUrl(path: string): string;
     exportDashboard(dashboardId: string, includeResources?: boolean, config?: RequestConfig): Observable<Dashboard>;
     getDashboardInfo(dashboardId: string, config?: RequestConfig): Observable<DashboardInfo>;
+    /**
+     * Saves the dashboard: without the setups of value actions that their chosen
+     * action never reads, and gzip-compressed on the way (GzipRequestInterceptor).
+     */
     saveDashboard(dashboard: Dashboard, config?: RequestConfig): Observable<Dashboard>;
     deleteDashboard(dashboardId: string, config?: RequestConfig): Observable<Object>;
     changeDashboardOwner(dashboardId: string, customerId: string, config?: RequestConfig): Observable<Dashboard>;
