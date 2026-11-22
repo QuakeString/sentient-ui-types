@@ -1,5 +1,9 @@
 import { OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EntityFilter } from '@shared/models/query/query.models';
+import { AttributeScope, DataKeyType } from '@shared/models/telemetry/telemetry.models';
+import { DeviceProfileService } from '@core/http/device-profile.service';
+import { AssetProfileService } from '@core/http/asset-profile.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
@@ -33,12 +37,17 @@ export declare class CriticalParameterDialogComponent extends DialogComponent<Cr
     private criticalParameterService;
     private actionPasswordService;
     private passwordsManager;
+    private dialog;
+    private deviceProfileService;
+    private assetProfileService;
     readonly Confirm: typeof CriticalParameterConfirm;
     readonly confirms: CriticalParameterConfirm[];
     readonly writtenAsOptions: {
         value: WrittenAs;
         label: string;
     }[];
+    /** Where the key list comes from: this device or asset, or the devices / assets using this profile. */
+    readonly keyFilter: import("@angular/core").WritableSignal<EntityFilter>;
     readonly names: import("@angular/core").WritableSignal<NamedActionPassword[]>;
     readonly namesLoaded: import("@angular/core").WritableSignal<boolean>;
     readonly saving: import("@angular/core").WritableSignal<boolean>;
@@ -46,8 +55,15 @@ export declare class CriticalParameterDialogComponent extends DialogComponent<Cr
     readonly isAdd: boolean;
     readonly floor: CriticalParameter | undefined;
     private readonly destroyRef;
-    constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<CriticalParameterDialogComponent, CriticalParameter>, data: CriticalParameterDialogData, fb: FormBuilder, criticalParameterService: CriticalParameterService, actionPasswordService: ActionPasswordService, passwordsManager: ActionPasswordsManagerService);
+    constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<CriticalParameterDialogComponent, CriticalParameter>, data: CriticalParameterDialogData, fb: FormBuilder, criticalParameterService: CriticalParameterService, actionPasswordService: ActionPasswordService, passwordsManager: ActionPasswordsManagerService, dialog: MatDialog, deviceProfileService: DeviceProfileService, assetProfileService: AssetProfileService);
     ngOnInit(): void;
+    get writtenAs(): WrittenAs;
+    /** Time series keys for time series; attribute keys of the chosen scope otherwise. */
+    get keyDataType(): DataKeyType;
+    get keyScope(): AttributeScope | undefined;
+    private loadKeyFilter;
+    /** Adds a named password (as in Security › Secrets) and picks it here. */
+    createNamedPassword(): void;
     get confirm(): CriticalParameterConfirm;
     /** A weaker choice than the profile's is greyed out on a device or asset. */
     confirmDisabled(c: CriticalParameterConfirm): boolean;

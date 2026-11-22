@@ -18,6 +18,7 @@ import { TimeFormatSetting } from '@shared/models/time-format.models';
 import { UnitService } from '@core/services/unit.service';
 import { AiAssistantStore } from '@home/components/ai-assistant/ai-assistant.store';
 import { UserSettingsService } from '@core/http/user-settings.service';
+import { MobileApplicationService } from '@core/http/mobile-application.service';
 import * as i0 from "@angular/core";
 export declare class ProfileComponent extends PageComponent implements OnInit, OnDestroy, HasConfirmForm {
     protected store: Store<AppState>;
@@ -31,6 +32,7 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     private userSettingsService;
     private dialog;
     private http;
+    private mobileAppService;
     private fb;
     authorities: typeof Authority;
     profile: UntypedFormGroup;
@@ -54,12 +56,16 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     photoActionsVisible: boolean;
     /** How the photo was last pressed: a touch first reveals the actions instead of running one. */
     photoPointerType: string;
-    constructor(store: Store<AppState>, route: ActivatedRoute, userService: UserService, authService: AuthService, translate: TranslateService, unitService: UnitService, timeFormatService: TimeFormatService, aiAssistantStore: AiAssistantStore, userSettingsService: UserSettingsService, dialog: MatDialog, http: HttpClient, fb: UntypedFormBuilder);
+    constructor(store: Store<AppState>, route: ActivatedRoute, userService: UserService, authService: AuthService, translate: TranslateService, unitService: UnitService, timeFormatService: TimeFormatService, aiAssistantStore: AiAssistantStore, userSettingsService: UserSettingsService, dialog: MatDialog, http: HttpClient, mobileAppService: MobileApplicationService, fb: UntypedFormBuilder);
     /** Same as the left menu's profile row: the RBAC role's name, else a name for the authority. */
     private loadRoleName;
     ngOnInit(): void;
     /** The switch applies at once (it is not part of the form and its Save button). */
     setAiAssistant(enabled: boolean): void;
+    /** The administrator shows the mobile app QR (Mobile center › QR code widget). */
+    readonly mobileQrEnabled: import("@angular/core").Signal<boolean>;
+    /** The home page's "connect mobile app" QR, for users whose home is a dashboard. */
+    openMobileAppQr(): void;
     setMobileQrOnHome(show: boolean): void;
     /** "First Last", or empty when the user has no name (the email is shown instead). */
     get fullName(): string;

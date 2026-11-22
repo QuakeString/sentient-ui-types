@@ -2,6 +2,7 @@ import { ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, ValidationErrors, Validator } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { EntityService } from '@core/http/entity.service';
+import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { AttributeScope, DataKeyType } from '@shared/models/telemetry/telemetry.models';
 import { EntityFilter } from '@shared/models/query/query.models';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,6 +15,11 @@ export declare class EntityKeyAutocompleteComponent implements ControlValueAcces
     placeholder: any;
     requiredText: any;
     enableAutocomplete: boolean;
+    /** A floating label (as in forms) instead of the placeholder. */
+    label: string;
+    /** A key that no entity has yet can be typed: "'x' not found. Create a new one!" keeps it. */
+    allowNewKey: boolean;
+    autocompleteTrigger: MatAutocompleteTrigger;
     entityFilter: import("@angular/core").InputSignal<EntityFilter>;
     dataKeyType: import("@angular/core").InputSignal<DataKeyType>;
     keyScopeType: import("@angular/core").InputSignal<AttributeScope>;
@@ -26,6 +32,8 @@ export declare class EntityKeyAutocompleteComponent implements ControlValueAcces
     filteredKeys$: import("rxjs").Observable<string[]>;
     constructor(fb: FormBuilder, entityService: EntityService, translate: TranslateService);
     ngOnChanges(changes: SimpleChanges): void;
+    /** Keeps the typed key (it is already the value) and closes the list. */
+    useNewKey(): void;
     clear(): void;
     registerOnChange(onChange: (value: string) => void): void;
     registerOnTouched(_: any): void;
@@ -33,5 +41,6 @@ export declare class EntityKeyAutocompleteComponent implements ControlValueAcces
     writeValue(value: string): void;
     setDisabledState(isDisabled: boolean): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityKeyAutocompleteComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<EntityKeyAutocompleteComponent, "tb-entity-key-autocomplete", never, { "placeholder": { "alias": "placeholder"; "required": false; }; "requiredText": { "alias": "requiredText"; "required": false; }; "enableAutocomplete": { "alias": "enableAutocomplete"; "required": false; }; "entityFilter": { "alias": "entityFilter"; "required": true; "isSignal": true; }; "dataKeyType": { "alias": "dataKeyType"; "required": true; "isSignal": true; }; "keyScopeType": { "alias": "keyScopeType"; "required": false; "isSignal": true; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<EntityKeyAutocompleteComponent, "tb-entity-key-autocomplete", never, { "placeholder": { "alias": "placeholder"; "required": false; }; "requiredText": { "alias": "requiredText"; "required": false; }; "enableAutocomplete": { "alias": "enableAutocomplete"; "required": false; }; "label": { "alias": "label"; "required": false; }; "allowNewKey": { "alias": "allowNewKey"; "required": false; }; "entityFilter": { "alias": "entityFilter"; "required": true; "isSignal": true; }; "dataKeyType": { "alias": "dataKeyType"; "required": true; "isSignal": true; }; "keyScopeType": { "alias": "keyScopeType"; "required": false; "isSignal": true; }; }, {}, never, never, false, never>;
+    static ngAcceptInputType_allowNewKey: unknown;
 }

@@ -40,6 +40,10 @@ export declare class MobileAppQrcodeWidgetComponent extends PageComponent implem
     qrCodeSVG: string;
     ctx: WidgetContext;
     widgetTitlePanel: TemplateRef<any>;
+    /** Shown with given settings outside a dashboard (the profile's "Connect
+     *  mobile app" dialog): unlike the settings preview, the badges link to the
+     *  app and a tap on the QR on a phone opens the app. */
+    interactive: boolean;
     set mobileAppSettings(settings: QrCodeSettings);
     get mobileAppSettings(): QrCodeSettings;
     constructor(store: Store<AppState>, cd: ChangeDetectorRef, mobileAppService: MobileApplicationService, utilsService: UtilsService, elementRef: ElementRef, imagePipe: ImagePipe, sanitizer: DomSanitizer, zone: NgZone);
@@ -49,5 +53,5 @@ export declare class MobileAppQrcodeWidgetComponent extends PageComponent implem
     private initMobileAppQRCode;
     private updateQRCode;
     static ɵfac: i0.ɵɵFactoryDeclaration<MobileAppQrcodeWidgetComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<MobileAppQrcodeWidgetComponent, "tb-mobile-app-qrcode-widget", never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; "mobileAppSettings": { "alias": "mobileAppSettings"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MobileAppQrcodeWidgetComponent, "tb-mobile-app-qrcode-widget", never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; "interactive": { "alias": "interactive"; "required": false; }; "mobileAppSettings": { "alias": "mobileAppSettings"; "required": false; }; }, {}, never, never, false, never>;
 }

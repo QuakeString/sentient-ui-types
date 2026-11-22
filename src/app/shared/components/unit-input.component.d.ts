@@ -17,6 +17,8 @@ export declare class UnitInputComponent implements ControlValueAccessor, OnInit,
     unitsFormControl: FormControl<TbUnit | UnitInfo>;
     disabled: boolean;
     required: boolean;
+    /** A full-size field with this label (as in forms), instead of the compact inline field. */
+    label: string;
     tagFilter: string;
     measure: AllMeasures;
     unitSystem: UnitSystem;
@@ -44,7 +46,7 @@ export declare class UnitInputComponent implements ControlValueAccessor, OnInit,
     private fetchUnits;
     private getGroupedUnits;
     static ɵfac: i0.ɵɵFactoryDeclaration<UnitInputComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<UnitInputComponent, "tb-unit-input", never, { "disabled": { "alias": "disabled"; "required": false; }; "required": { "alias": "required"; "required": false; }; "tagFilter": { "alias": "tagFilter"; "required": false; }; "measure": { "alias": "measure"; "required": false; }; "unitSystem": { "alias": "unitSystem"; "required": false; }; "supportsUnitConversion": { "alias": "supportsUnitConversion"; "required": false; }; "onlySystemUnits": { "alias": "onlySystemUnits"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<UnitInputComponent, "tb-unit-input", never, { "disabled": { "alias": "disabled"; "required": false; }; "required": { "alias": "required"; "required": false; }; "label": { "alias": "label"; "required": false; }; "tagFilter": { "alias": "tagFilter"; "required": false; }; "measure": { "alias": "measure"; "required": false; }; "unitSystem": { "alias": "unitSystem"; "required": false; }; "supportsUnitConversion": { "alias": "supportsUnitConversion"; "required": false; }; "onlySystemUnits": { "alias": "onlySystemUnits"; "required": false; }; }, {}, never, never, false, never>;
     static ngAcceptInputType_disabled: unknown;
     static ngAcceptInputType_required: unknown;
     static ngAcceptInputType_supportsUnitConversion: unknown;
