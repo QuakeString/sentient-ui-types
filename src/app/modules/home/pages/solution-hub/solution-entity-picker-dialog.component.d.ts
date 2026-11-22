@@ -29,6 +29,7 @@ export declare class SolutionEntityPickerDialogComponent extends DialogComponent
     private solutionService;
     private ruleChainService;
     private analyticsService;
+    stSkipUnsavedChangesCheck: boolean;
     rows: PickerRow[];
     loading: boolean;
     adding: string;

@@ -19,6 +19,7 @@ export declare class ExportResourceDialogComponent extends DialogComponent<Expor
     protected router: Router;
     private data;
     dialogRef: MatDialogRef<ExportResourceDialogComponent, ExportResourceDialogDialogResult>;
+    stSkipUnsavedChangesCheck: boolean;
     ignoreLoading: boolean;
     title: string;
     prompt: string;

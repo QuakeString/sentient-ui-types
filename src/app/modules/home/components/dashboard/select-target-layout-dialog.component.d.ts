@@ -10,6 +10,7 @@ export declare class SelectTargetLayoutDialogComponent extends DialogComponent<S
     protected store: Store<AppState>;
     protected router: Router;
     dialogRef: MatDialogRef<SelectTargetLayoutDialogComponent, DashboardLayoutId>;
+    stSkipUnsavedChangesCheck: boolean;
     constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<SelectTargetLayoutDialogComponent, DashboardLayoutId>);
     ngOnInit(): void;
     selectLayout(layoutId: DashboardLayoutId): void;

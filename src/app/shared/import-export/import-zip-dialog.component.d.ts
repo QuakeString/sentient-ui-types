@@ -49,6 +49,7 @@ export declare class ImportZipDialogComponent extends DialogComponent<ImportZipD
     private entityService;
     private importExport;
     private destroyRef;
+    stSkipUnsavedChangesCheck: boolean;
     readonly handler: ZipImportHandler;
     readonly fileName: string;
     readonly title: string;

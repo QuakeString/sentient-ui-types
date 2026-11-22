@@ -29,6 +29,7 @@ export declare class ImportDialogCsvComponent extends DialogComponent<ImportDial
     private fb;
     private renderer;
     private themeService;
+    stSkipUnsavedChangesCheck: boolean;
     importStepper: MatStepper;
     columnsAssignmentComponent: TableColumnsAssignmentComponent;
     failureDetailsEditorElmRef: ElementRef;

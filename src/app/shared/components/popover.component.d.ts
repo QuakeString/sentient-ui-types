@@ -119,10 +119,19 @@ export declare class TbPopoverComponent<T = any> implements OnDestroy, OnInit {
     private parentScrollSubscription;
     private intersectionObserver;
     private _tbOverlayStyle;
+    private readonly discardConfirm;
+    private discardAsking;
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, animationBuilder: AnimationBuilder, directionality: Directionality);
     ngOnInit(): void;
     ngOnDestroy(): void;
     closeButtonClick($event: Event): void;
+    onOverlayKeydown(event: KeyboardEvent): void;
+    /**
+     * Escape or × on an editor popover (one that stays open on a click outside)
+     * whose form has changes asks "Discard changes?" first. Popovers that close
+     * on a click outside keep closing at once.
+     */
+    hideAsking(): void;
     show(): void;
     hide(): void;
     updateByDirective(): void;

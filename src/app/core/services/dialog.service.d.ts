@@ -4,13 +4,16 @@ import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '@core/auth/auth.service';
 import { ColorPickerDialogResult } from '@shared/components/dialog/color-picker-dialog.component';
 import { MaterialIconsDialogResult } from '@shared/components/dialog/material-icons-dialog.component';
+import { StDiscardChangesConfirm } from '@shared/models/unsaved-changes.models';
 import * as i0 from "@angular/core";
-export declare class DialogService {
+export declare class DialogService implements StDiscardChangesConfirm {
     private translate;
     private authService;
     dialog: MatDialog;
     constructor(translate: TranslateService, authService: AuthService, dialog: MatDialog);
     confirm(title: string, message: string, cancel?: string, ok?: string, fullscreen?: boolean): Observable<boolean>;
+    /** Closing something with changes that are not saved: true = discard them. */
+    confirmDiscardChanges(): Observable<boolean>;
     alert(title: string, message: string, ok?: string, fullscreen?: boolean): Observable<boolean>;
     errorAlert(title: string, message: string, error: any, ok?: string, fullscreen?: boolean): Observable<boolean>;
     colorPicker(color: string, colorClearButton?: boolean): Observable<ColorPickerDialogResult>;

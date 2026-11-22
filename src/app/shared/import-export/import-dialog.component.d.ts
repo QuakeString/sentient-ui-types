@@ -23,6 +23,7 @@ export declare class ImportDialogComponent extends DialogComponent<ImportDialogC
     dialogRef: MatDialogRef<ImportDialogComponent>;
     private destroyRef;
     private fb;
+    stSkipUnsavedChangesCheck: boolean;
     importTitle: string;
     importFileLabel: string;
     enableImportFromContent: boolean;

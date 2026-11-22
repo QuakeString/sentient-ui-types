@@ -41,6 +41,7 @@ export declare class CriticalChangePromptDialogComponent extends DialogComponent
     private fb;
     private translate;
     private criticalParameterService;
+    stSkipUnsavedChangesCheck: boolean;
     readonly fields: PasswordField[];
     readonly askReason: boolean;
     readonly form: FormGroup;

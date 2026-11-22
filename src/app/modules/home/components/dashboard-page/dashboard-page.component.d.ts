@@ -453,7 +453,21 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     addWidgetFromType(widget: WidgetInfo): void;
     onRevertWidgetEdit(): void;
     saveWidget(): void;
+    /**
+     * Escape in the editor, one step at a time:
+     * - a menu, list, popover or dialog is open: left alone, it closes that;
+     * - typing in a properties field: leaves the field;
+     * - the properties panel is open: closes it (asks about changes not
+     *   applied) and keeps the widget selected;
+     * - otherwise: clears the selection.
+     * Capture phase, so an overlay closing on this same key is still seen.
+     */
+    private editEscapeHandler;
+    /** Close the properties panel, asking about changes not applied; the widget stays selected. */
+    private closeEditWidgetKeepSelection;
     onEditWidgetClosed(): void;
+    /** The properties panel's close button: changes not applied get "Apply / Discard changes" first. */
+    requestEditWidgetClose(): void;
     editWidget($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
     showLayoutConfigInEdit(layoutCtx: DashboardPageLayoutContext): boolean;
     replaceReferenceWithWidgetCopy($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
@@ -476,7 +490,10 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     changeWidgetLayer(layoutCtx: DashboardPageLayoutContext, widget: Widget, mode: 'front' | 'back' | 'forward' | 'backward'): void;
     private renormalizeLayerZOrders;
     exportWidget($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget, widgetTitle: string): void;
+    /** A press on the striped area beside the breakpoint frame clears the selection, like empty canvas. */
+    onLayoutFillerMouseDown($event: MouseEvent): void;
     dashboardMouseDown($event: Event, layoutCtx: DashboardPageLayoutContext): void;
+    private pendingSelectOnly;
     widgetClicked($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
     widgetMouseDown($event: Event, layoutCtx: DashboardPageLayoutContext, widget: Widget): void;
     prepareDashboardContextMenu(layoutCtx: DashboardPageLayoutContext): Array<DashboardContextMenuItem>;

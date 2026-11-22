@@ -22,6 +22,7 @@ export declare class ActionProtectionPromptDialogComponent extends DialogCompone
     private translate;
     private dialog;
     private actionPasswordService;
+    stSkipUnsavedChangesCheck: boolean;
     readonly ActionProtectionMode: typeof ActionProtectionMode;
     readonly protection: ActionProtection;
     readonly context: ActionProtectionContext;

@@ -17,6 +17,7 @@ export declare class ColorPickerDialogComponent extends DialogComponent<ColorPic
     protected router: Router;
     data: ColorPickerDialogData;
     dialogRef: MatDialogRef<ColorPickerDialogComponent, ColorPickerDialogResult>;
+    stSkipUnsavedChangesCheck: boolean;
     color: string;
     colorClearButton: boolean;
     constructor(store: Store<AppState>, router: Router, data: ColorPickerDialogData, dialogRef: MatDialogRef<ColorPickerDialogComponent, ColorPickerDialogResult>);

@@ -21,6 +21,7 @@ export declare class SolutionItemPickerDialogComponent extends DialogComponent<S
     data: SolutionItemPickerDialogData;
     private dialog;
     private solutionService;
+    stSkipUnsavedChangesCheck: boolean;
     items: SolutionItemSummary[];
     loading: boolean;
     search: string;

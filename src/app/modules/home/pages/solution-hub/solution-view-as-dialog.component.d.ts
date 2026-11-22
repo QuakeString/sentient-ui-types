@@ -17,6 +17,7 @@ export declare class SolutionViewAsDialogComponent extends DialogComponent<Solut
     protected router: Router;
     dialogRef: MatDialogRef<SolutionViewAsDialogComponent, string>;
     data: SolutionViewAsDialogData;
+    stSkipUnsavedChangesCheck: boolean;
     constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<SolutionViewAsDialogComponent, string>, data: SolutionViewAsDialogData);
     close(userId?: string): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<SolutionViewAsDialogComponent, never>;

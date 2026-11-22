@@ -15,6 +15,7 @@ export declare class SelectEntityDialogComponent extends DialogComponent<SelectE
     data: SelectEntityDialogData;
     dialogRef: MatDialogRef<SelectEntityDialogComponent, FormattedData>;
     fb: FormBuilder;
+    stSkipUnsavedChangesCheck: boolean;
     selectEntityFormGroup: FormGroup;
     constructor(store: Store<AppState>, router: Router, data: SelectEntityDialogData, dialogRef: MatDialogRef<SelectEntityDialogComponent, FormattedData>, fb: FormBuilder);
     save(): void;
