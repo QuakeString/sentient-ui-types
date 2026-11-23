@@ -17,6 +17,14 @@ export declare class LanguageSelectComponent implements ControlValueAccessor {
     /** Off for compact form rows, where the row's title names the field. */
     showLabel: boolean;
     required: boolean;
+    /**
+     * Word for an automatic first option (value ''), e.g. "Auto": no language
+     * saved, the UI follows the browser or device language. Off when null.
+     */
+    readonly autoLabel: import("@angular/core").InputSignal<string>;
+    /** The language the automatic option resolves to (shown as "English (Auto)"). */
+    readonly autoLocale: import("@angular/core").InputSignal<string>;
+    autoText(): string;
     private choiceList;
     value: string;
     disabled: boolean;
@@ -39,5 +47,5 @@ export declare class LanguageSelectComponent implements ControlValueAccessor {
     registerOnTouched(fn: () => void): void;
     setDisabledState(disabled: boolean): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<LanguageSelectComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<LanguageSelectComponent, "tb-language-select", never, { "label": { "alias": "label"; "required": false; }; "languages": { "alias": "languages"; "required": false; }; "choices": { "alias": "choices"; "required": false; }; "subscriptSizing": { "alias": "subscriptSizing"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "showLabel": { "alias": "showLabel"; "required": false; }; "required": { "alias": "required"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<LanguageSelectComponent, "tb-language-select", never, { "label": { "alias": "label"; "required": false; }; "languages": { "alias": "languages"; "required": false; }; "choices": { "alias": "choices"; "required": false; }; "subscriptSizing": { "alias": "subscriptSizing"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "showLabel": { "alias": "showLabel"; "required": false; }; "required": { "alias": "required"; "required": false; }; "autoLabel": { "alias": "autoLabel"; "required": false; "isSignal": true; }; "autoLocale": { "alias": "autoLocale"; "required": false; "isSignal": true; }; }, {}, never, never, false, never>;
 }

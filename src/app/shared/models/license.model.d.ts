@@ -193,6 +193,24 @@ export interface LicenseUsageResult {
     limits: LicenseLimits;
     usage: UsageStats;
     overLimit: string[];
+    /** Busiest single tenant's use of the caps the licence applies per tenant. */
+    perTenant?: PerTenantUsage;
+}
+/** Highest per-tenant use of each per-tenant licence cap. */
+export interface PerTenantUsage {
+    calculatedFields: number;
+    /** This month's counters; missing when API usage is not running. */
+    monthly?: {
+        transportMsgs: number;
+        transportDataPoints: number;
+        storageDataPoints: number;
+        ruleEngineExecutions: number;
+        jsExecutions: number;
+        tbelExecutions: number;
+        emails: number;
+        sms: number;
+        createdAlarms: number;
+    };
 }
 /**
  * Request to activate a license

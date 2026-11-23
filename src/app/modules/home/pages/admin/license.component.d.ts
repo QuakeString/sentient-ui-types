@@ -4,12 +4,18 @@ import { AppState } from '@core/core.state';
 import { PageComponent } from '@shared/components/page.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LicenseService } from '@core/http/license.service';
-import { LicenseStatus, LicenseUsageResult, LicenseState, getLicenseTypeDisplay, getLimitDisplay, isUnlimited } from '@shared/models/license.model';
+import { LicenseStatus, LicenseUsageResult, LicenseState, getLicenseTypeDisplay, getLimitDisplay, isUnlimited, LicenseLimits } from '@shared/models/license.model';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from '@core/services/dialog.service';
 import { LicenseRequestKind } from '@shared/components/dialog/license-request-dialog.component';
 import * as i0 from "@angular/core";
+/** One limit row on the licence page: the cap and, when known, what is used. */
+interface LimitRow {
+    label: string;
+    limit: (l: LicenseLimits) => number | undefined;
+    used?: (u: LicenseUsageResult) => number | undefined;
+}
 export declare class LicenseComponent extends PageComponent implements OnInit, OnDestroy {
     protected store: Store<AppState>;
     private licenseService;
@@ -19,7 +25,10 @@ export declare class LicenseComponent extends PageComponent implements OnInit, O
     private translate;
     licenseStatus: LicenseStatus;
     licenseState: LicenseState | null;
-    usageResult: LicenseUsageResult | null;
+    /** Usage counts for the limit rows; arrives after the status. */
+    readonly usageResult: import("@angular/core").WritableSignal<LicenseUsageResult>;
+    readonly entityRows: LimitRow[];
+    readonly monthlyRows: LimitRow[];
     activationForm: FormGroup;
     isActivating: boolean;
     isDeactivating: boolean;
@@ -99,7 +108,7 @@ export declare class LicenseComponent extends PageComponent implements OnInit, O
      *  one, else counted from the expiry date. Null when there is no date. */
     daysLeft(): number | null;
     formatDate(dateStr: string): string;
-    getLimits(): import("@shared/models/license.model").LicenseLimits;
+    getLimits(): LicenseLimits;
     /**
      * BP-12: whether the active licence covers this build. The server
      * decides (the one version rule, shared with activation and the
@@ -113,9 +122,17 @@ export declare class LicenseComponent extends PageComponent implements OnInit, O
      * tagged union returned from /api/license/status.
      */
     binaryIntegrityLabel(): string;
+    /** What a limit row reports as used, or null when it has no count. */
+    rowUsed(row: LimitRow): number | null;
+    rowLimit(row: LimitRow): number;
+    /** Limit text with digit grouping; Unlimited / Disabled as before. */
+    limitText(limit: number): string;
+    /** Bar fill in percent, or null when the row draws no bar. */
+    rowPercent(row: LimitRow): number | null;
     getUsageStatusClass(current: number, limit: number): string;
     getUsageStatusIcon(current: number, limit: number): string;
     private clearMessages;
     static ɵfac: i0.ɵɵFactoryDeclaration<LicenseComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<LicenseComponent, "tb-license", never, {}, {}, never, never, false, never>;
 }
+export {};

@@ -38,6 +38,8 @@ export declare class ProfileComponent extends PageComponent implements OnInit, O
     profile: UntypedFormGroup;
     user: User;
     languageList: any;
+    /** What "Auto" resolves to: the browser's language, if SENTIENT has it. */
+    get browserLang(): string;
     UnitSystems: UnitSystem[];
     readonly timeFormatSettings: TimeFormatSetting[];
     /** Why the assistant switch is greyed out (null: the user decides). */
