@@ -24,6 +24,7 @@ export declare class AssetProfileComponent extends EntityComponent<AssetProfile>
     edgeRuleChainType: RuleChainType;
     assetProfileId: EntityId;
     constructor(store: Store<AppState>, translate: TranslateService, entityValue: AssetProfile, entitiesTableConfigValue: EntityTableConfig<AssetProfile>, fb: UntypedFormBuilder, cd: ChangeDetectorRef);
+    hideSetDefault(): boolean;
     hideDelete(): boolean;
     buildForm(entity: AssetProfile): UntypedFormGroup;
     updateForm(entity: AssetProfile): void;

@@ -1,5 +1,7 @@
+import { NgZone } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { TelemetryWebsocketService } from '@core/ws/telemetry-websocket.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DialogService } from '@core/services/dialog.service';
 import { AppState } from '@core/core.state';
@@ -20,13 +22,24 @@ export declare class EdgeRuntimeService {
     private dialogService;
     private translate;
     private store;
+    private telemetryWsService;
+    private zone;
     readonly edge: boolean;
-    /** The link status, polled while subscribed; null when unknown or not an edge. */
+    /**
+     * The link status while subscribed: read once, then again whenever the
+     * edge pushes a change of its link attributes over the websocket; null when
+     * unknown or not an edge.
+     */
     readonly status$: Observable<CloudStatus | null>;
     private refresh$;
     private scopes;
-    constructor(cloudService: CloudService, titleService: TitleService, dialogService: DialogService, translate: TranslateService, store: Store<AppState>);
+    constructor(cloudService: CloudService, titleService: TitleService, dialogService: DialogService, translate: TranslateService, store: Store<AppState>, telemetryWsService: TelemetryWebsocketService, zone: NgZone);
     refreshStatus(): void;
+    /**
+     * Emits when the edge's link attributes change (tenant administrator, over
+     * the websocket); a slow timer for anyone who cannot read them.
+     */
+    private linkChanges;
     /** Learn the scopes of these entities (a table page, an opened entity). */
     loadScopes(ids: string[]): Observable<void>;
     /** The entity's scope: null if created here, undefined if not loaded yet. */

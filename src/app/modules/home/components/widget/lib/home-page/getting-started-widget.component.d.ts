@@ -31,6 +31,7 @@ export declare class GettingStartedWidgetComponent extends PageComponent impleme
      * clicked through.
      */
     autoCompleted: boolean[];
+    readonly isEdge: boolean;
     baseUrl: string;
     constructor(store: Store<AppState>, cd: ChangeDetectorRef, userSettingsService: UserSettingsService, usageInfoService: UsageInfoService, dialog: MatDialog);
     ngOnInit(): void;

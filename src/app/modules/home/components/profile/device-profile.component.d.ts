@@ -34,6 +34,7 @@ export declare class DeviceProfileComponent extends EntityComponent<DeviceProfil
     deviceProfileId: EntityId;
     otaUpdateType: typeof OtaUpdateType;
     constructor(store: Store<AppState>, translate: TranslateService, entityValue: DeviceProfile, entitiesTableConfigValue: EntityTableConfig<DeviceProfile>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, destroyRef: DestroyRef);
+    hideSetDefault(): boolean;
     hideDelete(): boolean;
     buildForm(entity: DeviceProfile): UntypedFormGroup;
     private checkIsNewDeviceProfile;
