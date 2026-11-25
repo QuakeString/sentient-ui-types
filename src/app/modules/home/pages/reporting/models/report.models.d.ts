@@ -279,6 +279,9 @@ export interface SchedulerEvent extends BaseData<SchedulerEventId>, HasTenantId,
     additionalConfig?: any;
     lastExecutionTime?: number;
     nextExecutionTime?: number;
+    /** The edge a report schedule runs on (docs/edge/EDGE_REPORTS_PLAN.md R1); absent: the server. */
+    runOnEdgeId?: EntityId | null;
+    runOnEdgeName?: string;
 }
 export interface LegacyScheduleConfig {
     startTime: number;
@@ -391,6 +394,8 @@ export interface Report extends BaseData<ReportId>, HasTenantId {
         name: string;
     };
     userName?: string;
+    /** `edgeId` / `edgeName` of a report an edge sent up (docs/edge/EDGE_REPORTS_PLAN.md R5). */
+    additionalInfo?: any;
 }
 export declare const isPublicReport: (report: Report) => boolean;
 export interface ReportDelivery {

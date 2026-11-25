@@ -20,7 +20,8 @@ export declare class BackgroundSettingsPanelComponent extends PageComponent impl
     popover: TbPopoverComponent<BackgroundSettingsPanelComponent>;
     backgroundSettingsApplied: EventEmitter<BackgroundSettings>;
     backgroundType: typeof BackgroundType;
-    backgroundTypes: BackgroundType[];
+    /** Image, or Color (the fill box holds a colour or a gradient). */
+    backgroundKinds: BackgroundType[];
     backgroundTypeTranslationsMap: Map<BackgroundType, string>;
     backgroundSettingsFormGroup: UntypedFormGroup;
     backgroundStyle$: Observable<ComponentStyle>;
@@ -29,6 +30,8 @@ export declare class BackgroundSettingsPanelComponent extends PageComponent impl
     ngOnInit(): void;
     cancel(): void;
     applyColorSettings(): void;
+    /** Form value back to the stored shape: type image, color or gradient. */
+    private toBackgroundSettings;
     private updateValidators;
     private updateBackgroundStyle;
     static ɵfac: i0.ɵɵFactoryDeclaration<BackgroundSettingsPanelComponent, never>;

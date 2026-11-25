@@ -37,6 +37,7 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     get isScada(): boolean;
     get outerMargin(): boolean;
     get margin(): number;
+    get outerMarginTop(): number;
     get multiLayer(): boolean;
     get hiddenLayers(): Set<number>;
     get lockedLayers(): Set<number>;

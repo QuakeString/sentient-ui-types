@@ -4,7 +4,16 @@ export interface ThemeColor {
     dark: string;
 }
 export type ThemeAwareColor = string | ThemeColor;
+export declare function isFillGradientValue(value: any): value is {
+    gradient: {
+        stops?: {
+            color?: ThemeAwareColor;
+        }[];
+    };
+};
 export declare function isThemeColor(value: any): value is ThemeColor;
-export declare function resolveThemeColor(value: ThemeAwareColor, isDark: boolean, fallback?: string): string;
+export declare function resolveThemeColor(value: ThemeAwareColor | {
+    gradient: any;
+}, isDark: boolean, fallback?: string): string;
 export declare function normalizeThemeColor(value: ThemeAwareColor): ThemeColor;
 export declare function themeChange$(): Observable<boolean>;

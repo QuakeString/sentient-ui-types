@@ -19,6 +19,8 @@ import { IAliasController } from '@core/api/widget-api.models';
 import { EntityAliasSelectCallbacks } from '@home/components/widget/lib/settings/common/alias/entity-alias-select.component.models';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { EdgeService } from '@core/http/edge.service';
+import { RunOnEdge } from './run-on-edge';
 import * as i0 from "@angular/core";
 export declare class SchedulerEventComponent extends EntityComponent<SchedulerEvent> implements OnInit, OnDestroy {
     protected store: Store<AppState>;
@@ -30,6 +32,7 @@ export declare class SchedulerEventComponent extends EntityComponent<SchedulerEv
     private reportService;
     private dialog;
     private customerService;
+    private edgeService;
     schedulerEventTypes: SchedulerEventType[];
     SchedulerEventType: typeof SchedulerEventType;
     selectedEventType: SchedulerEventType;
@@ -67,6 +70,11 @@ export declare class SchedulerEventComponent extends EntityComponent<SchedulerEv
     selectedOwner: Customer | null;
     repeatTypes: (RepeatType.DAILY | RepeatType.EVERY_N_DAYS | RepeatType.WEEKLY | RepeatType.EVERY_N_WEEKS | RepeatType.MONTHLY | RepeatType.YEARLY | RepeatType.TIMER_BASED)[];
     templates: ReportTemplate[];
+    /** Edges a report schedule can run on; empty hides the choice. */
+    runOnEdges: RunOnEdge[];
+    /** What the template reads that the chosen edge cannot provide. */
+    runOnWarnings: string[];
+    private runOnWarningsWatch;
     filteredTemplates: ReportTemplate[];
     templateSearchControl: FormControl<string | ReportTemplate>;
     private selectedTemplateId;
@@ -92,7 +100,7 @@ export declare class SchedulerEventComponent extends EntityComponent<SchedulerEv
     private pendingNotificationTemplateId;
     private pendingNotificationTemplateName;
     dataKeyType: typeof DataKeyType;
-    constructor(store: Store<AppState>, translate: TranslateService, entityValue: SchedulerEvent, entitiesTableConfigValue: EntityTableConfig<SchedulerEvent>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, reportService: ReportService, dialog: MatDialog, customerService: CustomerService);
+    constructor(store: Store<AppState>, translate: TranslateService, entityValue: SchedulerEvent, entitiesTableConfigValue: EntityTableConfig<SchedulerEvent>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, reportService: ReportService, dialog: MatDialog, customerService: CustomerService, edgeService: EdgeService);
     ngOnDestroy(): void;
     private initAliasController;
     private createEntityAlias;
@@ -121,6 +129,8 @@ export declare class SchedulerEventComponent extends EntityComponent<SchedulerEv
     hideDelete(): boolean;
     getEventTypeLabel(type: SchedulerEventType): string;
     isReportType(): boolean;
+    /** Keep the "Run on" warnings in step with the chosen edge and template. */
+    private watchRunOnWarnings;
     isCustomType(): boolean;
     isAttributesType(): boolean;
     isRpcType(): boolean;

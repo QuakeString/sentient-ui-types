@@ -33,6 +33,7 @@ import { SortOrder } from '@shared/models/page/sort-order';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { EdgeService } from '@core/http/edge.service';
+import type { WidgetWriteGate } from '@home/components/widget/widget-write-gate';
 import * as RxJS from 'rxjs';
 import { Observable } from 'rxjs';
 import * as RxJSOperators from 'rxjs/operators';
@@ -159,6 +160,8 @@ export declare class WidgetContext {
      * shows that what it draws is not a reading yet.
      */
     holdFirstLoad?: () => () => void;
+    /** Asks before every value the widget writes (set by the widget container). */
+    writeGate?: WidgetWriteGate;
     isPreview: boolean;
     isMobile: boolean;
     toastTargetId: string;

@@ -1,5 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, ComponentRef, EventEmitter, Injector, OnDestroy, QueryList } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
+import { EdgeRuntimeService } from '@core/services/edge-runtime.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
@@ -42,6 +43,7 @@ export declare class EntityDetailsPanelComponent extends PageComponent implement
     protected subscriptions: Subscription[];
     protected viewInited: boolean;
     protected pendingTabs: MatTab[];
+    readonly edgeRuntime: EdgeRuntimeService;
     constructor(store: Store<AppState>, injector: Injector, cd: ChangeDetectorRef);
     set entityId(entityId: HasId);
     set entitiesTableConfig(entitiesTableConfig: EntityTableConfig<BaseData<HasId>>);

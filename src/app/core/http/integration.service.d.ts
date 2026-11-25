@@ -13,6 +13,10 @@ export declare class IntegrationService {
     getIntegrationByRoutingKey(routingKey: string, config?: RequestConfig): Observable<Integration>;
     saveIntegration(integration: Integration, config?: RequestConfig): Observable<Integration>;
     deleteIntegration(integrationId: string, config?: RequestConfig): Observable<Object>;
+    /** SENTIENT Edge (docs/edge plan P7.5): the edge templates assigned to an edge. */
+    getEdgeIntegrations(edgeId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<Integration>>;
+    assignIntegrationToEdge(edgeId: string, integrationId: string, config?: RequestConfig): Observable<Integration>;
+    unassignIntegrationFromEdge(edgeId: string, integrationId: string, config?: RequestConfig): Observable<Object>;
     checkConnection(integration: Integration, config?: RequestConfig): Observable<any>;
     getIntegrationDebugEvents(integrationId: string, pageLink: PageLink, config?: RequestConfig): Observable<PageData<any>>;
     static ɵfac: i0.ɵɵFactoryDeclaration<IntegrationService, never>;

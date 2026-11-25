@@ -41,10 +41,6 @@ export declare abstract class BasicActionWidgetComponent implements OnInit, OnDe
     protected createValueSetter<V>(setValueSettings: SetValueSettings): ValueSetter<V>;
     private onError;
     protected updateValue<V>(valueSetter: ValueSetter<V>, value: V, setValueObserver?: Partial<Observer<void>>): void;
-    /** The device or asset a write goes to (its critical parameters apply). */
-    private writeTarget;
-    /** Where a protected write runs, for the prompt and its audit entry. */
-    private writeProtectionContext;
     private runValueSetter;
     static ɵfac: i0.ɵɵFactoryDeclaration<BasicActionWidgetComponent, never>;
     static ɵdir: i0.ɵɵDirectiveDeclaration<BasicActionWidgetComponent, never, never, { "ctx": { "alias": "ctx"; "required": false; }; "widgetTitlePanel": { "alias": "widgetTitlePanel"; "required": false; }; }, {}, never, never, true, never>;
@@ -95,6 +91,11 @@ export declare abstract class ValueSetter<V> extends ValueAction {
     private readonly valueToDataConverter;
     protected constructor(ctx: WidgetContext, settings: SetValueSettings, simulated: boolean);
     setValue(value: V): Observable<any>;
+    /**
+     * One prompt per click: the widget's protection merged with the critical
+     * parameters of what this click writes. Refused: errors with WriteCancelledError.
+     */
+    protected guardedSet(value: V, write: () => Observable<any>): Observable<any>;
     /** The write itself, with the raw error (a multi-action write words its own message). */
     setValueUnwrapped(value: V): Observable<any>;
     convertValue(value: V): Observable<any>;

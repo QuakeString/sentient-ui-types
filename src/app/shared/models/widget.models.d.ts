@@ -25,6 +25,7 @@ import { TbFunction } from '@shared/models/js-function.models';
 import { FormProperty } from '@shared/models/dynamic-form.models';
 import { TbUnit } from '@shared/models/unit.models';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
+import { ThemeAwareFill } from '@shared/models/background-gradient.models';
 import { BackgroundGradientSettings } from '@shared/models/background-gradient.models';
 import * as i0 from "@angular/core";
 export declare enum widgetType {
@@ -495,7 +496,8 @@ export interface WidgetConfig {
     configMode?: WidgetConfigMode;
     title?: string;
     titleFont?: Font;
-    titleColor?: ThemeAwareColor;
+    /** A colour, or {gradient} for gradient title text. */
+    titleColor?: ThemeAwareFill;
     titleIcon?: string;
     showTitle?: boolean;
     showTitleIcon?: boolean;
@@ -542,6 +544,8 @@ export interface WidgetConfig {
     datasources?: Array<Datasource>;
     targetDevice?: TargetDevice;
     runtimeVisibility?: WidgetRuntimeVisibility;
+    /** Asked before any value this widget writes (widgets without their own Protection row). */
+    writeProtection?: ActionProtection;
     [key: string]: any;
 }
 export interface WidgetRuntimeVisibility {

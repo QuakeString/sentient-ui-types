@@ -63,6 +63,8 @@ export declare class WidgetConfigComponent extends PageComponent implements OnIn
     layoutSettings: UntypedFormGroup;
     advancedSettings: UntypedFormGroup;
     actionsSettings: UntypedFormGroup;
+    /** The Protection every widget has (for widgets without their own Protection row). */
+    protectionSettings: UntypedFormGroup;
     private createBasicModeComponentTimeout;
     private basicModeComponentRef;
     private basicModeComponent;
@@ -79,6 +81,12 @@ export declare class WidgetConfigComponent extends PageComponent implements OnIn
     get designerTexts(): string[];
     constructor(store: Store<AppState>, utils: UtilsService, entityService: EntityService, dialog: MatDialog, translate: TranslateService, fb: UntypedFormBuilder, cd: ChangeDetectorRef, widgetService: WidgetService, destroyRef: DestroyRef);
     ngOnInit(): void;
+    /**
+     * The shared Protection row: on widgets a user writes values with, except
+     * those whose own settings already have a Protection row.
+     */
+    get showSharedProtection(): boolean;
+    private setWriteProtection;
     ngOnDestroy(): void;
     private removeChangeSubscriptions;
     private createChangeSubscriptions;

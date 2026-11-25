@@ -25,6 +25,8 @@ export declare class AddIntegrationDialogComponent extends DialogComponent<AddIn
     private breakpointObserver;
     private integrationService;
     private converterService;
+    /** SENTIENT: the edge-template placeholder syntax, as text for the hint. */
+    readonly edgePlaceholder: string;
     stepper: MatStepper;
     selectedIndex: number;
     entityTypes: typeof EntityType;

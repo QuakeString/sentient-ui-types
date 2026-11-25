@@ -21,6 +21,8 @@ import { EntityAliasSelectCallbacks } from '@home/components/widget/lib/settings
 import { IAliasController } from '@core/api/widget-api.models';
 import { CustomerService } from '@core/http/customer.service';
 import { Customer } from '@shared/models/customer.model';
+import { EdgeService } from '@core/http/edge.service';
+import { RunOnEdge } from './run-on-edge';
 import * as i0 from "@angular/core";
 export interface SchedulerEventDialogData {
     event: SchedulerEvent;
@@ -35,6 +37,7 @@ export declare class SchedulerEventDialogComponent implements OnInit, OnDestroy 
     private reportService;
     private recipeService;
     private customerService;
+    private edgeService;
     private translate;
     eventForm: FormGroup;
     isEdit: boolean;
@@ -131,8 +134,12 @@ export declare class SchedulerEventDialogComponent implements OnInit, OnDestroy 
     filteredOwners: Observable<Customer[]>;
     selectedOwner: Customer | null;
     private _templateFilterWired;
+    /** Edges a report schedule can run on; empty hides the choice. */
+    runOnEdges: RunOnEdge[];
+    /** What the template reads that the chosen edge cannot provide. */
+    runOnWarnings: string[];
     private destroy$;
-    constructor(dialogRef: MatDialogRef<SchedulerEventDialogComponent>, data: SchedulerEventDialogData, fb: FormBuilder, store: Store<AppState>, dialog: MatDialog, reportService: ReportService, recipeService: RecipeService, customerService: CustomerService, translate: TranslateService);
+    constructor(dialogRef: MatDialogRef<SchedulerEventDialogComponent>, data: SchedulerEventDialogData, fb: FormBuilder, store: Store<AppState>, dialog: MatDialog, reportService: ReportService, recipeService: RecipeService, customerService: CustomerService, edgeService: EdgeService, translate: TranslateService);
     ngOnDestroy(): void;
     recipesForDevice: Recipe[];
     recipeDataRecords: RecipeData[];

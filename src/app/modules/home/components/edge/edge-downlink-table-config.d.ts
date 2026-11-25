@@ -22,12 +22,19 @@ export declare class EdgeDownlinkTableConfig extends EntityTableConfig<EdgeEvent
     private store;
     entityId: EntityId;
     private queueStartTs;
+    private queueStartSeqId;
     constructor(attributeService: AttributeService, datePipe: DatePipe, dialogService: DialogService, dialog: MatDialog, edgeService: EdgeService, entityService: EntityService, translate: TranslateService, store: Store<AppState>, entityId: EntityId);
     private fetchEvents;
     private onUpdate;
     private updateColumns;
-    private updateEdgeEventStatus;
-    private isPending;
+    /**
+     * SENTIENT keeps the edge's cursor as a queue position: an event at or
+     * before it was delivered, one set aside failed. Without the position
+     * (a ThingsBoard-era edge) the time comparison is used, as ThingsBoard does.
+     */
+    private status;
+    private statusLabel;
+    private retry;
     private isEdgeEventHasData;
     private prepareEdgeEventContent;
     private showEdgeEventContent;

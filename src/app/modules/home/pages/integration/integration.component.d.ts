@@ -18,6 +18,8 @@ export declare class IntegrationComponent extends EntityComponent<Integration> i
     protected entitiesTableConfigValue: EntityTableConfig<Integration>;
     fb: UntypedFormBuilder;
     protected cd: ChangeDetectorRef;
+    /** SENTIENT: the edge-template placeholder syntax, as text for the hint. */
+    readonly edgePlaceholder: string;
     integrationTypes: IntegrationType[];
     integrationTypeInfoMap: Map<IntegrationType, import("@shared/models/integration.models").IntegrationTypeInfo>;
     entityTypes: typeof EntityType;

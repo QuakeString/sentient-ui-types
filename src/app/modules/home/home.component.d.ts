@@ -45,6 +45,7 @@ export declare class HomeComponent extends PageComponent implements AfterViewIni
     menuCollapsed: import("@angular/core").Signal<boolean>;
     logo: SafeUrl;
     collapsedLogo: SafeUrl;
+    readonly edgeRuntime: boolean;
     sidenav: MatSidenav;
     searchInputField: ElementRef;
     menuScroll: ElementRef<HTMLElement>;

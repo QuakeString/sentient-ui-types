@@ -27,10 +27,15 @@ export declare class EdgeInstructionsDialogComponent extends DialogComponent<Edg
     tabIndex: number;
     instructionsMethod: typeof EdgeInstructionsMethod;
     contentData: any;
+    showSecret: boolean;
+    installInstructions: boolean;
+    readonly secretMask: string;
     constructor(store: Store<AppState>, router: Router, data: EdgeInstructionsDialogData, dialogRef: MatDialogRef<EdgeInstructionsDialogComponent>, attributeService: AttributeService, edgeService: EdgeService);
     ngOnInit(): void;
     ngOnDestroy(): void;
     close(): void;
+    /** The instructions as shown: the secret masked unless shown. */
+    content(method: string): string;
     selectedTabChange(index: number): void;
     getInstructions(method: string): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<EdgeInstructionsDialogComponent, never>;

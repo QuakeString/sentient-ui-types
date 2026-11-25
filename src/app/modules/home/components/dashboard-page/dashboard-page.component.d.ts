@@ -3,6 +3,8 @@ import { DashboardDraft, DashboardDraftService } from '@core/services/dashboard-
 import { WidgetFirstLoadService } from '@core/services/widget-first-load.service';
 import { AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, Injector, NgZone, DoCheck, OnDestroy, OnInit, Renderer2, ViewContainerRef } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
+import { EdgeRuntimeService } from '@core/services/edge-runtime.service';
+import { EntityType } from '@shared/models/entity-type.models';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -143,6 +145,8 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     singlePageMode: boolean;
     forceFullscreen: boolean;
     readonly: boolean;
+    readonly edgeRuntime: EdgeRuntimeService;
+    readonly dashboardEntityType = EntityType.DASHBOARD;
     isMobileApp: boolean;
     /** The mobile app shows the AI assistant button in its own top bar. */
     nativeAiButton$: BehaviorSubject<boolean>;
@@ -315,6 +319,11 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     closeToolbar(): void;
     showCloseToolbar(): boolean;
     hideFullscreenButton(): boolean;
+    /**
+     * The dashboard's bar is the page's top bar, so it is always open. The old
+     * "Keep toolbar opened" setting is retired: a dashboard saved with it off no
+     * longer folds its bar into the "…" button (Auto hide toolbar covers that).
+     */
     toolbarAlwaysOpen(): boolean;
     private hideToolbarSetting;
     displayTitle(): boolean;
@@ -332,6 +341,25 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     displayDashboardLanguage(): boolean;
     displayUpdateDashboardImage(): boolean;
     displayDashboardTimewindow(): boolean;
+    /**
+     * The top bar's background for the current theme, set in Dashboard settings
+     * (a gradient, or else a colour), or null for the page background. Edit mode
+     * keeps it, so switching modes does not change the bar. While a widget's
+     * properties (or the add-widget panel) is open the bar takes that panel's
+     * colour instead (see the scss).
+     */
+    topBarColor(): string | null;
+    /**
+     * Text and icons on a custom top bar: light on a dark background, dark on a
+     * light one. For a gradient, the average brightness of its stops decides.
+     */
+    topBarInk(): 'light' | 'dark' | null;
+    /** View mode: show the app breadcrumb in the top bar (on unless turned off). */
+    displayBreadcrumb(): boolean;
+    /** View mode: show the current state's name / selector in the top bar (on unless turned off). */
+    displayStateTitle(): boolean;
+    /** Breadcrumb and state title both hidden: the dashboards selector moves to the left. */
+    dashboardsSelectFirst(): boolean;
     displayDashboardsSelect(): boolean;
     displayEntitiesSelect(): boolean;
     displayFilters(): boolean;
@@ -394,6 +422,10 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     /** The resolved dashboard is the one this page was built from. */
     private isPristine;
     private initRouteChrome;
+    /** SENTIENT Edge: the server owns this dashboard; it is read-only here. */
+    edgeReadOnly(): boolean;
+    /** SENTIENT Edge: give this edge its own copy, then open it. */
+    forkForEdge(): void;
     private updateLayouts;
     private updateLayout;
     private updateReuseCacheability;

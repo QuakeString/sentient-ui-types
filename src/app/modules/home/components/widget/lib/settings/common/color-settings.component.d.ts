@@ -30,6 +30,8 @@ export declare class ColorSettingsComponent implements OnInit, ControlValueAcces
     gradientAdvancedMode: boolean;
     minValue: number;
     maxValue: number;
+    /** The colour may be a gradient (fill box): only where the renderer paints gradient text. */
+    fillColor: boolean;
     colorType: typeof ColorType;
     modelValue: ColorSettings;
     colorStyle: ComponentStyle;
@@ -44,5 +46,5 @@ export declare class ColorSettingsComponent implements OnInit, ControlValueAcces
     openColorSettingsPopup($event: Event, matButton: MatButton | MatIconButton): void;
     private updateColorStyle;
     static ɵfac: i0.ɵɵFactoryDeclaration<ColorSettingsComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ColorSettingsComponent, "tb-color-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; "settingsKey": { "alias": "settingsKey"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "dataKeyCallbacks": { "alias": "dataKeyCallbacks"; "required": false; }; "datasource": { "alias": "datasource"; "required": false; }; "rangeAdvancedMode": { "alias": "rangeAdvancedMode"; "required": false; }; "gradientAdvancedMode": { "alias": "gradientAdvancedMode"; "required": false; }; "minValue": { "alias": "minValue"; "required": false; }; "maxValue": { "alias": "maxValue"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ColorSettingsComponent, "tb-color-settings", never, { "disabled": { "alias": "disabled"; "required": false; }; "settingsKey": { "alias": "settingsKey"; "required": false; }; "aliasController": { "alias": "aliasController"; "required": false; }; "dataKeyCallbacks": { "alias": "dataKeyCallbacks"; "required": false; }; "datasource": { "alias": "datasource"; "required": false; }; "rangeAdvancedMode": { "alias": "rangeAdvancedMode"; "required": false; }; "gradientAdvancedMode": { "alias": "gradientAdvancedMode"; "required": false; }; "minValue": { "alias": "minValue"; "required": false; }; "maxValue": { "alias": "maxValue"; "required": false; }; "fillColor": { "alias": "fillColor"; "required": false; }; }, {}, never, never, false, never>;
 }

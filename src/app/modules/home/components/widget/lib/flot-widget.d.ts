@@ -58,6 +58,8 @@ export declare class TbFlot {
     private yMaxSubject;
     yMin$: import("rxjs").Observable<number>;
     yMax$: import("rxjs").Observable<number>;
+    /** True when this widget draws times on a 12-hour clock. */
+    private is12h;
     constructor(ctx: WidgetContext, chartType: ChartType, $flotElement?: JQuery<any>, settings?: TbFlotSettings);
     private init;
     update(): void;

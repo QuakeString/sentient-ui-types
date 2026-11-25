@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, OnInit } from '@angular/core';
+import { ChangeDetectorRef, OnDestroy, OnInit } from '@angular/core';
+import { CloudService } from '@core/http/cloud.service';
+import { PublicCloudStatus } from '@shared/models/cloud.models';
 import { AuthService } from '@core/auth/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
@@ -11,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BackendConfigService } from '@core/tauri/backend-config.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import * as i0 from "@angular/core";
-export declare class LoginComponent extends PageComponent implements OnInit {
+export declare class LoginComponent extends PageComponent implements OnInit, OnDestroy {
     protected store: Store<AppState>;
     private authService;
     fb: UntypedFormBuilder;
@@ -19,6 +21,7 @@ export declare class LoginComponent extends PageComponent implements OnInit {
     themeService: ThemeService;
     private matDialog;
     private backendConfigService;
+    private cloudService;
     private cd;
     textureUrl: string;
     textureReady: boolean;
@@ -38,13 +41,18 @@ export declare class LoginComponent extends PageComponent implements OnInit {
     wordmarkMask: string;
     loginFormGroup: import("@angular/forms").UntypedFormGroup;
     oauth2Clients: Array<OAuth2ClientLoginInfo>;
-    constructor(store: Store<AppState>, authService: AuthService, fb: UntypedFormBuilder, router: Router, themeService: ThemeService, matDialog: MatDialog, backendConfigService: BackendConfigService, cd: ChangeDetectorRef, sanitizer: DomSanitizer);
+    readonly edgeRuntime: boolean;
+    readonly productName: string;
+    readonly edgeWaiting: import("@angular/core").WritableSignal<PublicCloudStatus>;
+    private edgePoll;
+    constructor(store: Store<AppState>, authService: AuthService, fb: UntypedFormBuilder, router: Router, themeService: ThemeService, matDialog: MatDialog, backendConfigService: BackendConfigService, cloudService: CloudService, cd: ChangeDetectorRef, sanitizer: DomSanitizer);
     private static logoPart;
     /** Wide tracking suits Latin, Greek and Cyrillic; it breaks joined scripts such as Arabic. */
     isSpacedScript(text: string): boolean;
     get usernameInvalid(): boolean;
     checkCapsLock(event: KeyboardEvent): void;
     ngOnInit(): void;
+    ngOnDestroy(): void;
     login(): void;
     getOAuth2Uri(oauth2Client: OAuth2ClientLoginInfo): string;
     openBackendConfig(): void;

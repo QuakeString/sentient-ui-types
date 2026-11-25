@@ -19,6 +19,8 @@ export declare class ReportTemplateComponent extends EntityComponent<ReportTempl
     fb: UntypedFormBuilder;
     protected cd: ChangeDetectorRef;
     private customerService;
+    /** On an edge templates are the server's: no builder (docs/edge/EDGE_REPORTS_PLAN.md R2). */
+    readonly edgeRuntime: boolean;
     templateTypes: ReportTemplateType[];
     formats: (ReportFormat.PDF | ReportFormat.CSV | ReportFormat.XLSX | ReportFormat.ODS | ReportFormat.SCRIPT)[];
     formatOptions: ToggleHeaderOption[];

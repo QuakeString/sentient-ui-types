@@ -1,5 +1,7 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, ElementRef, EventEmitter, NgZone, OnDestroy, OnInit, QueryList, Renderer2, ViewContainerRef } from '@angular/core';
 import { PageComponent } from '@shared/components/page.component';
+import { EdgeRuntimeService } from '@core/services/edge-runtime.service';
+import { EntityType } from '@shared/models/entity-type.models';
 import { Store } from '@ngrx/store';
 import { AppState } from '@core/core.state';
 import { FormBuilder, FormGroupDirective, NgForm, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
@@ -94,6 +96,8 @@ export declare class RuleChainPageComponent extends PageComponent implements Aft
     ruleNodeSearch: string;
     ruleNodeTypeSearch: import("@angular/forms").FormControl<string>;
     ruleChain: RuleChain;
+    readonly edgeRuntime: EdgeRuntimeService;
+    readonly ruleChainEntityType = EntityType.RULE_CHAIN;
     ruleChainMetaData: RuleChainMetaData;
     ruleChainModel: FcRuleNodeModel;
     selectedObjects: any[];
@@ -225,6 +229,10 @@ export declare class RuleChainPageComponent extends PageComponent implements Aft
     resetDebugSettingsInAllNodes(): void;
     private isDebugSettingsActive;
     validate(): void;
+    /** SENTIENT Edge: the server owns this chain; it is read-only here. */
+    edgeReadOnly(): boolean;
+    /** SENTIENT Edge: give this edge its own copy, then open it. */
+    forkForEdge(): void;
     saveRuleChain(): Observable<any>;
     reloadRuleChain(): void;
     revertRuleChain(): void;

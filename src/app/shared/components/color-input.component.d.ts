@@ -26,6 +26,8 @@ export declare class ColorInputComponent extends PageComponent implements OnInit
     openOnInput: boolean;
     noBorder: boolean;
     themeAware: boolean;
+    /** Theme-aware only: the side the popover opens on; the app theme when unset. */
+    themeEditMode: 'light' | 'dark';
     private requiredValue;
     get required(): boolean;
     set required(value: boolean);
@@ -47,5 +49,5 @@ export declare class ColorInputComponent extends PageComponent implements OnInit
     openColorPickerPopup($event: Event, element?: ElementRef): void;
     clear(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ColorInputComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ColorInputComponent, "tb-color-input", never, { "asBoxInput": { "alias": "asBoxInput"; "required": false; }; "icon": { "alias": "icon"; "required": false; }; "label": { "alias": "label"; "required": false; }; "requiredText": { "alias": "requiredText"; "required": false; }; "colorClearButton": { "alias": "colorClearButton"; "required": false; }; "openOnInput": { "alias": "openOnInput"; "required": false; }; "noBorder": { "alias": "noBorder"; "required": false; }; "themeAware": { "alias": "themeAware"; "required": false; }; "required": { "alias": "required"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ColorInputComponent, "tb-color-input", never, { "asBoxInput": { "alias": "asBoxInput"; "required": false; }; "icon": { "alias": "icon"; "required": false; }; "label": { "alias": "label"; "required": false; }; "requiredText": { "alias": "requiredText"; "required": false; }; "colorClearButton": { "alias": "colorClearButton"; "required": false; }; "openOnInput": { "alias": "openOnInput"; "required": false; }; "noBorder": { "alias": "noBorder"; "required": false; }; "themeAware": { "alias": "themeAware"; "required": false; }; "themeEditMode": { "alias": "themeEditMode"; "required": false; }; "required": { "alias": "required"; "required": false; }; "disabled": { "alias": "disabled"; "required": false; }; "readonly": { "alias": "readonly"; "required": false; }; }, {}, never, never, false, never>;
 }

@@ -1,11 +1,9 @@
 import { ChangeDetectorRef, EventEmitter } from '@angular/core';
-import { ClipboardService } from 'ngx-clipboard';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { TranslateService } from '@ngx-translate/core';
 import { ThemePalette } from '@angular/material/core';
 import * as i0 from "@angular/core";
 export declare class CopyButtonComponent {
-    private clipboardService;
     private translate;
     private cd;
     private timer;
@@ -22,7 +20,7 @@ export declare class CopyButtonComponent {
     color: ThemePalette;
     miniButton: boolean;
     successCopied: EventEmitter<string>;
-    constructor(clipboardService: ClipboardService, translate: TranslateService, cd: ChangeDetectorRef);
+    constructor(translate: TranslateService, cd: ChangeDetectorRef);
     copy($event: Event): void;
     get matTooltipText(): string;
     get matTooltipPosition(): TooltipPosition;

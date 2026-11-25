@@ -33,6 +33,7 @@ export interface Converter extends BaseData<ConverterId>, HasTenantId {
     converterVersion?: number;
     version?: number;
 }
+export declare const CONVERTER_SCRIPT_HELPERS: string[];
 export interface TestUplinkRequest {
     scriptLang?: ConverterScriptLanguage;
     decoder: string;

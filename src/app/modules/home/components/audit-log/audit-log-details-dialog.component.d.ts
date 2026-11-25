@@ -58,6 +58,10 @@ export declare class AuditLogDetailsDialogComponent extends DialogComponent<Audi
     createEditor(editorElementRef: ElementRef, content: string): void;
     /** Translation key of the page a change came from. */
     sourceViaKey(via: string): string;
+    /**
+     * The box takes the dialog's full width and the
+     * content's height up to a cap; longer content scrolls inside the box.
+     */
     updateEditorSize(editorElement: any, content: string, editor: Ace.Editor): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<AuditLogDetailsDialogComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<AuditLogDetailsDialogComponent, "tb-audit-log-details-dialog", never, {}, {}, never, never, false, never>;

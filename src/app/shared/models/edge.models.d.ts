@@ -1,4 +1,4 @@
-import { BaseData } from '@shared/models/base-data';
+import { BaseData, HasId } from '@shared/models/base-data';
 import { TenantId } from '@shared/models/id/tenant-id';
 import { CustomerId } from '@shared/models/id/customer-id';
 import { EdgeId } from '@shared/models/id/edge-id';
@@ -45,7 +45,20 @@ export declare enum EdgeEventType {
     WIDGET_TYPE = "WIDGET_TYPE",
     ADMIN_SETTINGS = "ADMIN_SETTINGS",
     OTA_PACKAGE = "OTA_PACKAGE",
-    QUEUE = "QUEUE"
+    QUEUE = "QUEUE",
+    RECIPE = "RECIPE",
+    RECIPE_DATA = "RECIPE_DATA",
+    RECIPE_SEND = "RECIPE_SEND",
+    ROLE = "ROLE",
+    ENTITY_GROUP = "ENTITY_GROUP",
+    GROUP_PERMISSION = "GROUP_PERMISSION",
+    GROUP_MEMBERSHIP = "GROUP_MEMBERSHIP",
+    SCHEDULER_EVENT = "SCHEDULER_EVENT",
+    NOTIFICATION_FORWARD = "NOTIFICATION_FORWARD",
+    INTEGRATION = "INTEGRATION",
+    CONVERTER = "CONVERTER",
+    REPORT_TEMPLATE = "REPORT_TEMPLATE",
+    REPORT = "REPORT"
 }
 export declare enum EdgeEventActionType {
     ADDED = "ADDED",
@@ -72,7 +85,8 @@ export declare enum EdgeEventActionType {
 }
 export declare enum EdgeEventStatus {
     DEPLOYED = "DEPLOYED",
-    PENDING = "PENDING"
+    PENDING = "PENDING",
+    FAILED = "FAILED"
 }
 export declare const edgeEventTypeTranslations: Map<EdgeEventType, string>;
 export declare const edgeEventActionTypeTranslations: Map<EdgeEventActionType, string>;
@@ -91,16 +105,50 @@ export interface EdgeEvent extends BaseData<EventId> {
     type: EdgeEventType;
     uid: string;
     body: string;
+    seqId?: number;
+    deadLetteredAt?: number;
+    deadLetterReason?: string;
+    retriedAt?: number;
+}
+/** How an edge conflict is resolved (SENTIENT Edge, scoped edits). */
+export declare enum EdgeConflictResolution {
+    APPLY_EDGE = "APPLY_EDGE",
+    KEEP_CLOUD = "KEEP_CLOUD"
+}
+/**
+ * An edge's edit the server refused because its own copy had changed
+ * meanwhile. The server kept its copy; the edge's version is kept here.
+ */
+export interface EdgeConflict extends BaseData<HasId> {
+    edgeId: string;
+    entityType: string;
+    entityId: string;
+    entityName?: string;
+    baseVersion?: number;
+    cloudVersion?: number;
+    resolvedTime?: number;
+    resolution?: EdgeConflictResolution;
+    edgeEntity?: any;
 }
 export interface EdgeInstructions {
     instructions: string;
 }
 export declare enum EdgeInstructionsMethod {
-    ubuntu = 0,
-    centos = 1,
-    docker = 2
+    linux = 0,
+    windows = 1
 }
 export declare const edgeVersionAttributeKey = "edgeVersion";
+export declare const sentientVersionAttributeKey = "sentientVersion";
+/** The machine an edge is bound to, and its last lease (SENTIENT Edge, plan P6). */
+export interface EdgeBinding {
+    bound: boolean;
+    boundTime?: number;
+    lastSeenTime?: number;
+    lastMismatchTime?: number;
+    leaseValidUntil?: number;
+    /** Hardware signals the bound machine exposed, of 6. */
+    components: number;
+}
 export declare enum EdgeConnectionEvent {
     CONNECTED = "CONNECTED",
     DISCONNECTED = "DISCONNECTED"

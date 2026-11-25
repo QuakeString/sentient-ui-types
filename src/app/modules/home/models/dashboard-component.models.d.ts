@@ -173,6 +173,10 @@ export declare class DashboardWidget implements GridsterItem, IDashboardWidget {
     titleTooltip: string;
     showTitle: boolean;
     titleStyle: ComponentStyle;
+    /** Style of the title text itself: a gradient title paints its letters here. */
+    titleTextStyle: ComponentStyle;
+    /** True when the title text is painted with a gradient. */
+    titleGradient: boolean;
     titleIcon: string;
     showTitleIcon: boolean;
     titleIconStyle: ComponentStyle;
@@ -214,6 +218,7 @@ export declare class DashboardWidget implements GridsterItem, IDashboardWidget {
     private _widgetLayoutUpdated;
     constructor(dashboard: IDashboardComponent, widget: Widget, widgetLayoutValue?: WidgetLayout, parentDashboard?: IDashboardComponent, popoverComponent?: TbPopoverComponent);
     applyThemeAwareColors(): void;
+    private gradientTitleTextStyle;
     private resolveBorder;
     gridsterItemComponent$(): Observable<GridsterItemComponentInterface>;
     /**

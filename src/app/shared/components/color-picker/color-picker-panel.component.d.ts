@@ -14,6 +14,8 @@ export declare class ColorPickerPanelComponent extends PageComponent implements 
     colorClearButton: boolean;
     colorCancelButton: boolean;
     themeAware: boolean;
+    /** Theme-aware only: the side to open on; the app theme when unset. */
+    themeEditMode: 'light' | 'dark';
     popover: TbPopoverComponent<ColorPickerPanelComponent>;
     colorSelected: EventEmitter<string>;
     themeColorSelected: EventEmitter<ThemeColor>;
@@ -29,5 +31,5 @@ export declare class ColorPickerPanelComponent extends PageComponent implements 
     clearColor(): void;
     cancelColor(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ColorPickerPanelComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ColorPickerPanelComponent, "tb-color-picker-panel", never, { "color": { "alias": "color"; "required": false; }; "colorClearButton": { "alias": "colorClearButton"; "required": false; }; "colorCancelButton": { "alias": "colorCancelButton"; "required": false; }; "themeAware": { "alias": "themeAware"; "required": false; }; "popover": { "alias": "popover"; "required": false; }; }, { "colorSelected": "colorSelected"; "themeColorSelected": "themeColorSelected"; "colorCancelDialog": "colorCancelDialog"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ColorPickerPanelComponent, "tb-color-picker-panel", never, { "color": { "alias": "color"; "required": false; }; "colorClearButton": { "alias": "colorClearButton"; "required": false; }; "colorCancelButton": { "alias": "colorCancelButton"; "required": false; }; "themeAware": { "alias": "themeAware"; "required": false; }; "themeEditMode": { "alias": "themeEditMode"; "required": false; }; "popover": { "alias": "popover"; "required": false; }; }, { "colorSelected": "colorSelected"; "themeColorSelected": "themeColorSelected"; "colorCancelDialog": "colorCancelDialog"; }, never, never, false, never>;
 }

@@ -73,6 +73,7 @@ export declare class EntitiesTableComponent extends PageComponent implements IEn
     private viewInited;
     private widgetResize$;
     private destroy$;
+    private readonly edgeRuntime;
     constructor(store: Store<AppState>, route: ActivatedRoute, translate: TranslateService, dialog: MatDialog, dialogService: DialogService, domSanitizer: DomSanitizer, cd: ChangeDetectorRef, router: Router, elementRef: ElementRef, fb: FormBuilder, zone: NgZone, importExport: ImportExportService, timewindowPreference: TimewindowPreferenceService, viewContainerRef: ViewContainerRef);
     /** Where this user's own default time window for the table is kept: one
      *  per kind of table on a page, not per entity shown. */

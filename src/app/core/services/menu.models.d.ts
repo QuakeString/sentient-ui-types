@@ -115,7 +115,10 @@ export declare enum MenuId {
     monitor_and_control = "monitor_and_control",
     devices_and_assets = "devices_and_assets",
     customers_and_users = "customers_and_users",
-    data_processing = "data_processing"
+    data_processing = "data_processing",
+    edge_runtime = "edge_runtime",
+    edge_status = "edge_status",
+    cloud_events = "cloud_events"
 }
 export declare const menuSectionMap: Map<MenuId, MenuSection>;
 export declare const buildUserMenu: (authState: AuthState) => Array<MenuSection>;

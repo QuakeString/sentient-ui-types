@@ -57,6 +57,7 @@ export interface Integration extends BaseData<IntegrationId>, HasTenantId {
     configuration?: any;
     additionalInfo?: any;
     remote?: boolean;
+    edgeTemplate?: boolean;
     version?: number;
     status?: string;
     dailyActivity?: {

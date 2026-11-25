@@ -1,5 +1,6 @@
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { EdgeRuntimeService } from '@core/services/edge-runtime.service';
 import { BreadCrumbLabelFunction } from '@shared/components/breadcrumb';
 import { RuleChainMetaData, RuleChain } from '@shared/models/rule-chain.models';
 import { RuleChainService } from '@core/http/rule-chain.service';
@@ -11,7 +12,8 @@ import * as i0 from "@angular/core";
 import * as i1 from "@angular/router";
 export declare class RuleChainResolver {
     private ruleChainService;
-    constructor(ruleChainService: RuleChainService);
+    private edgeRuntime;
+    constructor(ruleChainService: RuleChainService, edgeRuntime: EdgeRuntimeService);
     resolve(route: ActivatedRouteSnapshot): Observable<RuleChain>;
     static ɵfac: i0.ɵɵFactoryDeclaration<RuleChainResolver, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<any>;

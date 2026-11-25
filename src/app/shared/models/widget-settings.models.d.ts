@@ -155,6 +155,13 @@ export declare abstract class ColorProcessor {
     private static readonly colorMap;
     get color(): string;
     set color(value: ThemeAwareColor);
+    private textStyleCache;
+    /**
+     * Style for text drawn in this colour. A constant colour may hold a gradient
+     * ({gradient}, picked in the fill box): the letters are then painted with it.
+     * Cached per colour and theme so a template can bind it with ngStyle.
+     */
+    get textStyle(): ComponentStyle;
     protected constructor(settings: ColorSettings);
     abstract update(value: any): void;
     destroy(): void;

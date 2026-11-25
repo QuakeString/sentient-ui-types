@@ -73,6 +73,8 @@ export interface GridSettings {
     minColumns?: number;
     margin?: number;
     outerMargin?: boolean;
+    /** Outer margin above the first row (px); unset = margin. Used by the home pages. */
+    outerMarginTop?: number;
     viewFormat?: ViewFormatType;
     backgroundSizeMode?: string;
     backgroundImageUrl?: string;
@@ -134,6 +136,14 @@ export declare type StateControllerId = 'entity' | 'default' | string;
 export interface DashboardSettings {
     stateControllerId?: StateControllerId;
     showTitle?: boolean;
+    /** The top bar's colour (a ThemeAwareColor); unset = the page background. */
+    toolbarColor?: ThemeAwareColor;
+    /** A gradient for the top bar, drawn instead of toolbarColor when set. */
+    toolbarGradient?: BackgroundGradientSettings;
+    /** View mode: the app breadcrumb (Dashboards › name) in the dashboard's top bar. On unless false. */
+    showBreadcrumb?: boolean;
+    /** View mode: the current state's name (or state selector) in the top bar. On unless false. */
+    showStateTitle?: boolean;
     showDashboardsSelect?: boolean;
     showEntitiesSelect?: boolean;
     showFilters?: boolean;

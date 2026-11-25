@@ -10,7 +10,9 @@ import { ContentType } from '@shared/models/constants';
 import { JsonContentComponent } from '@shared/components/json-content.component';
 import { ScriptLanguage } from '@shared/models/rule-node.models';
 import { RuleChainService } from '@core/http/rule-chain.service';
+import { ConverterService } from '@core/http/converter.service';
 import * as i0 from "@angular/core";
+export type ConverterScriptKind = 'uplink' | 'downlink';
 export interface NodeScriptTestDialogData {
     script: string;
     scriptType: string;
@@ -24,6 +26,7 @@ export interface NodeScriptTestDialogData {
     };
     msgType?: string;
     helpId?: string;
+    converter?: ConverterScriptKind;
 }
 export declare class NodeScriptTestDialogComponent extends DialogComponent<NodeScriptTestDialogComponent, string> implements OnInit, AfterViewInit, ErrorStateMatcher {
     protected store: Store<AppState>;
@@ -33,6 +36,7 @@ export declare class NodeScriptTestDialogComponent extends DialogComponent<NodeS
     dialogRef: MatDialogRef<NodeScriptTestDialogComponent, string>;
     fb: UntypedFormBuilder;
     private ruleChainService;
+    private converterService;
     width: string;
     height: string;
     topPanelElmRef: QueryList<ElementRef<HTMLElement>>;
@@ -49,7 +53,8 @@ export declare class NodeScriptTestDialogComponent extends DialogComponent<NodeS
     outputContentType: ContentType;
     scriptLanguage: typeof ScriptLanguage;
     scriptLang: ScriptLanguage;
-    constructor(store: Store<AppState>, router: Router, data: NodeScriptTestDialogData, errorStateMatcher: ErrorStateMatcher, dialogRef: MatDialogRef<NodeScriptTestDialogComponent, string>, fb: UntypedFormBuilder, ruleChainService: RuleChainService);
+    converterHelpers: string[];
+    constructor(store: Store<AppState>, router: Router, data: NodeScriptTestDialogData, errorStateMatcher: ErrorStateMatcher, dialogRef: MatDialogRef<NodeScriptTestDialogComponent, string>, fb: UntypedFormBuilder, ruleChainService: RuleChainService, converterService: ConverterService);
     ngOnInit(): void;
     ngAfterViewInit(): void;
     private initSplitLayout;
@@ -57,8 +62,9 @@ export declare class NodeScriptTestDialogComponent extends DialogComponent<NodeS
     cancel(): void;
     test(): void;
     private testNodeScript;
+    private testConverterScript;
     private checkInputParamErrors;
     save(): void;
-    static ɵfac: i0.ɵɵFactoryDeclaration<NodeScriptTestDialogComponent, [null, null, null, { skipSelf: true; }, null, null, null]>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<NodeScriptTestDialogComponent, [null, null, null, { skipSelf: true; }, null, null, null, null]>;
     static ɵcmp: i0.ɵɵComponentDeclaration<NodeScriptTestDialogComponent, "tb-node-script-test-dialog", never, {}, {}, never, never, false, never>;
 }
