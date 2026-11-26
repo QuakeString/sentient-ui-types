@@ -47,8 +47,20 @@ export declare enum AiProvider {
     ANTHROPIC = "ANTHROPIC",
     AMAZON_BEDROCK = "AMAZON_BEDROCK",
     GITHUB_MODELS = "GITHUB_MODELS",
-    OLLAMA = "OLLAMA"
+    OLLAMA = "OLLAMA",
+    ZHIPU_AI = "ZHIPU_AI",
+    DEEPSEEK = "DEEPSEEK",
+    MOONSHOT_AI = "MOONSHOT_AI",
+    ALIBABA_QWEN = "ALIBABA_QWEN",
+    OPENROUTER = "OPENROUTER",
+    GROQ = "GROQ",
+    TOGETHER_AI = "TOGETHER_AI",
+    CUSTOM_OPENAI = "CUSTOM_OPENAI"
 }
+/** SENTIENT: default base URL of each provider that takes one; the user can change it. */
+export declare const AiProviderDefaultBaseUrl: Map<AiProvider, string>;
+/** SENTIENT: providers whose model list SENTIENT can ask the provider for. */
+export declare const AiProvidersWithModelList: AiProvider[];
 export declare const AiProviderTranslations: Map<AiProvider, string>;
 export declare const ProviderFieldsAllList: string[];
 export declare const ModelFieldsAllList: string[];
@@ -98,4 +110,9 @@ export declare enum AuthenticationType {
     NONE = "NONE",
     BASIC = "BASIC",
     TOKEN = "TOKEN"
+}
+/** SENTIENT: answer of POST /api/ai/model/list. */
+export interface AiProviderModelList {
+    models: string[];
+    error?: string;
 }

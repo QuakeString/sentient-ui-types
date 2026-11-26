@@ -39,8 +39,17 @@ export declare class AIModelDialogComponent extends DialogComponent<AIModelDialo
     authenticationHint: string;
     apiKeyRequired: boolean;
     private readonly openAiDefaultBaseUrl;
+    /** SENTIENT: what the Model ID box says about the provider's live model list. */
+    readonly modelListNote: import("@angular/core").WritableSignal<string>;
+    /** Live model lists, one request per provider + base URL + key. */
+    private readonly modelLists;
     constructor(store: Store<AppState>, router: Router, dialogRef: MatDialogRef<AIModelDialogComponent, AiModel>, data: AIModelDialogData, fb: FormBuilder, aiModelService: AiModelService, translate: TranslateService, dialog: MatDialog);
     fetchOptions(searchText: string): Observable<Array<string>>;
+    /**
+     * SENTIENT: the provider's own model list, asked for with the key and base URL typed so far.
+     * Falls back to the built-in suggestions when the provider cannot be asked or refuses.
+     */
+    private providerModels;
     private updateApiKeyValidatorForOpenAIProvider;
     private getAuthenticationHint;
     private updateValidation;

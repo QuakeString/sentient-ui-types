@@ -21,6 +21,7 @@ import { DataKeySettingsFunction } from '@home/components/widget/lib/settings/co
 import { FormProperty } from '@shared/models/dynamic-form.models';
 import { WidgetService } from '@core/http/widget.service';
 import { ThemeAwareColor } from '@shared/models/theme-color.models';
+import { WidgetProtectionHost } from './widget-protection-host';
 import * as i0 from "@angular/core";
 export declare class WidgetConfigComponent extends PageComponent implements OnInit, OnDestroy, ControlValueAccessor, AsyncValidator {
     protected store: Store<AppState>;
@@ -31,6 +32,7 @@ export declare class WidgetConfigComponent extends PageComponent implements OnIn
     private fb;
     private cd;
     private widgetService;
+    private protectionHost;
     private destroyRef;
     basicModeContainer: ViewContainerRef;
     widgetTypes: typeof widgetType;
@@ -79,13 +81,15 @@ export declare class WidgetConfigComponent extends PageComponent implements OnIn
     private defaultConfigFormsType;
     /** Texts the "Translations" panel shows; the same array while they don't change. */
     get designerTexts(): string[];
-    constructor(store: Store<AppState>, utils: UtilsService, entityService: EntityService, dialog: MatDialog, translate: TranslateService, fb: UntypedFormBuilder, cd: ChangeDetectorRef, widgetService: WidgetService, destroyRef: DestroyRef);
+    constructor(store: Store<AppState>, utils: UtilsService, entityService: EntityService, dialog: MatDialog, translate: TranslateService, fb: UntypedFormBuilder, cd: ChangeDetectorRef, widgetService: WidgetService, protectionHost: WidgetProtectionHost, destroyRef: DestroyRef);
     ngOnInit(): void;
     /**
      * The shared Protection row: on widgets a user writes values with, except
      * those whose own settings already have a Protection row.
      */
     get showSharedProtection(): boolean;
+    /** The shared Protection panel, unless the widget's settings show the row in their own Behavior section. */
+    get showSharedProtectionPanel(): boolean;
     private setWriteProtection;
     ngOnDestroy(): void;
     private removeChangeSubscriptions;

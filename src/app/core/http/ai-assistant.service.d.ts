@@ -130,6 +130,35 @@ export interface AiOutgoingMessage {
 }
 export type AiApprovalDecision = 'APPROVE' | 'APPROVE_ALL' | 'ALLOW_DELETES' | 'DENY';
 /** The in-product AI assistant API (`/api/ai/assistant`). */
+/** A skill shipped with SENTIENT (read-only). */
+export interface AiBuiltinSkill {
+    name: string;
+    title: string;
+    description: string;
+    tools: string[];
+    body: string;
+}
+/** A skill a tenant admin wrote. Named like a built-in skill, it adds the tenant's rules to it. */
+export interface AiTenantSkill {
+    name: string;
+    title?: string;
+    description?: string;
+    body: string;
+    tools?: string[];
+    enabled: boolean;
+    /** Its text goes into every conversation (house rules). */
+    always: boolean;
+    customerUsers: boolean;
+}
+/** An uploaded skill read by the server, with notes on what was changed or left out. */
+export interface AiSkillImport {
+    skill: AiTenantSkill;
+    notes: string[];
+}
+export interface AiSkillSettings {
+    builtin: AiBuiltinSkill[];
+    skills: AiTenantSkill[];
+}
 export declare class AiAssistantService {
     private http;
     constructor(http: HttpClient);
@@ -153,6 +182,16 @@ export declare class AiAssistantService {
         customerModelId: string | null;
     }, config?: RequestConfig): Observable<{
         customerModelId?: string;
+    }>;
+    /** Tenant admin: the built-in skills and the tenant's own assistant skills. */
+    getSkills(config?: RequestConfig): Observable<AiSkillSettings>;
+    /** Tenant admin: reads an uploaded SKILL.md or .zip skill folder into a skill for the editor (not saved). */
+    importSkill(fileName: string, data: string, config?: RequestConfig): Observable<AiSkillImport>;
+    /** Tenant admin: a skill (the tenant's own, else the built-in one) as SKILL.md text. */
+    exportSkill(name: string, config?: RequestConfig): Observable<string>;
+    /** Tenant admin: replaces the tenant's own skills; the server checks them and returns the saved list. */
+    saveSkills(skills: AiTenantSkill[], config?: RequestConfig): Observable<{
+        skills: AiTenantSkill[];
     }>;
     static ɵfac: i0.ɵɵFactoryDeclaration<AiAssistantService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<any>;

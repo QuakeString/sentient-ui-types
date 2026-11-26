@@ -397,6 +397,12 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     isLayerLocked(layer: number): boolean;
     toggleLayerHidden(layer: number): void;
     toggleLayerLocked(layer: number): void;
+    /** The current state's SCADA layout, which holds the layer list. */
+    private currentScadaLayout;
+    /** Hidden / locked layers as saved with the dashboard, read when editing starts. */
+    private loadLayerFlags;
+    /** Writes the hidden / locked layers into the layer list so Save keeps them. */
+    private storeLayerFlags;
     private refreshLayerStateOnDashboards;
     /** Layers holding the selected widget(s); marked in the layer picker. */
     getSelectedWidgetLayers(): Set<number>;

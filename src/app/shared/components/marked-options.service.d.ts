@@ -21,6 +21,12 @@ export declare class MarkedOptionsService implements MarkedOptions {
     private onSelectionChange;
     private getSelectedText;
     private hasSelectionInside;
+    private copiedWrapper;
+    private copiedTip;
+    private copiedTimer;
+    private readonly hideCopiedOnScroll;
+    private showCopied;
+    private hideCopied;
     private markdownCopyCode;
     static ɵfac: i0.ɵɵFactoryDeclaration<MarkedOptionsService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<any>;

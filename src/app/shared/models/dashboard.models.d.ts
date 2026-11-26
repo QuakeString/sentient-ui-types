@@ -46,6 +46,10 @@ export interface WidgetLayout {
 export interface LayerDefinition {
     id: number;
     name?: string;
+    /** Editor aid, saved with the dashboard: the layer's widgets are hidden while editing. */
+    hidden?: boolean;
+    /** Editor aid, saved with the dashboard: the layer's widgets can't be selected or moved. */
+    locked?: boolean;
 }
 export declare const SCADA_DEFAULT_LAYERS = 15;
 export declare const SCADA_LAYER_STRIDE = 10000;

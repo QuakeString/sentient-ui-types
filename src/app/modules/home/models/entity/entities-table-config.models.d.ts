@@ -140,6 +140,12 @@ export declare class EntityTableConfig<T extends BaseData<HasId>, P extends Page
     constructor();
     private table;
     private entityDetailsPage;
+    /**
+     * Route of the page that shows this config when no table of its own is
+     * rendered (a group's members list opened directly), so actions such as
+     * "Open details page" still have a route to navigate from.
+     */
+    hostRoute: ActivatedRoute;
     componentsData: any;
     loadDataOnInit: boolean;
     onLoadAction: (route: ActivatedRoute) => void;
@@ -215,5 +221,12 @@ export declare class EntityTableConfig<T extends BaseData<HasId>, P extends Page
     toggleEntityDetails($event: Event, entity: T): void;
     isDetailsOpen(): boolean;
     getActivatedRoute(): ActivatedRoute;
+    /**
+     * The route whose ':entityId' child is this entity type's details page.
+     * Tables inside the All / Groups tabs live one level below it
+     * (devices/all, devices/groups/:entityGroupId), so a link relative to the
+     * table's own route would land on an unknown URL and fall back to Home.
+     */
+    getDetailsRoute(): ActivatedRoute;
 }
 export declare const checkBoxCell: (value: boolean) => string;

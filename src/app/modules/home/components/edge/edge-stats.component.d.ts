@@ -57,7 +57,7 @@ export declare class EdgeStatsComponent {
     constructor(attributeService: AttributeService, edgeService: EdgeService, dialogService: DialogService, translate: TranslateService, cd: ChangeDetectorRef);
     /** Forget the bound machine, after asking (plan P6: replaced hardware). */
     rebindHardware(): void;
-    selectRange(range: EdgeStatsRange): void;
+    selectRangeKey(key: string): void;
     reload(): void;
     private loadIfActive;
     private load;

@@ -29,7 +29,12 @@ export declare class ScadaSymbolObjectSettingsComponent implements OnInit, OnCha
     scadaSymbolObjectSettingsFormGroup: UntypedFormGroup;
     metadata: ScadaSymbolMetadata;
     behaviorGroups: ScadaSymbolBehaviorGroup[];
+    /** Set when the widget-level Protection row is shown in this Behavior section. */
+    protectionControl: UntypedFormControl | null;
+    private protectionHost;
     constructor(store: Store<AppState>, fb: UntypedFormBuilder, imageService: ImageService, cd: ChangeDetectorRef, destroyRef: DestroyRef);
+    private claimProtectionRow;
+    private releaseProtectionRow;
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
     registerOnChange(fn: any): void;
