@@ -40,7 +40,14 @@ export interface AiAssistantStatus {
     /** Customer users use the model their tenant admin chose. */
     customerUser: boolean;
     models: AiAssistantModel[];
+    /** The tenant admin's default model, when set and available. */
+    defaultModelId?: string;
     usage: AiAssistantUsage;
+}
+/** The tenant admin's assistant choices. */
+export interface AiAssistantSettings {
+    customerModelId?: string | null;
+    defaultModelId?: string | null;
 }
 export type AiConversationStatus = 'IDLE' | 'RUNNING' | 'AWAITING_APPROVAL' | 'ERROR';
 /** A change waiting for the user's decision. */
@@ -175,14 +182,9 @@ export declare class AiAssistantService {
     stop(id: string, config?: RequestConfig): Observable<AiConversation>;
     deleteConversation(id: string, config?: RequestConfig): Observable<boolean>;
     /** Tenant admin: the model customer users get (null: none). */
-    getSettings(config?: RequestConfig): Observable<{
-        customerModelId?: string;
-    }>;
-    saveSettings(settings: {
-        customerModelId: string | null;
-    }, config?: RequestConfig): Observable<{
-        customerModelId?: string;
-    }>;
+    getSettings(config?: RequestConfig): Observable<AiAssistantSettings>;
+    /** Saves the given keys; keys left out keep their value. */
+    saveSettings(settings: AiAssistantSettings, config?: RequestConfig): Observable<AiAssistantSettings>;
     /** Tenant admin: the built-in skills and the tenant's own assistant skills. */
     getSkills(config?: RequestConfig): Observable<AiSkillSettings>;
     /** Tenant admin: reads an uploaded SKILL.md or .zip skill folder into a skill for the editor (not saved). */

@@ -24,8 +24,13 @@ export declare class HomeShellRoutingModule {
     static ɵmod: i0.ɵɵNgModuleDeclaration<HomeShellRoutingModule, never, [typeof i1.RouterModule], [typeof i1.RouterModule]>;
     static ɵinj: i0.ɵɵInjectorDeclaration<HomeShellRoutingModule>;
 }
+export declare class HelpViewRoutingModule {
+    static ɵfac: i0.ɵɵFactoryDeclaration<HelpViewRoutingModule, never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<HelpViewRoutingModule, never, [typeof i1.RouterModule], [typeof i1.RouterModule]>;
+    static ɵinj: i0.ɵɵInjectorDeclaration<HelpViewRoutingModule>;
+}
 export declare class AppModule {
     static ɵfac: i0.ɵɵFactoryDeclaration<AppModule, never>;
-    static ɵmod: i0.ɵɵNgModuleDeclaration<AppModule, [typeof i2.AppComponent], [typeof i3.BrowserModule, typeof i4.BrowserAnimationsModule, typeof i5.AppRoutingModule, typeof i6.CoreModule, typeof i7.TauriModule, typeof i8.LoginModule, typeof HomeShellRoutingModule, typeof i9.DashboardRoutingModule, typeof PageNotFoundRoutingModule], never>;
+    static ɵmod: i0.ɵɵNgModuleDeclaration<AppModule, [typeof i2.AppComponent], [typeof i3.BrowserModule, typeof i4.BrowserAnimationsModule, typeof i5.AppRoutingModule, typeof i6.CoreModule, typeof i7.TauriModule, typeof i8.LoginModule, typeof HelpViewRoutingModule, typeof HomeShellRoutingModule, typeof i9.DashboardRoutingModule, typeof PageNotFoundRoutingModule], never>;
     static ɵinj: i0.ɵɵInjectorDeclaration<AppModule>;
 }

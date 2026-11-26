@@ -27,6 +27,8 @@ export interface AiAssistantPrefs {
     edgeTab: boolean;
     approvalMode: AiApprovalMode;
     modelId?: string;
+    /** The user picked `modelId` themselves; otherwise the tenant's default model applies. */
+    modelChosen?: boolean;
     effort?: string;
     open: boolean;
 }

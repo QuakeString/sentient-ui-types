@@ -80,6 +80,9 @@ export declare class TbPopoverComponent<T = any> implements OnDestroy, OnInit {
     tbMouseLeaveDelay?: number;
     tbHideOnClickOutside: boolean;
     tbShowCloseButton: boolean;
+    /** When set, a button beside the close button calls it (help popovers: open in a separate window) and closes the popover. */
+    tbPopOut: (() => void) | null;
+    tbPopOutTooltip: string;
     tbModal: boolean;
     tbResizeable: boolean;
     tbAnimationState: string;
@@ -124,6 +127,7 @@ export declare class TbPopoverComponent<T = any> implements OnDestroy, OnInit {
     constructor(cdr: ChangeDetectorRef, renderer: Renderer2, animationBuilder: AnimationBuilder, directionality: Directionality);
     ngOnInit(): void;
     ngOnDestroy(): void;
+    popOutButtonClick($event: Event): void;
     closeButtonClick($event: Event): void;
     onOverlayKeydown(event: KeyboardEvent): void;
     /**

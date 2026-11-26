@@ -3,11 +3,15 @@ import { DisplayPopoverConfig, DisplayPopoverWithComponentRefConfig, PopoverPref
 import { TbPopoverComponent } from '@shared/components/popover.component';
 import { ComponentType } from '@angular/cdk/portal';
 import { Observable } from 'rxjs';
+import { HelpWindowService } from '@core/services/help-window.service';
+import { TranslateService } from '@ngx-translate/core';
 import * as i0 from "@angular/core";
 export declare class TbPopoverService {
     private helpMarkdownComponent;
+    private helpWindow;
+    private translate;
     private popoverWithTriggers;
-    constructor(helpMarkdownComponent: ComponentType<any>);
+    constructor(helpMarkdownComponent: ComponentType<any>, helpWindow: HelpWindowService, translate: TranslateService);
     hasPopover(trigger: Element): boolean;
     hidePopover(trigger: Element): boolean;
     hideAllPopovers(): void;
