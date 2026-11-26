@@ -92,7 +92,7 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     private hideToolbarValue;
     set hideToolbar(hideToolbar: boolean);
     get hideToolbar(): boolean;
-    get scadaZoomCtrl(): ILayoutController | null;
+    get zoomCtrl(): ILayoutController | null;
     syncStateWithQueryParam: boolean;
     /**
      * This page's toolbar replaces the app bar (breadcrumb, bell, AI assistant,
