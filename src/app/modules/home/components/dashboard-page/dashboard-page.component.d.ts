@@ -369,6 +369,9 @@ export declare class DashboardPageComponent extends PageComponent implements IDa
     toggleLayouts(): void;
     openRightLayout(): void;
     updateLayoutSizes(): void;
+    /** The main layout has a breakpoint width cap: zoom grows its box, not its grid. */
+    mainLayoutZoomFixedWidth: boolean;
+    private lastMainLayoutZoom;
     private updateMainLayoutSize;
     private updateRightLayoutSize;
     private calculateWidth;

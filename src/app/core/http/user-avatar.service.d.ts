@@ -6,6 +6,11 @@ import * as i0 from "@angular/core";
 export declare const USER_AVATAR_SIZE = 256;
 /** Formats the photo picker accepts. */
 export declare const USER_AVATAR_ACCEPT = "image/png,image/jpeg,image/webp";
+/** A user's photo was set (new version) or removed (null) from this client. */
+export interface UserAvatarChange {
+    userId: string;
+    avatarVersion: number | null;
+}
 /**
  * Profile photos: upload/remove the current user's photo, and load any user's
  * photo as an object URL. The API needs the auth header, so an <img> cannot
@@ -16,14 +21,22 @@ export declare const USER_AVATAR_ACCEPT = "image/png,image/jpeg,image/webp";
 export declare class UserAvatarService implements OnDestroy {
     private http;
     private cache;
+    private changesSubject;
+    /** Every photo set or removed here, so other views of that user can follow. */
+    readonly changes$: Observable<UserAvatarChange>;
     constructor(http: HttpClient);
     ngOnDestroy(): void;
     /** Object URL of a user's photo, or null when it cannot be loaded (initials are shown then). */
     getAvatarUrl(userId: string, version: number | string): Observable<string | null>;
-    /** Sets the current user's photo; resolves to the new avatarVersion. */
-    uploadAvatar(image: Blob): Observable<number>;
-    /** Removes the current user's photo. */
-    removeAvatar(userId: string): Observable<void>;
+    /**
+     * Sets a photo; resolves to the new avatarVersion. With `own` (the default)
+     * it is the caller's own photo, otherwise `userId`'s (the server checks the
+     * caller may edit that user).
+     */
+    uploadAvatar(image: Blob, userId?: string, own?: boolean): Observable<number>;
+    /** Removes a photo: the caller's own (`own`), or another user's. */
+    removeAvatar(userId: string, own?: boolean): Observable<void>;
+    private avatarUrl;
     private revoke;
     static ɵfac: i0.ɵɵFactoryDeclaration<UserAvatarService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<any>;

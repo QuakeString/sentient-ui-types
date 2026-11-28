@@ -6,7 +6,7 @@ import { EntityComponent } from '@home/components/entity/entity.component';
 import { EntityTableConfig } from '@home/models/entity/entities-table-config.models';
 import { EntityType } from '@shared/models/entity-type.models';
 import { RecipeService } from '@core/http/recipe.service';
-import { Recipe, RecipeData, RecipeElement, RecipeElementType } from '@shared/models/recipe.models';
+import { Recipe, RecipeData, RecipeElement, RecipeElementType, RecipePreparedSend, RecipeLiveReading } from '@shared/models/recipe.models';
 import { specFor } from '@shared/models/recipe-element-type.spec';
 import * as i0 from "@angular/core";
 export declare class RecipeDataComponent extends EntityComponent<RecipeData> implements OnInit, OnDestroy {
@@ -43,6 +43,15 @@ export declare class RecipeDataComponent extends EntityComponent<RecipeData> imp
     /** Convenience for templates — iterate elements in the parent recipe
      *  in their declared order. */
     get elements(): RecipeElement[];
+    /** Elements worked out when sending (fixed, live, calculated). */
+    get workedElements(): RecipeElement[];
+    /** What a send would do with the values typed so far. */
+    readonly preview: import("@angular/core").WritableSignal<RecipePreparedSend>;
+    private preview$;
+    previewValue(key: string): unknown;
+    previewLive(key: string): RecipeLiveReading | undefined;
+    previewProblem(key: string): string | undefined;
+    private startPreview;
     enumOptions(el: RecipeElement): string[];
     private loadRecipe;
     private buildValuesGroup;

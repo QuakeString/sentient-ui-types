@@ -24,6 +24,9 @@ export declare abstract class EntityComponent<T extends BaseData<HasId>, P exten
      * the dialog chrome. Subclasses populate this via @ViewChild.
      */
     dialogFooterLeftTemplate?: TemplateRef<unknown>;
+    /** Optional control shown in the add dialog's / details drawer's title
+     *  bar, beside help and close (e.g. the recipe's Details / Elements switch). */
+    dialogHeaderTemplate?: TemplateRef<unknown>;
     set entitiesTableConfig(entitiesTableConfig: C);
     get entitiesTableConfig(): C;
     set isEdit(isEdit: boolean);

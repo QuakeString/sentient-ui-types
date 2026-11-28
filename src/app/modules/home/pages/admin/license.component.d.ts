@@ -104,9 +104,6 @@ export declare class LicenseComponent extends PageComponent implements OnInit, O
     formatValidThrough(dateStr: string): string;
     /** "14 Dec 2026": day, short month name, year, in that order for every language. */
     private dayMonthYear;
-    /** Whole days until the license expires: the server's count when it sent
-     *  one, else counted from the expiry date. Null when there is no date. */
-    daysLeft(): number | null;
     formatDate(dateStr: string): string;
     getLimits(): LicenseLimits;
     /**

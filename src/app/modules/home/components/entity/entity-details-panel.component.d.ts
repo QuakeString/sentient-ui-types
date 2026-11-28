@@ -45,6 +45,8 @@ export declare class EntityDetailsPanelComponent extends PageComponent implement
     protected pendingTabs: MatTab[];
     readonly edgeRuntime: EdgeRuntimeService;
     constructor(store: Store<AppState>, injector: Injector, cd: ChangeDetectorRef);
+    /** User details show the user's photo beside the name. */
+    get isUserEntity(): boolean;
     set entityId(entityId: HasId);
     set entitiesTableConfig(entitiesTableConfig: EntityTableConfig<BaseData<HasId>>);
     get entitiesTableConfig(): EntityTableConfig<BaseData<HasId>>;

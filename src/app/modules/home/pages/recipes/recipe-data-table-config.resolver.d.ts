@@ -26,6 +26,8 @@ export declare class RecipeDataTableConfigResolver {
     /** Flip the record's `enabled` flag.  Uses the standard update endpoint
      *  with a minimal body so the other fields are left untouched. */
     private toggleEnabled;
+    /** Send opens the send dialog: live readings, worked-out values, what
+     *  each device gets, then the result per device (with Retry). */
     private sendRecipeData;
     /** Duplicate = open the Add dialog pre-filled with the source record's
      *  values.  User can edit name / values then save (same UX as

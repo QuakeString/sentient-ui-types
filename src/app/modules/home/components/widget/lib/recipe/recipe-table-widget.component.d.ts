@@ -16,25 +16,6 @@ import { specFor, recipeInputKind } from '@shared/models/recipe-element-type.spe
 import { RecipeTableWidgetSettings } from './recipe-table-widget.models';
 import { WidgetDataExportService, WidgetDataExportFormat } from '@core/services/widget-data-export.service';
 import * as i0 from "@angular/core";
-/** Recipe table widget — phase 2.
- *
- *  v1 surfaced recipe_data rows with a one-click Send action.  Phase 2
- *  adds row expansion: clicking a row reveals the element key/value
- *  pairs (lazy-loaded recipe schema), and operators can flip into Edit
- *  mode to override values before dispatch.  Editing persists the new
- *  values_json to the recipe_data record (PUT) and then dispatches
- *  (POST /send) — there's no fire-and-forget "temp value" send in this
- *  phase; the assumption is that an operator who tweaks a value usually
- *  wants the tweak remembered.  Readonly recipe_data records can be
- *  expanded for inspection but cannot be edited.
- *
- *  RBAC stays consistent with v1:
- *    EXECUTE on RECIPE_DATA → Send button visible.
- *    WRITE on RECIPE_DATA   → Edit / Save buttons visible.
- *    READ alone             → expand-to-view only.
- *
- *  Owner scoping comes free from the backend's list filter.
- */
 export declare class RecipeTableWidgetComponent implements OnInit, OnDestroy {
     private recipeService;
     private permission;
@@ -193,6 +174,8 @@ export declare class RecipeTableWidgetComponent implements OnInit, OnDestroy {
     send(row: RecipeData): void;
     /** Persist-if-dirty + dispatch. Surfaces a single toast on completion. */
     private runSend;
+    /** The shared send dialog for a send the server held back. */
+    private openSendDialog;
     /** Build a values_json object from the form, restricted to the recipe's
      *  schema keys. Missing keys fall back to the previously-saved value
      *  (defensive — the form shouldn't have gaps, but the validator on the

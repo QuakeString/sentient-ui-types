@@ -15,8 +15,18 @@ import { DeviceService } from '@core/http/device.service';
 import { DeviceInfo } from '@shared/models/device.models';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Recipe, RecipeElementTargetKind, RecipeElementType } from '@shared/models/recipe.models';
+import { Recipe, RecipeElementKind, RecipeElementTargetKind, RecipeElementType, RecipeSourceType } from '@shared/models/recipe.models';
+import { AssetService } from '@core/http/asset.service';
+import { EntityViewService } from '@core/http/entity-view.service';
+import { EntityService } from '@core/http/entity.service';
+import { TranslateService } from '@ngx-translate/core';
+import { RecipeService } from '@core/http/recipe.service';
 import * as i0 from "@angular/core";
+/** One option of a source / entity picker: devices, assets, entity views, customers. */
+interface SourceOption {
+    id: string;
+    name: string;
+}
 export declare class RecipeComponent extends EntityComponent<Recipe> implements AfterViewInit, OnDestroy {
     protected store: Store<AppState>;
     protected entityValue: Recipe;
@@ -26,6 +36,11 @@ export declare class RecipeComponent extends EntityComponent<Recipe> implements 
     private attributeService;
     private customerService;
     private deviceService;
+    private assetService;
+    private entityViewService;
+    private entityService;
+    private translate;
+    private recipeService;
     readonly entityType: typeof EntityType;
     /** The Owner field is a hybrid Customer-or-User picker, ported from
      *  the report-template pattern.  When nothing is explicitly chosen
@@ -63,6 +78,29 @@ export declare class RecipeComponent extends EntityComponent<Recipe> implements 
      *  included so the user can either press Enter OR comma — comma never
      *  appears as part of the chip text, it's consumed by the chip-input. */
     readonly enumSeparators: number[];
+    readonly KINDS: RecipeElementKind[];
+    readonly ELEMENT_KIND: typeof RecipeElementKind;
+    readonly SOURCE_TYPES: RecipeSourceType[];
+    readonly READ_FROM: string[];
+    readonly AGE_UNITS: string[];
+    /** Which half of the recipe the dialog shows: its details or its elements. */
+    readonly view: import("@angular/core").WritableSignal<"details" | "elements">;
+    /** Devices the elements can write to (the owner's devices). */
+    readonly targetDevices: import("@angular/core").WritableSignal<SourceOption[]>;
+    /** Entities a live element can read, per entity type (loaded on demand). */
+    readonly liveEntities: import("@angular/core").WritableSignal<Record<string, SourceOption[]>>;
+    /** Latest live readings of a saved recipe (key → value), for the formula preview. */
+    readonly liveValues: import("@angular/core").WritableSignal<Record<string, number>>;
+    /** Caret position in each formula field, for its autocomplete. */
+    private formulaCaret;
+    /** Options of the Details / Elements switch. */
+    viewOptions(): {
+        name: string;
+        value: string;
+    }[];
+    private viewOptionsCache;
+    /** Header switch between Details and Elements, rendered by the dialog / drawer. */
+    viewToggleTpl?: TemplateRef<unknown>;
     /** SHARED_SCOPE attribute keys for the currently selected device.
      *  Fetched lazily when the target-address field is first focused;
      *  re-fetched if the device selection changes. Shared across all
@@ -89,6 +127,17 @@ export declare class RecipeComponent extends EntityComponent<Recipe> implements 
      *  Uses emitEvent:false so it never disturbs the hidden deviceId control,
      *  which the caller has already set authoritatively. */
     private seedDeviceDisplay;
+    /** The recipe's source type (DEVICE for recipes saved before sources). */
+    sourceType(): RecipeSourceType;
+    /** Entities of `type` the current owner may use: its own (a customer
+     *  owner) or the tenant's unassigned ones (a tenant owner). */
+    private fetchSources;
+    /** Current live readings of a saved recipe, so its formula preview can use them. */
+    private loadLiveValues;
+    /** The owner's devices, for each element's Target device. */
+    private loadTargetDevices;
+    /** Entities a live element can read for a type (cached per type). */
+    liveEntityOptions(type: string | null | undefined): SourceOption[];
     /** Fetch the devices eligible for the current owner. Customer owner →
      *  that customer's devices; tenant owner → only unassigned devices (the
      *  backend rejects a tenant-owned recipe on a customer-assigned device). */
@@ -124,7 +173,7 @@ export declare class RecipeComponent extends EntityComponent<Recipe> implements 
     private seedOwnerDisplay;
     private fetchCustomers;
     ngOnDestroy(): void;
-    constructor(store: Store<AppState>, entityValue: Recipe, entitiesTableConfigValue: EntityTableConfig<Recipe>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, attributeService: AttributeService, customerService: CustomerService, deviceService: DeviceService);
+    constructor(store: Store<AppState>, entityValue: Recipe, entitiesTableConfigValue: EntityTableConfig<Recipe>, fb: UntypedFormBuilder, cd: ChangeDetectorRef, attributeService: AttributeService, customerService: CustomerService, deviceService: DeviceService, assetService: AssetService, entityViewService: EntityViewService, entityService: EntityService, translate: TranslateService, recipeService: RecipeService);
     /** Fetch the device's SHARED_SCOPE attribute keys when the target
      *  address field is focused. Lazy + cached per device to avoid a roundtrip
      *  on every keystroke. */
@@ -140,17 +189,57 @@ export declare class RecipeComponent extends EntityComponent<Recipe> implements 
     buildForm(entity: Recipe): UntypedFormGroup;
     updateForm(entity: Recipe): void;
     prepareFormValue(formValue: any): any;
+    /** The form group of one element, with every kind's fields. */
+    private elementGroup;
+    /** Kind / target dependent rules: which fields are required. */
+    private applyKindRules;
+    /** Error of a formula: syntax, names that are not number elements of this recipe, its own name. */
+    private formulaError;
+    /** Keys of the number elements of this recipe. */
+    private numericKeys;
+    kindOf(group: any): RecipeElementKind;
+    writesOf(group: any): boolean;
+    /** Name of an element's target device for its summary line. */
+    targetDeviceName(group: any): string;
+    /** Remembers the caret in a formula field (for its suggestions). */
+    trackFormulaCaret(group: object, input: HTMLInputElement): void;
+    /** Suggestions for the word being typed in a formula: number elements, then functions. */
+    formulaSuggestions(group: any): string[];
+    /** Puts a picked suggestion in place of the word being typed. */
+    insertFormulaSuggestion(group: any, picked: string, input: HTMLInputElement): void;
+    /** mat-autocomplete writes the option into the input before optionSelected; keep the typed text. */
+    private formulaBeforePick;
+    rememberFormula(group: any): void;
+    /** Values of every element worked out from the defaults (live elements
+     *  use their default, if any), for the formula preview. */
+    formulaPreview(group: any): {
+        value?: number;
+        error?: string;
+    };
+    /** Whole numbers for an element's preview, else up to 4 decimals. */
+    formatPreview(n: number | undefined): string;
     get elementsArray(): ReturnType<typeof this.fb.array>;
     addElement(): void;
+    /** Drag-and-drop reorder: move the control itself (its state and
+     *  validity go with it), so the saved order follows the list. */
+    moveElement(event: {
+        previousIndex: number;
+        currentIndex: number;
+    }): void;
     removeElement(idx: number): void;
     /** True when this element TYPE accepts numeric min/max. Driven by the
      *  central spec — components must never switch on type strings. */
     isNumericGroup(group: any): boolean;
     isEnumGroup(group: any): boolean;
-    /** `<tb-value-input>` owns its own type-aware validation (warning
-     *  suffix tooltip, emits null when invalid). So at the form layer we
-     *  don't install any pattern validators of our own; the render-time
-     *  inputs handle the rest. */
+    /** Which field the Default uses for this element's type. */
+    defaultKind(group: any): 'number' | 'boolean' | 'text' | 'enum' | 'time' | 'date' | 'datetime';
+    /** Translation key of the first error on a Default / Min / Max number field. */
+    numberError(group: any, key: string): string;
+    /** Whole-number types (integer, int8..uint64) step by 1. */
+    isWholeGroup(group: any): boolean;
+    /** Type-aware checks on Default / Min / Max: numbers only for numeric
+     *  types, whole numbers for the integer types, and the type's own range
+     *  (int8 -128..127 and so on). Re-installed when the type changes. */
     private applyTypeValidators;
     /** Append a chip from the user's typed text. Bound to the chip-input's
      *  `matChipInputTokenEnd` so it fires on Enter / comma / semicolon.
@@ -167,3 +256,4 @@ export declare class RecipeComponent extends EntityComponent<Recipe> implements 
     static ɵfac: i0.ɵɵFactoryDeclaration<RecipeComponent, never>;
     static ɵcmp: i0.ɵɵComponentDeclaration<RecipeComponent, "tb-recipe", never, {}, {}, never, never, false, never>;
 }
+export {};

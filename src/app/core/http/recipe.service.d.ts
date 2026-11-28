@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RequestConfig } from './http-utils';
-import { CreateRecipeDataRequest, CreateRecipeRequest, Recipe, RecipeData, SendAck, SendHistoryRow, UpdateRecipeDataRequest, UpdateRecipeRequest } from '@shared/models/recipe.models';
+import { CreateRecipeDataRequest, CreateRecipeRequest, Recipe, RecipeData, SendAck, SendHistoryRow, UpdateRecipeDataRequest, UpdateRecipeRequest, RecipePreparedSend, RecipeSendOutcome, RecipeSendRequest } from '@shared/models/recipe.models';
 import * as i0 from "@angular/core";
 type RecipeId = string;
 type RecipeDataId = string;
@@ -48,6 +48,16 @@ export declare class RecipeService {
     updateRecipeData(id: RecipeDataId, body: UpdateRecipeDataRequest, config?: RequestConfig): Observable<RecipeData>;
     deleteRecipeData(id: RecipeDataId, config?: RequestConfig): Observable<void>;
     sendRecipeData(id: RecipeDataId, config?: RequestConfig): Observable<SendAck>;
+    /**
+     * Sends with the operator's choices. A send held back by the server (a
+     * value out of limits, a missing live reading, an old reading that needs
+     * confirming) comes back as `sent: false` with the worked-out send, not
+     * as an error, so the caller can show what is wrong and offer Confirm /
+     * Override.
+     */
+    sendRecipeDataWith(id: RecipeDataId, body: RecipeSendRequest, config?: RequestConfig): Observable<RecipeSendOutcome>;
+    /** Works out a send without writing (live readings, calculated values, limits, writes per device). */
+    previewRecipe(recipeId: string, values: Record<string, unknown>, liveOverrides?: Record<string, unknown>, config?: RequestConfig): Observable<RecipePreparedSend>;
     getSendHistory(id: RecipeDataId, opts?: {
         from?: number;
         to?: number;

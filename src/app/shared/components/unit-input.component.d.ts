@@ -1,3 +1,4 @@
+import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { ElementRef, OnChanges, OnInit, Renderer2, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -19,6 +20,8 @@ export declare class UnitInputComponent implements ControlValueAccessor, OnInit,
     required: boolean;
     /** A full-size field with this label (as in forms), instead of the compact inline field. */
     label: string;
+    /** Field style; forms of filled fields pass 'fill' so the picker matches them. */
+    appearance: MatFormFieldAppearance;
     tagFilter: string;
     measure: AllMeasures;
     unitSystem: UnitSystem;
@@ -46,7 +49,7 @@ export declare class UnitInputComponent implements ControlValueAccessor, OnInit,
     private fetchUnits;
     private getGroupedUnits;
     static ɵfac: i0.ɵɵFactoryDeclaration<UnitInputComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<UnitInputComponent, "tb-unit-input", never, { "disabled": { "alias": "disabled"; "required": false; }; "required": { "alias": "required"; "required": false; }; "label": { "alias": "label"; "required": false; }; "tagFilter": { "alias": "tagFilter"; "required": false; }; "measure": { "alias": "measure"; "required": false; }; "unitSystem": { "alias": "unitSystem"; "required": false; }; "supportsUnitConversion": { "alias": "supportsUnitConversion"; "required": false; }; "onlySystemUnits": { "alias": "onlySystemUnits"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<UnitInputComponent, "tb-unit-input", never, { "disabled": { "alias": "disabled"; "required": false; }; "required": { "alias": "required"; "required": false; }; "label": { "alias": "label"; "required": false; }; "appearance": { "alias": "appearance"; "required": false; }; "tagFilter": { "alias": "tagFilter"; "required": false; }; "measure": { "alias": "measure"; "required": false; }; "unitSystem": { "alias": "unitSystem"; "required": false; }; "supportsUnitConversion": { "alias": "supportsUnitConversion"; "required": false; }; "onlySystemUnits": { "alias": "onlySystemUnits"; "required": false; }; }, {}, never, never, false, never>;
     static ngAcceptInputType_disabled: unknown;
     static ngAcceptInputType_required: unknown;
     static ngAcceptInputType_supportsUnitConversion: unknown;

@@ -16,8 +16,9 @@
  *     (expanded full editor) as `<ng-template>` blocks.
  *   - Wire the deleteRequested event handler.
  */
-import { ChangeDetectorRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef } from '@angular/core';
+import { ChangeDetectorRef, EventEmitter, OnChanges, OnDestroy, OnInit, SimpleChanges, TemplateRef, ElementRef } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import * as i0 from "@angular/core";
 export declare class EntityKeysPanelComponent implements OnInit, OnChanges, OnDestroy {
     private cd;
@@ -29,6 +30,8 @@ export declare class EntityKeysPanelComponent implements OnInit, OnChanges, OnDe
     emptyText: string;
     /** Hide the per-row delete button entirely (read-only mode). */
     hideDelete: boolean;
+    /** Show a drag handle left of each row; a drop emits `reordered`. */
+    reorderable: boolean;
     /** Row header template — left side of the collapsed expansion panel. */
     rowHeaderTpl: TemplateRef<{
         $implicit: FormGroup;
@@ -40,6 +43,12 @@ export declare class EntityKeysPanelComponent implements OnInit, OnChanges, OnDe
         index: number;
     }> | null;
     deleteRequested: EventEmitter<number>;
+    /** A row was dragged from `previousIndex` to `currentIndex`; the host moves the control. */
+    reordered: EventEmitter<{
+        previousIndex: number;
+        currentIndex: number;
+    }>;
+    keyList?: ElementRef<HTMLElement>;
     displayedControls: {
         control: FormGroup;
         index: number;
@@ -57,11 +66,16 @@ export declare class EntityKeysPanelComponent implements OnInit, OnChanges, OnDe
     setLastAddedIndex(index: number | null): void;
     private refreshDisplay;
     onScroll(event: Event): void;
+    /** Rows follow their control, so a moved or inserted row keeps its
+     *  own expanded state instead of inheriting the one at its position. */
     trackByItem(_: number, item: {
         control: FormGroup;
         index: number;
     }): unknown;
+    onDrop(event: CdkDragDrop<unknown>): void;
+    /** Scrolls the list back to its first row (a row was added on top). */
+    scrollToTop(): void;
     onDeleteClicked(index: number): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<EntityKeysPanelComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<EntityKeysPanelComponent, "tb-entity-keys-panel", never, { "keysFormArray": { "alias": "keysFormArray"; "required": true; }; "title": { "alias": "title"; "required": false; }; "deleteTooltip": { "alias": "deleteTooltip"; "required": false; }; "emptyText": { "alias": "emptyText"; "required": false; }; "hideDelete": { "alias": "hideDelete"; "required": false; }; "rowHeaderTpl": { "alias": "rowHeaderTpl"; "required": false; }; "rowBodyTpl": { "alias": "rowBodyTpl"; "required": false; }; }, { "deleteRequested": "deleteRequested"; }, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<EntityKeysPanelComponent, "tb-entity-keys-panel", never, { "keysFormArray": { "alias": "keysFormArray"; "required": true; }; "title": { "alias": "title"; "required": false; }; "deleteTooltip": { "alias": "deleteTooltip"; "required": false; }; "emptyText": { "alias": "emptyText"; "required": false; }; "hideDelete": { "alias": "hideDelete"; "required": false; }; "reorderable": { "alias": "reorderable"; "required": false; }; "rowHeaderTpl": { "alias": "rowHeaderTpl"; "required": false; }; "rowBodyTpl": { "alias": "rowBodyTpl"; "required": false; }; }, { "deleteRequested": "deleteRequested"; "reordered": "reordered"; }, never, never, false, never>;
 }

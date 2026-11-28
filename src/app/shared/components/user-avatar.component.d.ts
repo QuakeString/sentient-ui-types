@@ -16,10 +16,8 @@ export interface UserAvatarSource {
         [key: string]: any;
     };
 }
-/** Stable base colour for a user. */
+/** Stable colour for a user's initials. */
 export declare const userAvatarColor: (key: string) => string;
-/** Stable gradient for a user's initials: their colour pair, a direction, and a soft top-left highlight. */
-export declare const userAvatarGradient: (key: string) => string;
 /** One or two letters: first + last name initials, else the start of the email / name. */
 export declare const userAvatarInitials: (firstName?: string, lastName?: string, fallback?: string) => string;
 /**
@@ -45,7 +43,6 @@ export declare class UserAvatarComponent implements OnChanges, OnDestroy {
     get height(): number;
     get fontSize(): number;
     background: string;
-    backgroundImage: string;
     get hasPhoto(): boolean;
     readonly ariaHidden = "true";
     private loadSubscription;

@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, ElementRef, OnDestroy, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +14,8 @@ export interface AvatarEditorDialogData {
     userId: string;
     /** The current photo's version; when set the editor starts from that photo. */
     avatarVersion?: number;
+    /** Another user's photo (an admin editing a user), not the caller's own. */
+    otherUser?: boolean;
 }
 /** The new avatarVersion, or null when the photo was removed. Nothing on cancel. */
 export interface AvatarEditorDialogResult {
@@ -32,6 +35,8 @@ export declare class AvatarEditorDialogComponent extends DialogComponent<AvatarE
     private dialogService;
     private translate;
     private cd;
+    private dialog;
+    private http;
     fileInput: ElementRef<HTMLInputElement>;
     cropElement: ElementRef<HTMLElement>;
     readonly accept = "image/png,image/jpeg,image/webp";
@@ -66,10 +71,15 @@ export declare class AvatarEditorDialogComponent extends DialogComponent<AvatarE
     private dragDepth;
     /** Only the latest picture load may take effect (a drop can race the initial photo). */
     private loadSeq;
-    constructor(store: Store<AppState>, router: Router, data: AvatarEditorDialogData, dialogRef: MatDialogRef<AvatarEditorDialogComponent, AvatarEditorDialogResult>, avatarService: UserAvatarService, dialogService: DialogService, translate: TranslateService, cd: ChangeDetectorRef);
+    constructor(store: Store<AppState>, router: Router, data: AvatarEditorDialogData, dialogRef: MatDialogRef<AvatarEditorDialogComponent, AvatarEditorDialogResult>, avatarService: UserAvatarService, dialogService: DialogService, translate: TranslateService, cd: ChangeDetectorRef, dialog: MatDialog, http: HttpClient);
     ngOnInit(): void;
     ngOnDestroy(): void;
     chooseFile(): void;
+    /**
+     * Picks an image from the platform's image gallery (an existing one, or one
+     * uploaded there from the gallery dialog) and crops it like a local file.
+     */
+    browseGallery(): void;
     onFilePicked(event: Event): void;
     onDragEnter(event: DragEvent): void;
     onDragOver(event: DragEvent): void;
@@ -93,6 +103,10 @@ export declare class AvatarEditorDialogComponent extends DialogComponent<AvatarE
     cancel(): void;
     save(): Promise<void>;
     removePhoto(): void;
+    /**
+     * `fromGallery`: a gallery image may also be SVG or GIF; the browser decodes
+     * it and the upload is the re-rendered square, so any decodable image works.
+     */
     private openFile;
     /**
      * Decodes the picture (the browser applies EXIF orientation) and starts

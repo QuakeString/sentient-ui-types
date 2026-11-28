@@ -32,6 +32,8 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     backgroundImage$: Observable<SafeStyle | string>;
     hotKeys: Hotkey[];
     dashboardCheatSheet: TbCheatSheetComponent;
+    /** Passed on to the dashboard: zoom keeps the grid width (the page grows the box). */
+    zoomFixedWidth: boolean;
     set layoutCtx(val: DashboardPageLayoutContext);
     get layoutCtx(): DashboardPageLayoutContext;
     get isScada(): boolean;
@@ -123,6 +125,6 @@ export declare class DashboardLayoutComponent extends PageComponent implements I
     pasteWidget($event: TbContextMenuEvent | KeyboardEvent): void;
     pasteWidgetReference($event: TbContextMenuEvent | KeyboardEvent): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<DashboardLayoutComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardLayoutComponent, "tb-dashboard-layout", never, { "dashboardCheatSheet": { "alias": "dashboardCheatSheet"; "required": false; }; "layoutCtx": { "alias": "layoutCtx"; "required": false; }; "dashboardCtx": { "alias": "dashboardCtx"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isEditingWidget": { "alias": "isEditingWidget"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "widgetEditMode": { "alias": "widgetEditMode"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; }, {}, never, never, false, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DashboardLayoutComponent, "tb-dashboard-layout", never, { "dashboardCheatSheet": { "alias": "dashboardCheatSheet"; "required": false; }; "zoomFixedWidth": { "alias": "zoomFixedWidth"; "required": false; }; "layoutCtx": { "alias": "layoutCtx"; "required": false; }; "dashboardCtx": { "alias": "dashboardCtx"; "required": false; }; "isEdit": { "alias": "isEdit"; "required": false; }; "isEditingWidget": { "alias": "isEditingWidget"; "required": false; }; "isMobile": { "alias": "isMobile"; "required": false; }; "widgetEditMode": { "alias": "widgetEditMode"; "required": false; }; "parentDashboard": { "alias": "parentDashboard"; "required": false; }; "popoverComponent": { "alias": "popoverComponent"; "required": false; }; }, {}, never, never, false, never>;
 }
 export {};
